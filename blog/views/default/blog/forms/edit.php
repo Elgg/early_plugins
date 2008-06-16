@@ -83,7 +83,7 @@
 				}
 			
 			?>
-			<input type="submit" value="<?php echo elgg_echo('save'); ?>" />
+			<input type="submit" class="submit_button" value="<?php echo elgg_echo('save'); ?>" />
 		</p>
 	
 	</form>
