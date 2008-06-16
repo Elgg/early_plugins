@@ -18,36 +18,59 @@
 
 	<div class="blog-post">
 		<h3><a href="<?php echo $vars['entity']->getURL(); ?>"><?php echo $vars['entity']->title; ?></a></h3>
+		<div style="float:left;width:60px;">
+		    <?php
+		        echo elgg_view("profile/icon",array('entity' => $vars['entity']->getOwnerEntity(), 'size' => 'tiny'));
+			?>
+	    </div>
 		<p class="strapline">
 			<?php
-
+                
 				echo sprintf(elgg_echo("blog:strapline"),
-								date("F j",$vars['entity']->time_created)
+								date("F j, Y",$vars['entity']->time_created)
 				);
 			
 			?>
+			by <a href="<?php echo $vars['url']; ?>pg/blog/<?php echo $vars['entity']->getOwnerEntity()->username; ?>"><?php echo $vars['entity']->getOwnerEntity()->name; ?></a><br />
+			<a href="">Add to friends</a> - <a href="">report post</a>
 		</p>
+		
+		<!-- display the user icon -->
 		<p style="float: left">
 			<?php
-				echo elgg_view("profile/icon",array('entity' => $vars['entity']->getOwnerEntity(), 'size' => 'medium'));
+				//echo elgg_view("profile/icon",array('entity' => $vars['entity']->getOwnerEntity(), 'size' => 'medium'));
 			?><br />
-			<a href="<?php echo $vars['url']; ?>pg/blog/<?php echo $vars['entity']->getOwnerEntity()->username; ?>"><?php echo $vars['entity']->getOwnerEntity()->name; ?></a>
 		</p>
-		<p style="margin-left: 110px; min-height: 110px">
+		
+		<!-- display the actual blog post -->
+		<p>
 			<?php
 		
 						echo nl2br($vars['entity']->description);
 			
 			?>
 		</p>
-		<p style="margin-left: 110px">
+		
+		<!-- display tags -->
+		<p>
 			<?php
 
 				echo elgg_view('output/tags', array('tags' => $vars['entity']->tags));
 			
 			?>
 		</p>
-		<p style="margin-left: 110px">
+		
+		<!-- display the comments link -->
+		<p>
+		    <?php
+		        //get the number of comments
+		        $num_comments = $vars['entity']->countAnnotations('comment');
+		    ?>
+		    <a href="<?php echo $vars['entity']->getURL(); ?>">Comments (<?php echo $num_comments; ?>)</a>
+		</p>
+		
+		<!-- display edit options if it is the blog post owner -->
+		<p>
 		<?php
 
 			if ($vars['entity']->canEdit()) {
@@ -57,7 +80,7 @@
 				<?php
 				
 					echo elgg_view("output/confirmlink", array(
-																'href' => $vars['url'] . "action_handler.php?action=blog/delete&blogpost=" . $vars['entity']->getGUID(),
+																'href' => $vars['url'] . "action/blog/delete?blogpost=" . $vars['entity']->getGUID(),
 																'text' => elgg_echo('delete'),
 																'confirm' => elgg_echo('deleteconfirm'),
 															));
@@ -79,9 +102,6 @@
 			if (isset($vars['full']) && $vars['full'] == true) {
 				echo elgg_view('object/blog-comments',array('entity' => $vars['entity'], 'comments' => $vars['entity']->getAnnotations('comment')));
 			}
-
-		// Display comments if any
-			// echo elgg_view('object/blog-comments',array('entity' => $vars['entity'], 'comments' => $vars['comments']));
 
 		}
 

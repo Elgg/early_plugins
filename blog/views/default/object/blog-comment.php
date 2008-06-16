@@ -11,17 +11,24 @@
 	 * 
 	 * @uses $vars['entity'] The comment to view
 	 */
+	 
+	 // get the user object to user 
+	 $owner = get_user($vars['entity']->owner_guid);
 
 
 ?>
 
 	<li>
 		<div class="blog-comment">
+		<?php 
+		    //display the small user icon
+		    echo elgg_view("profile/icon",array('entity' => $owner, 'size' => 'tiny')); 
+		?>
 		<p class="blog-comment-text"><?php echo elgg_view("output/longtext",array("value" => $vars['entity']->value)); ?></p>
 		<p class="blog-comment-byline">
 			<?php
 			
-				if ($owner = get_entity($vars['entity']->owner_guid)) {
+				if ($owner) {
 					echo $owner->name;
 				}
 			

@@ -36,10 +36,9 @@
 											
 	// Set the title appropriately
 			$title = sprintf(elgg_echo("blog:posttitle"),$page_owner->name,$blogpost->title);
-			
-    // select the correct canvas area
-    
-        $body = elgg_view_layout("one_column", $area1);
+
+	// Display through the correct canvas area
+		$body = elgg_view_layout("one_column", $area1);
 			
 	// If we're not allowed to see the blog post
 		} else {

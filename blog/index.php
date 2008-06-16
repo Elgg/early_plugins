@@ -25,7 +25,7 @@
 		
 	// Display them
 		$area1 = elgg_view("blog/view",array('posts' => $posts));
-		$body = elgg_view_layout("one_column", $area1);
+              $body = elgg_view_layout("one_column", $area1);
 		
 	// Display page
 		page_draw(sprintf(elgg_echo('blog:user'),$page_owner->name),$body);

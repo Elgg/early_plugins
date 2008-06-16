@@ -13,27 +13,20 @@
 ?>
 
 .blog-post {
-
 	margin-bottom: 30px;
 	border: 0px;
 	border-bottom: 1px;
 	border-style: solid;
 	border-color: #aaa;
-
 }
 
-.blog-post a {
-
-	text-decoration: underline;
-	color: #777;
-
+.blog-post img {
+    margin:5px;
 }
 
 .blog-post h3 {
-
-	font-size: 200%;
-	margin-bottom: 15px;
-
+	font-size: 150%;
+	margin-bottom: 5px;
 }
 
 .blog-post h3 a {
@@ -44,8 +37,7 @@
 
 .blog-post .strapline {
 
-	font-size: 130%;
-	margin-bottom: 20px;
+	margin: 0 0 30px 0;
 	color: #aaa;
 
 }
