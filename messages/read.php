@@ -35,11 +35,14 @@
         }
 	    
     // Display it
-	    $body = elgg_view("object/messages",array(
+	    $area1 = elgg_view("object/messages",array(
 											'entity' => $message,
 											'entity_owner' => $page_owner,
 											'full' => true
 											));
+											
+    // select the canvas area
+        $body = elgg_view_layout("one_column", $area1);
 		
 	// Display page
 		page_draw(sprintf(elgg_echo('messages:message')),$body);

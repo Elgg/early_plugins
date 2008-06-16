@@ -22,7 +22,8 @@
 		
 	// Display them. The last variable 'page_view' is to allow the view page to know where this data is coming from,
 	// in this case it is the inbox, this is necessary to ensure the correct display
-		$body = elgg_view("messages/view",array('entity' => $messages, 'page_view' => "inbox"));
+		$area1 = elgg_view("messages/view",array('entity' => $messages, 'page_view' => "inbox"));
+		$body = elgg_view_layout("one_column", $area1);
 		
 	// Display page
 		page_draw(sprintf(elgg_echo('messages:user'),$page_owner->name),$body);

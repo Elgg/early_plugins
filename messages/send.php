@@ -20,7 +20,8 @@
         $friends = $_SESSION['user']->getFriends();
         
     // Display the send form
-		$body = elgg_view("messages/forms/message",array('friends' => $friends));
+		$area1 = elgg_view("messages/forms/message",array('friends' => $friends));
+		$body = elgg_view_layout("one_column", $area1);
 		
 	// Display page
 		page_draw(sprintf(elgg_echo('messages:send'),$page_owner->name),$body);

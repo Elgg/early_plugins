@@ -24,7 +24,8 @@
 		$messages = $page_owner->getObjects('messages');
 		
 	// Display them
-		$body = elgg_view("messages/view",array('entity' => $messages, 'page_view' => "sent"));
+		$area1 = elgg_view("messages/view",array('entity' => $messages, 'page_view' => "sent"));
+		$body = elgg_view_layout("one_column", $area1);
 		
 	// Display page
 		page_draw(sprintf(elgg_echo('messages:sentMessages'),$page_owner->name),$body);

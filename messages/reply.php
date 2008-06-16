@@ -20,7 +20,8 @@
 	    $message = get_entity(get_input("message"));
 		
     // Get the message guid that is being replied to and display the create message form
-		$body = elgg_view("messages/forms/reply", array('entity' => $message));
+		$area1 = elgg_view("messages/forms/reply", array('entity' => $message));
+		$body = elgg_view_layout("one_column", $area1);
 		
 	// Display page
 		page_draw(sprintf(elgg_echo('messages:send'),$page_owner->name),$body);
