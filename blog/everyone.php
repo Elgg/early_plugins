@@ -14,7 +14,8 @@
 		require_once(dirname(dirname(dirname(__FILE__))) . "/engine/start.php");
 
 		if ($blogposts = get_entities('object','blog')) {
-			$body = elgg_view("blog/view",array('posts' => $blogposts));
+			$area1 = elgg_view("blog/view",array('posts' => $blogposts));
+			$body = elgg_view_layout("one_column", $area1);
 		}
 		
 	// Display page

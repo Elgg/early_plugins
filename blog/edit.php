@@ -19,7 +19,8 @@
 			
 			if ($post->canEdit()) {
 				
-				$body = elgg_view("blog/forms/edit", array('entity' => $post));
+				$area1 = elgg_view("blog/forms/edit", array('entity' => $post));
+				$body = elgg_view_layout("one_column", $area1);
 				
 			}
 			

@@ -20,6 +20,6 @@
 		$page_owner = page_owner();
 		
 	// Display page
-		page_draw(elgg_echo('blog:addpost'),elgg_view("blog/forms/edit"));
+		page_draw(elgg_echo('blog:addpost'),elgg_view_layout("one_column", elgg_view("blog/forms/edit")));
 		
 ?>
