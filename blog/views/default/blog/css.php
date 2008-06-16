@@ -41,10 +41,3 @@
 	color: #aaa;
 
 }
-
-.blog-post .strapline a {
-
-	text-decoration: none;
-	color: #aaa;
-
-}
