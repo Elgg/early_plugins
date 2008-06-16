@@ -39,7 +39,7 @@
 ?>
     <!-- get the correct return url -->
     <div id="messages_return"><!-- start of messages_return div -->
-         <p><a href="<?php echo $url; ?>">back to messages</a></p>
+         <p><a href="<?php echo $url; ?>">&laquo; back to messages</a></p>
     </div><!-- end of messages_return div -->
     
     <div class="messages_single"><!-- start of the message div -->
@@ -55,18 +55,18 @@
                     //get an instance of the user who the message has been sent to so we can access the name and icon
                     $user_object = get_entity($vars['entity']->toId);
                     //get the icon
-                    echo "To:<br />" . elgg_view("profile/icon",array('entity' => $user_object, 'size' => 'medium'));
+                    echo " " . elgg_view("profile/icon",array('entity' => $user_object, 'size' => 'tiny'));
                     //get the name
-                    echo "<br />" . $user_object->name . "<br />";
+                    echo "<br />To: <b>" . $user_object->name . "</b><br />";
                 }else{
                     //get the icon
-                    echo "From:<br />" . elgg_view("profile/icon",array('entity' => $vars['entity']->getOwnerEntity(), 'size' => 'medium'));
+                    echo " " . elgg_view("profile/icon",array('entity' => $vars['entity']->getOwnerEntity(), 'size' => 'tiny'));
                     //get the name
-                    echo "<br />" . $vars['entity']->getOwnerEntity()->name . "<br />";
+                    echo "<br />From: <b>" . $vars['entity']->getOwnerEntity()->name . "</b><br />";
                 }
             ?>
             <!-- get the time the message was sent -->
-            <?php echo date("F j, g:i a",$vars['entity']->time_created);	?>
+            <small><?php echo date("F j, g:i a",$vars['entity']->time_created);	?></small>
             </p>
         </div><!-- end of the message_user_icon div -->
         
@@ -78,12 +78,12 @@
 		    if($main_message = $vars['entity']->getEntitiesFromRelationship("reply")){
         		
     		    if($type == "sent"){
-        		    echo "<div class='previous_message'><p>Original message:</p>";
+        		    echo "<div class='previous_message'><h3>Original message:</h3><p>";
     		    }else{
-    		        echo "<div class='previous_message'><p>Your message:</p>";
+    		        echo "<div class='previous_message'><h3>Your message:</h3><p>";
 		        }
 		        
-    		    echo $main_message[0][description] . "</div>";
+    		    echo $main_message[0][description] . "</p></div>";
         			
     	    }
     	?>
@@ -100,7 +100,19 @@
 		
 		<!-- display the edit options, reply and delete -->
 		<div class="message_options"><!-- start of the message_options div -->
-		    <p><?php if($type != "sent")echo "<div class='message_reply'><a href=\"{$vars['url']}mod/messages/reply.php?message={$vars['entity']->getGUID()}\">reply</a></div> - "; ?> <?php echo elgg_view("output/confirmlink", array(
+		
+		<script type="text/javascript">	
+		$(document).ready(function () {
+			// click function to toggle reply panel
+			$('a.message_reply').click(function () {
+				$('div#message_reply_form').slideToggle("medium");
+				return false;
+			}); 
+		});
+		</script>	
+		
+		
+		    <p><?php if($type != "sent")echo "<a href=\"javascript:void(0);\" class='message_reply'>Reply</a> "; ?> <?php echo elgg_view("output/confirmlink", array(
 																'href' => $vars['url'] . "action_handler.php?action=messages/delete&message_id=" . $vars['entity']->getGUID() . "&type={$type}",
 																'text' => elgg_echo('delete'),
 																'confirm' => elgg_echo('deleteconfirm'),
@@ -109,7 +121,29 @@
 		</div><!-- end of the message_options div -->
 		
 		</div><!-- end of div message_body -->
+              
+		<!-- display the reply form -->
+		<div id="message_reply_form">
+			<form action="<?php echo $vars['url']; ?>action/messages/send" method="post" name="messageForm">
+				<p><?php echo elgg_echo("messages:text"); ?></p>	
+    				<!-- populate the title space with the orginal message title, inserting re: before it -->						        
+				<p><label><?php echo elgg_echo("messages:title"); ?>: <br /><input type='text' name='title' class="input-text" value='RE: <?php echo $vars['entity']->title; ?>' /></label></p>
+				<p><label><?php echo elgg_echo("messages:message"); ?>: <br /><textarea name='message' value='' class="input-textarea" /></textarea></label></p>
 		
+				<p>
+	        			<?php
+                
+	            				//pass across the guid of the message being replied to
+    	        				echo "<input type='hidden' name='reply' value='" . $vars['entity']->getGUID() . "' />";
+    	        				//pass along the owner of the message being replied to
+    	        				echo "<input type='hidden' name='send_to' value='" . $vars['entity']->owner_guid . "' />";
+	
+	        			?>
+	        			<input type="submit" class="submit_button" value="<?php echo elgg_echo("messages:fly"); ?>!" />
+				</p>
+			</form>
+		</div><!-- end of div reply_form -->
+
     </div><!-- end of the message div -->
 	
 <?php

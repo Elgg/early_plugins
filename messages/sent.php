@@ -25,6 +25,8 @@
 		
 	// Display them
 		$area1 = elgg_view("messages/view",array('entity' => $messages, 'page_view' => "sent"));
+
+	// Choose a layout
 		$body = elgg_view_layout("one_column", $area1);
 		
 	// Display page

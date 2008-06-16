@@ -40,10 +40,8 @@
 											'entity_owner' => $page_owner,
 											'full' => true
 											));
-											
-    // select the canvas area
-        $body = elgg_view_layout("one_column", $area1);
-		
+	    $body = elgg_view_layout("one_column", $area1);
+
 	// Display page
 		page_draw(sprintf(elgg_echo('messages:message')),$body);
 		

@@ -38,13 +38,13 @@
                         }
                         
                         //set the table
-        				echo "<table width=\"95%\"><tr>";       
+        				echo "<table width=\"100%\" cellspacing='0'><tr>";       
                         //get the icon of the user who owns the message
-        				echo "<td valign='top'>" . elgg_view("profile/icon",array('entity' => $message->getOwnerEntity(), 'size' => 'tiny')) . "<div class='msgsender'><b>" . $message->getOwnerEntity()->name . "</b><br /><i>" . date("F j, g:i a",$message->time_created) . "</i></div></td>";
+        				echo "<td width='250px'>" . elgg_view("profile/icon",array('entity' => $message->getOwnerEntity(), 'size' => 'tiny')) . "<div class='msgsender'><b>" . $message->getOwnerEntity()->name . "</b><br /><small>" . date("F j, g:i a",$message->time_created) . "</small></div></td>";
         				//display the message title
-    				    echo "<td valign='top'><div class='msgsubject'><a href=\"{$message->getURL()}\">" . $message->title . "</a></div></td>";
+    				    echo "<td><div class='msgsubject'><a href=\"{$message->getURL()}\">" . $message->title . "</a></div></td>";
     				    //display the link to 'delete'
-    				    echo "<td valign='top'>" . elgg_view("output/confirmlink", array(
+    				    echo "<td width='70px' class='delete_msg'>" . elgg_view("output/confirmlink", array(
 																'href' => $vars['url'] . "action_handler.php?action=messages/delete&message_id=" . $message->getGUID() . "&type=inbox",
 																'text' => elgg_echo('delete'),
 																'confirm' => elgg_echo('deleteconfirm'),
@@ -70,14 +70,14 @@
         				//get the correct user entity
         				$user = get_entity($message->toID);
         				
-        				echo "<table width=\"95%\"><tr>";
+        				echo "<table width=\"100%\" cellspacing='0'><tr>";
         				
         				//get the icon for the user the message was sent to
-        				echo "<tr><td valign=\"top\">" . elgg_view("profile/icon",array('entity' => $user, 'size' => 'tiny')) . "<div class='msgsender'><b>" . $user->name . "</b><br /><i>" . date("F j, g:i a",$message->time_created) . "</i></div></td>";
+        				echo "<tr><td width='250px'>" . elgg_view("profile/icon",array('entity' => $user, 'size' => 'tiny')) . "<div class='msgsender'><b>" . $user->name . "</b><br /><small>" . date("F j, g:i a",$message->time_created) . "</small></div></td>";
         				//display the message title
-    				    echo "<td valign='top'><div class='msgsubject'><a href=\"{$message->getURL()}?type=sent\">" . $message->title . "</a></div></td>";
+    				    echo "<td><div class='msgsubject'><a href=\"{$message->getURL()}?type=sent\">" . $message->title . "</a></div></td>";
         				//display the link to 'delete'
-        				echo "<td valign=\"top\">" . elgg_view("output/confirmlink", array(
+        				echo "<td width='70px' class='delete_msg'>" . elgg_view("output/confirmlink", array(
 																'href' => $vars['url'] . "action_handler.php?action=messages/delete&message_id=" . $message->getGUID() . "&type=sent",
 																'text' => elgg_echo('delete'),
 																'confirm' => elgg_echo('deleteconfirm'),

@@ -19,11 +19,17 @@
 		
     // Display the user's inbox, this will be all messages where the 'toId' field matches their guid 
 		$messages = get_entities_from_metadata("toId", $page_owner->getGUID(), "object", "messages", 0, 20, 0);
+
+	// 
+
+	$area1 = elgg_view("messages/view",array('entity' => $messages, 'page_view' => "inbox"));
+		
+	$body = elgg_view_layout("one_column", $area1);
+
 		
 	// Display them. The last variable 'page_view' is to allow the view page to know where this data is coming from,
 	// in this case it is the inbox, this is necessary to ensure the correct display
-		$area1 = elgg_view("messages/view",array('entity' => $messages, 'page_view' => "inbox"));
-		$body = elgg_view_layout("one_column", $area1);
+		//$body = elgg_view("messages/view",array('entity' => $messages, 'page_view' => "inbox"));
 		
 	// Display page
 		page_draw(sprintf(elgg_echo('messages:user'),$page_owner->name),$body);

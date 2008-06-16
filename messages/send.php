@@ -21,6 +21,8 @@
         
     // Display the send form
 		$area1 = elgg_view("messages/forms/message",array('friends' => $friends));
+
+	// select the correct layout
 		$body = elgg_view_layout("one_column", $area1);
 		
 	// Display page
