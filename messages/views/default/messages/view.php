@@ -91,11 +91,11 @@
     			
 			}
 			
+			echo "</div>"; // close the main messages wrapper div
+			
 		} else {
     		
     		echo "<p>There are no messages to display.</p>";
     		
 		}
 ?>
-
-        </div><!-- close the main messages wrapper div -->
