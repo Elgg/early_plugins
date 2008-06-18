@@ -1,7 +1,7 @@
 <?php
 
 	/**
-	 * Elgg blog index page
+	 * Elgg blog friends page
 	 * 
 	 * @package ElggBlog
 	 * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License version 2
@@ -21,12 +21,12 @@
 		}
 		
 	// Get a list of blog posts
-		$area1 = list_user_objects($page_owner->getGUID(),'blog');
+		$area1 = list_user_friends_objects($page_owner->getGUID(),'blog');
 		
 	// Display them in the page
         $body = elgg_view_layout("one_column", $area1);
 		
 	// Display page
-		page_draw(sprintf(elgg_echo('blog:user'),$page_owner->name),$body);
+		page_draw(elgg_echo('blog:friends'),$body);
 		
 ?>

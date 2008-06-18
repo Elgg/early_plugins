@@ -33,6 +33,7 @@
 					add_menu(elgg_echo('blog'), $CONFIG->wwwroot . "pg/blog/",array(
 						menu_item(elgg_echo('blog:read'),$CONFIG->wwwroot."pg/blog/" . $_SESSION['user']->username),
 						menu_item(elgg_echo('blog:addpost'),$CONFIG->wwwroot."mod/blog/add.php"),
+						menu_item(elgg_echo('blog:friends'),$CONFIG->wwwroot."pg/blog/" . $_SESSION['user']->username . "/friends/"),
 						menu_item(elgg_echo('blog:everyone'),$CONFIG->wwwroot."mod/blog/everyone.php"),
 					));
 			// And for logged out users
@@ -71,7 +72,7 @@
 					case "read":		set_input('blogpost',$page[2]);
 										@include(dirname(__FILE__) . "/read.php");
 										break;
-					case "friends":		// TODO: add friends blog page here
+					case "friends":		@include(dirname(__FILE__) . "/friends.php");
 										break;
 				}
 			// If the URL is just 'blog/username', or just 'blog/', load the standard blog index
