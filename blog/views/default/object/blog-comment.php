@@ -24,7 +24,7 @@
 		    //display the small user icon
 		    echo elgg_view("profile/icon",array('entity' => $owner, 'size' => 'tiny')); 
 		?>
-		<p class="blog-comment-text"><?php echo elgg_view("output/longtext",array("value" => $vars['entity']->value)); ?></p>
+		
 		<p class="blog-comment-byline">
 			<?php
 			
@@ -34,6 +34,10 @@
 			
 			?>, <?php echo date("F j, g:i a",$vars['entity']->time_created); ?>
 		</p>
+		
+		
+		<p class="blog-comment-text"><?php echo elgg_view("output/longtext",array("value" => $vars['entity']->value)); ?></p>
+
 		<?php
 
 			if ($vars['entity']->canEdit()) {

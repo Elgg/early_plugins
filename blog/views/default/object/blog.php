@@ -18,7 +18,8 @@
 
 	<div class="blog-post">
 		<h3><a href="<?php echo $vars['entity']->getURL(); ?>"><?php echo $vars['entity']->title; ?></a></h3>
-		<div style="float:left;width:60px;">
+		<!-- display the user icon -->
+		<div style="float:left;width:35px;">
 		    <?php
 		        echo elgg_view("profile/icon",array('entity' => $vars['entity']->getOwnerEntity(), 'size' => 'tiny'));
 			?>
@@ -31,15 +32,15 @@
 				);
 			
 			?>
-			by <a href="<?php echo $vars['url']; ?>pg/blog/<?php echo $vars['entity']->getOwnerEntity()->username; ?>"><?php echo $vars['entity']->getOwnerEntity()->name; ?></a><br />
-			<a href="">Add to friends</a> - <a href="">report post</a>
-		</p>
-		
-		<!-- display the user icon -->
-		<p style="float: left">
+			by <a href="<?php echo $vars['url']; ?>pg/blog/<?php echo $vars['entity']->getOwnerEntity()->username; ?>"><?php echo $vars['entity']->getOwnerEntity()->name; ?></a> &nbsp; 
+			<!-- display the comments link -->
 			<?php
-				//echo elgg_view("profile/icon",array('entity' => $vars['entity']->getOwnerEntity(), 'size' => 'medium'));
-			?><br />
+		        //get the number of comments
+		        $num_comments = $vars['entity']->countAnnotations('comment');
+		    ?>
+		    <a href="<?php echo $vars['entity']->getURL(); ?>">Comments (<?php echo $num_comments; ?>)</a>
+			<br />
+			<a href="">Add to friends</a> - <a href="">report post</a>
 		</p>
 		
 		<!-- display the actual blog post -->
@@ -52,7 +53,7 @@
 		</p>
 		
 		<!-- display tags -->
-		<p>
+		<p class="tags">
 			<?php
 
 				echo elgg_view('output/tags', array('tags' => $vars['entity']->tags));
@@ -60,23 +61,14 @@
 			?>
 		</p>
 		
-		<!-- display the comments link -->
-		<p>
-		    <?php
-		        //get the number of comments
-		        $num_comments = $vars['entity']->countAnnotations('comment');
-		    ?>
-		    <a href="<?php echo $vars['entity']->getURL(); ?>">Comments (<?php echo $num_comments; ?>)</a>
-		</p>
-		
 		<!-- display edit options if it is the blog post owner -->
-		<p>
+		<p class="options">
 		<?php
 
 			if ($vars['entity']->canEdit()) {
 				
 			?>
-				<a href="<?php echo $vars['url']; ?>mod/blog/edit.php?blogpost=<?php echo $vars['entity']->getGUID(); ?>"><?php echo elgg_echo("edit"); ?></a>
+				<a href="<?php echo $vars['url']; ?>mod/blog/edit.php?blogpost=<?php echo $vars['entity']->getGUID(); ?>"><?php echo elgg_echo("edit"); ?></a>  &nbsp; 
 				<?php
 				
 					echo elgg_view("output/confirmlink", array(

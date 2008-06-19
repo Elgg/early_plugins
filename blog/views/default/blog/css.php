@@ -13,15 +13,12 @@
 ?>
 
 .blog-post {
-	margin-bottom: 30px;
-	border: 0px;
-	border-bottom: 1px;
-	border-style: solid;
-	border-color: #aaa;
+	margin-bottom: 15px;
+	border-bottom: 1px solid #aaaaaa;
 }
 
 .blog-post img {
-    margin:5px;
+    margin-top:5px;
 }
 
 .blog-post h3 {
@@ -30,14 +27,50 @@
 }
 
 .blog-post h3 a {
-
 	text-decoration: none;
+}
 
+.blog-post p {
+	margin: 0 0 5px 0;
 }
 
 .blog-post .strapline {
-
-	margin: 0 0 30px 0;
+	margin: 0 0 10px 0;
 	color: #aaa;
-
 }
+.blog-post .tags {
+	margin:0 0 5px 0;
+}
+.blog-post .options {
+	margin:0;
+}
+
+.blog-comments h3 {
+	font-size: 150%;
+	margin-bottom: 10px;
+}
+.blog-comment {
+	margin-top: 10px;
+	margin-bottom:20px;
+	border-bottom: 1px solid #aaaaaa;
+}
+.blog-comment img {
+	float:left;
+	margin: 0 10px 0 0;
+}
+.blog-comment-menu {
+	margin:0;
+}
+.blog-comment-byline {
+	background: #dddddd;
+	height:22px;
+	padding-top:3px;
+	margin:0;
+}
+.blog-comment-text {
+	margin:5px 0 5px 0;
+}
+
+
+
+
