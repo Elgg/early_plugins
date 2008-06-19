@@ -46,7 +46,7 @@
 		<?php
 
 			echo elgg_view("output/confirmlink",array(
-														'href' => $vars['url'] . "action_handler.php?action=blog/comments/delete&comment_id=" . $vars['entity']->id,
+														'href' => $vars['url'] . "action/blog/comments/delete?comment_id=" . $vars['entity']->id,
 														'text' => elgg_echo('delete'),
 														'confirm' => elgg_echo('deleteconfirm'),
 													));
