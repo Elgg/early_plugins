@@ -49,7 +49,8 @@
 		// Before we can set metadata, we need to save the blog post
 				if (!$blog->save()) {
 					register_error(elgg_echo("blog:error"));
-					forward("mod/blog/add.php");
+					system_message(var_export($blog,true));
+					forward("mod/blog/edit.php?blogpost=" . $guid);
 				}
 		// Now let's add tags. We can pass an array directly to the object property! Easy.
 				$blog->clearMetadata('tags');
@@ -61,7 +62,7 @@
 		// Remove the blog post cache
 				unset($_SESSION['blogtitle']); unset($_SESSION['blogbody']); unset($_SESSION['blogtags']);
 		// Forward to the main blog page
-				forward("mod/blog/?username=" . $owner->username);
+				forward("pg/blog/" . $owner->username);
 					
 			}
 		
