@@ -32,7 +32,7 @@
 					echo $owner->name;
 				}
 			
-			?>, <?php echo date("F j, g:i a",$vars['entity']->time_created); ?>
+			?>, <?php echo friendly_time($vars['entity']->time_created); ?>
 		</p>
 		
 		
