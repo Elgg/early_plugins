@@ -17,7 +17,8 @@
 
 		$status = $vars['entity']->status;
 		if (!empty($status)) { 
-			echo $vars['entity']->status;
+			echo $vars['entity']->status . "<br /><br />";
+			echo "Updated " . friendly_time($vars['entity']->time_updated);
 		} else {
 			echo elgg_echo("status:firstmessage");
 		}
