@@ -26,7 +26,7 @@
     if($message){
         
        //attach the annotation to the user object
-       $user->annotate('messageboard',$message,$user->access_id, $_SESSION['guid']); 
+       $user->annotate('messageboard',$message,$user->access_id, $_SESSION['user']->getGUID()); 
         
     } else {
         

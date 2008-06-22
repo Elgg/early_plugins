@@ -23,7 +23,7 @@
 		if ($user && !empty($message_content)) {
     		
 	        // If posting the comment was successful, say so
-				if ($user->annotate('messageboard',$message_content,$user->access_id, $_SESSION['guid'])) {
+				if ($user->annotate('messageboard',$message_content,$user->access_id, $_SESSION['user']->getGUID())) {
 					
     				system_message(elgg_echo("messageboard:posted"));
 					
