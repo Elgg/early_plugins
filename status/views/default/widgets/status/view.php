@@ -10,18 +10,13 @@
 	 * @link http://elgg.com/
 	 */
 	 
-?>
-
-<p>
-	<?php
 
 		$status = $vars['entity']->status;
 		if (!empty($status)) { 
-			echo $vars['entity']->status . " ";
-			echo "Updated " . friendly_time($vars['entity']->time_updated);
+			echo "<p>" . $vars['entity']->status . "</p>";
+			echo "<p>" . friendly_time($vars['entity']->time_updated) . "</p>";
 		} else {
-			echo elgg_echo("status:firstmessage");
+			echo "<p>" . elgg_echo("status:firstmessage") . "</p>";
 		}
 	
 	?>
-</p>
