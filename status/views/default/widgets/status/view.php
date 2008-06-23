@@ -13,10 +13,10 @@
 
 		$status = $vars['entity']->status;
 		if (!empty($status)) { 
-			echo "<p>" . $vars['entity']->status . "</p>";
-			echo "<p>" . friendly_time($vars['entity']->time_updated) . "</p>";
+			echo "<p class='widget_status_statusmessage'>" . $vars['entity']->status . "</p>";
+			echo "<p class='widget_status_messagetimestamp'>" . friendly_time($vars['entity']->time_updated) . "</p>";
 		} else {
-			echo "<p>" . elgg_echo("status:firstmessage") . "</p>";
+			echo "<p class='widget_status_statusmessage'>" . elgg_echo("status:firstmessage") . "</p>";
 		}
 	
 	?>
