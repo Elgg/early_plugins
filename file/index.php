@@ -12,20 +12,21 @@
 	 */
 
 	//require_once(dirname(dirname(dirname(__FILE__))) . "/engine/start.php");
-	require_once(dirname(dirname(dirname(__FILE__))) . "/elggnew/engine/start.php");
+	require_once(dirname(dirname(dirname(__FILE__))) . "/engine/start.php");
 	
-	$limit = get_input("limit", 10);
-	$offset = get_input("offset", 0);
+	//$limit = get_input("limit", 10);
+	//$offset = get_input("offset", 0);
 
 	// Get objects
-	$objects = get_entities("object","file:file", page_owner(), "time_created desc", $limit, $offset);
+		$objects = list_entities("object","file",page_owner());
+		$body = elgg_view_layout('one_column',$objects);
 
 	// Draw page
-	$body .= file_draw($objects);
+	// $body .= file_draw($objects);
 
 	// Draw footer
-	$body .= file_draw_footer($limit, $offset);
+	// $body .= file_draw_footer($limit, $offset);
 	
 	// Finally draw the page
-	page_draw(sprintf(elgg_echo("file:yours"),$_SESSION['user']->name), $body, elgg_view("file/tag_cloud", array()));
+	page_draw(sprintf(elgg_echo("file:yours"),page_owner_entity()->name), $body, elgg_view("file/tag_cloud", array()));
 ?>

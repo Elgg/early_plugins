@@ -11,5 +11,9 @@
 	gatekeeper();
 
 	// Render the file upload page
-	page_draw(elgg_echo("file:upload"), elgg_view("file/upload", NULL));
+	
+	$body = elgg_view_layout('one_column', elgg_view("file/upload"));
+	
+	page_draw(elgg_echo("file:upload"), $body);
+	
 ?>

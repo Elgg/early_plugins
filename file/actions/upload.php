@@ -18,8 +18,13 @@
 	// Extract file from, save to default filestore (for now)
 	$prefix = "file/";
 	$file = new FilePluginFile();
-	$file->setFilename($prefix.$_FILES['upload']['name']);
+	$filestorename = strtolower(time().$_FILES['upload']['name']);
+	$file->setFilename($prefix.$filestorename);
 	$file->setMimeType($_FILES['upload']['type']);
+	
+	$file->originalfilename = $_FILES['upload']['name'];
+	
+	$file->subtype="file";
 	
 	$file->open("write");
 	$file->write(get_uploaded_file('upload'));
@@ -30,28 +35,33 @@
 	
 	// Save tags
 	$tags = explode(",", $tags);
-	$file->tag = $tags;
+	$file->tags = $tags;
 
 	$result = $file->save();
 
 	
 	if ($result)
 	{	
+		
 		// Generate thumbnail (if image)
-		if (strpos($file->getMimeType(), "image/")!==false)
+		if (substr_count($file->getMimeType(),'image/'))
 		{
-			$thumb = new ElggFile();
-			$thumb->setFilename($prefix."thumb".$_FILES['upload']['name']);
-			$thumb->setMimeType($_FILES['upload']['type']);
-			$thumb->open("write");
-			
-			$thumb->write(get_resized_image_from_existing_file($file->getFilenameOnFilestore(), 100, 100));
-			$thumb->close();
-			
-			$tnail = $thumb->save();
-			
-			if ($tnail)
-				$file->thumbnail = $thumb->getGUID();
+			$thumbnail = get_resized_image_from_existing_file($file->getFilenameOnFilestore(),60,60, true);
+			if ($thumbnail) {
+				$thumb = new ElggFile();
+				$thumb->setFilename($prefix."thumb".$filestorename);
+				$thumb->setMimeType($_FILES['upload']['type']);
+				$thumb->open("write");
+				
+				$thumb->write($thumbnail);
+				$thumb->close();
+				
+				$file->thumbnail = $prefix."thumb".$filestorename;
+				
+				//if ($thumb->save())
+				//	$file->thumbnail = $thumb->getGUID();
+					
+			}
 		}
 	}
 		

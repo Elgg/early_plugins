@@ -17,7 +17,7 @@
 		{
 			parent::initialise_attributes();
 			
-			$this->attributes['subtype'] = "file:file";
+			$this->attributes['subtype'] = "file";
 		}
 		
 		public function __construct($guid = null) 
@@ -160,6 +160,8 @@
 	
 	// Register actions
 	register_action("file/upload", false, $CONFIG->pluginspath . "file/actions/upload.php");
-	register_action("file/download", false, $CONFIG->pluginspath. "file/actions/download.php");
+	register_action("file/download", true, $CONFIG->pluginspath. "file/actions/download.php");
+	register_action("file/icon", true, $CONFIG->pluginspath. "file/actions/icon.php");
+	register_action("file/delete", false, $CONFIG->pluginspath. "file/actions/delete.php");
 	
 ?>

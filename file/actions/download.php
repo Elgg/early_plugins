@@ -19,22 +19,16 @@
 		$mime = $file->getMimeType();
 		if (!$mime) $mime = "application/octet-stream";
 		
-		$filename = $file->getFilename();
+		$filename = $file->originalfilename;
 		
 		header("Content-type: $mime");
 		if (strpos($mime, "image/")!==false)
 			header("Content-Disposition: inline; filename=\"$filename\"");
 		else
 			header("Content-Disposition: attachment; filename=\"$filename\"");
-		
-		if ($file->open("read"));
-		{
-			while (!$file->eof())
-			{
-				echo $file->read(10240, $file->tell());	
-			}
-		}
-		$file->close();
+
+		echo file_get_contents($file->getFilenameOnFilestore());
+		exit;
 	}
 	else
 		system_message(elgg_echo("file:downloadfailed"));

@@ -13,14 +13,11 @@
 	global $CONFIG;
 	
 	$mime = $vars['mimetype'];
-	$file_guid = $vars['file_guid'];
-	$url = $vars['url'];
-	
-	$width = $vars['width'];
-	$height = $vars['height'];
-	
-	if (!$width) $width = 100;
-	if (!$height) $height = 100;
+	if (isset($vars['thumbnail'])) {
+		$thumbnail = $vars['thumbnail'];
+	} else {
+		$thumbnail = false;
+	}
 	
 	// Handle 
 	switch ($mime)
@@ -31,19 +28,25 @@
 		case 'image/gif' 	:
 		case 'image/bmp' 	: 
 			//$file = get_entity($file_guid);
-			$file = new FilePluginFile($file_guid);
-			if ($file->thumbnail)
-				echo "<img src=\"{$vars['url']}action/file/download?file_guid={$file->thumbnail}\" border=\"0\" />";
+			if ($thumbnail)
+				echo "<img src=\"{$vars['url']}action/file/icon?file_guid={$vars['file_guid']}\" border=\"0\" />";
 			else
 				echo "<img src=\"{$CONFIG->wwwroot}mod/file/graphics/icons/default.png\" border=\"0\" />";
 			
 		break;
 		default :
-			$filename = str_replace("/","_",$mime) . ".png";
-			if (fopen("{$CONFIG->wwwroot}mod/file/graphics/icons/$filename","r"))
-				echo "<img src=\"{$CONFIG->wwwroot}mod/file/graphics/icons/$filename\" border=\"0\" />";
-			else
+			//$filename = str_replace("/","_",$mime) . ".png";
+			if (!empty($mime) && elgg_view_exists("file/icon/{$mime}")) {
+				echo elgg_view("file/icon/{$mime}");
+			} else {
 				echo "<img src=\"{$CONFIG->wwwroot}mod/file/graphics/icons/default.png\" border=\"0\" />";
+			}
+			/*
+			if (file_exists("{$CONFIG->path}mod/file/graphics/icons/$filename")) {
+				echo "<img src=\"{$CONFIG->wwwroot}mod/file/graphics/icons/$filename\" border=\"0\" />";
+			} else {
+				echo "<img src=\"{$CONFIG->wwwroot}mod/file/graphics/icons/default.png\" border=\"0\" />";
+			}*/
 				 
 		break;
 	}
