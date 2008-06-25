@@ -15,19 +15,19 @@
 <div class="messageboard"><!-- start of messageboard div -->
 	
     <!-- display the user icon of the user that posted the message -->
-    <div style="float:left;width:60px;">	        
+    <div class="message_sender">	        
         <?php
-            echo elgg_view("profile/icon",array('entity' => get_entity($vars['annotation']->owner_guid), 'size' => 'small'));
+            echo elgg_view("profile/icon",array('entity' => get_entity($vars['annotation']->owner_guid), 'size' => 'tiny'));
         ?>
     </div>
     
     <!-- display the user's name who posted and the date/time -->
-    <p>
+    <p class="message_item_timestamp">
         <?php echo get_user($vars['annotation']->owner_guid)->username . " " . friendly_time($vars['annotation']->time_created); ?>
     </p>
     		
 	<!-- output the actual comment -->
-	<p><?php echo elgg_view("output/longtext",array("value" => $vars['annotation']->value)); ?></p>
+	<p class="message"><?php echo elgg_view("output/longtext",array("value" => $vars['annotation']->value)); ?></p>
 		    
 	<?php
                
@@ -35,7 +35,10 @@
 	    if ($vars['annotation']->canEdit()) {
     			    
     ?>
-		    <p>
+		    <p class="message_buttons">
+		    
+		    <a href=""><img src="<?php echo $vars['url']; ?>_graphics/icon_customise_remove.gif" title="delete" /></a>
+		    
 		        <?php
 
 			        echo elgg_view("output/confirmlink",array(
@@ -45,7 +48,7 @@
 													));
 		
 		        ?>
-		        <a href="">history</a>
+		        | <a href="">history</a> | 
 		        
 		        <?php
 		            //if the message being looked at is owned by the current user, don't show the reply

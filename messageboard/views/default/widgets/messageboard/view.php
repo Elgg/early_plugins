@@ -43,7 +43,7 @@ $(document).ready(function(){
 <div id="mb_input_wrapper"><!-- start of mb_input_wrapper div -->
 
     <!-- message textarea -->
-    <textarea name="message_content" id="testing" value="" class="input_textarea" /></textarea><br />
+    <textarea name="message_content" id="testing" value="" class="input_textarea" /></textarea>
    
     <!-- the person posting an item on the message board -->
     <input type="hidden" name="guid" value="<?php echo $_SESSION['guid']; ?>" class="guid"  />
@@ -56,7 +56,7 @@ $(document).ready(function(){
     
     <!-- menu options -->
     <div id="messageboard_widget_menu">
-        <a href="<?php echo $vars['url']; ?>pg/messageboard/<?php echo get_user(page_owner())->username; ?>">view all</a> <a href="">share a link</a> <a href="">attach media</a>
+        <a href="<?php echo $vars['url']; ?>pg/messageboard/<?php echo get_user(page_owner())->username; ?>">view all</a> | <a href="">share a link</a> | <a href="">attach media</a>
     </div>
     
     <!-- loading graphic -->
