@@ -22,7 +22,7 @@
 	width:94%;
 }
 .message_item_timestamp {
-	font-size:smaller;
+	font-size:90%;
 	color:#666666;
 	padding:10px 0 0 0;
 }
@@ -50,11 +50,10 @@
 	border-bottom:1px dotted #cccccc;
 }
 .message_buttons {
-	font-size: smaller;
+	font-size: 90%;
 	padding:0 0 3px 4px;
 	line-height: 1.1em;
 }
-/* temporarily constrain delete button */
 .message_buttons img {
 	width:10px;height:10px;
 	padding:0 0 0 0;
