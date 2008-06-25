@@ -35,19 +35,13 @@
 			
 		break;
 		default :
-			//$filename = str_replace("/","_",$mime) . ".png";
 			if (!empty($mime) && elgg_view_exists("file/icon/{$mime}")) {
 				echo elgg_view("file/icon/{$mime}");
+			} else if (!empty($mime) && elgg_view_exists("file/icon/" . substr($mime,0,strpos($mime,'/')) . "/default")) {
+				echo elgg_view("file/icon/" . substr($mime,0,strpos($mime,'/')) . "/default");
 			} else {
-				echo "<img src=\"{$CONFIG->wwwroot}mod/file/graphics/icons/default.png\" border=\"0\" />";
-			}
-			/*
-			if (file_exists("{$CONFIG->path}mod/file/graphics/icons/$filename")) {
-				echo "<img src=\"{$CONFIG->wwwroot}mod/file/graphics/icons/$filename\" border=\"0\" />";
-			} else {
-				echo "<img src=\"{$CONFIG->wwwroot}mod/file/graphics/icons/default.png\" border=\"0\" />";
-			}*/
-				 
+				echo "<img src=\"{$CONFIG->wwwroot}mod/file/graphics/icons/general.jpg\" border=\"0\" />";
+			}	 
 		break;
 	}
 

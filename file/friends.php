@@ -10,25 +10,18 @@
 
 	require_once(dirname(dirname(dirname(__FILE__))) . "/engine/start.php");
 	
-	$limit = get_input("limit", 10);
-	$offset = get_input("offset", 0);
-
-	// Get objects of friends
-	$owners = array();
-	$users = get_entities_from_relationship("friend", page_owner(), false, "", "", 0, "time_created desc", $limit, $offset);
-	if ($users)
-	{
-		foreach ($users as $user)
-			$owners[] = $user->getOwner();
-		$objects = get_entities("object","file:file", $owners, "time_created desc", $limit, $offset);
+	$body = list_user_friends_objects(page_owner(),'file');
+	if ($friends = get_user_friends($user_guid, $subtype, 999999, 0)) {
+		$friendguids = array();
+		foreach($friends as $friend) {
+			$friendguids[] = $friend->getGUID();
+		}
+		$filelist = get_filetype_cloud($friendguids);
+	} else {
+		$filelist = "";
 	}
-
-	// Draw page
-	$body .= file_draw($objects);
-
-	// Draw footer
-	$body .= file_draw_footer($limit, $offset);
+	$body = elgg_view_layout('two_column',$body,$filelist);
 	
 	// Finally draw the page
-	page_draw(sprintf(elgg_echo("file:friends"),$_SESSION['user']->name), $body, elgg_view("file/tag_cloud", array()));
+	page_draw(sprintf(elgg_echo("file:friends"),$_SESSION['user']->name), $body);
 ?>

@@ -14,6 +14,7 @@
 	$title = get_input("title");
 	$desc = get_input("description");
 	$tags = get_input("tags");
+	$access_id = (int) get_input("access_id");
 	
 	// Extract file from, save to default filestore (for now)
 	$prefix = "file/";
@@ -26,6 +27,8 @@
 	
 	$file->subtype="file";
 	
+	$file->access_id = $access_id;
+	
 	$file->open("write");
 	$file->write(get_uploaded_file('upload'));
 	$file->close();
@@ -36,6 +39,8 @@
 	// Save tags
 	$tags = explode(",", $tags);
 	$file->tags = $tags;
+	
+	$file->simpletype = get_general_file_type($_FILES['upload']['type']);
 
 	$result = $file->save();
 
@@ -57,9 +62,6 @@
 				$thumb->close();
 				
 				$file->thumbnail = $prefix."thumb".$filestorename;
-				
-				//if ($thumb->save())
-				//	$file->thumbnail = $thumb->getGUID();
 					
 			}
 		}

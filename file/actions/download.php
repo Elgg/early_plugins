@@ -27,7 +27,7 @@
 		else
 			header("Content-Disposition: attachment; filename=\"$filename\"");
 
-		echo file_get_contents($file->getFilenameOnFilestore());
+		echo $file->grabFile();
 		exit;
 	}
 	else

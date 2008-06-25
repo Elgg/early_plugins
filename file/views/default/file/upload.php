@@ -10,16 +10,92 @@
 
 	global $CONFIG;
 	
-?>
-<form action="<?php echo $vars['url']; ?>action/file/upload" enctype="multipart/form-data" method="post">
-
-	<table>
-	<tr><td><?php echo elgg_echo("file:file");?>:</td><td><div id="file"><input type="file" name="upload" /></div></td></tr>
-	<tr><td><?php echo elgg_echo("file:title");?>:</td><td><div id="title"><input type="text" name="title" size="49" /></div></td></tr>
-	<tr><td valign="top"><?php echo elgg_echo("file:desc");?>:</td><td><div id="description"><textarea name="description" cols="50" rows="10"></textarea></div></td></tr>
-	<tr><td valign="top"><?php echo elgg_echo("file:tags");?>:</td><td><div id="tags"><textarea name="tags" cols="50"></textarea></div></td></tr>
-	</table>
+		if (isset($vars['entity'])) {
+			$title = sprintf(elgg_echo("blog:editpost"),$object->title);
+			$action = "file/save";
+			$title = $vars['entity']->title;
+			$description = $vars['entity']->description;
+			$tags = $vars['entity']->tags;
+			$access_id = $vars['entity']->access_id;
+		} else  {
+			$title = elgg_echo("blog:addpost");
+			$action = "file/upload";
+			$tags = "";
+			$title = "";
+			$description = "";
+			$access_id = 0;
+		}
 	
-	<input type="submit" name="Upload" value="Upload" />
+?>
+<form action="<?php echo $vars['url']; ?>action/<?php echo $action; ?>" enctype="multipart/form-data" method="post">
+<?php
+
+	if ($action == "file/upload") {
+
+?>
+		<p>
+			<label><?php echo elgg_echo("file:file"); ?><br />
+			<?php
+
+				echo elgg_view("input/file",array('internalname' => 'upload'));
+			
+			?>
+			</label>
+		</p>
+<?php
+
+	}
+
+?>
+		<p>
+			<label><?php echo elgg_echo("title"); ?><br />
+			<?php
+
+				echo elgg_view("input/text", array(
+									"internalname" => "title",
+									"value" => $title,
+													));
+			
+			?>
+			</label>
+		</p>
+		<p>
+			<label><?php echo elgg_echo("description"); ?><br />
+			<?php
+
+				echo elgg_view("input/longtext",array(
+									"internalname" => "description",
+									"value" => $description,
+													));
+			?>
+			</label>
+		</p>
+		<p>
+			<label><?php echo elgg_echo("tags"); ?><br />
+			<?php
+
+				echo elgg_view("input/tags", array(
+									"internalname" => "tags",
+									"value" => $tags,
+													));
+			
+			?>
+		</p>
+		<p>
+			<label>
+				<?php echo elgg_echo('access'); ?><br />
+				<?php echo elgg_view('input/access', array('internalname' => 'access_id','value' => $access_id)); ?>
+			</label>
+		</p>
+	
+		<p>
+			<?php
+
+				if (isset($vars['entity']))
+					echo "<input type=\"hidden\" name=\"file_guid\" value=\"{$vars['entity']->getGUID()}\" />";
+			
+			?>
+			<input type="submit" value="<?php echo elgg_echo("save"); ?>" />
+		</p>
 
 </form>

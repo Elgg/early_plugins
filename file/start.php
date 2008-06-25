@@ -100,50 +100,48 @@
 	}
 	
 	/**
-	 * Draw an individual file.
+	 * Returns an overall file type from the mimetype
 	 *
-	 * @param ElggFile $file
+	 * @param string $mimetype The MIME type
+	 * @return string The overall type
 	 */
-	function file_draw_file(ElggFile $file)
-	{
-		// Get tags
-		$tags = $file->getMetaData("tag");
-		if (!is_array($tags))
-			$tags = array($tags);
-	
-		// Draw file 
-		return elgg_view("file/file", array(
-			"file_guid" => $file->guid,
-			"tags" => $tags,
-			"title" => $file->title,
-			"description" => $file->description,
-			"mimetype" => $file->getMimeType()
-		));
-	}
-	
-	/**
-	 * Draw a given set of objects.
-	 *
-	 * @param array $objects
-	 */
-	function file_draw(array $objects)
-	{
-		$body = "";
+	function get_general_file_type($mimetype) {
 		
-		foreach ($objects as $object)
-			$body .= file_draw_file($object);
+		switch($mimetype) {
 			
-		return $body;
+			case "application/msword":
+										return "document";
+										break;
+			case "application/pdf":
+										return "document";
+										break;
+			
+		}
+		
+		if (substr_count($mimetype,'text/'))
+			return "document";
+			
+		if (substr_count($mimetype,'audio/'))
+			return "audio";
+			
+		if (substr_count($mimetype,'image/'))
+			return "image";
+			
+		if (substr_count($mimetype,'video/'))
+			return "video";
+
+		if (substr_count($mimetype,'opendocument'))
+			return "document";	
+			
+		return "general";
+		
 	}
 	
-	function file_draw_footer($limit, $offset)
-	{
-		return elgg_view("file/footer", array(
-			"limit" => $limit,
-			"offset" => $offset
-		));
+	function get_filetype_cloud($owner_guid = "") {
+		
+		return elgg_view('file/typecloud',array('owner_guid' => $owner_guid, 'types' => get_tags(0,10,'simpletype','object','file',$owner_guid)));
+
 	}
-	
 	
 	/**
 	 * Run once and only once.
@@ -160,6 +158,7 @@
 	
 	// Register actions
 	register_action("file/upload", false, $CONFIG->pluginspath . "file/actions/upload.php");
+	register_action("file/save", false, $CONFIG->pluginspath . "file/actions/save.php");
 	register_action("file/download", true, $CONFIG->pluginspath. "file/actions/download.php");
 	register_action("file/icon", true, $CONFIG->pluginspath. "file/actions/icon.php");
 	register_action("file/delete", false, $CONFIG->pluginspath. "file/actions/delete.php");

@@ -25,6 +25,18 @@
 			'file:title' => "Title",
 			'file:desc' => "Description",
 			'file:tags' => "Tags",
+	
+			'file:types' => "Uploaded file types",
+	
+			'file:type:video' => "Videos",
+			'file:type:document' => "Documents",
+			'file:type:audio' => "Audio",
+			'file:type:image' => "Pictures",
+			'file:type:general' => "General",
+	
+			'file:download' => "Download this",
+	
+			'file:delete:confirm' => "Are you sure you want to delete this file?",
 			
 			'file:tagcloud' => "Tag cloud",
 
@@ -38,6 +50,7 @@
 		 * Error messages
 		 */
 	
+			'file:none' => "We couldn't find any files at the moment.",
 			'file:uploadfailed' => "Sorry; we could not save your file.",
 			'file:downloadfailed' => "Sorry; this file is not available at this time.",
 	

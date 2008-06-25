@@ -15,17 +15,14 @@
 	$tag = get_input("tag");
 	
 	// Get objects
-	if ($tag!="")
-		$objects = get_entities_from_metadata("tag", $tag, "object", "file:file", $limit, $offset);
+	if ($tag != "")
+		$body = list_entities_from_metadata('tags',$tag,'object','file');
 	else
-		$objects = get_entities("object","file:file", "", "time_created desc", $limit, $offset);
+		$body = list_entities('object','file');
+		
+	$filelist = get_filetype_cloud();
+	$body = elgg_view_layout('two_column',$body,$filelist);
 
-	// Draw page
-	$body .= file_draw($objects);
-
-	// Draw footer
-	$body .= file_draw_footer($limit, $offset);
-	
 	// Finally draw the page
-	page_draw(sprintf(elgg_echo("file:yours"),$_SESSION['user']->name), $body, elgg_view("file/tag_cloud", array()));
+	page_draw(sprintf(elgg_echo("file:yours"),$_SESSION['user']->name), $body);
 ?>
