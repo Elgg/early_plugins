@@ -38,7 +38,7 @@
 	        
 	        //these get inserted into the river links to take the user to the entity
 	        'blog:river:create' => "a new blog post.",
-	        'blog:river:update' => "updated a blog post.",
+	        'blog:river:update' => "a blog post.",
 	        'blog:river:annotate:create' => "a comment on a blog post.",
 			
 	
