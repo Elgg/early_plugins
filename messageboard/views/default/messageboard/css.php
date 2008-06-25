@@ -54,6 +54,7 @@
 	padding:0 0 3px 4px;
 	line-height: 1.1em;
 }
+/* temporarily constrain delete button */
 .message_buttons img {
 	width:10px;height:10px;
 	padding:0 0 0 0;
