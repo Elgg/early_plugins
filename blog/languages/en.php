@@ -25,6 +25,22 @@
 			'blog:comment:text' => "Comment text",
 	
 			'comments' => "Comments",
+			
+			
+         /**
+	     * Blog river
+	     **/
+	        
+	        //generic terms to use
+	        'blog:river:created' => "%s wrote",
+	        'blog:river:updated' => "%s updated",
+	        'blog:river:posted' => "%s posted",
+	        
+	        //these get inserted into the river links to take the user to the entity
+	        'blog:river:create' => "a new blog post.",
+	        'blog:river:update' => "updated a blog post.",
+	        'blog:river:annotate:create' => "a comment on a blog post.",
+			
 	
 		/**
 		 * Status messages
