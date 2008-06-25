@@ -51,7 +51,8 @@
 }
 .message_buttons {
 	font-size: smaller;
-	padding:0 0 0 4px;
+	padding:0 0 3px 4px;
+	line-height: 1.1em;
 }
 .message_buttons img {
 	width:10px;height:10px;
