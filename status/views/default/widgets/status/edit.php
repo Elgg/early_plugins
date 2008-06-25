@@ -12,7 +12,7 @@
 
 ?>
 	<p>
-		<?php echo elgg_echo("status:set"); ?>
-		<input type="text" name="params[status]" value="<?php echo htmlentities($vars['entity']->status); ?>" />
+		<?php echo elgg_echo("status:set"); ?>:<br />
+		<textarea name="params[status]" class="textarea-status" value="<?php echo htmlentities($vars['entity']->status); ?>"></textarea>
 
 	</p>
