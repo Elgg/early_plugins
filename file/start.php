@@ -58,8 +58,9 @@
 		// Register a page handler, so we can have nice URLs
 		register_page_handler('file','file_page_handler');
 			
-		// Now run this stuff, but only once
-		run_function_once("file_run_once");
+		// Add a new file widget
+		add_widget_type('filerepo',elgg_echo("file:widget"),elgg_echo("file:widget:description"));
+
 	}
 
 	/**
@@ -143,14 +144,6 @@
 
 	}
 	
-	/**
-	 * Run once and only once.
-	 */
-	function file_run_once()
-	{
-		// Register a class
-		add_subtype("object", "file:file", "FilePluginFile");	
-	}
 	
 	
 	// Make sure test_init is called on initialisation

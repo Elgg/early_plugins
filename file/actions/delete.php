@@ -25,20 +25,20 @@
 				}
 				
 				if (!$file->delete()) {
-					system_message("Failure notice 1 ");
+					system_message(elgg_echo("file:deletefailed"));
 				} else {
-					system_message("Yay");
+					system_message(elgg_echo("file:deleted"));
 				}
 
 			} else {
 				
-				system_message("Permission notice");
+				system_message(elgg_echo("file:deletefailed"));
 				
 			}
 
 		} else {
 			
-			system_message("Failure notice 2 ");
+			system_message(elgg_echo("file:deletefailed"));
 			
 		}
 		
