@@ -1,7 +1,7 @@
 <?php
 
 	$owner = $vars['entity']->owner_guid;
-	$number = $vars['entity']->numdisplay;
+	$number = (int) $vars['entity']->numdisplay;
 	if (!$number) {
 		$number = 1;
 	}

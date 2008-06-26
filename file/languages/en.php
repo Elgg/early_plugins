@@ -42,6 +42,8 @@
 			'file:delete:confirm' => "Are you sure you want to delete this file?",
 			
 			'file:tagcloud' => "Tag cloud",
+	
+			'file:display:number' => "Number of files to display",
 
 		/**
 		 * Status messages
