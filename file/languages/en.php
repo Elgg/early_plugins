@@ -16,7 +16,7 @@
 	
 			'file' => "Files",
 			'file:yours' => "%s's files",
-			'file:friends' => "%s's friend's files",
+			'file:friends' => "%s's friends' files",
 			'file:all' => "All files",
 	
 			'file:upload' => "Upload a file",
