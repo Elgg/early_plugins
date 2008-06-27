@@ -27,7 +27,7 @@
 		$info .= "<p><a href=\"{$vars['url']}pg/file/{$owner->username}\">{$owner->name}</a> {$friendlytime}";
 		$numcomments = elgg_count_comments($file);
 		if ($numcomments)
-			$info .= ", ".sprintf(elgg_echo("comments:count"),elgg_count_comments($file));
+			$info .= ", ".sprintf(elgg_echo("comments:count"),$numcomments);
 		$info .= "</p>";
 		
 		// $icon = elgg_view("profile/icon",array('entity' => $owner, 'size' => 'small'));
