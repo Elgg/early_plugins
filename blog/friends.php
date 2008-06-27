@@ -21,7 +21,7 @@
 		}
 		
 	// Get a list of blog posts
-		$area1 = list_user_friends_objects($page_owner->getGUID(),'blog');
+		$area1 = list_user_friends_objects($page_owner->getGUID(),'blog',10,false);
 		
 	// Display them in the page
         $body = elgg_view_layout("one_column", $area1);

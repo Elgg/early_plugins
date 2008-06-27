@@ -14,6 +14,12 @@
 
 		if (isset($vars['entity'])) {
 			
+			if (get_context() == "search") {
+				
+				echo elgg_view("blog/listing",$vars);
+				
+			} else {
+			
 ?>
 
 	<div class="blog-post">
@@ -90,9 +96,11 @@
 
 <?php
 
-		// If we've been asked to display the full view
-			if (isset($vars['full']) && $vars['full'] == true) {
-				echo elgg_view('object/blog-comments',array('entity' => $vars['entity'], 'comments' => $vars['entity']->getAnnotations('comment')));
+			// If we've been asked to display the full view
+				if (isset($vars['full']) && $vars['full'] == true) {
+					echo elgg_view('object/blog-comments',array('entity' => $vars['entity'], 'comments' => $vars['entity']->getAnnotations('comment')));
+				}
+				
 			}
 
 		}

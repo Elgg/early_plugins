@@ -13,7 +13,7 @@
 	// Load Elgg engine
 		require_once(dirname(dirname(dirname(__FILE__))) . "/engine/start.php");
 
-		$area1 = list_entities('object','blog');
+		$area1 = list_entities('object','blog',0,10,false);
 		$body = elgg_view_layout("one_column", $area1);
 		
 	// Display page
