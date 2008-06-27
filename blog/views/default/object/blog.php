@@ -44,7 +44,7 @@
 		        //get the number of comments
 		    	$num_comments = elgg_count_comments($vars['entity']);
 		    ?>
-		    <a href="<?php echo $vars['entity']->getURL(); ?>">Comments (<?php echo $num_comments; ?>)</a>
+		    <a href="<?php echo $vars['entity']->getURL(); ?>">(<?php echo sprintf(elgg_echo("comments:count"),$num_comments); ?>)</a>
 			<br />
 			<a href="">Add to friends</a> - <a href="">report post</a>
 		</p>
