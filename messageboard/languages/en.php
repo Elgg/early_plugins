@@ -9,13 +9,20 @@
 			'messageboard:board' => "Message board",
 			'messageboard:desc' => "This is a message board that you can put on your profile where other users can comment.",
 			
+         /**
+	     * Message board widget river
+	     **/
+	        
+	        'messageboard:river:annotate' => "%s has had a new comment posted on their message board.",
+	        'messageboard:river:create' => "%s added the message board widget.",
+	        'messageboard:river:update' => "%s updated their message board widget.",
 			
 		/**
 		 * Status messages
 		 */
 	
 			'messageboard:posted' => "You successfully posted on the message board.",
-			'messageboard:deleted' => "You successfully deleted deleted from the message board.",
+			'messageboard:deleted' => "You successfully deleted the message.",
 	
 		/**
 		 * Error messages
