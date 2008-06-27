@@ -15,7 +15,9 @@
 		
 	// List shares
 		$body = elgg_view_title(elgg_echo('sharing:friends'));
+		set_context('search');
 		$body .= list_user_friends_objects(page_owner(),'sharing');
+		set_context('sharing');
 		
 	// Format page
 		$body = elgg_view_layout('one_column',$body);

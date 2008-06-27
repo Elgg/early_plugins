@@ -29,7 +29,11 @@
 		}
 		
 		$info = "<p>". elgg_echo("sharing:shared") .": <a href=\"{$vars['entity']->getURL()}\">{$vars['entity']->title}</a> (<a href=\"{$vars['entity']->address}\">". elgg_echo("sharing:visit") ."</a>)</p>";
-		$info .= "<p><a href=\"{$vars['url']}pg/sharing/{$owner->username}\">{$owner->name}</a> {$friendlytime}</p>";
+		$info .= "<p><a href=\"{$vars['url']}pg/sharing/{$owner->username}\">{$owner->name}</a> {$friendlytime}";
+		$numcomments = elgg_count_comments($vars['entity']);
+		if ($numcomments)
+			$info .= ", ".sprintf(elgg_echo("comments:count"),$numcomments);
+		$info .= "</p>";
 		
 		echo elgg_view_listing($icon, $info);
 		
@@ -100,6 +104,13 @@
 		?>
 	
 	</div>
+	
+<?php
+
+	if ($vars['full'])
+		echo elgg_view_comments($vars['entity']);
+
+?>
 	
 <?php
 

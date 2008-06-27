@@ -15,7 +15,9 @@
 		
 	// List shares
 		$body = elgg_view_title(elgg_echo('sharing:read'));
+		set_context('search');
 		$body .= list_entities('object','sharing',page_owner());
+		set_context('sharing');
 		
 	// Format page
 		$body = elgg_view_layout('one_column',$body);
