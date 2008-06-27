@@ -24,7 +24,11 @@
 	
 	if (get_context() == "search") { 	// Start search listing version 
 		$info = "<p>". elgg_echo('file') .": <a href=\"{$file->getURL()}\">{$title}</a> (<a href=\"{$vars['url']}action/file/download?file_guid={$file_guid}\">". elgg_echo("file:download") . "</a>)</p>";
-		$info .= "<p><a href=\"{$vars['url']}pg/file/{$owner->username}\">{$owner->name}</a> {$friendlytime}</p>";
+		$info .= "<p><a href=\"{$vars['url']}pg/file/{$owner->username}\">{$owner->name}</a> {$friendlytime}";
+		$numcomments = elgg_count_comments($file);
+		if ($numcomments)
+			$info .= ", ".sprintf(elgg_echo("comments:count"),elgg_count_comments($file));
+		$info .= "</p>";
 		
 		// $icon = elgg_view("profile/icon",array('entity' => $owner, 'size' => 'small'));
 		$icon = elgg_view("file/icon", array("mimetype" => $mime, 'thumbnail' => $file->thumbnail, 'file_guid' => $file_guid));
@@ -94,6 +98,16 @@
 ?>
 	</div>
 </div>
+
+<?php
+
+	if ($vars['full']) {
+		
+		echo elgg_view_comments($file);
+		
+	}
+
+?>
 
 <?php
 
