@@ -41,6 +41,9 @@
 			// Add our CSS
 				extend_view('css','sharing/css');
 			
+			// Register a URL handler for shared items
+				register_entity_url_handler('sharing_url','object','sharing');
+				
 		}
 		
 		/**
@@ -59,8 +62,8 @@
 			// The second part dictates what we're doing
 			if (isset($page[1])) {
 				switch($page[1]) {
-					case "read":		set_input('share',$page[2]);
-										@include(dirname(__FILE__) . "/read.php");
+					case "read":		set_input('guid',$page[2]);
+										@include(dirname(dirname(dirname(__FILE__))) . "/entities/index.php");
 										break;
 					case "friends":		@include(dirname(__FILE__) . "/friends.php");
 										break;
@@ -77,6 +80,21 @@
 			
 		}
 
+	/**
+	 * Populates the ->getUrl() method for shared objects
+	 *
+	 * @param ElggEntity $entity The shared object
+	 * @return string Shared item URL
+	 */
+		function sharing_url($entity) {
+			
+			global $CONFIG;
+			$title = $entity->title;
+			$title = friendly_title($title);
+			return $CONFIG->url . "pg/sharing/" . $entity->getOwnerEntity()->username . "/read/" . $entity->getGUID() . "/" . $title;
+			
+		}
+		
 	// Make sure the initialisation function is called on initialisation
 		register_elgg_event_handler('init','system','sharing_init');
 

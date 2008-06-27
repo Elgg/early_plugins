@@ -152,10 +152,10 @@
 	}
 	
 	/**
-	 * Populates the ->getUrl() method for blog objects
+	 * Populates the ->getUrl() method for file objects
 	 *
-	 * @param ElggEntity $blogpost Blog post entity
-	 * @return string Blog post URL
+	 * @param ElggEntity $entity File entity
+	 * @return string File URL
 	 */
 		function file_url($entity) {
 			
