@@ -27,17 +27,18 @@ $(document).ready(function(){
     $("#postit").click(function(){
         
         //display the ajax loading gif at the start of the function call
-        $('#loader').html('<img src="<?php echo $vars['url']; ?>mod/messageboard/graphics/ajax-loader.gif" />');
+        $('#loader').html('<img src="<?php echo $vars['url']; ?>_graphics/ajax_loader.gif" />');
         
         //load the results back into the message board contents and remove the loading gif
-        //remember that the actual div being populated is determined on views/default/messageboard/messageboard.php
+        //remember that the actual div being populated is determined on views/default/messageboard/messageboard.php     
         $("#messageboard_wrapper").load("<?php echo $vars['url']; ?>mod/messageboard/ajax_endpoint/load.php", {messageboard_content:$("[name=message_content]").val(), pageOwner:$("[name=pageOwner]").val(), numToDisplay:<?php echo $num_display; ?>}, function(){
                     $('#loader').empty(); // remove the loading gif
                     $('[name=message_content]').val(''); // clear the input textarea
-                }); //end of the function within load 
-        }); // end of the main function to popular the message board
+                }); //end 
+                 
+    }); // end of the main click function
         
-    }); //end of the .click function
+}); //end of the document .ready function   
 </script>
 
 <div id="mb_input_wrapper"><!-- start of mb_input_wrapper div -->
