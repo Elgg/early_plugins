@@ -60,6 +60,9 @@
 			
 		// Add a new file widget
 		add_widget_type('filerepo',elgg_echo("file:widget"),elgg_echo("file:widget:description"));
+		
+		// Register a URL handler for files
+		register_entity_url_handler('file_url','object','file');
 
 	}
 
@@ -81,6 +84,10 @@
 		{
     		switch($page[1]) 
     		{
+    			case "read":
+    				set_input('guid',$page[2]);
+					@include(dirname(dirname(dirname(__FILE__))) . "/entities/index.php");
+				break;
     			case "friends":  
     				include($CONFIG->pluginspath . "file/friends.php");
           		break;
@@ -144,7 +151,20 @@
 
 	}
 	
-	
+	/**
+	 * Populates the ->getUrl() method for blog objects
+	 *
+	 * @param ElggEntity $blogpost Blog post entity
+	 * @return string Blog post URL
+	 */
+		function file_url($entity) {
+			
+			global $CONFIG;
+			$title = $entity->title;
+			$title = friendly_title($title);
+			return $CONFIG->url . "pg/file/" . $entity->getOwnerEntity()->username . "/read/" . $entity->getGUID() . "/" . $title;
+			
+		}
 	
 	// Make sure test_init is called on initialisation
 	register_elgg_event_handler('init','system','file_init');
