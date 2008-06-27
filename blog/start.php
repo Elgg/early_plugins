@@ -97,7 +97,9 @@
 		function blog_url($blogpost) {
 			
 			global $CONFIG;
-			return $CONFIG->url . "pg/blog/" . $blogpost->getOwnerEntity()->username . "/read/" . $blogpost->getGUID();
+			$title = $blogpost->title;
+			$title = friendly_title($title);
+			return $CONFIG->url . "pg/blog/" . $blogpost->getOwnerEntity()->username . "/read/" . $blogpost->getGUID() . "/" . $title;
 			
 		}
 		
