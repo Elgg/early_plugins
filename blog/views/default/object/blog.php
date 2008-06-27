@@ -42,7 +42,7 @@
 			<!-- display the comments link -->
 			<?php
 		        //get the number of comments
-		        $num_comments = $vars['entity']->countAnnotations('comment');
+		    	$num_comments = elgg_count_comments($vars['entity']);
 		    ?>
 		    <a href="<?php echo $vars['entity']->getURL(); ?>">Comments (<?php echo $num_comments; ?>)</a>
 			<br />
@@ -98,7 +98,7 @@
 
 			// If we've been asked to display the full view
 				if (isset($vars['full']) && $vars['full'] == true) {
-					echo elgg_view('object/blog-comments',array('entity' => $vars['entity'], 'comments' => $vars['entity']->getAnnotations('comment')));
+					echo elgg_view_comments($vars['entity']);
 				}
 				
 			}

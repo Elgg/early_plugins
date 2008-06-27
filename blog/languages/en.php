@@ -20,11 +20,6 @@
 			'blog:text' => "Blog text",
 	
 			'blog:strapline' => "%s",
-	
-			'blog:comment:add' => "Add a comment",
-			'blog:comment:text' => "Comment text",
-	
-			'comments' => "Comments",
 			
 			
          /**
@@ -47,9 +42,7 @@
 		 */
 	
 			'blog:posted' => "Your blog post was successfully posted.",
-			'comment:success' => "Your comment was successfully added.",
 			'blog:deleted' => "Your blog post was successfully deleted.",
-			'comment:deleted' => "The comment was successfully deleted.",
 	
 		/**
 		 * Error messages
@@ -59,9 +52,6 @@
 			'blog:blank' => "Sorry; you need to fill in both the title and body before you can make a post.",
 			'blog:notfound' => "Sorry; we could not find the specified blog post.",
 			'blog:notdeleted' => "Sorry; we could not delete this blog post.",
-	
-			'comment:failure' => "An unexpected error occurred when adding your comment. Please try again.",
-			'comment:notdeleted' => "The comment could not be deleted.",
 	
 	);
 					
