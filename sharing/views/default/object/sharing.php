@@ -10,6 +10,31 @@
 	 * @link http://elgg.org/
 	 */
 
+	$owner = $vars['entity']->getOwnerEntity();
+	$friendlytime = friendly_time($vars['entity']->time_created);
+
+	if (get_context() == "search") {
+
+		$parsed_url = parse_url($vars['entity']->address);
+		$faviconurl = $parsed_url['scheme'] . "://" . $parsed_url['host'] . "/favicon.ico";
+		if (@file_exists($faviconurl)) {
+			$icon = "<img src=\"{$faviconurl}\" />";
+		} else {
+			$icon = elgg_view(
+				"profile/icon", array(
+										'entity' => $owner,
+										'size' => 'small',
+									  )
+			);
+		}
+		
+		$info = "<p>". elgg_echo("sharing:shared") .": <a href=\"{$vars['entity']->getURL()}\">{$vars['entity']->title}</a> (<a href=\"{$vars['entity']->address}\">". elgg_echo("sharing:visit") ."</a>)</p>";
+		$info .= "<p><a href=\"{$vars['url']}pg/sharing/{$owner->username}\">{$owner->name}</a> {$friendlytime}</p>";
+		
+		echo elgg_view_listing($icon, $info);
+		
+	} else {
+
 ?>
 
 	<div class="sharing_item">
@@ -23,16 +48,11 @@
 			<p> 
 				<?php
 
-					$owner = $vars['entity']->getOwnerEntity();
-				
-				?>
-				<?php
-
 					echo elgg_view("profile/icon",array('entity' => $owner, 'size' => 'tiny'));
 				
 				?>
 				<b><a href="<?php echo $vars['url']; ?>pg/sharing/<?php echo $owner->username; ?>"><?php echo $owner->name; ?></a></b><br /> 
-				<?php echo friendly_time($vars['entity']->time_created); ?>
+				<?php echo $friendlytime; ?>
 			</p>
 		</div>
 		<div class="sharing_item_address">
@@ -80,3 +100,9 @@
 		?>
 	
 	</div>
+	
+<?php
+
+	}
+
+?>

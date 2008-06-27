@@ -21,6 +21,10 @@
 	
 			'sharing:delete:confirm' => "Are you sure you want to delete this resource?",
 	
+			'sharing:shared' => "Shared",
+			'sharing:visit' => "Visit resource",
+	
+	
 		/**
 		 * More text
 		 */
