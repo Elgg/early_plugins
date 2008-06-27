@@ -26,26 +26,23 @@
 	color:#666666;
 	padding:10px 0 0 0;
 }
-
+p.message_item_timestamp {
+	margin-bottom: 10px;
+}
 /* wraps each message */
 .messageboard {
 	margin:5px 0 5px 0;
-    /*border-top:1px solid #eee;
-    border-bottom:1px solid #eee; */
     background:#f5f5f5;
 }
-/* sender icon */
-.message_sender .icon {
+.message_sender .usericon {
 	float:left;
-	width:35px;
+	margin: 5px 10px 0 5px;
 }
-.message_sender img {
-	padding: 5px 0 0 5px;
-}
+
 .messageboard .message {
 	line-height: 1.2em;
 	background:#fffcd9;
-	margin:4px;
+	margin:0 4px 4px 4px;
 	padding:4px;
 	border-bottom:1px dotted #cccccc;
 }
