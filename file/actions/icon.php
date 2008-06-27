@@ -21,7 +21,7 @@
 		
 		$filename = $file->thumbnail;
 		
-		//header("Content-type: $mime");
+		header("Content-type: $mime");
 		if (strpos($mime, "image/")!==false)
 			header("Content-Disposition: inline; filename=\"$filename\"");
 		else
@@ -42,7 +42,12 @@
 		}
 		*/
 
-		echo file_get_contents($readfile->getFilenameOnFilestore());
+		$contents = file_get_contents($readfile->getFilenameOnFilestore());
+		if (empty($contents)) {
+			echo file_get_contents(dirname(dirname(__FILE__)) . "/graphics/icons/general.jpg" );
+		} else {
+			echo $contents;
+		}
 		exit;
 	}
 	else
