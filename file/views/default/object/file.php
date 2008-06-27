@@ -17,8 +17,21 @@
 	$tags = $file->tags;
 	$title = $file->title;
 	$desc = $file->description;
+	$owner = $vars['entity']->getOwnerEntity();
+	$friendlytime = friendly_time($vars['entity']->time_created);
 	
 	$mime = $file->mimetype;
+	
+	if (get_context() == "search") { 	// Start search listing version 
+		$info = "<p>". elgg_echo('file') .": <a href=\"{$file->getURL()}\">{$title}</a> (<a href=\"{$vars['url']}action/file/download?file_guid={$file_guid}\">". elgg_echo("file:download") . "</a>)</p>";
+		$info .= "<p><a href=\"{$vars['url']}pg/file/{$owner->username}\">{$owner->name}</a> {$friendlytime}</p>";
+		
+		// $icon = elgg_view("profile/icon",array('entity' => $owner, 'size' => 'small'));
+		$icon = elgg_view("file/icon", array("mimetype" => $mime, 'thumbnail' => $file->thumbnail, 'file_guid' => $file_guid));
+		
+		echo elgg_view_listing($icon, $info);
+		
+	} else {							// Start main version
 	
 ?>
 	<div class="filerepo_file">
@@ -30,21 +43,16 @@
 					?></a>					
 		</div>
 		<div class="filerepo_maincontent">
-		<div class="filerepo_title"><h3><?php echo $title; ?></h3></div>
+		<div class="filerepo_title"><h3><a href="<?php echo $file->getURL(); ?>"><?php echo $title; ?></a></h3></div>
 		<div class="filerepo_owner">
 			<p> 
-				<?php
-
-					$owner = $vars['entity']->getOwnerEntity();
-				
-				?>
 				<?php
 
 					echo elgg_view("profile/icon",array('entity' => $owner, 'size' => 'tiny'));
 				
 				?>
 				<b><a href="<?php echo $vars['url']; ?>pg/file/<?php echo $owner->username; ?>"><?php echo $owner->name; ?></a></b><br /> 
-				<?php echo friendly_time($vars['entity']->time_created); ?>
+				<?php echo $friendlytime; ?>
 			</p>
 		</div>
 		<div class="filerepo_description"><p><?php echo nl2br($desc); ?></p></div>
@@ -87,3 +95,8 @@
 	</div>
 </div>
 
+<?php
+
+	}
+
+?>
