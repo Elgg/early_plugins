@@ -15,7 +15,9 @@
 	require_once(dirname(dirname(dirname(__FILE__))) . "/engine/start.php");
 
 	// Get objects
-		$objects = list_entities("object","file",page_owner());
+		set_context('search');
+		$objects = list_entities("object","file",page_owner(),10,false);
+		set_context('file');
 		$filelist = get_filetype_cloud(page_owner());
 		$body = elgg_view_layout('two_column',$objects,$filelist);
 	

@@ -16,7 +16,9 @@
 		foreach($friends as $friend) {
 			$friendguids[] = $friend->getGUID();
 		}
+		set_context('search');
 		$filelist = get_filetype_cloud($friendguids);
+		set_context('file');
 	} else {
 		$filelist = "";
 	}
