@@ -75,7 +75,12 @@ $(document).ready(function(){
     		
     		echo elgg_view('messageboard/messageboard',array('annotation' => $contents));
 		
-		} 
+		} else {
+    		
+    		//put the required div on the page for the first message
+    		echo "<div id=\"messageboard_wrapper\" /></div>";
+	
+    	}
 	
 	?>
 </p>
