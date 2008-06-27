@@ -10,15 +10,15 @@
 
 	require_once(dirname(dirname(dirname(__FILE__))) . "/engine/start.php");
 	
+	set_context('search');
 	$body = list_user_friends_objects(page_owner(),'file');
+	set_context('file');
 	if ($friends = get_user_friends($user_guid, $subtype, 999999, 0)) {
 		$friendguids = array();
 		foreach($friends as $friend) {
 			$friendguids[] = $friend->getGUID();
 		}
-		set_context('search');
 		$filelist = get_filetype_cloud($friendguids);
-		set_context('file');
 	} else {
 		$filelist = "";
 	}

@@ -42,6 +42,6 @@
 			
 		}
 		
-		forward($_SERVER['HTTP_REFERER']);
+		forward("pg/file/" . $_SESSION['user']->username);
 
 ?>
