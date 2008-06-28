@@ -17,6 +17,8 @@
     		
 ?>
 
+<div class="friends_status"><!-- start the friends status message -->
+     
 	<div class="">
 	
 	    <!-- display the message -->
@@ -40,7 +42,8 @@
 		</p>
 	</div><!-- close  div -->
 	
-		
+</div><!-- end the friends status message -->
+	
 <?php
 
 		}
