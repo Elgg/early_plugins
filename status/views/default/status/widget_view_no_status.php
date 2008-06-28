@@ -70,9 +70,31 @@ $(document).ready(function(){
 
     <div class="widget_status_statusmessage"><!-- start of widget_status_statusmessage -->
 
-        <p>
-            <input type="text" name="status_message" id="status_message" value="<?php echo elgg_echo('status:nostatus'); ?>" class="status_input_form" />
-        </p>
+        <?php
+	    
+	        //if the user is looking at their own status, display it in a input field to enable editing, otherwise, 
+	        //just display as normal
+	        if ($vars['entity']->canEdit()) {
+    	        
+    	?>
+    	
+    	    <p>
+    			<input type="text" name="status_message" id="status_message" value="<?php echo elgg_echo('status:nostatus'); ?>" class="status_input_form" />
+            </p>
+    		
+         <?php 
+            } else {
+         ?>
+
+    		<p>
+    			<?php
+    				<?php echo elgg_echo('status:nostatus'); ?>
+    			?>
+    		</p>
+    		
+    	<?php 
+	        }
+	    ?>
     
     </div><!-- end of widget_status_statusmessage -->
     
