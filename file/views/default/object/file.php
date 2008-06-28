@@ -55,8 +55,8 @@
 					echo elgg_view("profile/icon",array('entity' => $owner, 'size' => 'tiny'));
 				
 				?>
-				<b><a href="<?php echo $vars['url']; ?>pg/file/<?php echo $owner->username; ?>"><?php echo $owner->name; ?></a></b><br /> 
-				<?php echo $friendlytime; ?>
+				<p class="filerepo_owner_details"><b><a href="<?php echo $vars['url']; ?>pg/file/<?php echo $owner->username; ?>"><?php echo $owner->name; ?></a></b><br />
+				<small><?php echo $friendlytime; ?></small></p>
 			</p>
 		</div>
 		<div class="filerepo_description"><p><?php echo nl2br($desc); ?></p></div>
