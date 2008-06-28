@@ -30,8 +30,8 @@
     		
     </div><!-- end widget_status_statusmessage -->
 				
-    <div class="">
-		<p>
+    <div class="status_timestamp">
+		<p><small>
 		<?php
 		
 		    //display the time posted
@@ -39,7 +39,7 @@
 								friendly_time($vars['entity']->time_created));
 			
 		?>
-		</p>
+		</small></p>
 	</div><!-- close  div -->
 	
 </div><!-- end the friends status message -->
