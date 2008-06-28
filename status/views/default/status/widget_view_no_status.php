@@ -13,6 +13,15 @@
 	 * the script uses page_owner().
 	 */
 	 
+    //get the page owner if it is the first load of the page, or the status owner, if the 
+	//state has been changed via ajax
+	if(page_owner()){
+        $owner = page_owner();
+	} else {
+        $owner = $vars['status_owner'];
+	}
+
+	 
 	 
 ?>
 <script type="text/JavaScript">
@@ -74,7 +83,7 @@ $(document).ready(function(){
 	    
 	        //if the user is looking at their own status, display it in a input field to enable editing, otherwise, 
 	        //just display as normal
-	        if ($vars['entity']->canEdit()) {
+	        if ($owner == $_SESSION['user']->getGUID()) {
     	        
     	?>
     	
@@ -84,31 +93,17 @@ $(document).ready(function(){
     		
          <?php 
             } else {
-         ?>
-
-    		<p>
-    			<?php
-    				<?php echo elgg_echo('status:nostatus'); ?>
-    			?>
-    		</p>
-    		
-    	<?php 
+         
+  			echo "<p>" . elgg_echo('status:nostatus') . "</p>";
+    			
 	        }
 	    ?>
+
     
     </div><!-- end of widget_status_statusmessage -->
     
 	<?php
 	
-	        //get the page owner if it is the first load of the page, or the status owner, if the 
-	        //state has been changed via ajax
-	        
-	        if(page_owner()){
-    	        $owner = page_owner();
-	        } else {
-    	        $owner = $vars['status_owner'];
-	        }
-
 	        //if the shout owner is looking at it, display the various options
 			if ($owner == $_SESSION['user']->getGUID()) {
 		
