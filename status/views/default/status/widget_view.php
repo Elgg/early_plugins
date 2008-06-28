@@ -101,7 +101,7 @@ $(document).ready(function(){
     	?>
     	
     	    <p>
-    			<textarea name="status_message" id="status_message" class="status_input_form" /><?php echo $vars['entity']->description; ?></textarea>
+    			<textarea name="status_message" id="status_message" class="status_input_form"><?php echo $vars['entity']->description; ?></textarea>
     		</p>
     		
          <?php 
