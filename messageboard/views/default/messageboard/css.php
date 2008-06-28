@@ -11,6 +11,9 @@
 	 */
 
 ?>
+/*-------------------------------
+MESSAGEBOARD PLUGIN
+-------------------------------*/
 /* input msg area */
 #mb_input_wrapper {
 	border:1px dotted #cccccc;

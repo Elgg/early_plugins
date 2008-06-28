@@ -57,12 +57,12 @@
                     //get the icon
                     echo " " . elgg_view("profile/icon",array('entity' => $user_object, 'size' => 'tiny'));
                     //get the name
-                    echo "<br />To: <b>" . $user_object->name . "</b><br />";
+                    echo "<br /><br />To: <b>" . $user_object->name . "</b><br />";
                 }else{
                     //get the icon
                     echo " " . elgg_view("profile/icon",array('entity' => $vars['entity']->getOwnerEntity(), 'size' => 'tiny'));
                     //get the name
-                    echo "<br />From: <b>" . $vars['entity']->getOwnerEntity()->name . "</b><br />";
+                    echo "<br /><br />From: <b>" . $vars['entity']->getOwnerEntity()->name . "</b><br />";
                 }
             ?>
             <!-- get the time the message was sent -->

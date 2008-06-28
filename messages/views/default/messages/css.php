@@ -31,14 +31,18 @@ MESSAGING PLUGIN
 	 background: #F7DAD8; 
 	 border-bottom: 1px solid #999999;
 }
+#messages .message_read td {
+	 background: #ffffff; 
+	 border-bottom: 1px solid #d6dbd2;
+}
 #messages .delete_msg {
 	text-align: right;
 }
 
-#messages img {
+#messages .usericon {
 	float: left;
 	margin: 0 15px 0 0;
-	width:40px;height:40px; /* temporary fix to make msg icons square */
+	/* width:40px;height:40px;  temporary fix to make msg icons square */
 }
 
 #messages .msgsender {
@@ -57,7 +61,11 @@ MESSAGING PLUGIN
 	font-weight:bold;
 }
 
-.messages_single_icon {
+.messages_single_icon  {
+	float: left;
+}
+
+.messages_single_icon .usericon {
 	float: left;
 	margin: 0 10px 10px 0;
 }
