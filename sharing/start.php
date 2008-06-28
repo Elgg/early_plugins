@@ -44,6 +44,9 @@
 			// Register a URL handler for shared items
 				register_entity_url_handler('sharing_url','object','sharing');
 				
+			// Shares widget
+			    add_widget_type('sharing',elgg_echo("sharing:recent"),elgg_echo("sharing:widget:description"));
+				
 		}
 		
 		/**

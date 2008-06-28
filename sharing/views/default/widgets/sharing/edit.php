@@ -1,5 +1,8 @@
-<p>
-		Number of files to display:
+<?php
+
+?>
+	<p>
+		Number of shares to display:
 		<select name="params[num_display]">
 		    <option value="1" <?php if($vars['entity']->num_display == 1) echo "SELECTED"; ?>>1</option>
 		    <option value="2" <?php if($vars['entity']->num_display == 2) echo "SELECTED"; ?>>2</option>
@@ -12,4 +15,4 @@
 		    <option value="9" <?php if($vars['entity']->num_display == 9) echo "SELECTED"; ?>>9</option>
 		    <option value="10" <?php if($vars['entity']->num_display == 10) echo "SELECTED"; ?>>10</option>
 		</select>
-</p>
+	</p>
