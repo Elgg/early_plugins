@@ -6,7 +6,7 @@
 		 * Menu items and titles
 		 */
 	
-			'status' => "status",
+			'status' => "Status",
 			'status:user' => "%s's status",
 			'status:posttitle' => "%s's status: %s",
 			'status:everyone' => "All site status",

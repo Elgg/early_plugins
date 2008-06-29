@@ -24,7 +24,7 @@
 	    <!-- display the message -->
         <p>
     			<?php
-    				echo parse_urls(elgg_view("output/longtext",array("value" => $vars['entity']->description)));
+    				echo echo elgg_echo("status") . ": " . parse_urls(elgg_view("output/longtext",array("value" => $vars['entity']->description)));
     			?>
         </p>
     		
