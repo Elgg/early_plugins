@@ -33,12 +33,12 @@ $(document).ready(function(){
     
     //when a user clicks into the message area, clear the current message and display the required menu option
     //while hiding the menu options not required
-    $("#status_message").focus(function(){
+    $("#status_message").click(function(){
         
-        //sort out the various fields 
+        $('#status_message p').empty(); //clear the previous status message
+        $('#status_update_input').show().focus(); //display the hidden textarea
         $('#status_update_form').show(); //show the required menu options
         $('#status_clear').hide(); //hide the clear message button
-        $("#status_message").val(''); //clear the textarea 
        
     });//end of function
     
@@ -48,8 +48,9 @@ $(document).ready(function(){
         
         //sort out the various fields 
         $('#status_update_form').hide();
+        $('#status_update_input').val('').hide(); //empty any content and hide the hidden textarea
         $('#status_clear').show();
-        $("#status_message").val('<?php echo $vars['entity']->description; ?>'); // the current status message
+        $("#status_message p").append('<?php echo $vars['entity']->description; ?>'); // the current status message
         
     });//end of function
     
@@ -60,7 +61,7 @@ $(document).ready(function(){
         $('#status_loading').html('<?php echo elgg_view('ajax/loader',array('slashes' => true)); ?>');
         
         //load the results back into the main status_widget_container div and remove the loading gif
-        $("#status_widget_container").load("<?php echo $vars['url']; ?>mod/status/ajax_endpoint/load.php", {status:$("#status_message").val(), last_status:<?php echo $vars['entity']->guid; ?>}, function(){
+        $("#status_widget_container").load("<?php echo $vars['url']; ?>mod/status/ajax_endpoint/load.php", {status:$("#status_update_input").val(), last_status:<?php echo $vars['entity']->guid; ?>}, function(){
                     $('#status_loading').empty(); // remove the loading gif
                 }); //end  
                 
@@ -85,6 +86,12 @@ $(document).ready(function(){
 	    color:#333333;
     }
     
+    #status_update_input {
+        display:none;
+        background:transparent;
+        border:none;
+    }
+    
 </style>
 
 <div id="status_widget_container"><!-- start of status_widget_container div -->
@@ -100,9 +107,10 @@ $(document).ready(function(){
     	        
     	?>
     	
-    	    <p>
-    			<textarea name="status_message" id="status_message" class="status_input_form"><?php echo $vars['entity']->description; ?></textarea>
-    		</p>
+    	    <div id="status_message" class="status_input_form">
+    	        <textarea id="status_update_input" name="status_update_input"></textarea>
+    	        <p><?php echo $vars['entity']->description; ?></p>
+    	    </div>
     		
          <?php 
             } else {

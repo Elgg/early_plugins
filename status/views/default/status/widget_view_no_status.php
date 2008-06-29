@@ -27,24 +27,28 @@
 <script type="text/JavaScript">
 $(document).ready(function(){
        
-    //when the user click into the message area, show the required menu options and clear the text
-    $("#status_message").focus(function(){
+    //when a user clicks into the message area, clear the current message and display the required menu option
+    //while hiding the menu options not required
+    $("#status_message").click(function(){
         
-        //sort out the various fields 
-        $('#status_update_form').show(); //show the submit and cancel buttons
-        $("#status_message").val(''); //clear the input field, in prep for the user's new message
-        
-    });
+        $('#status_message p').empty(); //clear the previous status message
+        $('#status_update_input').show().focus(); //display the hidden textarea
+        $('#status_update_form').show(); //show the required menu options
+        $('#status_clear').hide(); //hide the clear message button
+       
+    });//end of function
     
     //if the user decides not to proceed with a new status message, hide the submit controls and 
-    //replace the no status message.
+    //put the current status back. 
     $("#status_cancel_button").click(function(){
         
         //sort out the various fields 
-        $('#status_update_form').hide(); // hide the submit and cancel buttons
-        $('#status_message').val('<?php echo elgg_echo('status:nostatus'); ?>'); // no status message
+        $('#status_update_form').hide();
+        $('#status_update_input').val('').hide(); //empty any content and hide the hidden textarea
+        $('#status_clear').show();
+        $("#status_message p").append('<?php echo elgg_echo('status:nostatus'); ?>'); // the current status message
         
-    });
+    });//end of function
     
     //when the user writes a new status message, grab the required information and submit it
     $("#status_save_button").click(function(){
@@ -52,9 +56,8 @@ $(document).ready(function(){
         //display the ajax loading gif at the start of the function call
         $('#status_loading').html('<?php echo elgg_view('ajax/loader',array('slashes' => true)); ?>');
         
-        //load the results back into the message board contents and remove the loading gif
-        //remember that the actual div being populated is determined on views/default/messageboard/messageboard.php     
-        $("#status_widget_container").load("<?php echo $vars['url']; ?>mod/status/ajax_endpoint/load.php", {status:$("#status_message").val()}, function(){
+        //load the results back into the status area and remove the loading gif
+        $("#status_widget_container").load("<?php echo $vars['url']; ?>mod/status/ajax_endpoint/load.php", {status:$("#status_update_input").val()}, function(){
                     $('#status_loading').empty(); // remove the loading gif
                 }); //end  
                 
@@ -73,6 +76,12 @@ $(document).ready(function(){
         background:transparent;
     }
     
+    #status_update_input {
+        display:none;
+        background:transparent;
+        border:none;
+    }
+    
 </style>
 
 <div id="status_widget_container"><!-- start of status_widget_container -->
@@ -87,9 +96,14 @@ $(document).ready(function(){
     	        
     	?>
     	
-    	    <p>
-    			<textarea name="status_message" id="status_message" class="status_input_form"><?php echo elgg_echo('status:nostatus'); ?></textarea>   		
-            </p>
+    	    <div id="status_message" class="status_input_form">
+    	        <textarea id="status_update_input" name="status_update_input"></textarea>
+    	        <p><?php echo elgg_echo('status:nostatus'); ?></p>
+    	    </div>
+    	
+    	   <!-- <p>
+    			<textarea name="status_message" id="status_message" class="status_input_form"><?php echo elgg_echo('status:nostatus'); ?></textarea>
+    		</p> -->
     		
          <?php 
             } else {
