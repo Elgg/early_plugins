@@ -16,7 +16,7 @@
     //get the required info
     
     //the actual message
-    $status_message = $_POST['status'];
+    $status_message = get_input('status');
     
     //the previous status message guid, if available - this is required so that we can 
     //set its state to 'history'
