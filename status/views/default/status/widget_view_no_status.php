@@ -88,7 +88,7 @@ $(document).ready(function(){
     	?>
     	
     	    <p>
-    			<input type="text" name="status_message" id="status_message" value="<?php echo elgg_echo('status:nostatus'); ?>" class="status_input_form" />
+    			<textarea name="status_message" id="status_message" class="status_input_form"><?php echo elgg_echo('status:nostatus'); ?></textarea>   		
             </p>
     		
          <?php 
