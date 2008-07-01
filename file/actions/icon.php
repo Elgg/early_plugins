@@ -29,7 +29,7 @@
 
 			
 		$readfile = new ElggFile();
-		$readfile->owner = $file->owner_guid;
+		$readfile->owner_guid = $file->owner_guid;
 		$readfile->setFilename($filename);
 			
 		/*

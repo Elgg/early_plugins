@@ -39,7 +39,7 @@
 					// Grab the file
 						if ($thumbfile && !empty($thumbfile)) {
 							$readfile = new ElggFile();
-							$readfile->owner = $file->owner_guid;
+							$readfile->owner_guid = $file->owner_guid;
 							$readfile->setFilename($thumbfile);
 							$mime = $file->getMimeType();
 							$contents = $readfile->grabFile();
