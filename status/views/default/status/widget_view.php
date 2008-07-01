@@ -50,7 +50,7 @@ $(document).ready(function(){
         $('#status_update_form').hide();
         $('#status_update_input').val('').hide(); //empty any content and hide the hidden textarea
         $('#status_clear').show();
-        $("#status_message p").append('<?php echo $vars['entity']->description; ?>'); // the current status message
+        $("#status_message p").append('<?php echo addslashes($vars['entity']->description); ?>'); // the current status message
         
     });//end of function
     
