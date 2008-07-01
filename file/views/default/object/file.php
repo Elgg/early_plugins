@@ -23,17 +23,34 @@
 	$mime = $file->mimetype;
 	
 	if (get_context() == "search") { 	// Start search listing version 
-		$info = "<p>". elgg_echo('file') .": <a href=\"{$file->getURL()}\">{$title}</a> (<a href=\"{$vars['url']}action/file/download?file_guid={$file_guid}\">". elgg_echo("file:download") . "</a>)</p>";
-		$info .= "<p><a href=\"{$vars['url']}pg/file/{$owner->username}\">{$owner->name}</a> {$friendlytime}";
-		$numcomments = elgg_count_comments($file);
-		if ($numcomments)
-			$info .= ", ".sprintf(elgg_echo("comments:count"),$numcomments);
-		$info .= "</p>";
 		
-		// $icon = elgg_view("profile/icon",array('entity' => $owner, 'size' => 'small'));
-		$icon = elgg_view("file/icon", array("mimetype" => $mime, 'thumbnail' => $file->thumbnail, 'file_guid' => $file_guid));
+		if (get_input('search_viewtype') == "gallery") {
+			echo "<div class=\"filerepo_gallery_item\">";
+			if ($vars['entity']->smallthumb) {
+				echo "<p><a href=\"{$vars['entity']->getURL()}\"><img src=\"{$vars['url']}mod/file/thumbnail.php?size=small&file_guid={$vars['entity']->getGUID()}\" border=\"0\" /></a></p>";
+			} else {
+				echo elgg_view("file/icon", array("mimetype" => $mime, 'thumbnail' => $file->thumbnail, 'file_guid' => $file_guid));
+				echo "<p>". elgg_echo('file') .": <a href=\"{$file->getURL()}\">{$title}</a> (<a href=\"{$vars['url']}action/file/download?file_guid={$file_guid}\">". elgg_echo("file:download") . "</a>)</p>";
+				echo "<p><a href=\"{$vars['url']}pg/file/{$owner->username}\">{$owner->name}</a> {$friendlytime}";
+			}
+			echo "</div>";
+			// echo elgg_view("search/gallery",array('info' => $info, 'icon' => $icon));
+			
+		} else {
 		
-		echo elgg_view_listing($icon, $info);
+			$info = "<p>". elgg_echo('file') .": <a href=\"{$file->getURL()}\">{$title}</a> (<a href=\"{$vars['url']}action/file/download?file_guid={$file_guid}\">". elgg_echo("file:download") . "</a>)</p>";
+			$info .= "<p><a href=\"{$vars['url']}pg/file/{$owner->username}\">{$owner->name}</a> {$friendlytime}";
+			$numcomments = elgg_count_comments($file);
+			if ($numcomments)
+				$info .= ", ".sprintf(elgg_echo("comments:count"),$numcomments);
+			$info .= "</p>";
+			
+			// $icon = elgg_view("profile/icon",array('entity' => $owner, 'size' => 'small'));
+			$icon = elgg_view("file/icon", array("mimetype" => $mime, 'thumbnail' => $file->thumbnail, 'file_guid' => $file_guid));
+			
+			echo elgg_view_listing($icon, $info);
+		
+		}
 		
 	} else {							// Start main version
 	
@@ -60,9 +77,11 @@
 			</p>
 		</div>
 		<div class="filerepo_description"><p><?php echo nl2br($desc); ?></p></div>
-		<?php
+		<?php 
 			if (elgg_view_exists('file/specialcontent/' . $mime)) {
 				echo "<div class=\"filerepo_specialcontent\">".elgg_view('file/specialcontent/' . $mime, $vars)."</div>";
+			} else if (elgg_view_exists("file/specialcontent/" . substr($mime,0,strpos($mime,'/')) . "/default")) {
+				echo "<div class=\"filerepo_specialcontent\">".elgg_view("file/specialcontent/" . substr($mime,0,strpos($mime,'/')) . "/default", $vars)."</div>";
 			}
 		
 		?>

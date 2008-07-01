@@ -52,16 +52,30 @@
 		if (substr_count($file->getMimeType(),'image/'))
 		{
 			$thumbnail = get_resized_image_from_existing_file($file->getFilenameOnFilestore(),60,60, true);
+			$thumbsmall = get_resized_image_from_existing_file($file->getFilenameOnFilestore(),200,200, true);
+			$thumblarge = get_resized_image_from_existing_file($file->getFilenameOnFilestore(),600,600, false);
 			if ($thumbnail) {
 				$thumb = new ElggFile();
-				$thumb->setFilename($prefix."thumb".$filestorename);
 				$thumb->setMimeType($_FILES['upload']['type']);
-				$thumb->open("write");
 				
+				$thumb->setFilename($prefix."thumb".$filestorename);
+				$thumb->open("write");
 				$thumb->write($thumbnail);
 				$thumb->close();
 				
 				$file->thumbnail = $prefix."thumb".$filestorename;
+				
+				$thumb->setFilename($prefix."smallthumb".$filestorename);
+				$thumb->open("write");
+				$thumb->write($thumbsmall);
+				$thumb->close();
+				$file->smallthumb = $prefix."smallthumb".$filestorename;
+				
+				$thumb->setFilename($prefix."largethumb".$filestorename);
+				$thumb->open("write");
+				$thumb->write($thumblarge);
+				$thumb->close();
+				$file->largethumb = $prefix."largethumb".$filestorename;
 					
 			}
 		}

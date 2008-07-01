@@ -29,7 +29,7 @@
 
 			
 		$readfile = new ElggFile();
-		$readfile->owner = $_SESSION['user']->getGUID();
+		$readfile->owner = $file->owner_guid;
 		$readfile->setFilename($filename);
 			
 		/*
@@ -42,7 +42,7 @@
 		}
 		*/
 
-		$contents = file_get_contents($readfile->getFilenameOnFilestore());
+		$contents = $readfile->grabFile();
 		if (empty($contents)) {
 			echo file_get_contents(dirname(dirname(__FILE__)) . "/graphics/icons/general.jpg" );
 		} else {

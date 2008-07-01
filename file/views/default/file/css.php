@@ -79,3 +79,14 @@ p.filerepo_owner {
 	color: #fff;
 	background-color: #f7cf6d;
 }
+
+.filerepo_gallery_item {
+
+	text-align: center;
+	padding: 5px;
+
+}
+
+.filerepo_gallery_item img {
+	margin-bottom: 10px;
+}

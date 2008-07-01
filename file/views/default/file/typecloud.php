@@ -13,9 +13,10 @@
 		
 		foreach($vars['types'] as $type) {
 
-			$label = elgg_echo("file:type:" . $type->tag);
+			$tag = $type->tag;
+			$label = elgg_echo("file:type:" . $tag);
 			
-			$url = $vars['url'] . "mod/file/search.php?md_type=simpletype&subtype=file&tag=" . urlencode($type->tag);
+			$url = $vars['url'] . "mod/file/search.php?md_type=simpletype&subtype=file&tag=" . urlencode($tag);
 			if ($vars['owner_guid'] != "") {
 				if (is_array($vars['owner_guid'])) {
 					$owner_guid = implode(",",$vars['owner_guid']);
@@ -23,9 +24,9 @@
 					$owner_guid = $vars['owner_guid'];
 				}
 				$url .= "&owner_guid={$owner_guid}";
-				if ($type->tag == "image")
-					$url .= "&search_viewtype=gallery";
 			}
+			if ($tag == "image")
+				$url .= "&search_viewtype=gallery";
 			
 			echo "<a href=\"{$url}\">{$label}</a> ";
 			

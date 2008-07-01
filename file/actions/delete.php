@@ -15,11 +15,29 @@
 			if ($file->canEdit()) {
 
 				$thumbnail = $file->thumbnail;
+				$smallthumb = $file->smallthumb;
+				$largethumb = $file->largethumb;
 				if ($thumbnail) {
 
 					$delfile = new ElggFile();
 					$delfile->owner_guid = $file->owner_guid;
 					$delfile->setFilename($thumbnail);
+					$delfile->delete();
+
+				}
+				if ($smallthumb) {
+
+					$delfile = new ElggFile();
+					$delfile->owner_guid = $file->owner_guid;
+					$delfile->setFilename($smallthumb);
+					$delfile->delete();
+
+				}
+				if ($largethumb) {
+
+					$delfile = new ElggFile();
+					$delfile->owner_guid = $file->owner_guid;
+					$delfile->setFilename($largethumb);
 					$delfile->delete();
 
 				}
