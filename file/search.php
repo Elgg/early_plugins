@@ -20,6 +20,7 @@
 		$tag = get_input('tag');
 		$subtype = get_input('subtype');
 		$owner_guid = (int) get_input('owner_guid',0);
+		$search_viewtype = get_input('search_viewtype');
 		
 		if ($owner_guid > 0)
 			set_page_owner($owner_guid);
@@ -43,7 +44,9 @@
 			} else {
 				$body .= get_filetype_cloud();
 			}
-			$body .= list_entities_from_metadata($md_type, $tag, $objecttype, $subtype, $owner_guid, 10, false);
+			$limit = 10;
+			if ($search_viewtype == "gallery") $limit = 9;
+			$body .= list_entities_from_metadata($md_type, $tag, $objecttype, $subtype, $owner_guid, $limit, false);
 			$body = elgg_view_layout('one_column',$body);
 		}
 		
