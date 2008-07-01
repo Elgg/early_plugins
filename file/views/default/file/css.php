@@ -68,7 +68,6 @@ p.filerepo_owner {
 
 .filerepo_types a {
 	padding: 5px;
-	display: block;
 	width: 200px;
 	text-decoration: none;
 	background-color: #eee;

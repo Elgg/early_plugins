@@ -19,7 +19,7 @@
 		$objects = list_entities("object","file",page_owner(),10,false);
 		set_context('file');
 		$filelist = get_filetype_cloud(page_owner());
-		$body = elgg_view_layout('two_column',$objects,$filelist);
+		$body = elgg_view_layout('one_column', $filelist . $objects);
 	
 	// Finally draw the page
 		page_draw(sprintf(elgg_echo("file:yours"),page_owner_entity()->name), $body);

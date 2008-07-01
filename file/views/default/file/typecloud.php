@@ -7,7 +7,7 @@
 ?>
 	
 		<div class="filerepo_types">
-			<h2><?php echo elgg_echo('file:types'); ?></h2>
+			<p><b><?php echo elgg_echo('file:types'); ?>:</b>
 
 <?php
 		
@@ -15,7 +15,7 @@
 
 			$label = elgg_echo("file:type:" . $type->tag);
 			
-			$url = $vars['url'] . "search/?md_type=simpletype&subtype=file&tag=" . urlencode($type->tag);
+			$url = $vars['url'] . "mod/file/search.php?md_type=simpletype&subtype=file&tag=" . urlencode($type->tag);
 			if ($vars['owner_guid'] != "") {
 				if (is_array($vars['owner_guid'])) {
 					$owner_guid = implode(",",$vars['owner_guid']);
@@ -23,13 +23,16 @@
 					$owner_guid = $vars['owner_guid'];
 				}
 				$url .= "&owner_guid={$owner_guid}";
+				if ($type->tag == "image")
+					$url .= "&search_viewtype=gallery";
 			}
 			
-			echo "<p><a href=\"{$url}\">{$label}</a></p>";
+			echo "<a href=\"{$url}\">{$label}</a> ";
 			
 		}
 		
 ?>
+			</p>
 
 		</div>
 

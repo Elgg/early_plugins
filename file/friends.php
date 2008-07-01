@@ -22,7 +22,7 @@
 	} else {
 		$filelist = "";
 	}
-	$body = elgg_view_layout('two_column',$body,$filelist);
+	$body = elgg_view_layout('one_column',$filelist . $body);
 	
 	// Finally draw the page
 	page_draw(sprintf(elgg_echo("file:friends"),$_SESSION['user']->name), $body);

@@ -8,94 +8,12 @@
 	 * @link http://elgg.com/
 	 */
 
-	global $CONFIG;
+	gatekeeper();
+
+	// Render the file upload page
 	
-		if (isset($vars['entity'])) {
-			$title = sprintf(elgg_echo("blog:editpost"),$object->title);
-			$action = "file/save";
-			$title = $vars['entity']->title;
-			$description = $vars['entity']->description;
-			$tags = $vars['entity']->tags;
-			$access_id = $vars['entity']->access_id;
-		} else  {
-			$title = elgg_echo("blog:addpost");
-			$action = "file/upload";
-			$tags = "";
-			$title = "";
-			$description = "";
-			$access_id = 0;
-		}
+	$body = elgg_view_layout('one_column', elgg_view("file/upload"));
+	
+	page_draw(elgg_echo("file:upload"), $body);
 	
 ?>
-<form action="<?php echo $vars['url']; ?>action/<?php echo $action; ?>" enctype="multipart/form-data" method="post">
-<?php
-
-	if ($action == "file/upload") {
-
-?>
-		<p>
-			<label><?php echo elgg_echo("file:file"); ?><br />
-			<?php
-
-				echo elgg_view("input/file",array('internalname' => 'upload'));
-			
-			?>
-			</label>
-		</p>
-<?php
-
-	}
-
-?>
-		<p>
-			<label><?php echo elgg_echo("title"); ?><br />
-			<?php
-
-				echo elgg_view("input/text", array(
-									"internalname" => "title",
-									"value" => $title,
-													));
-			
-			?>
-			</label>
-		</p>
-		<p>
-			<label><?php echo elgg_echo("description"); ?><br />
-			<?php
-
-				echo elgg_view("input/longtext",array(
-									"internalname" => "description",
-									"value" => $description,
-													));
-			?>
-			</label>
-		</p>
-		<p>
-			<label><?php echo elgg_echo("tags"); ?><br />
-			<?php
-
-				echo elgg_view("input/tags", array(
-									"internalname" => "tags",
-									"value" => $tags,
-													));
-			
-			?>
-		</p>
-		<p>
-			<label>
-				<?php echo elgg_echo('access'); ?><br />
-				<?php echo elgg_view('input/access', array('internalname' => 'access_id','value' => $access_id)); ?>
-			</label>
-		</p>
-	
-		<p>
-			<?php
-
-				if (isset($vars['entity']))
-					echo "<input type=\"hidden\" name=\"file_guid\" value=\"{$vars['entity']->getGUID()}\" />";
-			
-			?>
-			<input type="submit" value="<?php echo elgg_echo("save"); ?>" />
-		</p>
-
-</form>
