@@ -26,6 +26,12 @@
 	 
     function messageboard_init() {
         
+        // Load system configuration
+			global $CONFIG;
+				
+		// Load the language file
+			register_translations($CONFIG->pluginspath . "messageboard/languages/");
+        
         // Extend system CSS with our own styles, which are defined in the messageboard/css view
 			extend_view('css','messageboard/css');
         

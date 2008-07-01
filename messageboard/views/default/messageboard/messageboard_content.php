@@ -48,7 +48,6 @@
 													));
 		
 		        ?>
-		        | <a href="">history</a> | 
 		        
 		        <?php
 		            //if the message being looked at is owned by the current user, don't show the reply
@@ -58,6 +57,8 @@
     		            $get_user = get_user($vars['annotation']->owner_guid);
     		            //create the url to their messageboard
     		            $user_mb = "pg/messageboard/" . $get_user->username;
+    		            
+    		            echo "| <a href=\"" . $vars['url'] . "mod/messageboard/history.php?user=" . $get_user->guid ."\">history</a> | "; 
     		            
     		            echo "<a href=\"" . $vars['url'] . $user_mb . "\">reply on " . $get_user->username . "'s message board</a>";
     		            
