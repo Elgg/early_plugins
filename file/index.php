@@ -22,5 +22,5 @@
 		$body = elgg_view_layout('one_column', $filelist . $objects);
 	
 	// Finally draw the page
-		page_draw(sprintf(elgg_echo("file:yours"),page_owner_entity()->name), $body);
+		page_draw(sprintf(elgg_echo("file:user"),page_owner_entity()->name), $body);
 ?>
