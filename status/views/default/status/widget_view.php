@@ -69,30 +69,7 @@ $(document).ready(function(){
   
 }); //end of function
 </script>
-<style type="text/css">
-    
-    #status_update_form {
-        display:none;
-    }
-    
-    .status_input_form {
-        border:0;
-        background:transparent;
-    }
-    
-    .status_input_form:focus {
-	    border: none;
-	    background:transparent;
-	    color:#333333;
-    }
-    
-    #status_update_input {
-        display:none;
-        background:transparent;
-        border:none;
-    }
-    
-</style>
+
 
 <div id="status_widget_container"><!-- start of status_widget_container div -->
 
