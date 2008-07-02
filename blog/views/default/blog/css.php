@@ -12,22 +12,16 @@
 
 ?>
 
+
 .blog_post {
-	margin-bottom: 50px;
-	padding-bottom: 5px;
+	margin-bottom: 15px;
 	border-bottom: 1px solid #aaaaaa;
 }
 
 .blog_post_icon {
 	position: absolute;
-}
-
-.blog_post_content {
-	margin-left: 60px;
-}
-
-.blog_post_content img {
-    margin-top:5px;
+	float:left;
+	margin:5px 0 0 0;
 }
 
 .blog_post h3 {
@@ -44,15 +38,46 @@
 }
 
 .blog_post .strapline {
-	margin: 0 0 10px 0;
+	margin: 8px 0 10px 35px;
 	color: #aaa;
 }
 .blog_post .tags {
 	margin:0 0 5px 0;
+	padding:0;
 }
 .blog_post .options {
 	margin:0;
+	padding:0;
 }
+
+
+
+.blog-comments h3 {
+	font-size: 150%;
+	margin-bottom: 10px;
+}
+.blog-comment {
+	margin-top: 10px;
+	margin-bottom:20px;
+	border-bottom: 1px solid #aaaaaa;
+}
+.blog-comment img {
+	float:left;
+	margin: 0 10px 0 0;
+}
+.blog-comment-menu {
+	margin:0;
+}
+.blog-comment-byline {
+	background: #dddddd;
+	height:22px;
+	padding-top:3px;
+	margin:0;
+}
+.blog-comment-text {
+	margin:5px 0 5px 0;
+}
+
 
 
 

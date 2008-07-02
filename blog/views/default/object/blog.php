@@ -27,10 +27,9 @@
 		<!-- display the user icon -->
 		<div class="blog_post_icon">
 		    <?php
-		        echo elgg_view("profile/icon",array('entity' => $vars['entity']->getOwnerEntity(), 'size' => 'small'));
+		        echo elgg_view("profile/icon",array('entity' => $vars['entity']->getOwnerEntity(), 'size' => 'tiny'));
 			?>
 	    </div>
-	    <div class="blog_post_content">
 			<p class="strapline">
 				<?php
 	                
@@ -92,7 +91,6 @@
 			?>
 			</p>
 		</div>
-	</div>
 
 <?php
 
