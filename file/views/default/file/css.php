@@ -3,7 +3,6 @@
 	 * File CSS extender
 	 * 
 	 * @package Elgg File Repository
-	 * @author Pete Harris
 	 * @copyright Curverider Ltd 2008
 	 * @link http://elgg.com/
 	 */
@@ -59,7 +58,7 @@ p.filerepo_owner {
 .filerepo_download a:hover {
 	text-decoration: none;
 	color: #fff;
-	background-color: #f7cf6d;
+	background: #0054a7;
 }
 
 .filerepo_types h2 {
@@ -68,7 +67,7 @@ p.filerepo_owner {
 
 .filerepo_types a {
 	padding: 5px;
-	width: 200px;
+	/* width: 200px;*/
 	text-decoration: none;
 	background-color: #eee;
 	text-align: center;
@@ -77,14 +76,12 @@ p.filerepo_owner {
 .filerepo_types a:hover {
 	text-decoration: none;
 	color: #fff;
-	background-color: #f7cf6d;
+	background: #0054a7;
 }
 
 .filerepo_gallery_item {
-
 	text-align: center;
 	padding: 5px;
-
 }
 
 .filerepo_gallery_item img {
