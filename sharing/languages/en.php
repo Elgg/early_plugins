@@ -25,6 +25,10 @@
 			'sharing:visit' => "Visit resource",
 			'sharing:recent' => "Recent shares",
 	
+			'sharing:river:created' => '%s shared',
+			'sharing:river:annotate' => '%s commented on',
+			'sharing:river:item' => 'an item',
+	
 	
 		/**
 		 * More text
