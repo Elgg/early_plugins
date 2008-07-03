@@ -46,6 +46,10 @@
 			'file:tagcloud' => "Tag cloud",
 	
 			'file:display:number' => "Number of files to display",
+	
+			'file:river:created' => "%s uploaded",
+			'file:river:item' => "a file",
+			'file:river:annotate' => "%s commented on",
 
 		/**
 		 * Status messages
