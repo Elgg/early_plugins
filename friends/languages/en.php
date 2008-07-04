@@ -9,7 +9,7 @@
 	
 		 'friends:num_display' => "Number of friends to display",
 		 'friends:icon_size' => "Icon size",
-		 'friends:medium' => "medium",
+		 'friends:tiny' => "tiny",
 		 'friends:small' => "small",
 		
 		 /**

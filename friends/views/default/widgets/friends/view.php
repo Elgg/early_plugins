@@ -26,7 +26,7 @@
 	if (!$size || $size == 1){
 		$size_value = "small";
 	}else{
-    	$size_value = "medium";
+    	$size_value = "tiny";
 	}
 		
     // Get the users friends
@@ -38,9 +38,9 @@
 		echo "<div id=\"widget_friends_list\">";
 
 		foreach($friends as $friend) {
-				
+			echo "<div class=\"widget_friends_singlefriend\" >";
 			echo elgg_view("profile/icon",array('entity' => get_user($friend->guid), 'size' => $size_value));
-				
+			echo "</div>";
 		}
 
 		echo "</div>";

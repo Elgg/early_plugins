@@ -76,6 +76,7 @@
 }
 .share_desc {
 	display:none;
+	line-height: 1.2em;
 }
 .shares_widget_content {
 	margin-left: 35px;
