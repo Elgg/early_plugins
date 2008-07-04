@@ -19,6 +19,10 @@
      
      //the number of message to display
      $num_display = $vars['entity']->num_display;
+     
+     //if no num set, set to one
+     if(!$num_display)
+        $num_display = 1;
 	 
 ?>
 <script type="text/JavaScript">
