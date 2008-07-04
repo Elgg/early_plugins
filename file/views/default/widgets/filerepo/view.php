@@ -1,8 +1,8 @@
 <script>
 $(document).ready(function () {
     $('a.show_file_desc').click(function () {
-	    $('.filerepo_listview_desc').slideToggle("fast");
-		    return false;
+	    $(this.parentNode).children("[class=filerepo_listview_desc]").slideToggle("fast");
+		return false;
     });
 }); /* end document ready function */
 </script>
@@ -34,6 +34,8 @@ $(document).ready(function () {
     	echo "<div id=\"filerepo_widget_layout\">";
         
         if($view == "gallery"){
+        
+        echo "<div class=\"filerepo_widget_galleryview\">";
         	
             //display in gallery mode
             foreach($files as $f){
@@ -43,16 +45,20 @@ $(document).ready(function () {
             				
             }
             
+            echo "</div>";
+            
         }else{
         	    
             //display in list mode
             foreach($files as $f){
             	
                 $mime = $f->mimetype;
+                echo "<div class=\"filerepo_widget_singleitem\">";
             	echo "<div class=\"filerepo_listview_icon\"><a href=\"{$f->getURL()}\">" . elgg_view("file/icon", array("mimetype" => $mime, 'thumbnail' => $f->thumbnail, 'file_guid' => $f->guid)) . "</a></div>";
-            	echo "<div class=\"filerepo_listview_title\">" . $f->title . "</div>";
-            	echo "<div class=\"filerepo_listview_date\">" . friendly_time($f->time_created) . "</div>";
-		        echo "<a href=\"javascript:void(0);\" class=\"show_file_desc\">more</a><br /><div class=\"filerepo_listview_desc\">" . $f->description . "</div>";
+            	echo "<div class=\"filerepo_widget_content\">";
+            	echo "<div class=\"filerepo_listview_title\"><p class=\"filerepo_title\">" . $f->title . "</p></div>";
+            	echo "<div class=\"filerepo_listview_date\"><p class=\"filerepo_timestamp\"><small>" . friendly_time($f->time_created) . "</small></p></div>";
+		        echo "<a href=\"javascript:void(0);\" class=\"show_file_desc\">more</a><br /><div class=\"filerepo_listview_desc\">" . $f->description . "</div></div></div>";
             				
         	}
         	    
