@@ -1,5 +1,5 @@
 <p>
-		Number of files to display:
+		<?php echo elgg_echo("file:num_files"); ?>:
 		<select name="params[num_display]">
 		    <option value="1" <?php if($vars['entity']->num_display == 1) echo "SELECTED"; ?>>1</option>
 		    <option value="2" <?php if($vars['entity']->num_display == 2) echo "SELECTED"; ?>>2</option>
@@ -17,9 +17,9 @@
 </p>
 
 <p>
-    Gallery or list view?
+    <?php echo elgg_echo("file:gallery_list"); ?>?
     <select name="params[gallery_list]">
-        <option value="1" <?php if($vars['entity']->gallery_list == 1) echo "SELECTED"; ?>>List view</option>
-	    <option value="2" <?php if($vars['entity']->gallery_list == 2) echo "SELECTED"; ?>>Gallery view</option>
+        <option value="1" <?php if($vars['entity']->gallery_list == 1) echo "SELECTED"; ?>><?php echo elgg_echo("file:list"); ?></option>
+	    <option value="2" <?php if($vars['entity']->gallery_list == 2) echo "SELECTED"; ?>><?php echo elgg_echo("file:gallery"); ?></option>
     </select>
 </p>
