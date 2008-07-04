@@ -55,6 +55,59 @@
 	background: #0054a7;
 }
 
+/* current displayed status message */
+#status_message p,
+.widget_status_statusmessage p {
+	font-size:1.2em;
+	line-height:1.2em;
+	font-weight:bold;
+	color:#666666;
+	padding:3px;	
+}
+
+/* widget status box - input */
+.widget_status_statusmessage {
+/*
+	font-size:1.2em;
+	line-height:1.2em;
+	font-weight:bold;
+*/
+	color:#666666;
+	background:#fdffc3;
+	padding:3px;
+}
+/* widget status box - time */
+.widget_status_messagetimestamp {
+	font-size:0.9em;
+	color:#999999;
+	margin:0;
+}
+
+#status_update_form {
+	display:none;
+}
+
+.status_input_form {
+	border:0;
+	background:transparent;
+}
+
+.status_input_form:focus {
+	border: none;
+	background:transparent;
+	color:#333333;
+}
+/* textarea for writing new message */
+#status_update_input {
+	display:none;
+	background:transparent;
+	border:none;
+	font-size:1.2em;
+	line-height:1.2em;
+	font-weight:bold;
+	color:#666666;
+	padding:3px;
+}
 
 
 /* status messages history */
@@ -62,14 +115,36 @@
 /* wraps each status msg */
 .status_message {
 	border-bottom: 1px solid #aaaaaa;
+	margin:10px 0 10px 0;
 }
-/* actual status message */
+/* current status message */
 .status_statusmessage p {
+	margin:0;
+	color:#666666;
+	background:#fdffc3;
+	padding:10px;
+	font-size: 1.5em;
+	line-height: 1.1em;
+}
+/* previous status messages */
+.status_statusmessage_history p {
 	margin:0;
 }
 /* status message timestamp */
-.widget_status_messagetimestamp {
+.widget_status_messagetimestamp p {
 	margin:0;
+}
+
+
+/* friends status on 'friends' page */
+.friends_status {
+	float:right;
+	width:500px;
+	text-align:right;
+	margin: 0 4px 0 0;
+}
+.status_timestamp {
+	color:#666666;	
 }
 
 
