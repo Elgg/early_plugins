@@ -56,7 +56,7 @@ $(document).ready(function () {
 
 			}
 
-			$user_inbox = $vars['url'] . "mod/pg/sharing/" . $user->username . "/inbox";
+			$user_inbox = $vars['url'] . "pg/sharing/" . $user->username . "/inbox";
 			echo "<a href=\"{$user_inbox}\">Shares inbox</a>";
 
 		}
