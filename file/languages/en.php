@@ -20,6 +20,7 @@
 			'file:user' => "%s's files",
 			'file:friends' => "%s's friends' files",
 			'file:all' => "All files",
+			'file:more' => "more files",
 	
 			'file:upload' => "Upload a file",
 			
