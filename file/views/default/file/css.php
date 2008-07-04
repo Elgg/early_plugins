@@ -87,3 +87,9 @@ p.filerepo_owner {
 .filerepo_gallery_item img {
 	margin-bottom: 10px;
 }
+
+#filerepo_widget_layout img {
+    padding:2px;
+    border:1px solid #efefef;
+    margin:4px;
+}
