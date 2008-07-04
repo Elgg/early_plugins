@@ -88,13 +88,7 @@ p.filerepo_owner {
 	margin-bottom: 10px;
 }
 
-#filerepo_widget_layout img {
-    /*
-	padding:2px;
-    border:1px solid #efefef;
-    margin:4px;
-*/
-}
+
 
 /* FILE REPRO WIDGET VIEW */
 .filerepo_widget_singleitem {
@@ -114,12 +108,27 @@ p.filerepo_owner {
 .filerepo_listview_desc {
 	display:none;
 	padding:0 5px 10px 0;
+	line-height: 1.2em;
 }
 .filerepo_widget_content {
-	margin-left: 80px;
+	margin-left: 70px;
 }
 .filerepo_title {
 	margin:0;
 	padding:6px 5px 0 0;
 	line-height: 1.2em;
 }
+
+/* gallery view */
+.filerepo_widget_galleryview img {
+	padding:2px;
+    border:1px solid #efefef;
+    margin:4px;
+}
+
+
+
+
+
+
+

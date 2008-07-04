@@ -1,11 +1,14 @@
-<script>
+<script type="text/javascript">
 $(document).ready(function () {
-    $('a.show_file_desc').click(function () {
-	    $(this.parentNode).children("[class=filerepo_listview_desc]").slideToggle("fast");
-		return false;
-    });
+
+$('a.show_file_desc').click(function () {
+	$(this.parentNode).children("[class=filerepo_listview_desc]").slideToggle("fast");
+	return false;
+});
+
 }); /* end document ready function */
 </script>
+
 
 <?php
 
