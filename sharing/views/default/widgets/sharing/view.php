@@ -1,4 +1,13 @@
-<p>
+
+<script>
+$(document).ready(function () {
+    $('a.share_more_info').click(function () {
+		$('.share_desc').slideToggle("fast");
+		return false;
+    });
+}); /* end document ready function */
+</script>
+
 	<?php
 
 	    //get the num of shares the user want to display
@@ -34,7 +43,7 @@
 				$info = "<p><a href=\"{$s->getURL()}\">{$s->title}</a></p>";
 
 				//get the share description
-				$info .= "<p>{$s->description}</p>";
+				$info .= "<a href=\"javascript:void(0);\" class=\"share_more_info\">more</a><br /><div class=\"share_desc\"><p>{$s->description}</p></div>";
 
 				//get the user details
 				$info .= "<p><a href=\"{$owner->getURL()}\">{$owner->name}</a> {$friendlytime}</p>";
@@ -53,5 +62,4 @@
 		}
 	
 	
-	?>
-</p>
+      ?>
