@@ -1,8 +1,8 @@
 
-<script>
+<script type="text/javascript">
 $(document).ready(function () {
     $('a.share_more_info').click(function () {
-		$('.share_desc').slideToggle("fast");
+		$(this.parentNode).children("[class=share_desc]").slideToggle("fast");
 		return false;
     });
 }); /* end document ready function */
@@ -40,13 +40,13 @@ $(document).ready(function () {
 					);
 
 				//get the share title
-				$info = "<p><a href=\"{$s->getURL()}\">{$s->title}</a></p>";
+				$info = "<p class=\"shares_title\"><a href=\"{$s->getURL()}\">{$s->title}</a></p>";
+				
+				//get the user details
+				$info .= "<p class=\"shares_timestamp\"><small><a href=\"{$owner->getURL()}\">{$owner->name}</a> {$friendlytime}</small></p>";
 
 				//get the share description
 				$info .= "<a href=\"javascript:void(0);\" class=\"share_more_info\">more</a><br /><div class=\"share_desc\"><p>{$s->description}</p></div>";
-
-				//get the user details
-				$info .= "<p><a href=\"{$owner->getURL()}\">{$owner->name}</a> {$friendlytime}</p>";
 		
 				//display 
 				echo "<div class=\"shares_widget_wrapper\">";
