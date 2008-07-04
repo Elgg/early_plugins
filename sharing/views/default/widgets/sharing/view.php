@@ -8,13 +8,49 @@
 		if(!$num)
 			$num = 1;
 			
-		set_context('search'); //display the results in search format
+        //grab the shares
+		$user = $_SESSION['user'];
+		$shares = $user->getEntitiesFromRelationship('share', true, $num, 0);
 		
-		//get the users inbox shares
-		$shares = list_entities_from_relationship('share',page_owner(),true,'object','sharing', 0, $num, false);
+		if($shares){
+
+			foreach($shares as $s){
+			
+				//get the owner
+				$owner = $s->getOwnerEntity();
+
+				//get the time
+				$friendlytime = friendly_time($s->time_created);
+
+				//get the user icon
+				$icon = elgg_view(
+						"profile/icon", array(
+										'entity' => $owner,
+										'size' => 'tiny',
+									  )
+					);
+
+				//get the share title
+				$info = "<p><a href=\"{$s->getURL()}\">{$s->title}</a></p>";
+
+				//get the share description
+				$info .= "<p>{$s->description}</p>";
+
+				//get the user details
+				$info .= "<p><a href=\"{$owner->getURL()}\">{$owner->name}</a> {$friendlytime}</p>";
 		
-        //print them out
-		echo $shares;
+				//display 
+				echo "<div class=\"shares_widget_wrapper\">";
+				echo "<div class=\"shares_widget_icon\">" . $icon . "</div>";
+				echo "<div class=\"shares_widget_content\">" . $info . "</div>";
+				echo "</div>";
+
+			}
+
+			$user_inbox = $vars['url'] . "mod/pg/sharing/" . $user->username . "/inbox";
+			echo "<a href=\"{$user_inbox}\">Shares inbox</a>";
+
+		}
 	
 	
 	?>
