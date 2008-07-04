@@ -11,5 +11,15 @@
 		    <option value="8" <?php if($vars['entity']->num_display == 8) echo "SELECTED"; ?>>8</option>
 		    <option value="9" <?php if($vars['entity']->num_display == 9) echo "SELECTED"; ?>>9</option>
 		    <option value="10" <?php if($vars['entity']->num_display == 10) echo "SELECTED"; ?>>10</option>
+		    <option value="15" <?php if($vars['entity']->num_display == 15) echo "SELECTED"; ?>>15</option>
+		    <option value="20" <?php if($vars['entity']->num_display == 20) echo "SELECTED"; ?>>20</option>
 		</select>
+</p>
+
+<p>
+    Gallery or list view?
+    <select name="params[gallery_list]">
+        <option value="1" <?php if($vars['entity']->gallery_list == 1) echo "SELECTED"; ?>>List view</option>
+	    <option value="2" <?php if($vars['entity']->gallery_list == 2) echo "SELECTED"; ?>>Gallery view</option>
+    </select>
 </p>
