@@ -8,20 +8,16 @@
 	 */
 ?>
 
-.filerepo_file {
-	margin-bottom: 50px;
-}
 
-.filerepo_icon {
+/*
+.filerepo_file {
 	width: 70px;
 	text-align:center;
 	position: absolute;
 	height: 100px;
 }
+*/
 
-.filerepo_maincontent {
-	margin-left: 80px;
-}
 p.filerepo_owner {
 	margin:0;
 	padding:0;
@@ -39,26 +35,26 @@ p.filerepo_owner {
 	margin-right: 5px;
 	float: left;
 }
-.filerepo_description {
-	margin:10px 0 0 0;
-}
+
 
 .filerepo_download a {
-	display: block;
-	width: 300px;
-	text-align: center;
-	padding: 5px;
-	border: 1px;
-	border-color: #888;
-	border-style: solid;
-	background-color: #eee;
-	text-decoration: none;
+	font: 12px/100% Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	color: #ffffff;
+	background:#4690d6;
+	border: 1px solid #4690d6;
+	-webkit-border-radius: 3px; 
+	-moz-border-radius: 3px;
+	width: auto;
+	height: 25px;
+	padding: 2px 6px 2px 6px;
+	margin:10px 0 10px 0;
+	cursor: pointer;
 }
 
 .filerepo_download a:hover {
-	text-decoration: none;
-	color: #fff;
 	background: #0054a7;
+	text-decoration: none;
 }
 
 .filerepo_types h2 {
@@ -78,17 +74,6 @@ p.filerepo_owner {
 	color: #fff;
 	background: #0054a7;
 }
-
-.filerepo_gallery_item {
-	text-align: center;
-	padding: 5px;
-}
-
-.filerepo_gallery_item img {
-	margin-bottom: 10px;
-}
-
-
 
 /* FILE REPRO WIDGET VIEW */
 .filerepo_widget_singleitem {
@@ -119,12 +104,75 @@ p.filerepo_owner {
 	line-height: 1.2em;
 }
 
-/* gallery view */
+/* widget gallery view */
 .filerepo_widget_galleryview img {
 	padding:2px;
     border:1px solid #efefef;
     margin:4px;
 }
+
+/* SINGLE ITEM VIEW */
+.filerepo_file {
+	margin-bottom: 50px;
+}
+.filerepo_file .filerepo_title_owner_wrapper {
+	min-height:60px;
+	background-color: #eeeeee;
+}
+.filerepo_file .filerepo_maincontent {
+	margin-left: 70px;
+}
+.filerepo_file .filerepo_icon {
+	width: 70px;
+	position: absolute;
+	background-color: #eeeeee;
+}
+.filerepo_file .filerepo_title {
+	margin:0;
+	padding:2px 5px 5px 10px;
+	line-height: 1.2em;
+}
+.filerepo_file .filerepo_owner {
+	padding:0 0 0 10px;
+}
+.filerepo_file .filerepo_description {
+	margin:10px 0 0 0;
+	padding:0 0 0 10px;
+}
+.filerepo_download,
+.filerepo_tags,
+.filerepo_controls {
+	padding:0 0 0 10px;
+	margin:0;
+}
+.filerepo_file .filerepo_description p {
+	padding:0 0 5px 0;
+	margin:0;
+}
+.filerepo_file .filerepo_specialcontent img {
+	padding:5px;
+	margin:0 0 0 10px;
+	border:1px dotted silver; 
+}
+
+/* file repro gallery items */
+
+/* temp fix for gallery img width size */
+.search_gallery_item .filerepo_gallery_item img {
+	width:169px;
+	height:169px;
+	margin:0;
+	padding:0;
+}
+.filerepo_gallery_item {
+	margin:0;
+	padding:0;
+}
+.filerepo_gallery_item p {
+	margin:0;
+	padding:0;
+}
+
 
 
 
