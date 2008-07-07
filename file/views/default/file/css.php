@@ -140,7 +140,6 @@ p.filerepo_owner {
 	padding:0 0 0 10px;
 }
 .filerepo_download,
-.filerepo_tags,
 .filerepo_controls {
 	padding:0 0 0 10px;
 	margin:0;
@@ -153,6 +152,10 @@ p.filerepo_owner {
 	padding:5px;
 	margin:0 0 0 10px;
 	border:1px dotted silver; 
+}
+.filerepo_tags {
+	padding:0 0 10px 10px;
+	margin:0;
 }
 
 /* file repro gallery items */
