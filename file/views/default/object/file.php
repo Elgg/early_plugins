@@ -27,26 +27,50 @@
 		if (get_input('search_viewtype') == "gallery") {
 			echo "<div class=\"filerepo_gallery_item\">";
 			if ($vars['entity']->smallthumb) {
-				echo "<p><a href=\"{$vars['entity']->getURL()}\"><img src=\"{$vars['url']}mod/file/thumbnail.php?size=small&file_guid={$vars['entity']->getGUID()}\" border=\"0\" /></a></p>";
+				echo "<p class=\"filerepo_title\">" . $file->title . "</p>";
+				echo "<p><a href=\"{$file->getURL()}\"><img src=\"{$vars['url']}mod/file/thumbnail.php?size=small&file_guid={$vars['entity']->getGUID()}\" border=\"0\" /></a></p>";
+				echo "<p class=\"filerepo_timestamp\"><small><a href=\"{$vars['url']}pg/file/{$owner->username}\">{$owner->username}</a> {$friendlytime}</small></p>";
+
+				//get the number of comments
+				$numcomments = elgg_count_comments($vars['entity']);
+				if ($numcomments)
+					echo "<p class=\"filerepo_comments\"><a href=\"{$file->getURL()}\">" . sprintf(elgg_echo("comments")) . " (" . $numcomments . ")</a></p>";
+
+				
+				//if the user can edit, display edit and delete links
+				if ($file->canEdit()) {
+					echo "<div class=\"filerepo_controls\"><p>";
+					echo "<a href=\"{$vars['url']}mod/file/edit.php?file_guid={$file->getGUID()}\">" . elgg_echo('edit') . "</a>&nbsp;";
+					echo elgg_view('output/confirmlink',array(
+						
+							'href' => $vars['url'] . "action/file/delete?file=" . $file->getGUID(),
+							'text' => elgg_echo("delete"),
+							'confirm' => elgg_echo("file:delete:confirm"),
+						
+						));
+					echo "</p></div>";
+				}
+					
+			
 			} else {
 				echo elgg_view("file/icon", array("mimetype" => $mime, 'thumbnail' => $file->thumbnail, 'file_guid' => $file_guid));
 				echo "<p> <a href=\"{$file->getURL()}\">{$title}</a> (<a href=\"{$vars['url']}action/file/download?file_guid={$file_guid}\">". elgg_echo("file:download") . "</a>)</p>";
-				echo "<p class=\"filerepo_timestamp\"><small><a href=\"{$vars['url']}pg/file/{$owner->username}\">{$owner->name}</a> {$friendlytime}</small>";
+				echo "<p class=\"filerepo_timestamp\"><small><a href=\"{$vars['url']}pg/file/{$owner->username}\">{$owner->name}</a> {$friendlytime}</small></p>";
 			}
 			echo "</div>";
 			// echo elgg_view("search/gallery",array('info' => $info, 'icon' => $icon));
 			
 		} else {
 		
-			$info = "<p> <a href=\"{$file->getURL()}\">{$title}</a> (<a href=\"{$vars['url']}action/file/download?file_guid={$file_guid}\">". elgg_echo("file:download") . "</a>)</p>";
+			$info = "<p> <a href=\"{$file->getURL()}\">{$title}</a></p>";
 			$info .= "<p class=\"filerepo_timestamp\"><small><a href=\"{$vars['url']}pg/file/{$owner->username}\">{$owner->name}</a> {$friendlytime}";
 			$numcomments = elgg_count_comments($file);
 			if ($numcomments)
-				$info .= ", ".sprintf(elgg_echo("comments:count"),$numcomments);
+				$info .= ", <a href=\"{$file->getURL()}\">" . sprintf(elgg_echo("comments")) . " (" . $numcomments . ")</a>";
 			$info .= "</small></p>";
 			
 			// $icon = elgg_view("profile/icon",array('entity' => $owner, 'size' => 'small'));
-			$icon = elgg_view("file/icon", array("mimetype" => $mime, 'thumbnail' => $file->thumbnail, 'file_guid' => $file_guid));
+			$icon = "<a href=\"{$file->getURL()}\">" . elgg_view("file/icon", array("mimetype" => $mime, 'thumbnail' => $file->thumbnail, 'file_guid' => $file_guid)) . "</a>";
 			
 			echo elgg_view_listing($icon, $info);
 		
