@@ -102,11 +102,11 @@
 		</div>
 		</div>
 		<div class="filerepo_description"><p><?php echo nl2br($desc); ?></p></div>
-		<div class="filerepo_tags"><p><?php
+		<div class="filerepo_tags"><?php
 
 					echo elgg_view('output/tags',array('value' => $tags));
 				
-				?></p></div>
+				?></div>
 		<?php 
 			if (elgg_view_exists('file/specialcontent/' . $mime)) {
 				echo "<div class=\"filerepo_specialcontent\">".elgg_view('file/specialcontent/' . $mime, $vars)."</div>";
