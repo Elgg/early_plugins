@@ -15,11 +15,12 @@
 	$tag = get_input("tag");
 	
 	// Get objects
+	$body = elgg_view_title($title = elgg_echo('file:type:all'));
 	set_context('search');
 	if ($tag != "")
-		$body = list_entities_from_metadata('tags',$tag,'object','file');
+		$body .= list_entities_from_metadata('tags',$tag,'object','file');
 	else
-		$body = list_entities('object','file');
+		$body .= list_entities('object','file');
 	set_context('file');
 		
 	$filelist = get_filetype_cloud();

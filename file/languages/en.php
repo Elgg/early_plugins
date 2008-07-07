@@ -35,11 +35,18 @@
 	
 			'file:types' => "Uploaded file types",
 	
+			'file:type:all' => "All files",
 			'file:type:video' => "Videos",
 			'file:type:document' => "Documents",
 			'file:type:audio' => "Audio",
 			'file:type:image' => "Pictures",
 			'file:type:general' => "General",
+	
+			'file:user:type:video' => "%'s videos",
+			'file:user:type:document' => "%'s documents",
+			'file:user:type:audio' => "%'s audio",
+			'file:user:type:image' => "%'s pictures",
+			'file:user:type:general' => "%'s general files",
 	
 			'file:widget' => "File widget",
 			'file:widget:description' => "Showcase your latest files",

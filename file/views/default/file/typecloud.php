@@ -10,13 +10,22 @@
 			<p><b><?php echo elgg_echo('file:types'); ?>:</b>
 
 <?php
-		
+
+		$all = new stdClass;
+		$all->tag = "all";
+		$vars['types'][] = $all;
 		foreach($vars['types'] as $type) {
 
 			$tag = $type->tag;
-			$label = elgg_echo("file:type:" . $tag);
+			if ($tag != "all") {
+				$label = elgg_echo("file:type:" . $tag);
+			} else {
+				$label = elgg_echo('all');
+			}
 			
-			$url = $vars['url'] . "mod/file/search.php?md_type=simpletype&subtype=file&tag=" . urlencode($tag);
+			$url = $vars['url'] . "mod/file/search.php?subtype=file";
+			if ($tag != "all")
+				$url .= "&md_type=simpletype&tag=" . urlencode($tag);
 			if ($vars['owner_guid'] != "") {
 				if (is_array($vars['owner_guid'])) {
 					$owner_guid = implode(",",$vars['owner_guid']);
@@ -34,7 +43,6 @@
 		
 ?>
 			</p>
-
 		</div>
 
 <?php
