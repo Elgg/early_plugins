@@ -53,9 +53,15 @@
 					
 			
 			} else {
-				echo elgg_view("file/icon", array("mimetype" => $mime, 'thumbnail' => $file->thumbnail, 'file_guid' => $file_guid));
-				echo "<p> <a href=\"{$file->getURL()}\">{$title}</a> (<a href=\"{$vars['url']}action/file/download?file_guid={$file_guid}\">". elgg_echo("file:download") . "</a>)</p>";
+				echo "<p class=\"filerepo_title\">{$title}</p>";
+				echo "<a href=\"{$file->getURL()}\">" . elgg_view("file/icon", array("mimetype" => $mime, 'thumbnail' => $file->thumbnail, 'file_guid' => $file_guid)) . "</a>";
 				echo "<p class=\"filerepo_timestamp\"><small><a href=\"{$vars['url']}pg/file/{$owner->username}\">{$owner->name}</a> {$friendlytime}</small></p>";
+				//get the number of comments
+				$numcomments = elgg_count_comments($file);
+				if ($numcomments)
+					echo "<p class=\"filerepo_comments\"><a href=\"{$file->getURL()}\">" . sprintf(elgg_echo("comments")) . " (" . $numcomments . ")</a></p>";
+
+
 			}
 			echo "</div>";
 			// echo elgg_view("search/gallery",array('info' => $info, 'icon' => $icon));
@@ -107,11 +113,11 @@
 		</div>
 		</div>
 		<div class="filerepo_description"><p><?php echo nl2br($desc); ?></p></div>
-		<div class="filerepo_tags"><?php
+		<div class="filerepo_tags"><div class="object_tag_string"><?php
 
 					echo elgg_view('output/tags',array('value' => $tags));
 				
-				?></div>
+				?></div></div>
 		<?php 
 			if (elgg_view_exists('file/specialcontent/' . $mime)) {
 				echo "<div class=\"filerepo_specialcontent\">".elgg_view('file/specialcontent/' . $mime, $vars)."</div>";
