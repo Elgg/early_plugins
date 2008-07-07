@@ -129,7 +129,7 @@ p.filerepo_owner {
 }
 .filerepo_file .filerepo_title {
 	margin:0;
-	padding:2px 5px 5px 10px;
+	padding:1px 4px 5px 10px;
 	line-height: 1.2em;
 }
 .filerepo_file .filerepo_owner {
@@ -167,6 +167,15 @@ p.filerepo_owner {
 	margin:0;
 	padding:0;
 }
+.search_gallery .filerepo_controls {
+	padding:0;
+}
+.search_gallery .filerepo_title {
+	font-weight: bold;
+	line-height: 1.1em;
+	margin:0 0 10px 0;
+}
+
 .filerepo_gallery_item {
 	margin:0;
 	padding:0;
@@ -175,8 +184,22 @@ p.filerepo_owner {
 	margin:0;
 	padding:0;
 }
+.search_gallery .filerepo_comments {
+	font-size:90%;
+}
 
-
+.filerepo_user_gallery_link {
+	float:right;
+	margin:5px 5px 5px 50px;
+}
+.filerepo_user_gallery_link a {
+	padding:2px 25px 5px 0;
+	background: transparent url(<?php echo $vars['url']; ?>_graphics/gallery_back_icon.gif) no-repeat right top;
+}
+.filerepo_user_gallery_link a:hover {
+	padding:2px 25px 5px 0;
+	background: transparent url(<?php echo $vars['url']; ?>_graphics/gallery_back_icon_on.gif) no-repeat right top;
+}
 
 
 
