@@ -37,7 +37,13 @@
 			if ($tag == "image")
 				$url .= "&search_viewtype=gallery";
 			
-			echo "<a href=\"{$url}\">{$label}</a> ";
+			if (get_input('tag') == $tag) {
+				$class = "class=\"filerepo_types_current\"";
+			} else {
+				$class = "";
+			}
+				
+			echo "<a {$class} href=\"{$url}\">{$label}</a> ";
 			
 		}
 		
