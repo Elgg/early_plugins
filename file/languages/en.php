@@ -42,11 +42,11 @@
 			'file:type:image' => "Pictures",
 			'file:type:general' => "General",
 	
-			'file:user:type:video' => "%'s videos",
-			'file:user:type:document' => "%'s documents",
-			'file:user:type:audio' => "%'s audio",
-			'file:user:type:image' => "%'s pictures",
-			'file:user:type:general' => "%'s general files",
+			'file:user:type:video' => "%s's videos",
+			'file:user:type:document' => "%s's documents",
+			'file:user:type:audio' => "%s's audio",
+			'file:user:type:image' => "%s's pictures",
+			'file:user:type:general' => "%s's general files",
 	
 			'file:widget' => "File widget",
 			'file:widget:description' => "Showcase your latest files",

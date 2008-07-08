@@ -37,12 +37,12 @@
 		}
 
 		if (empty($tag)) {
-			$body = elgg_view_title($title = elgg_echo('file:type:all'));
+			$body = elgg_view_title(elgg_echo('file:type:all'));
 		} else {
 			if (page_owner()) {
-				$body = elgg_view_title($title = sprintf(elgg_echo("file:user:type:" . $tag),page_owner_entity()->name));
+				$body = elgg_view_title(sprintf(elgg_echo("file:user:type:" . $tag),page_owner_entity()->name));
 			} else{
-				$body = elgg_view_title($title = elgg_echo("file:type:" . $tag));
+				$body = elgg_view_title(elgg_echo("file:type:" . $tag));
 			}
 		}
 		if ($owner_guid) {
