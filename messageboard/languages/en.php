@@ -25,6 +25,27 @@
 			'messageboard:deleted' => "You successfully deleted the message.",
 	
 		/**
+		 * Email messages
+		 */
+	
+			'messageboard:email:subject' => 'You have a new message board comment!',
+			'messageboard:email:body' => "You have a new message board comment from %s. It reads:
+
+			
+%s
+
+
+To view your message board comments, click here:
+
+	%s
+
+To view %s's profile, click here:
+
+	%s
+
+You cannot reply to this email.",
+	
+		/**
 		 * Error messages
 		 */
 	

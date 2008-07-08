@@ -25,6 +25,20 @@
 	        // If posting the comment was successful, say so
 				if ($user->annotate('messageboard',$message_content,$user->access_id, $_SESSION['user']->getGUID())) {
 					
+					global $CONFIG;
+					
+					if ($user->getGUID() != $_SESSION['user']->getGUID())
+					notify_user($user->getGUID(), $_SESSION['user']->getGUID(), elgg_echo('messageboard:email:subject'), 
+						sprintf(
+									elgg_echo('messageboard:email:body'),
+									$_SESSION['user']->name,
+									$message_content,
+									$CONFIG->wwwroot . "pg/messageboard/" . $user->username,
+									$_SESSION['user']->name,
+									$_SESSION['user']->getURL()
+								)
+					); 
+					
     				system_message(elgg_echo("messageboard:posted"));
 					
 				} else {
