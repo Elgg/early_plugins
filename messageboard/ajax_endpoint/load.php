@@ -16,9 +16,9 @@
     //get the required info
     
     //the actual message
-    $message = $_POST['messageboard_content'];
+    $message = get_input('messageboard_content');
     //the number of messages to display
-    $numToDisplay = $_POST['numToDisplay'];    
+    $numToDisplay = get_input('numToDisplay');    
     //get the full page owner entity
     $user = get_user($_POST['pageOwner']);
     
