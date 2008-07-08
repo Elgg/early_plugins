@@ -19,6 +19,12 @@
         $send_to = get_input('send_to'); // this is the user guid to whom the message is going to be sent
         $reply = get_input('reply'); // this is the guid of the message replying to
         
+        $user = get_user($send_to);
+        if (!$user) {
+        	register_error(elgg_echo("messages:user:nonexist"));
+        	forward();
+        }
+        
     // put in another check to make sure the user can only send messages as themselves
         $owner_id = $_SESSION['user']->getGUID();
 		
@@ -64,6 +70,20 @@
     	        $create_relationship = add_entity_relationship($message->guid, "reply", $reply);
     	        
 	        }
+	        
+		// Email notification
+			global $CONFIG;
+			if ($user->getGUID() != $_SESSION['user']->getGUID())
+			notify_user($user->getGUID(), $_SESSION['user']->getGUID(), elgg_echo('messages:email:subject'), 
+				sprintf(
+							elgg_echo('messages:email:body'),
+							$_SESSION['user']->name,
+							$message_contents,
+							$CONFIG->wwwroot . "pg/messages/" . $user->username,
+							$_SESSION['user']->name,
+							$CONFIG->wwwroot . "mod/messages/send.php?send_to=" . $_SESSION['user']->getGUID()
+						)
+			); 
 			
         // Success message
 			system_message(elgg_echo("messages:posted"));

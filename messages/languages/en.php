@@ -31,6 +31,27 @@
 			'messages:deleted' => "Your message was successfully deleted.",
 	
 		/**
+		 * Email messages
+		 */
+	
+			'messages:email:subject' => 'You have a new message!',
+			'messages:email:body' => "You have a new message from %s. It reads:
+
+			
+%s
+
+
+To view your messages, click here:
+
+	%s
+
+To send %s a message, click here:
+
+	%s
+
+You cannot reply to this email.",
+	
+		/**
 		 * Error messages
 		 */
 	
@@ -39,6 +60,7 @@
 			'messages:notdeleted' => "Sorry; we could not delete this message.",
 			'messages:nopermission' => "You do not have permission to delete that message.",
 			'messages:nomessages' => "There are no messages to display.",
+			'messages:user:nonexist' => "We could not find the recipient in the user database.",
 	
 	);
 					
