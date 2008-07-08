@@ -39,7 +39,7 @@
 		if (empty($tag)) {
 			$body = elgg_view_title(elgg_echo('file:type:all'));
 		} else {
-			if (page_owner()) {
+			if (page_owner() && page_owner() != $_SESSION['guid']) {
 				$body = elgg_view_title(sprintf(elgg_echo("file:user:type:" . $tag),page_owner_entity()->name));
 			} else{
 				$body = elgg_view_title(elgg_echo("file:type:" . $tag));
