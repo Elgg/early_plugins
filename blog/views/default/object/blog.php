@@ -16,7 +16,18 @@
 			
 			if (get_context() == "search") {
 				
-				echo elgg_view("blog/listing",$vars);
+				//display the correct layout depending on gallery or list view
+				if (get_input('search_viewtype') == "gallery") {
+
+					//display the gallery view
+            				echo elgg_view("blog/gallery",$vars);
+
+				} else {
+				
+					echo elgg_view("blog/listing",$vars);
+
+				}
+
 				
 			} else {
 			
