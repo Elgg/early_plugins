@@ -19,9 +19,12 @@
 			$page_owner = $_SESSION['user'];
 			set_page_owner($page_owner->getGUID());
 		}
+
+	//set the title
+		$area1 = elgg_view_title(elgg_echo('blog:friends'));
 		
 	// Get a list of blog posts
-		$area1 = list_user_friends_objects($page_owner->getGUID(),'blog',10,false);
+		$area1 .= list_user_friends_objects($page_owner->getGUID(),'blog',10,false);
 		
 	// Display them in the page
         $body = elgg_view_layout("one_column", $area1);

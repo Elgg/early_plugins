@@ -19,7 +19,14 @@
 	// Get the current page's owner
 		$page_owner = page_owner();
 		
+	//set the title
+		$area1 = elgg_view_title(elgg_echo('blog:addpost'));
+
+	// Get the form
+		$area1 .= elgg_view("blog/forms/edit");
+		
 	// Display page
-		page_draw(elgg_echo('blog:addpost'),elgg_view_layout("one_column", elgg_view("blog/forms/edit")));
+		page_draw(elgg_echo('blog:addpost'),elgg_view_layout("one_column", $area1));
+
 		
 ?>

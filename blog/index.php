@@ -19,9 +19,16 @@
 			$page_owner = $_SESSION['user'];
 			set_page_owner($page_owner->getGUID());
 		}
+
+	//set blog title
+		if($page_owner == $_SESSION['user']){
+			$area1 = elgg_view_title(elgg_echo('blog:read'));
+		}else{
+			$area1 = elgg_view_title($page_owner->username . "'s " . elgg_echo('blog'));
+		}
 		
 	// Get a list of blog posts
-		$area1 = list_user_objects($page_owner->getGUID(),'blog',10,false);
+		$area1 .= list_user_objects($page_owner->getGUID(),'blog',10,false);
 		
 	// Display them in the page
         $body = elgg_view_layout("one_column", $area1);

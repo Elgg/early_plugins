@@ -14,8 +14,8 @@
 	
 			'blog:read' => "Read blog",
 	
-			'blog:addpost' => "Write an entry",
-			'blog:editpost' => "Edit entry (%s)",
+			'blog:addpost' => "Write a blog post",
+			'blog:editpost' => "Edit blog post",
 	
 			'blog:text' => "Blog text",
 	
