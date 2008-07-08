@@ -16,6 +16,7 @@
 	
 	// Get objects
 	$body = elgg_view_title($title = elgg_echo('file:type:all'));
+	$body .= get_filetype_cloud(); // the filter
 	set_context('search');
 	if ($tag != "")
 		$body .= list_entities_from_metadata('tags',$tag,'object','file');
@@ -23,8 +24,7 @@
 		$body .= list_entities('object','file');
 	set_context('file');
 		
-	$filelist = get_filetype_cloud();
-	$body = elgg_view_layout('one_column',$filelist . $body);
+	$body = elgg_view_layout('one_column',$body);
 
 	// Finally draw the page
 	page_draw(sprintf(elgg_echo("file:yours"),$_SESSION['user']->name), $body);
