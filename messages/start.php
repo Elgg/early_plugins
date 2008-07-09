@@ -45,6 +45,13 @@
 				
 			// Extend the elgg topbar
 				extend_view('elgg_topbar/extend','messages/topbar');
+				
+	        //add submenu options
+				if (get_context() == "messages") {
+					add_submenu_item("Inbox", $CONFIG->wwwroot . "pg/messages/" . $_SESSION['user']->username);
+					add_submenu_item("Compose a message", $CONFIG->wwwroot . "mod/messages/send.php");
+					add_submenu_item("Sent messages", $CONFIG->wwwroot . "mod/messages/sent.php");
+				}
 			
 			// Register a page handler, so we can have nice URLs
 				register_page_handler('messages','messages_page_handler');
