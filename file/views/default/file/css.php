@@ -74,6 +74,11 @@ p.filerepo_owner {
 	color: #fff;
 	background: #0054a7;
 }
+.filerepo_types a.filerepo_types_current {
+	text-decoration: none;
+	color: #fff;
+	background: #0054a7;
+}
 
 /* FILE REPRO WIDGET VIEW */
 .filerepo_widget_singleitem {
