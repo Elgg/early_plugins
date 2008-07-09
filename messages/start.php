@@ -42,6 +42,9 @@
 				
 			// Extend system CSS with our own styles, which are defined in the shouts/css view
 				extend_view('css','messages/css');
+				
+			// Extend the elgg topbar
+				extend_view('elgg_topbar/extend','messages/topbar');
 			
 			// Register a page handler, so we can have nice URLs
 				register_page_handler('messages','messages_page_handler');
