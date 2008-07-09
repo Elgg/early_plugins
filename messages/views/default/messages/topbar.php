@@ -23,4 +23,4 @@
 
 ?>
 
-	<a href="<?php echo $vars['url']; ?>pg/messages/<?php echo $_SESSION['user']->username; ?>"><?php echo elgg_echo("messages"); ?> (<?php echo $num; ?>)</a>
+	<a href="<?php echo $vars['url']; ?>pg/messages/<?php echo $_SESSION['user']->username; ?>" class="pagelinks" ><?php echo elgg_echo("messages"); ?> (<?php echo $num; ?>)</a>
