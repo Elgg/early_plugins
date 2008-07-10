@@ -6,14 +6,17 @@
 		
 ?>
 	
-		<div class="filerepo_types">
-			<p><b><?php echo elgg_echo('file:types'); ?>:</b>
-
+		<!--  <div class="filerepo_types"> -->
+			<!-- <p><b><?php echo elgg_echo('file:types'); ?>:</b> -->
+			
+		<div id="canvas_header_submenu">
+			<ul>
 <?php
 
 		$all = new stdClass;
 		$all->tag = "all";
 		$vars['types'][] = $all;
+		$vars['types'] = array_reverse($vars['types']);
 		foreach($vars['types'] as $type) {
 
 			$tag = $type->tag;
@@ -37,18 +40,21 @@
 			if ($tag == "image")
 				$url .= "&search_viewtype=gallery";
 			
-			if (get_input('tag') == $tag) {
-				$class = "class=\"filerepo_types_current\"";
+			$inputtag = get_input('tag');
+			if ($inputtag == $tag || (empty($inputtag) && $tag == "all")) {
+				// $class = "class=\"filerepo_types_current\"";
+				$class = " class=\"selected\" ";
 			} else {
 				$class = "";
 			}
 				
-			echo "<a {$class} href=\"{$url}\">{$label}</a> ";
+			echo "<li {$class} ><a href=\"{$url}\">{$label}</a></li>";
 			
 		}
 		
 ?>
-			</p>
+			<!-- </p> -->
+			</ul>
 		</div>
 
 <?php
