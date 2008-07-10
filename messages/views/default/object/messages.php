@@ -27,7 +27,7 @@
     } else {
         
         //send back to the users inbox
-        $url = $vars['url'] . "pg/messages/" . $vars['entity']->getOwnerEntity()->username;
+        $url = $vars['url'] . "pg/messages/" . $vars['user']->username;
         
         //this is used on the delete link so we know which type of message it is 
         $type = "inbox";

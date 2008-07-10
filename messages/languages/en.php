@@ -20,6 +20,7 @@
 			'messages:replying' => "Message replying to",
 			'messages:inbox' => "Inbox",
 			'messages:sendmessage' => "Send a message",
+			'messages:compose' => "Send a message",
 			'messages:sentmessages' => "Sent messages",
 			'messages:recent' => "Recent messages",
 			
