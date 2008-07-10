@@ -12,19 +12,6 @@
 
 ?>
 
-.sharing_bookmarklet {
-	text-align: center;
-
-}
-
-.sharing_bookmarklet a {
-	font-size: 200%;
-	display: block;
-	text-decoration: none;
-	background-color: #eee;
-
-}
-
 .sharing_item {
 	margin-bottom: 50px;
 

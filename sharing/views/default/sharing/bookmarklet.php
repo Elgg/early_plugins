@@ -16,7 +16,7 @@
 		<?php echo elgg_echo("sharing:bookmarklet:description"); ?>
 	</p>
 	<p class="sharing_bookmarklet">
-		<a href="javascript:location.href='<?php echo $vars['url']; ?>mod/sharing/add.php?address='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title)"><?php echo elgg_echo("sharing:this"); ?></a>
+		<a href="javascript:location.href='<?php echo $vars['url']; ?>mod/sharing/add.php?address='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title)"> <img src="<?php echo $vars['url']; ?>_graphics/elgg_bookmarklet.gif" border="0" title="<?php echo elgg_echo("sharing:this"); ?>" />   </a>
 	</p>
 	<p>
 		<?php echo elgg_echo("sharing:bookmarklet:description:conclusion"); ?>

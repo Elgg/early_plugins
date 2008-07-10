@@ -38,7 +38,7 @@
 		            "This widget is designed for your dashboard and will show you the latests items in your shares inbox.",
 	
 			'sharing:bookmarklet:description' =>
-					"The sharing bookmarklet allows you to share any resource you find on the web with your friends, or just bookmark it for yourself. To use it, simply drag the following link to your browser's links bar:",
+					"The sharing bookmarklet allows you to share any resource you find on the web with your friends, or just bookmark it for yourself. To use it, simply drag the following button to your browser's links bar:",
 
 			'sharing:bookmarklet:description:conclusion' =>
 					"You can then save any page you visit by clicking it at any time.",
