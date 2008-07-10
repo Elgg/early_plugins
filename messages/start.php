@@ -61,6 +61,24 @@
 		    // Shares widget
 			    add_widget_type('messages',elgg_echo("messages:recent"),elgg_echo("messages:widget:description"));
 			    
+			// Override metadata permissions
+			    register_plugin_hook('permissions_check:metadata','object','messages_can_edit_metadata');
+			    
+		}
+		
+		/**
+		 * Override the canEditMetadata function to return true for messages
+		 *
+		 */
+		function messages_can_edit_metadata($hook_name, $entity_type, $return_value, $parameters) {
+			
+			$entity = $parameters['entity'];
+			if ($entity->getSubtype() == "messages") {
+				return true;
+			}
+			
+			return $return_value;
+			
 		}
 		
 		/**
