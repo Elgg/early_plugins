@@ -57,13 +57,13 @@ p.filerepo_owner {
 	text-decoration: none;
 }
 
+/* not used any more since types became tabbed menu?
 .filerepo_types h2 {
 	margin-bottom: 10px;
 }
 
 .filerepo_types a {
 	padding: 5px;
-	/* width: 200px;*/
 	text-decoration: none;
 	background-color: #eee;
 	text-align: center;
@@ -79,6 +79,7 @@ p.filerepo_owner {
 	color: #fff;
 	background: #0054a7;
 }
+*/
 
 /* FILE REPRO WIDGET VIEW */
 .filerepo_widget_singleitem {
