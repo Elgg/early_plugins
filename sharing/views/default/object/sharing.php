@@ -60,42 +60,40 @@
 	} else {
 
 ?>
+	<?php echo elgg_view_title(elgg_echo('sharing:shareditem')); ?>
+	<div class="sharing_item">
+	
+		<div class="sharing_item_title">
+			<h3>
+				<a href="<?php echo $vars['entity']->getURL(); ?>"><?php echo $vars['entity']->title; ?></a>
+			</h3>
+		</div>
+		<div class="sharing_item_owner">
+			<p> 
+				<b><a href="<?php echo $vars['url']; ?>pg/sharing/<?php echo $owner->username; ?>"><?php echo $owner->name; ?></a></b> 
+				<?php echo $friendlytime; ?>
+			</p>
+		</div>
+		<div class="sharing_item_description">
+			<p>
+				<?php echo nl2br($vars['entity']->description); ?>
+			</p>
+		</div>
+		<div class="sharing_item_tags">
+			<p>
+				<?php echo elgg_view('output/tags',array('value' => $vars['entity']->tags)); ?>
+			</p>
+		</div>
+		<div class="sharing_item_address">
+			<p>
+				<?php 
 
-<?php echo elgg_view_title(elgg_echo('sharing:shareditem')); ?>
-<div class="sharing_item">
-
- <div class="sharing_item_title">
-  <p>
-   <a href="<?php echo $vars['entity']->getURL(); ?>"><?php echo $vars['entity']->title; ?></a>
-  </p>
- </div>
- <div class="sharing_item_owner">
-  <p> 
-   <b><a href="<?php echo $vars['url']; ?>pg/sharing/<?php echo $owner->username; ?>"><?php echo $owner->name; ?></a></b><br /> 
-   <?php echo $friendlytime; ?>
-  </p>
- </div>
- <div class="sharing_item_description">
-  <p>
-   <?php echo nl2br($vars['entity']->description); ?>
-  </p>
- </div>
- <div class="sharing_item_tags">
-  <p>
-   <?php echo elgg_view('output/tags',array('value' => $vars['entity']->tags)); ?>
-  </p>
- </div>
- <div class="sharing_item_address">
-  <p>
-   <?php 
-
-    //echo elgg_view('output/url',array('value' => $vars['entity']->address));
-   
-   ?>
-   <a href="{$vars['entity']->address}">Visit Resource</a>
-  </p>
- </div>		
-		
+					//echo elgg_view('output/url',array('value' => $vars['entity']->address));
+				
+				?>
+				<a href="{$vars['entity']->address}">Visit Resource</a>
+			</p>
+		</div>		
 		<?php
 
 			if ($vars['entity']->canEdit()) {
@@ -103,7 +101,7 @@
 		?>
 		<div class="sharing_item_controls">
 			<p>
-				<a href="<?php echo $vars['url']; ?>mod/sharing/add.php?share=<?php echo $vars['entity']->getGUID(); ?>"><?php echo elgg_echo('edit'); ?></a>
+				<a href="<?php echo $vars['url']; ?>mod/sharing/add.php?share=<?php echo $vars['entity']->getGUID(); ?>"><?php echo elgg_echo('edit'); ?></a> &nbsp; 
 				<?php 
 						echo elgg_view('output/confirmlink',array(
 						

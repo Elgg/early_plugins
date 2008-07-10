@@ -14,13 +14,13 @@
 
 .sharing_item {
 	margin-bottom: 50px;
-
+	border-bottom:1px solid #AAAAAA;
 }
 
 .sharing_item_owner {
-	font-size: 80%;
-	margin-top: 10px;
-
+	font-size: 90%;
+	margin: 10px 0 0 0;
+	color:#666666;
 }
 
 .sharing_item_owner .icon {
@@ -28,25 +28,47 @@
 	margin-right: 5px;
 
 }
-
-.sharing_item_title a {
-	font-weight: bold;
-	color: #000;
-
+.sharing_item_title h3 {
+	font-size: 150%;
+	margin-bottom: 5px;
+}
+.sharing_item_title h3 a {
+	text-decoration: none;
+}
+.sharing_item_description p {
+	margin:0;
+	padding:0 0 5px 0;
+}
+.sharing_item_tags {
+	background:transparent url(<?php echo $vars['url']; ?>_graphics/icon_tag.gif) no-repeat scroll left 2px;
+	margin:0;
+	padding:0 0 0 14px;
 }
 
 .sharing_item_address a {
-	display: block;
-	width: 500px;
-	text-align: center;
-	padding: 5px;
-	border: 1px;
-	border-color: #888;
-	border-style: solid;
-	background-color: #eee;
-	text-decoration: none;
-
+	font: 12px/100% Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	color: #ffffff;
+	background:#4690d6;
+	border: 1px solid #4690d6;
+	-webkit-border-radius: 3px; 
+	-moz-border-radius: 3px;
+	width: auto;
+	height: 25px;
+	padding: 2px 6px 2px 6px;
+	margin:10px 0 10px 0;
+	cursor: pointer;
 }
+.sharing_item_address a:hover {
+	background: #0054a7;
+	text-decoration: none;
+}
+.sharing_item_controls p {
+	margin:0;
+}
+
+
+
 /* SHARES WIDGET VIEW */
 .shares_widget_wrapper {
 	background-color: #eeeeee;
