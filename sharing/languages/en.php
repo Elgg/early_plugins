@@ -14,7 +14,7 @@
 			'sharing:this' => "Share this",
 			'sharing:bookmarklet' => "Get bookmarklet",
 			'sharing:inbox' => "Shares inbox",
-	
+			'sharing:shareditem' => "Shared item",
 			'sharing:with' => "Share with",
 	
 			'sharing:address' => "Address of the resource to share",
