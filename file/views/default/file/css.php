@@ -166,13 +166,14 @@ p.filerepo_owner {
 
 /* file repro gallery items */
 
-/* temp fix for gallery img width size */
+/* temp fix for gallery img width size 
 .search_gallery_item .filerepo_gallery_item img {
 	width:169px;
 	height:169px;
 	margin:0;
 	padding:0;
 }
+*/
 .search_gallery .filerepo_controls {
 	padding:0;
 }
