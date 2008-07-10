@@ -19,20 +19,25 @@
 			// Set up menu for logged in users
 				if (isloggedin()) {
 					add_menu(elgg_echo('sharing'), $CONFIG->wwwroot . "pg/sharing/",array(
-						menu_item(elgg_echo('sharing:add'),$CONFIG->wwwroot."mod/sharing/add.php"),
-						// menu_item(elgg_echo('sharing:this'),$CONFIG->wwwroot."mod/sharing/add.php?address=previous"),
-						menu_item(elgg_echo('sharing:this'),"javascript:location.href='". $CONFIG->wwwroot . "mod/sharing/add.php?address='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title)"),
-						menu_item(elgg_echo('sharing:read'),$CONFIG->wwwroot."pg/sharing/" . $_SESSION['user']->username),
 						menu_item(elgg_echo('sharing:inbox'),$CONFIG->wwwroot."pg/sharing/" . $_SESSION['user']->username . "/inbox"),
 						menu_item(elgg_echo('sharing:friends'),$CONFIG->wwwroot."pg/sharing/" . $_SESSION['user']->username . "/friends"),
 						menu_item(elgg_echo('sharing:everyone'),$CONFIG->wwwroot."mod/sharing/everyone.php"),
-						menu_item(elgg_echo('sharing:bookmarklet'),$CONFIG->wwwroot."mod/sharing/bookmarklet.php"),
+						menu_item(elgg_echo('sharing:this'),"javascript:location.href='". $CONFIG->wwwroot . "mod/sharing/add.php?address='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title)"),
 					));
 			// And for logged out users
 				} else {
 					add_menu(elgg_echo('sharing'), $CONFIG->wwwroot . "mod/sharing/everyone.php",array(
 						menu_item(elgg_echo('sharing:everyone'),$CONFIG->wwwroot."mod/sharing/everyone.php"),
 					));
+				}
+
+			//add submenu options
+				if (get_context() == "sharing") {
+					add_submenu_item(elgg_echo('sharing:inbox'),$CONFIG->wwwroot."pg/sharing/" . $_SESSION['user']->username . "/inbox");
+					add_submenu_item(elgg_echo('sharing:read'),$CONFIG->wwwroot."pg/sharing/" . $_SESSION['user']->username);
+					add_submenu_item(elgg_echo('sharing:bookmarklet'), $CONFIG->wwwroot . "mod/sharing/bookmarklet.php");
+					add_submenu_item(elgg_echo('sharing:friends'),$CONFIG->wwwroot."pg/sharing/" . $_SESSION['user']->username . "/friends");
+					add_submenu_item(elgg_echo('sharing:everyone'),$CONFIG->wwwroot."mod/sharing/everyone.php");
 				}
 				
 			// Register a page handler, so we can have nice URLs

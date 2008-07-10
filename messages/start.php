@@ -29,15 +29,11 @@
 			// Load the language file
 				register_translations($CONFIG->pluginspath . "messages/languages/");
 				
-			// Menu options
-				if (isloggedin()) {
-		
-					add_menu(elgg_echo('messages'), $CONFIG->wwwroot . "pg/messages/",array(
-						menu_item(elgg_echo('messages:inbox'),$CONFIG->wwwroot."pg/messages/" . $_SESSION['user']->username),
-						menu_item(elgg_echo('messages:send'),$CONFIG->wwwroot."mod/messages/send.php"),
-						menu_item(elgg_echo('messages:sent'),$CONFIG->wwwroot."mod/messages/sent.php"),
-					));
-			
+			//add submenu options
+				if (get_context() == "messages") {
+					add_submenu_item("Inbox", $CONFIG->wwwroot . "pg/messages/" . $_SESSION['user']->username);
+					add_submenu_item("Compose a message", $CONFIG->wwwroot . "mod/messages/send.php");
+					add_submenu_item("Sent messages", $CONFIG->wwwroot . "mod/messages/sent.php");
 				}
 				
 			// Extend system CSS with our own styles, which are defined in the shouts/css view
