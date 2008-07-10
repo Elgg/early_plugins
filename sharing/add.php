@@ -16,7 +16,7 @@
 	// You need to be logged in for this one
 		gatekeeper();
 		
-		$body = elgg_view_title(elgg_echo('sharing:add'));
+		$body = elgg_view_title(elgg_echo('sharing:add'), false);
 		
 	// If we've been given a share to edit, grab it
 		if ($guid = get_input('share',0)) {

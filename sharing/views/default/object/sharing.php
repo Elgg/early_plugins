@@ -60,7 +60,7 @@
 	} else {
 
 ?>
-	<?php echo elgg_view_title(elgg_echo('sharing:shareditem')); ?>
+	<?php echo elgg_view_title(elgg_echo('sharing:shareditem'), false); ?>
 	<div class="sharing_item">
 	
 		<div class="sharing_item_title">
