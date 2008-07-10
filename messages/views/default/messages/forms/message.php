@@ -32,7 +32,7 @@
     	        $user = get_user($send_to);
     	        
     	        //draw it
-    			echo "<label>" . elgg_echo("messages:to") . "</label>" . elgg_view("profile/icon",array('entity' => $user, 'size' => 'tiny')) . $user->username;
+    			echo "<label>" . elgg_echo("messages:to") . ":</label>" . elgg_view("profile/icon",array('entity' => $user, 'size' => 'tiny')) . $user->username;
     			
     			//set the hidden input field to the recipients guid
     	        echo "<input type=\"hidden\" name=\"send_to\" value=\"{$send_to}\" />";
@@ -42,7 +42,7 @@
     	            
         ?>
     	   		
-            <p><label><?php echo elgg_echo("messages:to"); ?>: </p>
+            <p><label><?php echo elgg_echo("messages:to"); ?>: </label>
     	    <select name='send_to'>
     	    <?php 
     			    
@@ -54,7 +54,7 @@
     		    }
     		        
             ?>
-    		</select>
+    		</select></p>
     		    
         <?php
     		
