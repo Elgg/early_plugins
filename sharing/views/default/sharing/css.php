@@ -86,7 +86,14 @@
 	line-height: 1.2em;
 }
 
-
+/* timestamp and user info in gallery and list view */
+.search_listing_info .shares_gallery_user,
+.share_gallery_info .shares_gallery_user,
+.share_gallery_info .shares_gallery_comments {
+	color:#666666;
+	margin:0;
+	font-size: 90%;	
+}
 
 
 
