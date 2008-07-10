@@ -49,7 +49,6 @@
 		// Before we can set metadata, we need to save the blog post
 				if (!$blog->save()) {
 					register_error(elgg_echo("blog:error"));
-					system_message(var_export($blog,true));
 					forward("mod/blog/edit.php?blogpost=" . $guid);
 				}
 		// Now let's add tags. We can pass an array directly to the object property! Easy.

@@ -38,7 +38,7 @@
 	if ($result)
 		system_message(elgg_echo("file:saved"));
 	else
-		system_message(elgg_echo("file:uploadfailed"));
+		register_error(elgg_echo("file:uploadfailed"));
 	
 	forward($CONFIG->wwwroot . "pg/file/" . $_SESSION['user']->username);
 ?>

@@ -31,5 +31,5 @@
 		exit;
 	}
 	else
-		system_message(elgg_echo("file:downloadfailed"));
+		register_error(elgg_echo("file:downloadfailed"));
 ?>

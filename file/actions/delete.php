@@ -43,20 +43,20 @@
 				}
 				
 				if (!$file->delete()) {
-					system_message(elgg_echo("file:deletefailed"));
+					register_error(elgg_echo("file:deletefailed"));
 				} else {
 					system_message(elgg_echo("file:deleted"));
 				}
 
 			} else {
 				
-				system_message(elgg_echo("file:deletefailed"));
+				register_error(elgg_echo("file:deletefailed"));
 				
 			}
 
 		} else {
 			
-			system_message(elgg_echo("file:deletefailed"));
+			register_error(elgg_echo("file:deletefailed"));
 			
 		}
 		

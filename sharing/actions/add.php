@@ -60,7 +60,7 @@
 			system_message(elgg_echo('sharing:save:success'));
 			forward($entity->getURL());
 		} else {
-			system_message(elgg_echo('sharing:save:failed'));
+			register_error(elgg_echo('sharing:save:failed'));
 			forward("pg/sharing");
 		}
 

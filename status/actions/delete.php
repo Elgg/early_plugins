@@ -28,7 +28,7 @@
 		// Success message
 					system_message(elgg_echo("status:deleted"));
 				} else {
-					system_message(elgg_echo("status:notdeleted"));
+					register_error(elgg_echo("status:notdeleted"));
 				}
 		// Forward to the main status page
 				forward("mod/status/?username=" . $owner->username);

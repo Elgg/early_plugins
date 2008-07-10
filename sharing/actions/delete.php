@@ -26,7 +26,7 @@
 			
 		}
 		
-		system_message(elgg_echo("sharing:delete:failed"));
+		register_error(elgg_echo("sharing:delete:failed"));
 		forward("pg/sharing/");
 
 ?>

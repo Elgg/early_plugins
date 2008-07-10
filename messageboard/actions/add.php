@@ -43,7 +43,7 @@
 					
 				} else {
     				
-					system_message(elgg_echo("messageboard:failure"));
+					register_error(elgg_echo("messageboard:failure"));
 					
 				}
 				
@@ -52,7 +52,7 @@
 				
 		} else {
 		
-			system_message(elgg_echo("messageboard:blank"));
+			register_error(elgg_echo("messageboard:blank"));
 			
 			//set the url to return the user to the correct message board
 			$url = "pg/messageboard/" . $user->username;

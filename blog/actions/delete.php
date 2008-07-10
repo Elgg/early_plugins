@@ -28,7 +28,7 @@
 		// Success message
 					system_message(elgg_echo("blog:deleted"));
 				} else {
-					system_message(elgg_echo("blog:notdeleted"));
+					register_error(elgg_echo("blog:notdeleted"));
 				}
 		// Forward to the main blog page
 				forward("mod/blog/?username=" . $owner->username);
