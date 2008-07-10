@@ -8,7 +8,7 @@
 	
 			'sharing' => "Sharing",
 			'sharing:add' => "Share something",
-			'sharing:read' => "Things you've shared",
+			'sharing:read' => "Shared items",
 			'sharing:friends' => "Your friends' shares",
 			'sharing:everyone' => "All site shares",
 			'sharing:this' => "Share this",
