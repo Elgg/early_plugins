@@ -9,7 +9,7 @@
 			'sharing' => "Sharing",
 			'sharing:add' => "Share something",
 			'sharing:read' => "Shared items",
-			'sharing:friends' => "Your friends' shares",
+			'sharing:friends' => "Friends' shares",
 			'sharing:everyone' => "All site shares",
 			'sharing:this' => "Share this",
 			'sharing:bookmarklet' => "Get bookmarklet",
