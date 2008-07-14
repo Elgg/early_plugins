@@ -22,7 +22,7 @@
 
 	//set blog title
 		if($page_owner == $_SESSION['user']){
-			$area1 = elgg_view_title(elgg_echo('blog:read'));
+			$area1 = elgg_view_title(elgg_echo('blog:your'));
 		}else{
 			$area1 = elgg_view_title($page_owner->username . "'s " . elgg_echo('blog'));
 		}

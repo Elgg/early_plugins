@@ -7,10 +7,12 @@
 		 */
 	
 			'blog' => "Blog",
+			'blogs' => "Blogs",
 			'blog:user' => "%s's blog",
+			'blog:your' => "Your blog",
 			'blog:posttitle' => "%s's blog: %s",
-			'blog:friends' => "Your friends' posts",
-			'blog:everyone' => "All blog posts",
+			'blog:friends' => "Friends' blogs",
+			'blog:everyone' => "All blogs",
 	
 			'blog:read' => "Read blog",
 	
