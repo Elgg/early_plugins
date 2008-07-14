@@ -99,4 +99,7 @@ MESSAGING PLUGIN
     font-size: 120%;
 }
 
+.new_messages_count {
+	color:#666666;
+}
 
