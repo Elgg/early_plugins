@@ -34,7 +34,7 @@
 			//add submenu options
 				if (get_context() == "sharing") {
 					add_submenu_item(elgg_echo('sharing:inbox'),$CONFIG->wwwroot."pg/sharing/" . $_SESSION['user']->username . "/inbox");
-					add_submenu_item(elgg_echo('sharing:read'),$CONFIG->wwwroot."pg/sharing/" . $_SESSION['user']->username);
+					add_submenu_item(elgg_echo('sharing:read'),$CONFIG->wwwroot."pg/sharing/" . $_SESSION['user']->username . "/items");
 					add_submenu_item(elgg_echo('sharing:bookmarklet'), $CONFIG->wwwroot . "mod/sharing/bookmarklet.php");
 					add_submenu_item(elgg_echo('sharing:friends'),$CONFIG->wwwroot."pg/sharing/" . $_SESSION['user']->username . "/friends");
 					add_submenu_item(elgg_echo('sharing:everyone'),$CONFIG->wwwroot."mod/sharing/everyone.php");
@@ -76,6 +76,8 @@
 					case "friends":		@include(dirname(__FILE__) . "/friends.php");
 										break;
 					case "inbox":		@include(dirname(__FILE__) . "/inbox.php");
+										break;
+					case "items":		@include(dirname(__FILE__) . "/index.php");
 										break;
 				}
 			// If the URL is just 'sharing/username', or just 'sharing/', load the standard share index
