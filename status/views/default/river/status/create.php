@@ -12,7 +12,9 @@
 	 * @uses $vars['entity'] Optionally, the status message to view
 	 */
 
-	$performed_by = $vars['performed_by'];
+	$statement = $vars['statement'];
+	$performed_by = $statement->getSubject();
+	$object = $statement->getObject();
 	
 	//set the required url to the user who carried out the action
 	$url = "<a href=\"{$performed_by->getURL()}\">{$performed_by->name}</a>";
@@ -21,7 +23,7 @@
 	$string = sprintf(elgg_echo("status:river:created"),$url) . " ";
 	
 	//add the url and message to the output
-	$string .= "<a href=\"" . $vars['entity']->getURL() . "\">" . elgg_echo("status:river:create") . "</a>";
+	$string .= "<a href=\"" . $object->getURL() . "\">" . elgg_echo("status:river:create") . "</a>";
 
 ?>
 

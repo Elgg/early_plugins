@@ -1,10 +1,12 @@
 <?php
 
-	$performed_by = $vars['performed_by'];
+	$statement = $vars['statement'];
+	$performed_by = $statement->getSubject();
+	$object = $statement->getObject();
 	
 	$url = "<a href=\"{$performed_by->getURL()}\">{$performed_by->name}</a>";
 	$string = sprintf(elgg_echo("sharing:river:annotate"),$url) . " ";
-	$string .= "<a href=\"" . $vars['entity']->getURL() . "\">" . elgg_echo("sharing:river:item") . "</a>";
+	$string .= "<a href=\"" . $object->getURL() . "\">" . elgg_echo("sharing:river:item") . "</a>";
 
 ?>
 
