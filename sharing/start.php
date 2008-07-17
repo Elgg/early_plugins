@@ -19,6 +19,7 @@
 			// Set up menu for logged in users
 				if (isloggedin()) {
 					add_menu(elgg_echo('sharing'), $CONFIG->wwwroot . "pg/sharing/",array(
+						menu_item(elgg_echo('sharing:read'),$CONFIG->wwwroot."pg/sharing/" . $_SESSION['user']->username . "/items"),
 						menu_item(elgg_echo('sharing:inbox'),$CONFIG->wwwroot."pg/sharing/" . $_SESSION['user']->username . "/inbox"),
 						menu_item(elgg_echo('sharing:friends'),$CONFIG->wwwroot."pg/sharing/" . $_SESSION['user']->username . "/friends"),
 						menu_item(elgg_echo('sharing:everyone'),$CONFIG->wwwroot."mod/sharing/everyone.php"),
