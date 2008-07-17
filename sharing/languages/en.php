@@ -6,26 +6,26 @@
 		 * Menu items and titles
 		 */
 	
-			'sharing' => "Sharing",
-			'sharing:add' => "Share something",
-			'sharing:read' => "Shared items",
-			'sharing:friends' => "Friends' shares",
-			'sharing:everyone' => "All site shares",
-			'sharing:this' => "Share this",
+			'sharing' => "Bookmarks",
+			'sharing:add' => "Bookmark something",
+			'sharing:read' => "Bookmarked items",
+			'sharing:friends' => "Friends' bookmarks",
+			'sharing:everyone' => "All site bookmarks",
+			'sharing:this' => "Bookmark this",
 			'sharing:bookmarklet' => "Get bookmarklet",
-			'sharing:inbox' => "Shares inbox",
-			'sharing:shareditem' => "Shared item",
+			'sharing:inbox' => "Bookmarks inbox",
+			'sharing:shareditem' => "Bookmarked item",
 			'sharing:with' => "Share with",
 	
-			'sharing:address' => "Address of the resource to share",
+			'sharing:address' => "Address of the resource to bookmark",
 	
 			'sharing:delete:confirm' => "Are you sure you want to delete this resource?",
 	
-			'sharing:shared' => "Shared",
+			'sharing:shared' => "Bookmarked",
 			'sharing:visit' => "Visit resource",
-			'sharing:recent' => "Recent shares",
+			'sharing:recent' => "Recent bookmarks",
 	
-			'sharing:river:created' => '%s shared',
+			'sharing:river:created' => '%s bookmarked',
 			'sharing:river:annotate' => '%s commented on',
 			'sharing:river:item' => 'an item',
 	
@@ -35,7 +35,7 @@
 		 */
 		    
 		    'sharing:widget:description' => 
-		            "This widget is designed for your dashboard and will show you the latests items in your shares inbox.",
+		            "This widget is designed for your dashboard and will show you the latests items in your bookmarks inbox.",
 	
 			'sharing:bookmarklet:description' =>
 					"The sharing bookmarklet allows you to share any resource you find on the web with your friends, or just bookmark it for yourself. To use it, simply drag the following button to your browser's links bar:",
@@ -47,15 +47,15 @@
 		 * Status messages
 		 */
 	
-			'sharing:save:success' => "Your item was successfully shared.",
-			'sharing:delete:success' => "Your shared item was successfully deleted.",
+			'sharing:save:success' => "Your item was successfully bookmarked.",
+			'sharing:delete:success' => "Your bookmarked item was successfully deleted.",
 	
 		/**
 		 * Error messages
 		 */
 	
-			'sharing:save:failed' => "Your shared item could not be saved. Please try again.",
-			'sharing:delete:failed' => "Your shared item could not be deleted. Please try again.",
+			'sharing:save:failed' => "Your bookmarked item could not be saved. Please try again.",
+			'sharing:delete:failed' => "Your bookmarked item could not be deleted. Please try again.",
 	
 	
 	);
