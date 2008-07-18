@@ -59,13 +59,11 @@
 			</p>
 			
 			<!-- display the actual blog post -->
-			<p>
 				<?php
 			
 							echo autop($vars['entity']->description);
 				
 				?>
-			</p>
 			
 			<!-- display tags -->
 			<p class="tags">
