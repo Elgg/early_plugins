@@ -13,11 +13,30 @@
 	
 		function friends_init() {
     		
+    		// Load system configuration
+				global $CONFIG;
+				
+			// Load the language file
+				register_translations($CONFIG->pluginspath . "friends/languages/");
+    		
+    		//add submenu options
+				if (get_context() == "friends" || get_context() == "friendsof") {
+					add_submenu_item(elgg_echo('friends'),$CONFIG->wwwroot."pg/friends/" . $_SESSION['user']->username);
+					add_submenu_item(elgg_echo('friends:of'),$CONFIG->wwwroot."pg/friendsof/" . $_SESSION['user']->username);
+					add_submenu_item(elgg_echo('friends:collections'), $CONFIG->wwwroot . "mod/friends/collections.php");
+					add_submenu_item(elgg_echo('friends:new'),$CONFIG->wwwroot."mod/friends/edit.php");
+				}
+    		
     		//add a widget
 			    add_widget_type('friends',"Friends","Display some of your friends.");
 			
 		}
 		
 		register_elgg_event_handler('init','system','friends_init');
+		
+		// Register actions
+		global $CONFIG;
+		register_action('friends/addcollection',false,$CONFIG->pluginspath . "friends/actions/addcollection.php");
+		register_action('friends/deletecollection',false,$CONFIG->pluginspath . "friends/actions/deletecollection.php");
 
 ?>
