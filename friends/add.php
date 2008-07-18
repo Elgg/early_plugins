@@ -16,18 +16,9 @@
 	// You need to be logged in for this one
 		gatekeeper();
 		
-		//set the title
-		$body = elgg_view_title(elgg_echo('friends:collectionedit'), false);
+		$body = elgg_view_title(elgg_echo('friends:new'), false);
 		
-		//grab the collection id passed to the edit form
-		$collection_id = get_input('collection');
-		
-		//get the full collection
-		$collection = get_access_collection($collection_id);
-		//get all members of the collection
-		$collection_members = get_members_of_access_collection($collection_id);
-		
-	    $body .= elgg_view('friends/forms/edit', array('collection' => $collection, 'collection_members' => $collection_members));
+	    $body .= elgg_view('friends/forms/edit');
 		
 	// Format page
 		$body = elgg_view_layout('one_column',$body);

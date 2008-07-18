@@ -19,7 +19,7 @@
         	
         	//as collections are private, check that the logged in user is the owner
         	if($coll->owner_guid == $_SESSION['user']->getGUID())
-        	    echo " (<a href=\"\">" . elgg_echo('edit') . "</a>) (<a href=\"" . $vars['url'] . "action/friends/deletecollection?collection={$coll->id}\">" . elgg_echo('delete') . "</a>)<br />";
+        	    echo " (<a href=\"" . $vars['url'] . "mod/friends/edit.php?collection={$coll->id}\">" . elgg_echo('edit') . "</a>) (<a href=\"" . $vars['url'] . "action/friends/deletecollection?collection={$coll->id}\">" . elgg_echo('delete') . "</a>)<br />";
         	
         	if($members = get_members_of_access_collection($coll->id)){
         	    foreach($members as $mem){

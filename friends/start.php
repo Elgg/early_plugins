@@ -24,7 +24,7 @@
 					add_submenu_item(elgg_echo('friends'),$CONFIG->wwwroot."pg/friends/" . $_SESSION['user']->username);
 					add_submenu_item(elgg_echo('friends:of'),$CONFIG->wwwroot."pg/friendsof/" . $_SESSION['user']->username);
 					add_submenu_item(elgg_echo('friends:collections'), $CONFIG->wwwroot . "mod/friends/collections.php");
-					add_submenu_item(elgg_echo('friends:new'),$CONFIG->wwwroot."mod/friends/edit.php");
+					add_submenu_item(elgg_echo('friends:new'),$CONFIG->wwwroot."mod/friends/add.php");
 				}
     		
     		//add a widget
@@ -38,5 +38,6 @@
 		global $CONFIG;
 		register_action('friends/addcollection',false,$CONFIG->pluginspath . "friends/actions/addcollection.php");
 		register_action('friends/deletecollection',false,$CONFIG->pluginspath . "friends/actions/deletecollection.php");
-
+        register_action('friends/editcollection',false,$CONFIG->pluginspath . "friends/actions/editcollection.php");
+        
 ?>

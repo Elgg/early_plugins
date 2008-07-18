@@ -11,28 +11,21 @@
 	 * 
 	 * @uses $vars['object'] Optionally, the collection edit
 	 */
-
+	 
+	// var_export($vars['collection'][0]->id);
+ 
 	// Set title, form destination
-		if (isset($vars['entity'])) {
-			$title = sprintf(elgg_echo("friends:edit"),$object->title);
-			$action = "friends/edit";
-			$title = $vars['entity']->title;
-			$body = $vars['entity']->description;
-			$tags = $vars['entity']->tags;
+		if (isset($vars['collection'])) {
+			$action = "friends/editcollection";
+			$title = $vars['collection'][0]->name;
 		} else  {
-			$title = elgg_echo("friends:add");
 			$action = "friends/addcollection";
-			$tags = "";
 			$title = "";
-			$description = "";
 	    }
 
 ?>
 
-	<h2>
-		<?php echo $title; ?>
-	</h2>
-	<form action="<?php echo $vars['url']; ?>action/<?php echo $action; ?>" method="post">
+	<form action="" method="post">
 		<p>
 			<label><?php echo elgg_echo("friends:collectionname"); ?><br />
 			<?php
@@ -46,6 +39,19 @@
 			</label>
 		</p>
 		<p>
+		<?php
+		    if($vars['collection_members']){
+    		    echo elgg_echo("friends:collectionfriends") . "<br />";
+        	    foreach($vars['collection_members'] as $mem){
+            	    
+            	   echo elgg_view("profile/icon",array('entity' => $mem, 'size' => 'tiny'));
+            	   echo $mem->name;
+  
+        	    }
+    	    }
+    	?>
+    	</p>
+		<p>
 			<label><?php echo elgg_echo("friends:addfriends"); ?><br />
 			<?php
 
@@ -57,8 +63,8 @@
 		<p>
 			<?php
 
-				if (isset($vars['entity'])) {
-					?><input type="hidden" name="collection" value="<?php echo $vars['entity']->getGUID(); ?>" /><?php
+				if (isset($vars['collection'])) {
+					?><input type="hidden" name="collection_id" value="<?php echo $vars['collection'][0]->id; ?>" /><?php
 				}
 			
 			?>
