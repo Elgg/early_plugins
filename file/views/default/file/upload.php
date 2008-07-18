@@ -91,6 +91,8 @@
 		<p>
 			<?php
 
+				if (isset($vars['container_guid']))
+					echo "<input type=\"hidden\" name=\"container_guid\" value=\"{$vars['container_guid']}\" />";
 				if (isset($vars['entity']))
 					echo "<input type=\"hidden\" name=\"file_guid\" value=\"{$vars['entity']->getGUID()}\" />";
 			

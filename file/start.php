@@ -46,12 +46,6 @@
 				menu_item(elgg_echo('file:upload'), $CONFIG->wwwroot . "pg/file/". $_SESSION['user']->username . "/new/")
 			));
 		}
-		else
-		{
-			add_menu(elgg_echo('file'), $CONFIG->wwwroot . "pg/file/" . $_SESSION['user']->username . "/", array(
-				menu_item(elgg_echo('file:all'), $CONFIG->wwwroot . "pg/file/". $_SESSION['user']->username . "/world/"),
-			));
-		}
 		
 		// Extend CSS
 		extend_view('css', 'file/css');

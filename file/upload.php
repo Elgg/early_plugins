@@ -8,11 +8,14 @@
 	 * @link http://elgg.com/
 	 */
 
+	require_once(dirname(dirname(dirname(__FILE__))) . "/engine/start.php");
+
 	gatekeeper();
 
 	// Render the file upload page
-	
-	$body = elgg_view_layout('one_column', elgg_view("file/upload"));
+
+	$container_guid = (int) get_input('container_guid', $_SESSION['guid']);
+	$body = elgg_view_layout('one_column', elgg_view("file/upload", array('container_guid' => $container_guid)));
 	
 	page_draw(elgg_echo("file:upload"), $body);
 	

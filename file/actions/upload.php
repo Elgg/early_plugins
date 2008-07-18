@@ -15,6 +15,7 @@
 	$desc = get_input("description");
 	$tags = get_input("tags");
 	$access_id = (int) get_input("access_id");
+	$container_guid = (int) get_input('container_guid', 0);
 	
 	// Extract file from, save to default filestore (for now)
 	$prefix = "file/";
@@ -35,13 +36,15 @@
 	
 	$file->title = $title;
 	$file->description = $desc;
+	if ($container_guid)
+		$file->container_guid = $container_guid;
 	
 	// Save tags
 	$tags = explode(",", $tags);
 	$file->tags = $tags;
 	
 	$file->simpletype = get_general_file_type($_FILES['upload']['type']);
-
+	
 	$result = $file->save();
 
 	
@@ -86,5 +89,9 @@
 	else
 		register_error(elgg_echo("file:uploadfailed"));
 		
-	forward($CONFIG->wwwroot . "pg/file/" . $_SESSION['user']->username);
+	if ($container_guid == $_SESSION['guid']) {
+		forward($CONFIG->wwwroot . "pg/file/" . $_SESSION['user']->username);
+	} else {
+		forward($CONFIG->wwwroot . "pg/file/mod/index.php?owner_guid=" . $container_guid);
+	}
 ?>
