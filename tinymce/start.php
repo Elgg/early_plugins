@@ -13,6 +13,9 @@
 			
 	    // Load system configuration
 		    global $CONFIG;
+		    
+         // Add our CSS
+				extend_view('css','tinymce/css');
 				
      }
      
