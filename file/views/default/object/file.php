@@ -112,7 +112,7 @@
 				<small><?php echo $friendlytime; ?></small></p>
 		</div>
 		</div>
-		<div class="filerepo_description"><p><?php echo nl2br($desc); ?></p></div>
+		<div class="filerepo_description"><p><?php echo autop($desc); ?></p></div>
 		<div class="filerepo_tags"><div class="object_tag_string"><?php
 
 					echo elgg_view('output/tags',array('value' => $tags));

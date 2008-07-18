@@ -76,7 +76,7 @@
 		</div>
 		<div class="sharing_item_description">
 			<p>
-				<?php echo nl2br($vars['entity']->description); ?>
+				<?php echo autop($vars['entity']->description); ?>
 			</p>
 		</div>
 		<div class="sharing_item_tags">

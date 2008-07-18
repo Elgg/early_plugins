@@ -62,7 +62,7 @@
 			<p>
 				<?php
 			
-							echo nl2br($vars['entity']->description);
+							echo autop($vars['entity']->description);
 				
 				?>
 			</p>
