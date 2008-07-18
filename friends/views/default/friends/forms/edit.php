@@ -25,7 +25,7 @@
 
 ?>
 
-	<form action="" method="post">
+	<form action="<?php echo $vars['url']; ?>action/<?php echo $action; ?>" method="post">
 		<p>
 			<label><?php echo elgg_echo("friends:collectionname"); ?><br />
 			<?php
