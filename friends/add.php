@@ -16,7 +16,7 @@
 	// You need to be logged in for this one
 		gatekeeper();
 		
-		$body = elgg_view_title(elgg_echo('friends:new'), false);
+		$body = elgg_view_title(elgg_echo('friends:new'));
 		
 	    $body .= elgg_view('friends/forms/edit');
 		
