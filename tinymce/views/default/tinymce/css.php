@@ -8,18 +8,10 @@ strong {
     font-weight:bold;
 }
 
-ol, ul {
-	list-style: bullet;
+ul {
+   list-style: disc;
 }
 
-ul li {
-    list-style:normal;
-    margin:0;
-    display:normal;
-}
-
-ol li {
-    list-style:normal;
-    margin:0;
-    display:normal;
+ol {
+  list-style: decimal;
 }
