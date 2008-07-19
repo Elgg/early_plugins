@@ -61,7 +61,7 @@ $(document).ready(function(){
     
     <!-- menu options -->
     <div id="messageboard_widget_menu">
-        <a href="<?php echo $vars['url']; ?>pg/messageboard/<?php echo get_user(page_owner())->username; ?>">view all</a> | <a href="">share a link</a> | <a href="">attach media</a>
+        <a href="<?php echo $vars['url']; ?>pg/messageboard/<?php echo get_user(page_owner())->username; ?>">view all</a> | share a link | attach media
     </div>
     
     <!-- loading graphic -->

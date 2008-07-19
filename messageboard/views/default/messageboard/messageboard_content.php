@@ -27,7 +27,7 @@
     </p>
     		
 	<!-- output the actual comment -->
-	<p class="message"><?php echo elgg_view("output/longtext",array("value" => $vars['annotation']->value)); ?></p>
+	<div class="message"><?php echo elgg_view("output/longtext",array("value" => $vars['annotation']->value)); ?></div>
 		    
 	<?php
                

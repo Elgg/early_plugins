@@ -20,8 +20,9 @@
     // Get any annotations for their message board
 		$contents = $entity->getAnnotations('messageboard', 50, 0, 'desc');
 	
-    // Get the content to display	
-		$area1 = elgg_view("messageboard/forms/add");
+    // Get the content to display
+        $area1 = elgg_view_title("MessageBoard");
+		$area1 .= elgg_view("messageboard/forms/add");
 		$area1 .= elgg_view("messageboard/messageboard", array('annotation' => $contents));
 	    
 		
