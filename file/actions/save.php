@@ -18,9 +18,16 @@
 	
 	$guid = (int) get_input('file_guid');
 	
-	$file = get_entity($guid);
+	if (!$file = get_entity($guid)) {
+		register_error(elgg_echo("file:uploadfailed"));
+		forward($CONFIG->wwwroot . "pg/file/" . $_SESSION['user']->username);
+		exit;
+	}
 	
 	$result = false;
+	
+	$container_guid = $file->container_guid;
+	$container = get_entity($container_guid);
 	
 	if ($file->canEdit()) {
 	
@@ -40,5 +47,5 @@
 	else
 		register_error(elgg_echo("file:uploadfailed"));
 	
-	forward($CONFIG->wwwroot . "pg/file/" . $_SESSION['user']->username);
+	forward($CONFIG->wwwroot . "pg/file/" . $container->username);
 ?>

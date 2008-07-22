@@ -16,6 +16,8 @@
 	$tags = get_input("tags");
 	$access_id = (int) get_input("access_id");
 	$container_guid = (int) get_input('container_guid', 0);
+	if (!$container_guid)
+		$container_guid == $_SESSION['user']->getGUID();
 	
 	// Extract file from, save to default filestore (for now)
 	$prefix = "file/";
@@ -89,9 +91,8 @@
 	else
 		register_error(elgg_echo("file:uploadfailed"));
 		
-	if ($container_guid == $_SESSION['guid']) {
-		forward($CONFIG->wwwroot . "pg/file/" . $_SESSION['user']->username);
-	} else {
-		forward($CONFIG->wwwroot . "pg/file/mod/index.php?owner_guid=" . $container_guid);
-	}
+	$container_user = get_entity($container_guid);
+	
+	forward($CONFIG->wwwroot . "pg/file/" . $container_user->username);
+
 ?>

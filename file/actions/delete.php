@@ -14,6 +14,8 @@
 
 			if ($file->canEdit()) {
 
+				$container = get_entity($file->container_guid);
+				
 				$thumbnail = $file->thumbnail;
 				$smallthumb = $file->smallthumb;
 				$largethumb = $file->largethumb;
@@ -50,6 +52,7 @@
 
 			} else {
 				
+				$container = $_SESSION['user'];
 				register_error(elgg_echo("file:deletefailed"));
 				
 			}

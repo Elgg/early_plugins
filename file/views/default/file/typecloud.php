@@ -13,6 +13,12 @@
 			<ul>
 <?php
 
+		if (can_write_to_container($vars['user']->getGUID(),page_owner())) {
+?>
+				<li><a href="<?php echo $vars['url']; ?>mod/file/upload.php?container_guid=<?php echo page_owner(); ?>"><?php echo elgg_echo('file:upload'); ?></a></li>
+<?php
+		}
+
 		$all = new stdClass;
 		$all->tag = "all";
 		$vars['types'][] = $all;
