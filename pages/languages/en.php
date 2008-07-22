@@ -68,7 +68,7 @@
 			'pages:sidebar:parent' => "Parent",
 	
 			'pages:newchild' => "Create child of this page",
-			'pages:backtoparent' => "Back to parent",
+			'pages:backtoparent' => "Back to '%s'",
 	);
 					
 	add_translation("en",$english);

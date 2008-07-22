@@ -13,9 +13,10 @@
 	$entity = $vars['entity'];
 	
 	
-?>
+?><?php if ($entity->canEdit()) { ?>
 <div>
 	<p>
 		<a href="<?php echo $CONFIG->url . "pg/pages/new/?parent_guid=" . $entity->guid; ?>"><?php echo elgg_echo('pages:newchild') ?></a>
 	</p>
 </div>
+<?php } ?>

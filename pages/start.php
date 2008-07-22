@@ -102,8 +102,9 @@
     				if (isset($page[1]))
     					set_input('page_guid', $page[1]);
     					
+    				 $entity = get_entity($page[1]);
     				 add_submenu_item(elgg_echo('pages:label:view'), $CONFIG->url . "pg/pages/view/{$page[1]}");
-    				 add_submenu_item(elgg_echo('pages:label:edit'), $CONFIG->url . "pg/pages/edit/{$page[1]}");
+    				 if (($entity) && ($entity->canEdit())) add_submenu_item(elgg_echo('pages:label:edit'), $CONFIG->url . "pg/pages/edit/{$page[1]}");
     				 add_submenu_item(elgg_echo('pages:label:history'), $CONFIG->url . "pg/pages/history/{$page[1]}");
 
     				include($CONFIG->pluginspath . "pages/edit.php");
@@ -113,20 +114,22 @@
     				if (isset($page[1]))
     					set_input('page_guid', $page[1]);
     					
+    				 $entity = get_entity($page[1]);
     				 add_submenu_item(elgg_echo('pages:label:view'), $CONFIG->url . "pg/pages/view/{$page[1]}");
-    				 add_submenu_item(elgg_echo('pages:label:edit'), $CONFIG->url . "pg/pages/edit/{$page[1]}");
+    				 if (($entity) && ($entity->canEdit())) add_submenu_item(elgg_echo('pages:label:edit'), $CONFIG->url . "pg/pages/edit/{$page[1]}");
     				 add_submenu_item(elgg_echo('pages:label:history'), $CONFIG->url . "pg/pages/history/{$page[1]}");
-    		
+    					
     				include($CONFIG->pluginspath . "pages/view.php");
     			break;   
     			case "history" :
     				if (isset($page[1]))
     					set_input('page_guid', $page[1]);
     					
+    				 $entity = get_entity($page[1]);
     				 add_submenu_item(elgg_echo('pages:label:view'), $CONFIG->url . "pg/pages/view/{$page[1]}");
-    				 add_submenu_item(elgg_echo('pages:label:edit'), $CONFIG->url . "pg/pages/edit/{$page[1]}");
+    				 if (($entity) && ($entity->canEdit())) add_submenu_item(elgg_echo('pages:label:edit'), $CONFIG->url . "pg/pages/edit/{$page[1]}");
     				 add_submenu_item(elgg_echo('pages:label:history'), $CONFIG->url . "pg/pages/history/{$page[1]}");
-
+    					
     				include($CONFIG->pluginspath . "pages/history.php");
     			break; 				
     			default:
@@ -166,6 +169,31 @@
 		return $body;
 	}
 	
+	/**
+	 * Extend permissions checking to extend can-edit for write users.
+	 *
+	 * @param unknown_type $hook
+	 * @param unknown_type $entity_type
+	 * @param unknown_type $returnvalue
+	 * @param unknown_type $params
+	 */
+	function pages_write_permission_check($hook, $entity_type, $returnvalue, $params)
+	{
+		$write_permission = $params['entity']->write_access_id;
+		$user = $params['user'];
+				
+		if (($write_permission) && ($user))
+		{
+			$list = get_write_access_array($user->guid);
+				
+			if (($write_permission!=0) && (isset($list[$write_permission])))
+				return true;
+			
+		}
+	}
+	
+	// write permission plugin hook
+	register_plugin_hook('permissions_check', 'object', 'pages_write_permission_check');
 	
 	// Make sure the pages initialisation function is called on initialisation
 	register_elgg_event_handler('init','system','pages_init');

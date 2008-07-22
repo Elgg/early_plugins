@@ -16,6 +16,6 @@
 ?>
 <div>
 	<p>
-		<a href="<?php echo $entity->getURL(); ?>"><?php echo elgg_echo('pages:backtoparent') ?></a>
+		<a href="<?php echo $entity->getURL(); ?>"><?php echo sprintf(elgg_echo('pages:backtoparent'), $entity->title) ?></a>
 	</p>
 </div>

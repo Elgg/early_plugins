@@ -9,10 +9,10 @@
 	 * @link http://elgg.com/
 	 */
 
-	$content = $vars['content'];	
+	$content = trim($vars['content']);	
 	$title = $vars['title'];
 ?>
-<?php if ($title) { ?>
+<?php if (($title) && ($content)) { ?>
 <div id="sidebar_group_title"><h2><?php echo $title; ?></h2></div>
 <?php } ?>
 <div id="sidebar_group">
