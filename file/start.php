@@ -52,6 +52,7 @@
 		
 		// Extend hover-over and profile menu	
 	    extend_view('profile/menu/links','file/menu');
+	    extend_view('groups/menu/links','file/menu');
 		
 		// Register a page handler, so we can have nice URLs
 		register_page_handler('file','file_page_handler');
