@@ -28,8 +28,8 @@
     // put in another check to make sure the user can only send messages as themselves
         $owner_id = $_SESSION['user']->getGUID();
 		
-    // Make sure the message field and send to field are not blank
-		if (empty($message_contents) || empty($send_to)) {
+    // Make sure the message field, send to field and title are not blank
+		if (empty($message_contents) || empty($send_to) || empty($title)) {
 			register_error(elgg_echo("messages:blank"));
 			forward("mod/messages/send.php");
 			
