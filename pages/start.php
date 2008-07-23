@@ -45,7 +45,7 @@
 		
 		// Extend some views
 		extend_view('css','pages/css');
-		
+		extend_view('groups/menu/links', 'pages/menu'); // Add to groups context
 		
 		// For now, we'll hard code the groups profile items as follows:
 		// TODO make this user configurable

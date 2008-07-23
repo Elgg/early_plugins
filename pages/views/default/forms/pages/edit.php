@@ -10,6 +10,7 @@
 	 */
 
 	$parent_guid = get_input('parent_guid');
+	$container_guid = get_input('container_guid');
 ?>
 <form action="<?php echo $vars['url']; ?>action/pages/edit" method="post">
 
@@ -48,6 +49,12 @@
 			if ($vars['entity'])
 			{ 
 			?><input type="hidden" name="pages_guid" value="<?php echo $vars['entity']->getGUID(); ?>" /><?php 
+			}
+		?>
+		<?php
+			if ($container_guid)
+			{
+				?><input type="hidden" name="container_guid" value="<?php echo $container_guid; ?>" /><?php 
 			}
 		?>
 		<input type="hidden" name="parent_guid" value="<?php if ($vars['entity']) echo $vars['entity']->parent_guid; else echo $parent_guid; ?>" />

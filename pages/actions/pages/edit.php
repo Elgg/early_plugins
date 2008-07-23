@@ -41,6 +41,10 @@
 			$page->subtype = 'page_top';
 		else
 			$page->subtype = 'page';
+			
+		// New instance, so set container_guid
+		$container_guid = get_input('container_guid', $_SESSION['user']->getGUID());
+		$page->container_guid = $container_guid;
 	}
 	
 	// Have we got it? Can we edit it?
