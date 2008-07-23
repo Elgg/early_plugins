@@ -28,9 +28,11 @@
 		"<a href=\"" . $owner->getURL() . "\">" . $owner->name ."</a>"
 	);
 	
+	$link = $entity->getURL() . "?rev=" . $annotation->id;
+	
 	$info = <<< END
 	
-<div>{$entity->title}</div>
+<div><a href="$link">{$entity->title}</a></div>
 <div>$rev</div>
 END;
 
