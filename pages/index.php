@@ -13,6 +13,12 @@
 
 	global $CONFIG;
 	
+	// Add menus
+	$owner = page_owner_entity();
+    add_submenu_item(sprintf(elgg_echo("pages:user"), page_owner_entity()->name, $CONFIG->url . "pg/pages/"));
+    if (($owner) && ($owner->canWriteToContainer($_SESSION['user']))) add_submenu_item(elgg_echo('pages:new'), $CONFIG->url . "pg/pages/new/");
+    					
+	
 	$limit = get_input("limit", 10);
 	$offset = get_input("offset", 0);
 	
@@ -25,9 +31,9 @@
 	
 	
 	// If there are no objects then prompt to add new ones
-	if (!get_entities('object', 'page_top'))
+	if (!get_entities('object', 'page_top', page_owner()))
 	{
-		forward($CONFIG->wwwroot . "pg/pages/new/");
+		forward($CONFIG->wwwroot . "pg/pages/new/?container_guid=" . page_owner());
 		exit;
 	}
 	

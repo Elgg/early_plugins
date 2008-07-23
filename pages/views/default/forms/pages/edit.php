@@ -11,6 +11,7 @@
 
 	$parent_guid = get_input('parent_guid');
 	$container_guid = get_input('container_guid');
+	if (!$container_guid) $container_guid = page_owner();
 ?>
 <form action="<?php echo $vars['url']; ?>action/pages/edit" method="post">
 
