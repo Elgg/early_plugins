@@ -20,7 +20,7 @@
     //the number of messages to display
     $numToDisplay = get_input('numToDisplay');    
     //get the full page owner entity
-    $user = get_user($_POST['pageOwner']);
+    $user = get_entity($_POST['pageOwner']);
     
     //stage one - if a message was posted, add it as an annotation    
     if($message){

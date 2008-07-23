@@ -1,9 +1,7 @@
 <?php
 
      /**
-	 * Elgg messageboard plugin view page
-	 *
-	 * @todo let users choose how many messages they want displayed
+	 * Elgg messageboard group profile view
 	 *
 	 * @package ElggMessageBoard
 	 * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License version 2
@@ -12,17 +10,12 @@
 	 * @link http://elgg.com/
 	 */
 	 
-	 // a couple of required variables
+	 // get the groups passed over here
 	 
 	 //get the full page owner entity
-     $entity = get_entity(page_owner());
+	 $entity = $vars['entity'];
      
-     //the number of message to display
-     $num_display = $vars['entity']->num_display;
-     
-     //if no num set, set to one
-     if(!$num_display)
-        $num_display = 1;
+     $num_display = 10;
 	 
 ?>
 <script type="text/JavaScript">
@@ -47,6 +40,8 @@ $(document).ready(function(){
 
 <div id="mb_input_wrapper"><!-- start of mb_input_wrapper div -->
 
+    <h2>Messageboard</h2>
+    
     <!-- message textarea -->
     <textarea name="message_content" id="testing" value="" class="input_textarea" /></textarea>
    

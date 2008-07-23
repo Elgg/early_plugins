@@ -17,7 +17,7 @@
 		$message_content = get_input('message_content'); // the actual message
 		$page_owner = get_input("pageOwner"); // the message board owner
 		$message_owner = get_input("guid"); // the user posting the message
-		$user = get_user($page_owner); // the message board owner's details
+		$user = get_entity($page_owner); // the message board owner's details
 		
 	// Let's see if we can get a user entity from the specified page_owner
 		if ($user && !empty($message_content)) {

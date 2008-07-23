@@ -23,7 +23,7 @@
     
     <!-- display the user's name who posted and the date/time -->
     <p class="message_item_timestamp">
-        <?php echo get_user($vars['annotation']->owner_guid)->username . " " . friendly_time($vars['annotation']->time_created); ?>
+        <?php echo get_entity($vars['annotation']->owner_guid)->username . " " . friendly_time($vars['annotation']->time_created); ?>
     </p>
     		
 	<!-- output the actual comment -->
@@ -54,13 +54,13 @@
 		            if($vars['annotation']->owner_guid != $_SESSION['guid']){
     		            
     		            //get the message owner
-    		            $get_user = get_user($vars['annotation']->owner_guid);
+    		            $get_entity = get_entity($vars['annotation']->owner_guid);
     		            //create the url to their messageboard
-    		            $user_mb = "pg/messageboard/" . $get_user->username;
+    		            $user_mb = "pg/messageboard/" . $get_entity->username;
     		            
-    		            echo "| <a href=\"" . $vars['url'] . "mod/messageboard/history.php?user=" . $get_user->guid ."\">history</a> | "; 
+    		            echo "| <a href=\"" . $vars['url'] . "mod/messageboard/history.php?user=" . $get_entity->guid ."\">history</a> | "; 
     		            
-    		            echo "<a href=\"" . $vars['url'] . $user_mb . "\">reply on " . $get_user->username . "'s message board</a>";
+    		            echo "<a href=\"" . $vars['url'] . $user_mb . "\">reply on " . $get_entity->username . "'s message board</a>";
     		            
 		            }
 		        ?>
