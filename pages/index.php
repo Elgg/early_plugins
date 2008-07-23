@@ -16,7 +16,7 @@
 	$limit = get_input("limit", 10);
 	$offset = get_input("offset", 0);
 	
-	$title = sprintf(elgg_echo("pages:yours"),page_owner_entity()->name);
+	$title = sprintf(elgg_echo("pages:user"),page_owner_entity()->name);
 	
 	// Get objects
 	$context = get_context();
