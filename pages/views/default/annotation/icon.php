@@ -28,5 +28,5 @@
 ?>
 
 <div class="groupicon">
-<a href="<?php echo $entity->getURL() . "?rev=" . $annotation->id; ?>"><img src="<?php echo $vars['url']; ?>mod/pages/graphics/default<?php echo $vars['size']; ?>" border="0" <?php echo $align; ?> <?php echo $vars['js']; ?> /></a>
+<a href="<?php echo $entity->getURL() . "?rev=" . $annotation->id; ?>"><img src="<?php echo $vars['url']; ?>mod/pages/graphics/default<?php echo $vars['size']; ?>.jpg" border="0" <?php echo $align; ?> <?php echo $vars['js']; ?> /></a>
 </div>
