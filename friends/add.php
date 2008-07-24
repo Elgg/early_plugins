@@ -18,7 +18,7 @@
 		
 		$body = elgg_view_title(elgg_echo('friends:new'));
 		
-	    $body .= elgg_view('friends/forms/edit');
+	    $body .= elgg_view('friends/forms/edit', array('friends' => get_user_friends($_SESSION['user']->getGUID(),"",9999)));
 		
 	// Format page
 		$body = elgg_view_layout('one_column',$body);

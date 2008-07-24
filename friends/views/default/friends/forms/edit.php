@@ -55,7 +55,8 @@
 			<label><?php echo elgg_echo("friends:addfriends"); ?><br />
 			<?php
 
-				echo elgg_view('friends/friendslist');
+				//echo elgg_view('friends/friendslist');
+				echo elgg_view('friends/picker',array('entities' => $vars['friends'], 'internalname' => 'friends_collection'));
 			
 			?>
 			</label>
