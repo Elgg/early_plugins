@@ -17,11 +17,8 @@
 		gatekeeper();
 		
 		$body = elgg_view_title(elgg_echo('friends:new'));
-		
-		//grab the users collections
-		$collections = get_user_access_collections($_SESSION['user']->getGUID());
-		
-	    $body .= elgg_view('friends/collections', array('collections' => $collections));
+	    
+		$body .= elgg_view_access_collections($_SESSION['user']->getGUID());
 		
 	// Format page
 		$body = elgg_view_layout('one_column',$body);
