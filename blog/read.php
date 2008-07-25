@@ -27,7 +27,7 @@
 			$page_owner = get_entity($blogpost->getOwner());
 			
 	// Display it
-			$area1 = elgg_view("object/blog",array(
+			$area2 = elgg_view("object/blog",array(
 											'entity' => $blogpost,
 											'entity_owner' => $page_owner,
 											'comments' => $comments,
@@ -35,10 +35,10 @@
 											));
 											
 	// Set the title appropriately
-			$title = sprintf(elgg_echo("blog:posttitle"),$page_owner->name,$blogpost->title);
+			$area1 = sprintf(elgg_echo("blog:posttitle"),$page_owner->name,$blogpost->title);
 
 	// Display through the correct canvas area
-		$body = elgg_view_layout("one_column", $area1);
+		$body = elgg_view_layout("two_column_left_sidebar", $area1, $area2);
 			
 	// If we're not allowed to see the blog post
 		} else {

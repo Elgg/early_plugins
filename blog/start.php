@@ -43,6 +43,15 @@
 					));
 				}
 				
+		    //add submenu options
+				if (get_context() == "blog") {
+					add_submenu_item(elgg_echo('blog:your'),$CONFIG->wwwroot."pg/blog/" . $_SESSION['user']->username);
+					add_submenu_item(elgg_echo('blog:friends'),$CONFIG->wwwroot."pg/blog/" . $_SESSION['user']->username . "/friends/");
+					add_submenu_item(elgg_echo('blog:everyone'),$CONFIG->wwwroot."mod/blog/everyone.php");
+					add_submenu_item(elgg_echo('blog:addpost'),$CONFIG->wwwroot."mod/blog/add.php");
+				}
+
+				
 			// Extend system CSS with our own styles, which are defined in the blog/css view
 				extend_view('css','blog/css');
 				
