@@ -16,12 +16,12 @@
 	// You need to be logged in for this one
 		gatekeeper();
 		
-		$body = elgg_view_title(elgg_echo('friends:new'));
+		$area1 = elgg_view_title(elgg_echo('friends:new'));
 		
-	    $body .= elgg_view('friends/forms/edit', array('friends' => get_user_friends($_SESSION['user']->getGUID(),"",9999)));
+	    $area2 = elgg_view('friends/forms/edit', array('friends' => get_user_friends($_SESSION['user']->getGUID(),"",9999)));
 		
 	// Format page
-		$body = elgg_view_layout('one_column',$body);
+		$body = elgg_view_layout('two_column_left_sidebar',$area1, $area2);
 		
 	// Draw it
 		echo page_draw(elgg_echo('friends:add'),$body);

@@ -18,6 +18,10 @@
 				
 			// Load the language file
 				register_translations($CONFIG->pluginspath . "friends/languages/");
+				
+		    // Set up menu for logged in users
+				if (isloggedin())
+					    add_menu(elgg_echo('friends'), $CONFIG->wwwroot . "pg/friends/" . $_SESSION['user']->username);
     		
     		//add submenu options
 				if (get_context() == "friends" || get_context() == "friendsof") {

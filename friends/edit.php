@@ -17,7 +17,7 @@
 		gatekeeper();
 		
 		//set the title
-		$body = elgg_view_title(elgg_echo('friends:collectionedit'), false);
+		$area1 = elgg_view_title(elgg_echo('friends:collectionedit'), false);
 		
 		//grab the collection id passed to the edit form
 		$collection_id = get_input('collection');
@@ -27,10 +27,10 @@
 		//get all members of the collection
 		$collection_members = get_members_of_access_collection($collection_id);
 		
-	    $body .= elgg_view('friends/forms/edit', array('collection' => $collection, 'collection_members' => $collection_members));
+	    $area2 = elgg_view('friends/forms/edit', array('collection' => $collection, 'collection_members' => $collection_members));
 		
 	// Format page
-		$body = elgg_view_layout('one_column',$body);
+		$body = elgg_view_layout('two_column_left_sidebar',$area1. $area2);
 		
 	// Draw it
 		echo page_draw(elgg_echo('friends:add'),$body);
