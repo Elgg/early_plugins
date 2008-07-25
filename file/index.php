@@ -16,17 +16,17 @@
 
 	//set the title
 		if(page_owner() == $_SESSION['user']){
-			$title = elgg_view_title($title = elgg_echo('file:yours'));
+			$area1 = elgg_view_title($title = elgg_echo('file:yours'));
 		}else{
-			$title = elgg_view_title($title = elgg_echo('files'));
+			$area1 = elgg_view_title($title = elgg_echo('files'));
 		}
 
 	// Get objects
 		set_context('search');
-		$objects = list_entities("object","file",page_owner(),10,false);
+		$area2 = list_entities("object","file",page_owner(),10,false);
 		set_context('file');
-		$filelist = get_filetype_cloud(page_owner());
-		$body = elgg_view_layout('one_column', $title . $filelist . $objects);
+		$area1 .= get_filetype_cloud(page_owner());
+		$body = elgg_view_layout('two_column_left_sidebar', $area1, $area2);
 	
 	// Finally draw the page
 		page_draw(sprintf(elgg_echo("file:user"),page_owner_entity()->name), $body);

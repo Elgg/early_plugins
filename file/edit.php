@@ -15,9 +15,11 @@
 	// Render the file upload page
 	
 	$file = (int) get_input('file_guid');
+	$area1 = elgg_view_title($title = elgg_echo('file:edit'));
 	if ($file = get_entity($file)) {
 		if ($file->canEdit()) { 
-			$body = elgg_view_layout('one_column', elgg_view("file/upload",array('entity' => $file)));
+    		$area2 = elgg_view("file/upload",array('entity' => $file));
+			$body = elgg_view_layout('two_column_left_sidebar', $area1, $area2);
 			page_draw(elgg_echo("file:upload"), $body);
 		}
 	} else {

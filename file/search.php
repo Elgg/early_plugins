@@ -37,30 +37,30 @@
 		}
 
 		if (empty($tag)) {
-			$body = elgg_view_title(elgg_echo('file:type:all'));
+			$area1 = elgg_view_title(elgg_echo('file:type:all'));
 		} else {
 			if (page_owner() && page_owner() != $_SESSION['guid']) {
-				$body = elgg_view_title(sprintf(elgg_echo("file:user:type:" . $tag),page_owner_entity()->name));
+				$area1 = elgg_view_title(sprintf(elgg_echo("file:user:type:" . $tag),page_owner_entity()->name));
 			} else{
-				$body = elgg_view_title(elgg_echo("file:type:" . $tag));
+				$area1 = elgg_view_title(elgg_echo("file:type:" . $tag));
 			}
 		}
 		if ($owner_guid) {
-			$body .= get_filetype_cloud(page_owner());
+			$area1 .= get_filetype_cloud(page_owner());
 		} else {
-			$body .= get_filetype_cloud();
+			$area1 .= get_filetype_cloud();
 		}
 		$limit = 10;
 		if ($search_viewtype == "gallery") $limit = 12;
 		if (!empty($tag)) {
-			$body .= list_entities_from_metadata($md_type, $tag, $objecttype, $subtype, $owner_guid, $limit, false);
+			$area2 .= list_entities_from_metadata($md_type, $tag, $objecttype, $subtype, $owner_guid, $limit, false);
 		} else {
-			$body .= list_entities("object", "file", $owner_guid, $limit, false);
+			$area2 .= list_entities("object", "file", $owner_guid, $limit, false);
 		}
 		
 		set_context("file");
 		
-		$body = elgg_view_layout('one_column',$body);
+		$body = elgg_view_layout('two_column_left_sidebar',$area1, $area2);
 		
 		page_draw(sprintf(elgg_echo('searchtitle'),$tag),$body);
 

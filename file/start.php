@@ -47,6 +47,14 @@
 			));
 		}
 		
+		//add submenu options
+				if (get_context() == "file") {
+					add_submenu_item(sprintf(elgg_echo("file:yours"),$_SESSION['user']->name), $CONFIG->wwwroot . "pg/file/" . $_SESSION['user']->username);
+					add_submenu_item(sprintf(elgg_echo('file:yours:friends'),$_SESSION['user']->name), $CONFIG->wwwroot . "pg/file/". $_SESSION['user']->username . "/friends/");
+					add_submenu_item(elgg_echo('file:all'), $CONFIG->wwwroot . "mod/file/world.php");
+					add_submenu_item(elgg_echo('file:upload'), $CONFIG->wwwroot . "pg/file/". $_SESSION['user']->username . "/new/");
+				}
+				
 		// Extend CSS
 		extend_view('css', 'file/css');
 		
