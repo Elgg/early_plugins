@@ -14,13 +14,13 @@
 		require_once(dirname(dirname(dirname(__FILE__))) . "/engine/start.php");
 		
 	// List shares
-		$body = elgg_view_title(elgg_echo('sharing:read'));
+		$area1 = elgg_view_title(elgg_echo('sharing:read'));
 		set_context('search');
-		$body .= list_entities('object','sharing',page_owner());
+		$area2 = list_entities('object','sharing',page_owner());
 		set_context('sharing');
 		
 	// Format page
-		$body = elgg_view_layout('one_column',$body);
+		$body = elgg_view_layout('two_column_left_sidebar', $area1, $area2);
 		
 	// Draw it
 		echo page_draw(elgg_echo('sharing:read'),$body);
