@@ -30,7 +30,7 @@
 				
 			// Set up menu for logged in users
 				if (isloggedin()) {
-					add_menu(elgg_echo('blogs'), $CONFIG->wwwroot . "pg/blog/",array(
+					add_menu(elgg_echo('blogs'), $CONFIG->wwwroot . "pg/blog/" . $_SESSION['user']->username,array(
 						menu_item(elgg_echo('blog:your'),$CONFIG->wwwroot."pg/blog/" . $_SESSION['user']->username),
 						menu_item(elgg_echo('blog:friends'),$CONFIG->wwwroot."pg/blog/" . $_SESSION['user']->username . "/friends/"),
 						menu_item(elgg_echo('blog:everyone'),$CONFIG->wwwroot."mod/blog/everyone.php"),
