@@ -128,8 +128,16 @@
 				<p><?php echo elgg_echo("messages:text"); ?></p>	
     			<!-- populate the title space with the orginal message title, inserting re: before it -->						        
 				<p><label><?php echo elgg_echo("messages:title"); ?>: <br /><input type='text' name='title' class="input-text" value='RE: <?php echo $vars['entity']->title; ?>' /></label></p>
-				<p><label><?php echo elgg_echo("messages:message"); ?>: <br /><textarea name='message' value='' class="input-textarea" /></textarea></label></p>
-		
+				<p><label><?php echo elgg_echo("messages:message"); ?>: <br />
+				<?php
+
+				    echo elgg_view("input/longtext", array(
+									"internalname" => "message",
+									"value" => '',
+													));
+			
+		        ?>
+				
 				<p>
 	        			<?php
                 

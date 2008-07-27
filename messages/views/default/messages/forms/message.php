@@ -63,7 +63,16 @@
 	    ?>
 	    
 		<p><label><?php echo elgg_echo("messages:title"); ?>: <br /><input type='text' name='title' value='' class="input-text" /></label></p>
-		<p><label><?php echo elgg_echo("messages:message"); ?>: <br /><textarea name='message' value='' class="input-textarea" /></textarea></label></p>
+		<p><label><?php echo elgg_echo("messages:message"); ?>: <br />
+		<?php
+
+				    echo elgg_view("input/longtext", array(
+									"internalname" => "message",
+									"value" => '',
+													));
+			
+		?>
+		</label></p>
 		<p><input type="submit" class="submit_button" value="<?php echo elgg_echo("messages:fly"); ?>!" /></p>
 	
 	</form>
