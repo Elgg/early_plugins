@@ -20,7 +20,7 @@
 		// Set up the menu for logged in users
 		if (isloggedin()) 
 		{
-			add_menu(elgg_echo('pages'), $CONFIG->wwwroot . "pg/pages/" . $_SESSION['user']->username,array(
+			add_menu(elgg_echo('pages'), $CONFIG->wwwroot . "pg/pages/owned/" . $_SESSION['user']->username,array(
 				menu_item(elgg_echo('pages:new'), $CONFIG->wwwroot."pg/pages/new/"),
 				menu_item(elgg_echo('pages:yours'), $CONFIG->wwwroot . "pg/pages/owned/" . $_SESSION['user']->username),
 				menu_item(elgg_echo('pages:all'), $CONFIG->wwwroot . "pg/pages/world/"),
@@ -45,6 +45,7 @@
 		
 		// Extend some views
 		extend_view('css','pages/css');
+		extend_view('metatags','pages/metatags');
 		extend_view('groups/menu/links', 'pages/menu'); // Add to groups context
 		
 		// For now, we'll hard code the groups profile items as follows:
@@ -145,26 +146,24 @@
 	 *
 	 * @param ElggObject $entity
 	 */
-	function pages_get_entity_sidebar(ElggObject $entity)
+	function pages_get_entity_sidebar(ElggObject $entity, $fulltree = 0)
 	{
 		$body = "";
 		
-		if ($entity->parent_guid)
-		{
-			$body .= elgg_view('pages/sidebar/sidebargroup', array('title' => elgg_echo('pages:sidebar:parent'),
-				"content" => elgg_view('pages/sidebar/sidebarparent', array('entity' => get_entity($entity->parent_guid))) 
-			));
+		if ($fulltree == 1) {
+			while ($parent_guid = $entity->parent_guid) {
+				$entity = get_entity($parent_guid);
+			}
+			
+			set_input('treeguid',$entity->getGUID());
 		}
 		
-		$body .= elgg_view('pages/sidebar/sidebargroup', array('title' => elgg_echo('pages:sidebar:this'),
-			"content" => elgg_view('pages/sidebar/sidebarthis', array('entity' => $entity)) 
-		));
-		
 		$children = get_entities_from_metadata('parent_guid',$entity->guid);
-		if ($children)
-			$body .= elgg_view('pages/sidebar/sidebargroup', array('title' => elgg_echo('pages:sidebar:children'),
-				"content" => elgg_view('pages/sidebar/sidebarchildren', array('children' => $children)) 
-			));
+		$body .= elgg_view('pages/sidebar/sidebarthis', array('entity' => $entity, 
+															  'children' => $children,
+															  'fulltree' => $fulltree));
+		$body = elgg_view('pages/sidebar/wrapper', array('body' => $body));
+		$body .= elgg_view('pages/sidebar/starter', array('entity' => $entity));
 			
 		return $body;
 	}

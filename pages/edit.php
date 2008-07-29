@@ -28,7 +28,7 @@
 	
 	$sidebar = pages_get_entity_sidebar($pages);
 	
-	$body = elgg_view_layout('narrow_right_sidebar',$body, $sidebar);
+	$body = elgg_view_layout('one_column',$body, $sidebar);
 	
 	page_draw($title, $body);
 ?>

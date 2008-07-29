@@ -17,12 +17,11 @@
 	$pages = get_entity($page_guid);
 	
 	$title = $pages->title;
-	$body = elgg_view_title($title);
-	$body .= elgg_view_entity($pages, true);
+	$body = elgg_view_entity($pages, true);
 	
-	$sidebar = pages_get_entity_sidebar($pages);
+	$sidebar = pages_get_entity_sidebar($pages) . elgg_view('pages/sidebar/tree');
 	
-	$body = elgg_view_layout('narrow_right_sidebar',$body, $sidebar);
+	$body = elgg_view_layout('two_column_left_sidebar', elgg_view_title($title), $body, $sidebar);
 	
 	// Finally draw the page
 	page_draw($title, $body);

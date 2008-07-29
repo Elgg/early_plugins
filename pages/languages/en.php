@@ -22,6 +22,7 @@
 			'pages:new' => "New page",
 			'pages:edit' => "Edit a page",
 			'pages:history' => "Page history",
+			'pages:view' => "View page",
 	
 	
 		/**
@@ -67,7 +68,7 @@
 			'pages:sidebar:children' => "Subpages",
 			'pages:sidebar:parent' => "Parent",
 	
-			'pages:newchild' => "Create child of this page",
+			'pages:newchild' => "New page",
 			'pages:backtoparent' => "Back to '%s'",
 	);
 					

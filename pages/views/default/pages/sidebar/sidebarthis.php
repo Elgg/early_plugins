@@ -12,11 +12,29 @@
 	global $CONFIG;
 	$entity = $vars['entity'];
 	
+	if (isset($vars['fulltree']) && $vars['fulltree'] == 1) {
+		echo "<li class=\"directory collapsed\"><a id=\"pagetree".$entity->getGUID()."\" href=\"". $entity->getURL() ."\" rel=\"" . /* $vars['config']->url . 'mod/pages/pagesTree.php?dir=' . */ $entity->getGUID() . "\">" . htmlentities($entity->title) . "</a></li>";
+	}
 	
-?><?php if ($entity->canEdit()) { ?>
-<div>
-	<p>
-		<a href="<?php echo $CONFIG->url . "pg/pages/new/?parent_guid=" . $entity->guid; ?>"><?php echo elgg_echo('pages:newchild') ?></a>
-	</p>
-</div>
-<?php } ?>
+	$children = "";
+	
+	if (isset($vars['children']) && is_array($vars['children']) && (!isset($vars['fulltree']) || $vars['fulltree'] == 0)) {
+		
+		foreach($vars['children'] as $child) {
+			 $children .= "<li class=\"directory collapsed\"><a id=\"pagetree".$child->getGUID()."\" href=\"". $child->getURL() ."\" rel=\"" . /* $vars['config']->url . 'mod/pages/pagesTree.php?dir=' . */ $child->getGUID() . "\">" . htmlentities($child->title) . "</a></li>";
+		}
+		
+	}
+	
+	if (!isset($vars['fulltree']) || $vars['fulltree'] == 0) {
+	
+		$children .= "<li><a href=\"{$entity->getURL()}\">". elgg_echo('pages:view') ."</a></li>";
+		
+		if ($entity->canEdit()) {
+			$children .= "<li><a  href=\"{$vars['config']->url}pg/pages/new/?parent_guid={$entity->getGUID()}\">".elgg_echo('pages:newchild') ."</a></li>";
+		}
+		
+		echo elgg_view('pages/sidebar/wrapper',array('body' => $children));
+
+	}
+?>
