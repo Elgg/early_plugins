@@ -162,8 +162,7 @@
 		$body .= elgg_view('pages/sidebar/sidebarthis', array('entity' => $entity, 
 															  'children' => $children,
 															  'fulltree' => $fulltree));
-		$body = elgg_view('pages/sidebar/wrapper', array('body' => $body));
-		$body .= elgg_view('pages/sidebar/starter', array('entity' => $entity));
+		//$body = elgg_view('pages/sidebar/wrapper', array('body' => $body));
 			
 		return $body;
 	}

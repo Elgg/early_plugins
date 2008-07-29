@@ -1,7 +1,7 @@
 <?php
 
-	echo "<ul class=\"jqueryFileTree\" style=\"display: none;\">";
+	echo "[";
 	echo $vars['body'];
-	echo "</ul>";
+	echo "]";
 
 ?>
