@@ -2,7 +2,6 @@
 	require_once(dirname(dirname(dirname(__FILE__))) . "/engine/start.php");
 	
 	$page = (int) get_input('root',get_input('source'));
-	$fulltree = (int) get_input('fulltree');
 	
 	if (!$page = get_entity($page)) {
 		exit;

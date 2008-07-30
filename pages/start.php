@@ -148,11 +148,33 @@
 	 * @param ElggObject $entity
 	 */
 	function pages_set_navigation_parent(ElggObject $entity) {
+		
+		$guid = $entity->getGUID();
+		
 		while ($parent_guid = $entity->parent_guid) {
 			$entity = get_entity($parent_guid);
+			if ($entity) {
+				$guid = $entity->getGUID();
+			}
 		}
 			
-		set_input('treeguid',$entity->getGUID());
+		set_input('treeguid',$guid);
+	}
+	
+	function pages_get_path(int $guid) {
+		
+		if (!$entity = get_entity($guid)) return array();
+		
+		$path = array($guid);
+		
+		while ($parent_guid = $entity->parent_guid) {
+			$entity = get_entity($parent_guid);
+			if ($entity) {
+				$path[] = $entity->getGUID();
+			}
+		}
+			
+		return $path;
 	}
 	
 	/**

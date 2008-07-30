@@ -15,6 +15,7 @@
 				
 				$("#pagesTree").treeview({
 					url: "<?php echo $vars['url']; ?>mod/pages/pagesTree.php",
+					currentpage: "<?php echo get_input('page_guid'); ?>"
 				}, "<?php echo $treeguid; ?>")
 				
 			});

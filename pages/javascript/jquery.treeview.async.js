@@ -16,7 +16,7 @@
 ;(function($) {
 
 function load(settings, root, child, container) {
-	$.getJSON(settings.url, {root: root}, function(response) {
+	$.getJSON(settings.url, {root: root, currentpage: settings.currentpage}, function(response) {
 		function createNode(parent) {
 			var current = $("<li/>").attr("id", this.id || "").html("<span>" + this.text + "</span>").appendTo(parent);
 			if (this.classes) {
