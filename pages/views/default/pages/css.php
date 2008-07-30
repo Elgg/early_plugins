@@ -80,10 +80,6 @@
 .filetree span.file { background: url(<?php echo $vars['url']; ?>mod/pages/images/file.gif) 0 0 no-repeat; }
 
 .pagesTreeContainer {
-		width: 143px;
-		border:1px solid #cccccc;
-		background: #FFF;
-		overflow: scroll;
 		margin: 15px;
 		height: 200px;
 	}

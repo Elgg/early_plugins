@@ -16,13 +16,21 @@
 	
 	$pages = get_entity($page_guid);
 	
+	if ($pages->canEdit()) {
+		global $CONFIG;
+		add_submenu_item(elgg_echo('pages:newchild'),"{$CONFIG->wwwroot}pg/pages/new/?parent_guid={$pages->getGUID()}");
+		add_submenu_item(elgg_echo('pages:delete'),"{$CONFIG->wwwroot}action/pages/delete?page={$pages->getGUID()}");
+	}
+	
 	$title = $pages->title;
 	$body = elgg_view_entity($pages, true);
 	
+	pages_set_navigation_parent($pages);
 	$sidebar = elgg_view('pages/sidebar/tree');
 	
-	$body = elgg_view_layout('two_column_left_sidebar', elgg_view_title($title), $body, $sidebar);
+	$body = elgg_view_layout('two_column_left_sidebar', '', elgg_view_title($title) . $body, $sidebar);
 	
 	// Finally draw the page
 	page_draw($title, $body);
+
 ?>

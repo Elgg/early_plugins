@@ -20,7 +20,8 @@
 			'pages:user' => "%s's pages",
 			'pages:all' => "All pages",
 			'pages:new' => "New page",
-			'pages:edit' => "Edit a page",
+			'pages:edit' => "Edit this page",
+			'pages:delete' => "Delete this page",
 			'pages:history' => "Page history",
 			'pages:view' => "View page",
 	
@@ -36,13 +37,15 @@
 			'pages:write_access_id' => 'Write access',
 		
 		/**
-		 * Error messages
+		 * Status and error messages
 		 */
 			'pages:noaccess' => 'No access to page',
 			'pages:cantedit' => 'You can not edit this page',
 			'pages:saved' => 'Pages saved',
 			'pages:notsaved' => 'Page could not be saved',
 			'pages:notitle' => 'You must specify a title for your page.',
+			'pages:delete:success' => 'Your page was successfully deleted.',
+			'pages:delete:failure' => 'The page could not be deleted.',
 	
 		/**
 		 * Page
@@ -65,10 +68,10 @@
 		 * Sidebar items
 		 */
 			'pages:sidebar:this' => "This page",
-			'pages:sidebar:children' => "Subpages",
+			'pages:sidebar:children' => "Sub-pages",
 			'pages:sidebar:parent' => "Parent",
 	
-			'pages:newchild' => "New page",
+			'pages:newchild' => "Create a new sub-page",
 			'pages:backtoparent' => "Back to '%s'",
 	);
 					

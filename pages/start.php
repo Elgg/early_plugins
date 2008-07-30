@@ -42,6 +42,7 @@
 		
 		// Register some actions
 		register_action("pages/edit",false, $CONFIG->pluginspath . "pages/actions/pages/edit.php");
+		register_action("pages/delete",false, $CONFIG->pluginspath . "pages/actions/pages/delete.php");
 		
 		// Extend some views
 		extend_view('css','pages/css');
@@ -142,6 +143,19 @@
 	}
 	
 	/**
+	 * Sets the parent of the current page, for navigation purposes
+	 *
+	 * @param ElggObject $entity
+	 */
+	function pages_set_navigation_parent(ElggObject $entity) {
+		while ($parent_guid = $entity->parent_guid) {
+			$entity = get_entity($parent_guid);
+		}
+			
+		set_input('treeguid',$entity->getGUID());
+	}
+	
+	/**
 	 * Return the correct sidebar for a given entity
 	 *
 	 * @param ElggObject $entity
@@ -149,14 +163,6 @@
 	function pages_get_entity_sidebar(ElggObject $entity, $fulltree = 0)
 	{
 		$body = "";
-		
-		if ($fulltree == 1) {
-			while ($parent_guid = $entity->parent_guid) {
-				$entity = get_entity($parent_guid);
-			}
-			
-			set_input('treeguid',$entity->getGUID());
-		}
 		
 		$children = get_entities_from_metadata('parent_guid',$entity->guid);
 		$body .= elgg_view('pages/sidebar/sidebarthis', array('entity' => $entity, 
