@@ -10,7 +10,7 @@
 	 */
 
 	$icon = elgg_view(
-			"pages/icon", array(
+			"graphics/icon", array(
 			'entity' => $vars['entity'],
 			'size' => 'medium',
 		  )
