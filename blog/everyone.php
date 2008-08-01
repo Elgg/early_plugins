@@ -16,7 +16,7 @@
 		$area1 = elgg_view_title(elgg_echo('blog:everyone'));
 
 		$area2 = list_entities('object','blog',0,10,false);
-		$body = elgg_view_layout("two_column_left_sidebar", $area1, $area2);
+		$body = elgg_view_layout("two_column_left_sidebar", '', $area1 . $area2);
 		
 	// Display page
 		page_draw(elgg_echo('blog:everyone'),$body);

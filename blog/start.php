@@ -31,26 +31,12 @@
 			// Set up menu for logged in users
 				if (isloggedin()) {
 					add_menu(elgg_echo('blogs'), $CONFIG->wwwroot . "pg/blog/" . $_SESSION['user']->username,array(
-						menu_item(elgg_echo('blog:your'),$CONFIG->wwwroot."pg/blog/" . $_SESSION['user']->username),
-						menu_item(elgg_echo('blog:friends'),$CONFIG->wwwroot."pg/blog/" . $_SESSION['user']->username . "/friends/"),
-						menu_item(elgg_echo('blog:everyone'),$CONFIG->wwwroot."mod/blog/everyone.php"),
-						menu_item(elgg_echo('blog:addpost'),$CONFIG->wwwroot."mod/blog/add.php"),
 					));
 			// And for logged out users
 				} else {
 					add_menu(elgg_echo('blog'), $CONFIG->wwwroot . "mod/blog/everyone.php",array(
-						menu_item(elgg_echo('blog:everyone'),$CONFIG->wwwroot."mod/blog/everyone.php"),
 					));
 				}
-				
-		    //add submenu options
-				if (get_context() == "blog") {
-					add_submenu_item(elgg_echo('blog:your'),$CONFIG->wwwroot."pg/blog/" . $_SESSION['user']->username);
-					add_submenu_item(elgg_echo('blog:friends'),$CONFIG->wwwroot."pg/blog/" . $_SESSION['user']->username . "/friends/");
-					add_submenu_item(elgg_echo('blog:everyone'),$CONFIG->wwwroot."mod/blog/everyone.php");
-					add_submenu_item(elgg_echo('blog:addpost'),$CONFIG->wwwroot."mod/blog/add.php");
-				}
-
 				
 			// Extend system CSS with our own styles, which are defined in the blog/css view
 				extend_view('css','blog/css');
@@ -63,6 +49,29 @@
 				
 			// Register a URL handler for blog posts
 				register_entity_url_handler('blog_url','object','blog');
+		}
+		
+		function blog_pagesetup() {
+			
+			global $CONFIG;
+
+			//add submenu options
+				if (get_context() == "blog") {
+					if ((page_owner() == $_SESSION['guid'] || !page_owner()) && isloggedin()) {
+						add_submenu_item(elgg_echo('blog:your'),$CONFIG->wwwroot."pg/blog/" . $_SESSION['user']->username);
+						add_submenu_item(elgg_echo('blog:friends'),$CONFIG->wwwroot."pg/blog/" . $_SESSION['user']->username . "/friends/");
+						add_submenu_item(elgg_echo('blog:everyone'),$CONFIG->wwwroot."mod/blog/everyone.php");
+						add_submenu_item(elgg_echo('blog:addpost'),$CONFIG->wwwroot."mod/blog/add.php");
+					} else if (page_owner()) {
+						$page_owner = page_owner_entity();
+						add_submenu_item(sprintf(elgg_echo('blog:user'),$page_owner->name),$CONFIG->wwwroot."pg/blog/" . $page_owner->username);
+						add_submenu_item(sprintf(elgg_echo('blog:user:friends'),$page_owner->name),$CONFIG->wwwroot."pg/blog/" . $page_owner->username . "/friends/");
+						add_submenu_item(elgg_echo('blog:everyone'),$CONFIG->wwwroot."mod/blog/everyone.php");
+					} else {
+						add_submenu_item(elgg_echo('blog:everyone'),$CONFIG->wwwroot."mod/blog/everyone.php");
+					}
+				}
+			
 		}
 		
 		/**
@@ -114,6 +123,7 @@
 		
 	// Make sure the blog initialisation function is called on initialisation
 		register_elgg_event_handler('init','system','blog_init');
+		register_elgg_event_handler('pagesetup','system','blog_pagesetup');
 		
 	// Register actions
 		global $CONFIG;
