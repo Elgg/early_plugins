@@ -35,20 +35,24 @@
 		if (substr_count($owner_guid,',')) {
 			$owner_guid = explode(",",$owner_guid);
 		}
+		$page_owner = get_input('page_owner',0);
+		if ($page_owner) set_page_owner($page_owner);
 
 		if (empty($tag)) {
 			$area1 = elgg_view_title(elgg_echo('file:type:all'));
 		} else {
-			if (page_owner() && page_owner() != $_SESSION['guid']) {
-				$area1 = elgg_view_title(sprintf(elgg_echo("file:user:type:" . $tag),page_owner_entity()->name));
+			if (is_array($owner_guid)) {
+				$area2 = elgg_view_title(elgg_echo("file:friends:type:" . $tag));
+			} else if (page_owner() && page_owner() != $_SESSION['guid']) {
+				$area2 = elgg_view_title(sprintf(elgg_echo("file:user:type:" . $tag),page_owner_entity()->name));
 			} else{
-				$area1 = elgg_view_title(elgg_echo("file:type:" . $tag));
+				$area2 = elgg_view_title(elgg_echo("file:type:" . $tag));
 			}
 		}
 		if ($owner_guid) {
-			$area1 .= get_filetype_cloud(page_owner());
+			$area1 = get_filetype_cloud($owner_guid);
 		} else {
-			$area1 .= get_filetype_cloud();
+			$area1 = get_filetype_cloud();
 		}
 		$limit = 10;
 		if ($search_viewtype == "gallery") $limit = 12;

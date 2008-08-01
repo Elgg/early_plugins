@@ -15,6 +15,7 @@
 		 */
 	
 			'file' => "Files",
+			'files' => "Files",
 			'file:yours' => "Your files",
 			'file:yours:friends' => "Your friends' files",
 			'file:user' => "%s's files",
@@ -47,6 +48,12 @@
 			'file:user:type:audio' => "%s's audio",
 			'file:user:type:image' => "%s's pictures",
 			'file:user:type:general' => "%s's general files",
+	
+			'file:friends:type:video' => "Your friends' videos",
+			'file:friends:type:document' => "Your friends' documents",
+			'file:friends:type:audio' => "Your friends' audio",
+			'file:friends:type:image' => "Your friends' pictures",
+			'file:friends:type:general' => "Your friends' general files",
 	
 			'file:widget' => "File widget",
 			'file:widget:description' => "Showcase your latest files",

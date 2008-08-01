@@ -15,8 +15,8 @@
 	$tag = get_input("tag");
 	
 	// Get objects
-	$area1 = elgg_view_title($title = elgg_echo('file:type:all'));
-	$area1 .= get_filetype_cloud(); // the filter
+	$area2 = elgg_view_title($title = elgg_echo('file:type:all'));
+	$area1 = get_filetype_cloud(); // the filter
 	set_context('search');
 	if ($tag != "")
 		$area2 .= list_entities_from_metadata('tags',$tag,'object','file');

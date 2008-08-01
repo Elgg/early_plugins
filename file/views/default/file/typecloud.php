@@ -46,6 +46,8 @@
 			if ($tag == "image")
 				$url .= "&search_viewtype=gallery";
 			
+			$url .= "&page_owner=" . page_owner();
+				
 			$inputtag = get_input('tag');
 			if ($inputtag == $tag || (empty($inputtag) && $tag == "all")) {
 				// $class = "class=\"filerepo_types_current\"";
