@@ -1,15 +1,8 @@
 <?php
 
-    if ($vars['entity']->handler == "messageboard") {
-
     	$statement = $vars['statement'];
 		$performed_by = $statement->getSubject();
     	
     	$url = "<a href=\"{$performed_by->getURL()}\">{$performed_by->name}</a>";
     	$string = sprintf(elgg_echo("messageboard:river:annotate"),$url) . " ";
-    	
-    }
-
-?>
-
-<?php echo $string; ?>
+		echo $string; ?>

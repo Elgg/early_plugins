@@ -8,6 +8,6 @@
 	$string = sprintf(elgg_echo("file:river:annotate"),$url) . " ";
 	$string .= "<a href=\"" . $object->getURL() . "\">" . elgg_echo("file:river:item") . "</a>";
 
+	echo $string; 
+	
 ?>
-
-<?php echo $string; ?>
