@@ -1,5 +1,5 @@
 <?php
 
-	echo "<img src=\"{$CONFIG->wwwroot}mod/file/graphics/icons/video.jpg\" border=\"0\" />";
+	echo "<img src=\"{$CONFIG->wwwroot}mod/file/graphics/icons/video.gif\" border=\"0\" />";
 
 ?>

@@ -31,7 +31,7 @@
 			if ($thumbnail)
 				echo "<img src=\"{$vars['url']}action/file/icon?file_guid={$vars['file_guid']}\" border=\"0\" />";
 			else
-				echo "<img src=\"{$CONFIG->wwwroot}mod/file/graphics/icons/general.jpg\" border=\"0\" />";
+				echo "<img src=\"{$CONFIG->wwwroot}mod/file/graphics/icons/general.gif\" border=\"0\" />";
 			
 		break;
 		default :
@@ -40,7 +40,7 @@
 			} else if (!empty($mime) && elgg_view_exists("file/icon/" . substr($mime,0,strpos($mime,'/')) . "/default")) {
 				echo elgg_view("file/icon/" . substr($mime,0,strpos($mime,'/')) . "/default");
 			} else {
-				echo "<img src=\"{$CONFIG->wwwroot}mod/file/graphics/icons/general.jpg\" border=\"0\" />";
+				echo "<img src=\"{$CONFIG->wwwroot}mod/file/graphics/icons/general.gif\" border=\"0\" />";
 			}	 
 		break;
 	}
