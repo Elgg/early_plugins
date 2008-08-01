@@ -10,8 +10,9 @@
 
 	require_once(dirname(dirname(dirname(__FILE__))) . "/engine/start.php");
 	
-	set_context('search');
 	$area2 = elgg_view_title($title = elgg_echo('file:yours:friends'));
+	
+	set_context('search');
 	$area2 .= list_user_friends_objects(page_owner(),'file');
 	set_context('file');
 	if ($friends = get_user_friends($user_guid, $subtype, 999999, 0)) {

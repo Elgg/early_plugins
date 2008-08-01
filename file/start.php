@@ -39,21 +39,13 @@
 		if (isloggedin()) 
 		{
 			add_menu(elgg_echo('file'), $CONFIG->wwwroot . "pg/file/" . $_SESSION['user']->username, array(
-				menu_item(sprintf(elgg_echo("file:yours"),$_SESSION['user']->name), $CONFIG->wwwroot . "pg/file/" . $_SESSION['user']->username),
+/*				menu_item(sprintf(elgg_echo("file:yours"),$_SESSION['user']->name), $CONFIG->wwwroot . "pg/file/" . $_SESSION['user']->username),
 				menu_item(sprintf(elgg_echo('file:yours:friends'),$_SESSION['user']->name), $CONFIG->wwwroot . "pg/file/". $_SESSION['user']->username . "/friends/"),
 				// menu_item(elgg_echo('file:all'), $CONFIG->wwwroot . "pg/file/". $_SESSION['user']->username . "/world/"),
 				menu_item(elgg_echo('file:all'), $CONFIG->wwwroot . "mod/file/world.php"),
-				menu_item(elgg_echo('file:upload'), $CONFIG->wwwroot . "pg/file/". $_SESSION['user']->username . "/new/")
+				menu_item(elgg_echo('file:upload'), $CONFIG->wwwroot . "pg/file/". $_SESSION['user']->username . "/new/") */
 			));
 		}
-		
-		//add submenu options
-				if (get_context() == "file") {
-					add_submenu_item(sprintf(elgg_echo("file:yours"),$_SESSION['user']->name), $CONFIG->wwwroot . "pg/file/" . $_SESSION['user']->username);
-					add_submenu_item(sprintf(elgg_echo('file:yours:friends'),$_SESSION['user']->name), $CONFIG->wwwroot . "pg/file/". $_SESSION['user']->username . "/friends/");
-					add_submenu_item(elgg_echo('file:all'), $CONFIG->wwwroot . "mod/file/world.php");
-					add_submenu_item(elgg_echo('file:upload'), $CONFIG->wwwroot . "pg/file/". $_SESSION['user']->username . "/new/");
-				}
 				
 		// Extend CSS
 		extend_view('css', 'file/css');
@@ -71,6 +63,33 @@
 		// Register a URL handler for files
 		register_entity_url_handler('file_url','object','file');
 
+	}
+	
+	/**
+	 * Sets up submenus for the file system.  Triggered on pagesetup.
+	 *
+	 */
+	function file_submenus() {
+		
+		global $CONFIG;
+		
+		// Add submenu options
+			if (get_context() == "file") {
+				if (page_owner() == $_SESSION['guid'] || (!page_owner() && isloggedin())) {
+					add_submenu_item(sprintf(elgg_echo("file:yours"),$_SESSION['user']->name), $CONFIG->wwwroot . "pg/file/" . $_SESSION['user']->username);
+					add_submenu_item(sprintf(elgg_echo('file:yours:friends'),$_SESSION['user']->name), $CONFIG->wwwroot . "pg/file/". $_SESSION['user']->username . "/friends/");
+					add_submenu_item(elgg_echo('file:all'), $CONFIG->wwwroot . "mod/file/world.php");
+					add_submenu_item(elgg_echo('file:upload'), $CONFIG->wwwroot . "pg/file/". $_SESSION['user']->username . "/new/");
+				} else if (page_owner()) {
+					$page_owner = page_owner_entity();
+					add_submenu_item(sprintf(elgg_echo("file:user"),$page_owner->name), $CONFIG->wwwroot . "pg/file/" . $page_owner->username);
+					add_submenu_item(sprintf(elgg_echo('file:friends'),$page_owner->name), $CONFIG->wwwroot . "pg/file/". $_SESSION['user']->username . "/friends/");
+					add_submenu_item(elgg_echo('file:all'), $CONFIG->wwwroot . "mod/file/world.php");
+				} else {
+					add_submenu_item(elgg_echo('file:all'), $CONFIG->wwwroot . "mod/file/world.php");
+				}
+			}
+		
 	}
 
 	/**
@@ -175,6 +194,7 @@
 	
 	// Make sure test_init is called on initialisation
 	register_elgg_event_handler('init','system','file_init');
+	register_elgg_event_handler('pagesetup','system','file_submenus');
 	
 	// Register actions
 	register_action("file/upload", false, $CONFIG->pluginspath . "file/actions/upload.php");
