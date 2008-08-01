@@ -1,8 +1,10 @@
 <?php
 
-    if ($vars['entity']->handler == "messageboard") {
+	$statement = $vars['statement'];
+	$entity = $statement->getObject();
 
-	    $statement = $vars['statement'];
+    if ($entity->handler == "messageboard") {
+
 		$performed_by = $statement->getSubject();
 	
 	    $url = "<a href=\"{$performed_by->getURL()}\">{$performed_by->name}</a>";
@@ -10,6 +12,6 @@
 	    
     }
 	
-?>
+    echo $string; 
 
-<?php echo $string; ?>
+?>
