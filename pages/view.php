@@ -15,6 +15,11 @@
 	set_context('pages');
 	
 	$pages = get_entity($page_guid);
+	if ($pages->container_guid) {
+		set_page_owner($pages->container_guid);
+	} else {
+		set_page_owner($pages->owner_guid);
+	}
 	
 	if ($pages->canEdit()) {
 		global $CONFIG;
