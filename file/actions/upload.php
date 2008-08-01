@@ -57,7 +57,7 @@
 		if (substr_count($file->getMimeType(),'image/'))
 		{
 			$thumbnail = get_resized_image_from_existing_file($file->getFilenameOnFilestore(),60,60, true);
-			$thumbsmall = get_resized_image_from_existing_file($file->getFilenameOnFilestore(),169,169, true);
+			$thumbsmall = get_resized_image_from_existing_file($file->getFilenameOnFilestore(),153,153, true);
 			$thumblarge = get_resized_image_from_existing_file($file->getFilenameOnFilestore(),600,600, false);
 			if ($thumbnail) {
 				$thumb = new ElggFile();
