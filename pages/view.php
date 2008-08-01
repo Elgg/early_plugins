@@ -21,8 +21,10 @@
 		set_page_owner($pages->owner_guid);
 	}
 	
+	global $CONFIG;
+	add_submenu_item(sprintf(elgg_echo("pages:user"), page_owner_entity()->name), $CONFIG->url . "pg/pages/owned/" . page_owner_entity()->username);
+	
 	if ($pages->canEdit()) {
-		global $CONFIG;
 		add_submenu_item(elgg_echo('pages:newchild'),"{$CONFIG->wwwroot}pg/pages/new/?parent_guid={$pages->getGUID()}");
 		add_submenu_item(elgg_echo('pages:delete'),"{$CONFIG->wwwroot}action/pages/delete?page={$pages->getGUID()}");
 	}

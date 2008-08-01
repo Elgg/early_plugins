@@ -15,7 +15,7 @@
 	
 	// Add menus
 	$owner = page_owner_entity();
-    add_submenu_item(sprintf(elgg_echo("pages:user"), page_owner_entity()->name, $CONFIG->url . "pg/pages/"));
+    add_submenu_item(sprintf(elgg_echo("pages:user"), page_owner_entity()->name), $CONFIG->url . "pg/pages/owned/" . page_owner_entity()->username);
     if (($owner) && ($owner->canWriteToContainer($_SESSION['user']))) add_submenu_item(elgg_echo('pages:new'), $CONFIG->url . "pg/pages/new/");
     					
 	
