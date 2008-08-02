@@ -29,7 +29,9 @@
 			$url = $vars['url'] . "mod/file/search.php?subtype=file";
 			if ($tag != "all")
 				$url .= "&md_type=simpletype&tag=" . urlencode($tag);
-			if ($vars['owner_guid'] != "") {
+			if (isset($vars['friend_guid']) && $vars['friend_guid'] != false) {
+				$url .= "&friends_guid={$vars['friend_guid']}";
+			} else if ($vars['owner_guid'] != "") {
 				if (is_array($vars['owner_guid'])) {
 					$owner_guid = implode(",",$vars['owner_guid']);
 				} else {

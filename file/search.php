@@ -13,17 +13,10 @@
 	// Load Elgg engine
 		require_once(dirname(dirname(dirname(__FILE__))) . "/engine/start.php");
 		
-	// Set context
-		set_context('search');
-		
 	// Get input
 		$tag = get_input('tag');
 		$subtype = get_input('subtype');
-		$owner_guid = (int) get_input('owner_guid',0);
 		$search_viewtype = get_input('search_viewtype');
-		
-		if ($owner_guid > 0)
-			set_page_owner($owner_guid);
 		
 		if (!$objecttype = get_input('object')) {
 			$objecttype = "";
@@ -31,12 +24,31 @@
 		if (!$md_type = get_input('tagtype')) {
 			$md_type = "";			
 		}
-		$owner_guid = get_input('owner_guid',0);
-		if (substr_count($owner_guid,',')) {
-			$owner_guid = explode(",",$owner_guid);
+		$friends = (int) get_input('friends_guid',0);
+		if ($friends) {
+			if ($owner_guid = get_user_friends($user_guid, $subtype, 999999, 0)) {
+				foreach($owner_guid as $key => $friend)
+					$owner_guid[$key] = (int) $friend->getGUID();
+			} else {
+				$owner_guid = array();
+			}
+		} else {
+			$owner_guid = get_input('owner_guid',0);
+			if (substr_count($owner_guid,',')) {
+				$owner_guid = explode(",",$owner_guid);
+			}
 		}
 		$page_owner = get_input('page_owner',0);
-		if ($page_owner) set_page_owner($page_owner);
+		if ($page_owner) { 
+			set_page_owner($page_owner);
+		} else {
+			if ($friends) {
+				set_page_owner($friends);				
+			} else {
+				if ($owner_guid > 0 && !is_array($owner_guid))
+					set_page_owner($owner_guid);
+			}
+		}
 
 		if (empty($tag)) {
 			$area1 = elgg_view_title(elgg_echo('file:type:all'));
@@ -49,11 +61,17 @@
 				$area2 = elgg_view_title(elgg_echo("file:type:" . $tag));
 			}
 		}
-		if ($owner_guid) {
+		if ($friends) {
+			$area1 = get_filetype_cloud($friends,true);
+		} else if ($owner_guid) {
 			$area1 = get_filetype_cloud($owner_guid);
 		} else {
 			$area1 = get_filetype_cloud();
 		}
+		
+		// Set context
+		set_context('search');
+		
 		$limit = 10;
 		if ($search_viewtype == "gallery") $limit = 12;
 		if (!empty($tag)) {

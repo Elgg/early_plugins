@@ -83,7 +83,8 @@
 				} else if (page_owner()) {
 					$page_owner = page_owner_entity();
 					add_submenu_item(sprintf(elgg_echo("file:user"),$page_owner->name), $CONFIG->wwwroot . "pg/file/" . $page_owner->username);
-					add_submenu_item(sprintf(elgg_echo('file:friends'),$page_owner->name), $CONFIG->wwwroot . "pg/file/". $_SESSION['user']->username . "/friends/");
+					if ($page_owner instanceof ElggUser) // This one's for users, not groups
+						add_submenu_item(sprintf(elgg_echo('file:friends'),$page_owner->name), $CONFIG->wwwroot . "pg/file/". $_SESSION['user']->username . "/friends/");
 					add_submenu_item(elgg_echo('file:all'), $CONFIG->wwwroot . "mod/file/world.php");
 				} else {
 					add_submenu_item(elgg_echo('file:all'), $CONFIG->wwwroot . "mod/file/world.php");
@@ -171,9 +172,28 @@
 		
 	}
 	
-	function get_filetype_cloud($owner_guid = "") {
+	/**
+	 * Returns a list of filetypes to search specifically on
+	 *
+	 * @param int|array $owner_guid The GUID(s) of the owner(s) of the files 
+	 * @param true|false $friends Whether we're looking at the owner or the owner's friends
+	 * @return string The typecloud
+	 */
+	function get_filetype_cloud($owner_guid = "", $friends = false) {
 		
-		return elgg_view('file/typecloud',array('owner_guid' => $owner_guid, 'types' => get_tags(0,10,'simpletype','object','file',$owner_guid)));
+		if ($friends) {
+			if ($friendslist = get_user_friends($user_guid, $subtype, 999999, 0)) {
+				$friendguids = array();
+				foreach($friendslist as $friend) {
+					$friendguids[] = $friend->getGUID();
+				}
+			}
+			$friendofguid = $owner_guid;
+			$owner_guid = $friendguids;
+		} else {
+			$friendofguid = false;
+		}
+		return elgg_view('file/typecloud',array('owner_guid' => $owner_guid, 'friend_guid' => $friendofguid, 'types' => get_tags(0,10,'simpletype','object','file',$owner_guid)));
 
 	}
 	

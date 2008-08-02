@@ -15,13 +15,7 @@
 	set_context('search');
 	$area2 .= list_user_friends_objects(page_owner(),'file');
 	set_context('file');
-	if ($friends = get_user_friends($user_guid, $subtype, 999999, 0)) {
-		$friendguids = array();
-		foreach($friends as $friend) {
-			$friendguids[] = $friend->getGUID();
-		}
-		$area1 = get_filetype_cloud($friendguids);
-	}
+	$area1 = get_filetype_cloud(page_owner(), true);
 
 	$body = elgg_view_layout('two_column_left_sidebar',$area1, $area2);
 	
