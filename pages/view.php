@@ -32,6 +32,9 @@
 	$title = $pages->title;
 	$body = elgg_view_entity($pages, true);
 	
+	//add comments
+	$body .= elgg_view_comments($pages);
+	
 	pages_set_navigation_parent($pages);
 	$sidebar = elgg_view('pages/sidebar/tree');
 	

@@ -17,13 +17,14 @@
 			
 			'pages' => "Pages",
 			'pages:yours' => "Your pages",
-			'pages:user' => "%s's pages",
+			'pages:user' => "Pages home",
 			'pages:all' => "All pages",
 			'pages:new' => "New page",
 			'pages:edit' => "Edit this page",
 			'pages:delete' => "Delete this page",
 			'pages:history' => "Page history",
 			'pages:view' => "View page",
+			'pages:navigation' => "Page navigation",
 	
 	
 		/**
@@ -71,7 +72,7 @@
 			'pages:sidebar:children' => "Sub-pages",
 			'pages:sidebar:parent' => "Parent",
 	
-			'pages:newchild' => "Create a new sub-page",
+			'pages:newchild' => "Create a sub-page",
 			'pages:backtoparent' => "Back to '%s'",
 	);
 					

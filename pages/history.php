@@ -11,28 +11,40 @@
 
 	require_once(dirname(dirname(dirname(__FILE__))) . "/engine/start.php");
 	gatekeeper();
+		
+	$page_guid = get_input('page_guid');
+		
+    $pages = get_entity($page_guid);
+	if ($pages->container_guid) {
+		set_page_owner($pages->container_guid);
+	} else {
+		set_page_owner($pages->owner_guid);
+	}
 
-	$limit = (int)get_input('limit', 10);
+	$limit = (int)get_input('limit', 20);
 	$offset = (int)get_input('offset');
 	
 	$page_guid = get_input('page_guid');
 	$pages = get_entity($page_guid);
 	
-	$title = elgg_echo("pages:history");
-	$body = elgg_view_title($title);
+	$title = $pages->title . ": " . elgg_echo("pages:history");
+	$area2 = elgg_view_title($title);
 	
 	$context = get_context();
 	
 	set_context('search');
 	
-	$body .= list_annotations($page_guid, 'page', $limit, false);
+	$area2 .= list_annotations($page_guid, 'page', $limit, false);
 	
 	set_context($context);
 	
 	
-	$sidebar = pages_get_entity_sidebar($pages);
+	$area1 = pages_get_entity_sidebar($pages);
 	
-	$body = elgg_view_layout('narrow_right_sidebar',$body, $sidebar);
+	pages_set_navigation_parent($pages);
+	$area3 = elgg_view('pages/sidebar/tree');
+	
+	$body = elgg_view_layout('two_column_left_sidebar',$area1, $area2, $area3);
 	
 	page_draw($title, $body);
 ?>

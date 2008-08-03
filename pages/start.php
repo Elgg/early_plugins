@@ -61,7 +61,6 @@
 			'title' => 'text',
 			'description' => 'longtext',
 			'tags' => 'tags',	
-
 			'access_id' => 'access',
 			'write_access_id' => 'access',
 		);
@@ -92,6 +91,9 @@
 			{
 				case "new" :
 					include($CONFIG->pluginspath . "pages/new.php");
+          		break;
+          		case "welcome" :
+					include($CONFIG->pluginspath . "pages/welcome.php");
           		break;
     			case "world":  
    					include($CONFIG->pluginspath . "pages/world.php");

@@ -83,3 +83,17 @@
 		margin: 15px;
 		height: 200px;
 	}
+	
+/* delete, Dave's test addition */
+
+#pages_page .strapline {
+    text-align:right;
+    border-top:1px solid #efefef;
+    margin:10px 0 10px 0;
+}
+
+#pages_page .tags {
+    padding:10px 0 0 0;
+    border-top:1px solid #efefef;
+    margin:10px 0 10px 0;
+}

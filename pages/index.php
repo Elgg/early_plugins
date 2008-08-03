@@ -37,12 +37,15 @@
 		exit;
 	}
 	
-	
 	$objects = list_entities("object", "page_top", page_owner(), $limit, false);
 	
 	set_context($context);
 	
+	//get the owners welcome message
+	$welcome_message = get_metadata_byname($owner->guid,  "pages_welcome");
+	
 	$body = elgg_view_title($title);
+	$body .= elgg_view("pages/welcome", array('welcome' => $welcome_message));
 	$body .= $objects;
 	$body = elgg_view_layout('two_column_left_sidebar', '', $body);
 	
