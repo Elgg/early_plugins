@@ -17,13 +17,17 @@
 		if (!isloggedin()) forward(); 
 		
 	// Get the current page's owner
-		$page_owner = page_owner();
+		$page_owner = page_owner_entity();
+		if ($page_owner === false || is_null($page_owner)) {
+			$page_owner = $_SESSION['user'];
+			set_page_owner($page_owner->getGUID());
+		}
 		
 	//set the title
-		$area1 = elgg_view_title(elgg_echo('blog:addpost'));
+		$area2 = elgg_view_title(elgg_echo('blog:addpost'));
 
 	// Get the form
-		$area2 = elgg_view("blog/forms/edit");
+		$area2 .= elgg_view("blog/forms/edit");
 		
 	// Display page
 		page_draw(elgg_echo('blog:addpost'),elgg_view_layout("two_column_left_sidebar", $area1, $area2));

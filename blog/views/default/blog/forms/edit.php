@@ -36,9 +36,6 @@
 
 ?>
 
-	<h2>
-		<?php echo $title; ?>
-	</h2>
 	<form action="<?php echo $vars['url']; ?>action/<?php echo $action; ?>" method="post">
 	
 		<p>

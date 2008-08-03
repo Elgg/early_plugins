@@ -13,7 +13,8 @@
 			'blog:your' => "Your blog",
 			'blog:posttitle' => "%s's blog: %s",
 			'blog:friends' => "Friends' blogs",
-			'blog:everyone' => "All blogs",
+			'blog:yourfriends' => "Your friends' latest blogs",
+			'blog:everyone' => "All site blogs",
 	
 			'blog:read' => "Read blog",
 	

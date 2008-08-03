@@ -22,13 +22,13 @@
 
 	//set blog title
 		if($page_owner == $_SESSION['user']){
-			$area1 = elgg_view_title(elgg_echo('blog:your'));
+			$area2 = elgg_view_title(elgg_echo('blog:your'));
 		}else{
-			$area1 = elgg_view_title($page_owner->username . "'s " . elgg_echo('blog'));
+			//$area1 = elgg_view_title($page_owner->username . "'s " . elgg_echo('blog'));
 		}
 		
 	// Get a list of blog posts
-		$area2 = list_user_objects($page_owner->getGUID(),'blog',10,false);
+		$area2 .= list_user_objects($page_owner->getGUID(),'blog',10,false);
 		
 	// Display them in the page
         $body = elgg_view_layout("two_column_left_sidebar", '', $area1 . $area2);

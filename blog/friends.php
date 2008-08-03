@@ -21,7 +21,11 @@
 		}
 
 	//set the title
-		$area1 = elgg_view_title(elgg_echo('blog:friends'));
+        if($page_owner == $_SESSION['user']){
+			$area2 = elgg_view_title(elgg_echo('blog:yourfriends'));
+		}else{
+			$area2 = elgg_view_title($page_owner->username . "'s " . elgg_echo('blog:friends'));
+		}
 		
 	// Get a list of blog posts
 		$area2 = list_user_friends_objects($page_owner->getGUID(),'blog',10,false);
