@@ -21,9 +21,9 @@
 		if (isloggedin()) 
 		{
 			add_menu(elgg_echo('pages'), $CONFIG->wwwroot . "pg/pages/owned/" . $_SESSION['user']->username,array(
-				menu_item(elgg_echo('pages:new'), $CONFIG->wwwroot."pg/pages/new/"),
-				menu_item(elgg_echo('pages:yours'), $CONFIG->wwwroot . "pg/pages/owned/" . $_SESSION['user']->username),
-				menu_item(elgg_echo('pages:all'), $CONFIG->wwwroot . "pg/pages/world/"),
+				//menu_item(elgg_echo('pages:new'), $CONFIG->wwwroot."pg/pages/new/"),
+				//menu_item(elgg_echo('pages:yours'), $CONFIG->wwwroot . "pg/pages/owned/" . $_SESSION['user']->username),
+				//menu_item(elgg_echo('pages:all'), $CONFIG->wwwroot . "pg/pages/world/"),
 			),'pages');
 		}
 		else
@@ -32,6 +32,9 @@
 				menu_item(elgg_echo('pages:all'),$CONFIG->wwwroot."mod/pages/world.php"),
 			));
 		}
+		
+		// Extend hover-over menu	
+			extend_view('profile/menu/links','pages/menu');
 		
 		// Register a page handler, so we can have nice URLs
 		register_page_handler('pages','pages_page_handler');

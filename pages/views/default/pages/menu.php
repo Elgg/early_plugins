@@ -9,4 +9,6 @@
 	 * @link http://elgg.com/
 	 */
 ?>
-<p><a href="<?php echo $vars['url']; ?>pg/pages/owned/<?php echo page_owner_entity()->username; ?>"><?php echo elgg_echo("pages"); ?></p>
+<p class="user_menu_pages">
+		<a href="<?php echo $vars['url']; ?>pg/pages/owned/<?php echo $vars['entity']->username; ?>"><?php echo elgg_echo("pages"); ?></a>	
+	</p>
