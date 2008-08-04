@@ -51,7 +51,7 @@
 		}
 
 		if (empty($tag)) {
-			$area1 = elgg_view_title(elgg_echo('file:type:all'));
+			$area2 = elgg_view_title(elgg_echo('file:type:all'));
 		} else {
 			if (is_array($owner_guid)) {
 				$area2 = elgg_view_title(elgg_echo("file:friends:type:" . $tag));
