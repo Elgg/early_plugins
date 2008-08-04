@@ -16,6 +16,13 @@
 	// You need to be logged in for this one
 		gatekeeper();
 		
+	// Get the current page's owner
+		$page_owner = page_owner_entity();
+		if ($page_owner === false || is_null($page_owner)) {
+			$page_owner = $_SESSION['user'];
+			set_page_owner($page_owner->getGUID());
+		}
+			
 		$area2 .= elgg_view_title(elgg_echo('bookmarks:this'), false);
 		
 	// If we've been given a bookmark to edit, grab it
