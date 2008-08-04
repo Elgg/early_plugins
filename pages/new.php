@@ -22,9 +22,24 @@
 
 	//if it is a sub page, provide a link back to parent
 	if(get_input('parent_guid')){
-	    $parent = get_entity(get_input('parent_guid'));   
+	    $parent = get_entity(get_input('parent_guid'));
+	    $breadcrumbs = '';
+	    
 	    $owner_url = $CONFIG->wwwroot . "pg/pages/owned/" . $page_owner->username;
-	    $area2 = "<div id=\"pages_breadcrumbs\"><b><a href=\"{$owner_url}\">" . elgg_echo('pages:user') . "</a></b>: <a href=\"{$parent->getURL()}\">$parent->title</a> > new page</div>";
+	    $area2 = "<div id=\"pages_breadcrumbs\"><b><a href=\"{$owner_url}\">" . elgg_echo('pages:user') . "</a></b>";
+	    
+	    //see if the new page's parent has a parent
+        $getparent = get_entity($parent->parent_guid);
+        while ($getparent instanceof ElggObject){
+             
+             $breadcrumbs = " &gt; <a href=\"{$getparent->getURL()}\">$getparent->title</a>" . $breadcrumbs;
+             $getparent = get_entity($getparent->parent_guid);
+             
+        }
+        
+        $area2 .= $breadcrumbs;
+	    $area2 .= " &gt; <a href=\"{$parent->getURL()}\">$parent->title</a>";
+	    $area2 .= " &gt; new page</div>";
     }
     
     global $CONFIG;
