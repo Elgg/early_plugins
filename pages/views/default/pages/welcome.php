@@ -9,8 +9,21 @@
 	 * @copyright Curverider Ltd 2008
 	 * @link http://elgg.com/
 	 */
+	 
+	 if($vars['entity']){
+    	 
+    	 foreach($vars['entity'] as $welcome){
+    	 
+    	    echo $welcome->description;
+    	    
+	    }
+    	 
+	 } else {
 
 ?>
 
-<p>Welcome to my wiki page set up. This will b e replaced by a user defined welcome message. Something like so:</p>
-<p>Welcome to my Wiki pages! Here I will post content and resources for all who are interested. You can navigate through my wiki pages by clicking on the main categories below, have fun.</p>
+    <p>Welcome to this Elgg pages plugin. This feature allows you to create pages on any topic and select who can view them and edit them.</p>
+    
+<?php
+    }
+?>

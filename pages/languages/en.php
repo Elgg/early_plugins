@@ -24,6 +24,9 @@
 			'pages:delete' => "Delete this page",
 			'pages:history' => "Page history",
 			'pages:view' => "View page",
+			'pages:welcome' => "Edit welcome message",
+			'pages:welcomeerror' => "There was a problem saving your welcome message",
+			'pages:welcomeposted' => "Your welcome message has been posted",
 			'pages:navigation' => "Page navigation",
 	
 	

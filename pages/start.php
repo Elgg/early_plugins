@@ -45,6 +45,7 @@
 		
 		// Register some actions
 		register_action("pages/edit",false, $CONFIG->pluginspath . "pages/actions/pages/edit.php");
+		register_action("pages/editwelcome",false, $CONFIG->pluginspath . "pages/actions/pages/editwelcome.php");
 		register_action("pages/delete",false, $CONFIG->pluginspath . "pages/actions/pages/delete.php");
 		
 		// Extend some views

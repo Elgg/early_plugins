@@ -16,7 +16,10 @@
 	// Add menus
 	$owner = page_owner_entity();
     add_submenu_item(sprintf(elgg_echo("pages:user"), page_owner_entity()->name), $CONFIG->url . "pg/pages/owned/" . page_owner_entity()->username);
-    if (($owner) && ($owner->canWriteToContainer($_SESSION['user']))) add_submenu_item(elgg_echo('pages:new'), $CONFIG->url . "pg/pages/new/");
+    if (($owner) && ($owner->canWriteToContainer($_SESSION['user']))){
+        add_submenu_item(elgg_echo('pages:new'), $CONFIG->url . "pg/pages/new/");
+        add_submenu_item(elgg_echo('pages:welcome'), $CONFIG->url . "pg/pages/welcome/");
+    }
     					
 	
 	$limit = get_input("limit", 10);
@@ -41,11 +44,11 @@
 	
 	set_context($context);
 	
-	//get the owners welcome message
-	$welcome_message = get_metadata_byname($owner->guid,  "pages_welcome");
+	//get the owners latest welcome message
+	$welcome_message = get_entities("object", "pages_welcome", $owner->getGUID(), '', 1);
 	
 	$body = elgg_view_title($title);
-	$body .= elgg_view("pages/welcome", array('welcome' => $welcome_message));
+	$body .= elgg_view("pages/welcome", array('entity' => $welcome_message));
 	$body .= $objects;
 	$body = elgg_view_layout('two_column_left_sidebar', '', $body);
 	
