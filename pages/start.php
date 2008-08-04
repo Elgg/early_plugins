@@ -212,21 +212,42 @@
 	 */
 	function pages_write_permission_check($hook, $entity_type, $returnvalue, $params)
 	{
-		$write_permission = $params['entity']->write_access_id;
-		$user = $params['user'];
+		if ($params['entity']->getSubtype() == 'page') {
+		
+			$write_permission = $params['entity']->write_access_id;
+			$user = $params['user'];
+					
+			if (($write_permission) && ($user))
+			{
+				// $list = get_write_access_array($user->guid);
+				$list = get_access_list($user->guid);
+					
+				if (($write_permission!=0) && (isset($list[$write_permission])))
+					return true;
 				
-		if (($write_permission) && ($user))
-		{
-			$list = get_write_access_array($user->guid);
-				
-			if (($write_permission!=0) && (isset($list[$write_permission])))
-				return true;
-			
+			}
 		}
 	}
 	
-	// write permission plugin hook
+	/**
+	 * Extend container permissions checking to extend can_write_to_container for write users.
+	 *
+	 * @param unknown_type $hook
+	 * @param unknown_type $entity_type
+	 * @param unknown_type $returnvalue
+	 * @param unknown_type $params
+	 */
+	function pages_container_permission_check($hook, $entity_type, $returnvalue, $params) {
+		
+		if (get_context() == "pages") {
+			return true;
+		}
+		
+	}
+	
+	// write permission plugin hooks
 	register_plugin_hook('permissions_check', 'object', 'pages_write_permission_check');
+	register_plugin_hook('container_permissions_check', 'object', 'pages_container_permission_check');
 	
 	// Make sure the pages initialisation function is called on initialisation
 	register_elgg_event_handler('init','system','pages_init');

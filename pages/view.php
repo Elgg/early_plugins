@@ -15,8 +15,10 @@
 	set_context('pages');
 	
 	$pages = get_entity($page_guid);
-	if ($pages->container_guid) {
-		set_page_owner($pages->container_guid);
+	$container = $pages->container_guid;
+	
+	if ($container) {
+		set_page_owner($container);
 	} else {
 		set_page_owner($pages->owner_guid);
 	}
@@ -25,7 +27,7 @@
 	add_submenu_item(sprintf(elgg_echo("pages:user"), page_owner_entity()->name), $CONFIG->url . "pg/pages/owned/" . page_owner_entity()->username);
 	
 	if ($pages->canEdit()) {
-		add_submenu_item(elgg_echo('pages:newchild'),"{$CONFIG->wwwroot}pg/pages/new/?parent_guid={$pages->getGUID()}");
+		add_submenu_item(elgg_echo('pages:newchild'),"{$CONFIG->wwwroot}pg/pages/new/?parent_guid={$pages->getGUID()}&container_guid=" . page_owner());
 		add_submenu_item(elgg_echo('pages:delete'),"{$CONFIG->wwwroot}action/pages/delete?page={$pages->getGUID()}");
 	}
 	

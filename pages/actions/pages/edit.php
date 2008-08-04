@@ -13,6 +13,7 @@
 	global $CONFIG;
 	
 	gatekeeper();
+	set_context('pages');
 
 	// Get group fields
 	$input = array();
