@@ -45,7 +45,7 @@
 	set_context($context);
 	
 	//get the owners latest welcome message
-	$welcome_message = get_entities("object", "pages_welcome", $owner->getGUID(), '', 1);
+	$welcome_message = get_entities("object", "pages_welcome", $owner->guid, '', 1);
 	
 	$body = elgg_view_title($title);
 	$body .= elgg_view("pages/welcome", array('entity' => $welcome_message));
