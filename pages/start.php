@@ -112,6 +112,7 @@
     					
     				 $entity = get_entity($page[1]);
     				 add_submenu_item(elgg_echo('pages:label:view'), $CONFIG->url . "pg/pages/view/{$page[1]}");
+    				 add_submenu_item(elgg_echo('pages:user'), $CONFIG->wwwroot . "pg/pages/owned/" . $_SESSION['user']->username);
     				 if (($entity) && ($entity->canEdit())) add_submenu_item(elgg_echo('pages:label:edit'), $CONFIG->url . "pg/pages/edit/{$page[1]}");
     				 add_submenu_item(elgg_echo('pages:label:history'), $CONFIG->url . "pg/pages/history/{$page[1]}");
 

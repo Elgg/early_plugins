@@ -12,6 +12,13 @@
 	require_once(dirname(dirname(dirname(__FILE__))) . "/engine/start.php");
 	gatekeeper();
 
+	// Get the current page's owner
+		$page_owner = page_owner_entity();
+		if ($page_owner === false || is_null($page_owner)) {
+			$page_owner = $_SESSION['user'];
+			set_page_owner($page_owner->getGUID());
+		}
+		
 	$page_guid = get_input('page_guid');
 	$pages = get_entity($page_guid);
 	
@@ -28,7 +35,7 @@
 	
 	$sidebar = pages_get_entity_sidebar($pages);
 	
-	$body = elgg_view_layout('one_column',$body, $sidebar);
+	$body = elgg_view_layout('two_column_left_sidebar',$sidebar, $body);
 	
 	page_draw($title, $body);
 ?>

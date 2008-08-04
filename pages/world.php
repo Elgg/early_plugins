@@ -13,6 +13,20 @@
 
 	global $CONFIG;
 	
+	// Get the current page's owner
+		$page_owner = page_owner_entity();
+		if ($page_owner === false || is_null($page_owner)) {
+			$page_owner = $_SESSION['user'];
+			set_page_owner($page_owner->getGUID());
+		}
+		
+	add_submenu_item(elgg_echo('pages:all'),$CONFIG->wwwroot."mod/pages/world.php");
+    if (($page_owner) && ($page_owner->canWriteToContainer($_SESSION['user']))){
+        add_submenu_item(elgg_echo('pages:new'), $CONFIG->url . "pg/pages/new/");
+        add_submenu_item(elgg_echo('pages:welcome'), $CONFIG->url . "pg/pages/welcome/");
+        add_submenu_item(sprintf(elgg_echo("pages:user"), page_owner_entity()->name), $CONFIG->url . "pg/pages/owned/" . page_owner_entity()->username);
+    }
+    
 	$limit = get_input("limit", 10);
 	$offset = get_input("offset", 0);
 	
@@ -30,7 +44,7 @@
 	
 	$body = elgg_view_title($title);
 	$body .= $objects;
-	$body = elgg_view_layout('one_column',$body);
+	$body = elgg_view_layout('two_column_left_sidebar','',$body);
 	
 	// Finally draw the page
 	page_draw($title, $body);
