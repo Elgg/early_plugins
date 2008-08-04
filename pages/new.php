@@ -24,8 +24,11 @@
 	if(get_input('parent_guid')){
 	    $parent = get_entity(get_input('parent_guid'));   
 	    $owner_url = $CONFIG->wwwroot . "pg/pages/owned/" . $page_owner->username;
-	    $area2 = "<b><a href=\"{$owner_url}\">{$page_owner->username}'s Pages</a></b>: <a href=\"{$parent->getURL()}\">$parent->title</a> > new page";
+	    $area2 = "<div id=\"pages_breadcrumbs\"><b><a href=\"{$owner_url}\">" . elgg_echo('pages:user') . "</a></b>: <a href=\"{$parent->getURL()}\">$parent->title</a> > new page</div>";
     }
+    
+    global $CONFIG;
+	add_submenu_item(sprintf(elgg_echo("pages:user"), page_owner_entity()->name), $CONFIG->url . "pg/pages/owned/" . page_owner_entity()->username);
     
 	$title = elgg_echo("pages:new");
 	$area2 .= elgg_view_title($title);
