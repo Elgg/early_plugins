@@ -2,7 +2,7 @@
 
 ?>
 	<p>
-		Number of shares to display:
+		Number of bookmarked items to display:
 		<select name="params[num_display]">
 		    <option value="1" <?php if($vars['entity']->num_display == 1) echo "SELECTED"; ?>>1</option>
 		    <option value="2" <?php if($vars['entity']->num_display == 2) echo "SELECTED"; ?>>2</option>

@@ -1,11 +1,11 @@
 <?php
 
 	/**
-	 * Elgg sharing plugin form
+	 * Elgg bookmarks plugin form
 	 * 
-	 * @package ElggShare
+	 * @package ElggBookmarks
 	 * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License version 2
-	 * @author Ben Werdmuller <ben@elgg.com>
+	 * @author Curverider <info@elgg.com>
 	 * @copyright Curverider Ltd 2008
 	 * @link http://elgg.org/
 	 */
@@ -39,7 +39,7 @@
 
 ?>
 
-	<form action="<?php echo $vars['url']; ?>action/sharing/add" method="post">
+	<form action="<?php echo $vars['url']; ?>action/bookmarks/add" method="post">
 	
 		<p>
 			<label>
@@ -56,7 +56,7 @@
 		</p>
 		<p>
 			<label>
-				<?php 	echo elgg_echo('sharing:address'); ?>
+				<?php 	echo elgg_echo('bookmarks:address'); ?>
 				<?php
 
 						echo elgg_view('input/url',array(
@@ -94,10 +94,10 @@
 			</label>
 		</p>
 		<p>
-			<label><?php echo elgg_echo("sharing:with"); ?></label><br />
+			<label><?php echo elgg_echo("bookmarks:with"); ?></label><br />
 			<?php
 
-				echo elgg_view('sharing/sharing',array('shares' => $shares, 'owner' => $owner));
+				echo elgg_view('bookmarks/sharing',array('shares' => $shares, 'owner' => $owner));
 			
 			?>
 		</p>
@@ -115,7 +115,7 @@
 			</label>
 		</p>
 		<p>
-			<input type="hidden" name="sharing_guid" value="<?php echo $guid; ?>" />
+			<input type="hidden" name="bookmark_guid" value="<?php echo $guid; ?>" />
 			<input type="submit" value="<?php echo elgg_echo('save'); ?>" />
 		</p>
 	

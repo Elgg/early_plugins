@@ -1,11 +1,11 @@
 <?php
 
 	/**
-	 * Elgg sharing CSS
+	 * Elgg bookmarks CSS
 	 * 
-	 * @package ElggShare
+	 * @package ElggBookmarks
 	 * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License version 2
-	 * @author Ben Werdmuller <ben@elgg.com>
+	 * @author Curverider <ben@elgg.com>
 	 * @copyright Curverider Ltd 2008
 	 * @link http://elgg.org/
 	 */
