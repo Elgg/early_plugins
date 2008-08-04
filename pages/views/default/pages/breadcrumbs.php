@@ -18,7 +18,11 @@
         }
         
         echo $breadcrumbs;
-	    echo " &gt; <a href=\"{$parent->getURL()}\">$parent->title</a>";
-	    echo " &gt; ". elgg_echo('pages:new') ."</div>";
+        //if it is adding a page, make the last page a link, otherwise, don't
+        if($vars['add']){
+	        echo " &gt; <a href=\"{$parent->getURL()}\">$parent->title</a></div>";
+        }else{
+            echo " &gt; $parent->title</div>";
+        }
 
 ?>

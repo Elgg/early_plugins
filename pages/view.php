@@ -31,8 +31,15 @@
 		add_submenu_item(elgg_echo('pages:delete'),"{$CONFIG->wwwroot}action/pages/delete?page={$pages->getGUID()}");
 	}
 	
-	$title = $pages->title;
-	$body = elgg_view_entity($pages, true);
+	//if the page has a parent, get it
+	if($parent_page = get_entity(get_input("page_guid")))
+	    $parent = $parent_page;
+	    
+	// Breadcrumbs
+	$body = elgg_view('pages/breadcrumbs', array('page_owner' => page_owner_entity(), 'parent' => $parent));
+	
+	$body .= elgg_view_title($pages->title);
+	$body .= elgg_view_entity($pages, true);
 	
 	//add comments
 	$body .= elgg_view_comments($pages);
@@ -40,7 +47,7 @@
 	pages_set_navigation_parent($pages);
 	$sidebar = elgg_view('pages/sidebar/tree');
 	
-	$body = elgg_view_layout('two_column_left_sidebar', '', elgg_view_title($title) . $body, $sidebar);
+	$body = elgg_view_layout('two_column_left_sidebar', '', $body, $sidebar);
 	
 	// Finally draw the page
 	page_draw($title, $body);

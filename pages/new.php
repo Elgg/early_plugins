@@ -28,7 +28,7 @@
 	    $parent = get_entity(get_input('parent_guid'));
 	    
 	    // Breadcrumbs
-	    $area2 .= elgg_view('pages/breadcrumbs', array('page_owner' => $page_owner, 'parent' => $parent));
+	    $area2 .= elgg_view('pages/breadcrumbs', array('page_owner' => $page_owner, 'parent' => $parent, 'add' => true));
     }
     
     global $CONFIG;
