@@ -75,11 +75,11 @@
 		
 		// Add submenu options
 			if (get_context() == "file") {
-				if ((page_owner() == $_SESSION['guid'] || !page_owner()) && isloggedin()) {
-					add_submenu_item(sprintf(elgg_echo("file:yours"),$_SESSION['user']->name), $CONFIG->wwwroot . "pg/file/" . $_SESSION['user']->username);
-					add_submenu_item(sprintf(elgg_echo('file:yours:friends'),$_SESSION['user']->name), $CONFIG->wwwroot . "pg/file/". $_SESSION['user']->username . "/friends/");
+				if ((can_write_to_container(page_owner()) || !page_owner()) && isloggedin()) {
+					add_submenu_item(sprintf(elgg_echo("file:yours"),page_owner_entity()->name), $CONFIG->wwwroot . "pg/file/" . page_owner_entity()->username);
+					add_submenu_item(sprintf(elgg_echo('file:yours:friends'),page_owner_entity()->name), $CONFIG->wwwroot . "pg/file/". page_owner_entity()->username . "/friends/");
 					add_submenu_item(elgg_echo('file:all'), $CONFIG->wwwroot . "mod/file/world.php");
-					add_submenu_item(elgg_echo('file:upload'), $CONFIG->wwwroot . "pg/file/". $_SESSION['user']->username . "/new/");
+					add_submenu_item(elgg_echo('file:upload'), $CONFIG->wwwroot . "pg/file/". page_owner_entity()->username . "/new/");
 				} else if (page_owner()) {
 					$page_owner = page_owner_entity();
 					add_submenu_item(sprintf(elgg_echo("file:user"),$page_owner->name), $CONFIG->wwwroot . "pg/file/" . $page_owner->username);
