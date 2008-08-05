@@ -14,7 +14,7 @@
 
 	// Render the file upload page
 
-	$container_guid = (int) get_input('container_guid', $_SESSION['guid']);
+	$container_guid = page_owner();
 	$area1 = elgg_view_title($title = elgg_echo('file:upload'));
 	$area2 = elgg_view("file/upload", array('container_guid' => $container_guid));
 	$body = elgg_view_layout('two_column_left_sidebar', $area1, $area2);
