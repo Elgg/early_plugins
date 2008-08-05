@@ -33,13 +33,11 @@
 	
 	
 	        <!-- the status message -->
-		    <p>
 			    <?php
 
 				    echo parse_urls(elgg_view("output/longtext",array("value" => $vars['entity']->description)));
 	
 			    ?>
-		    </p>
 		
 		</div><!-- end widget_status_statusmessage or widget_status_statusmessage_history div-->
 				
