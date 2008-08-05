@@ -52,7 +52,6 @@
 		
 		// Extend hover-over and profile menu	
 	    extend_view('profile/menu/links','file/menu');
-	    extend_view('groups/menu/links','file/menu');
 		
 		// Register a page handler, so we can have nice URLs
 		register_page_handler('file','file_page_handler');
@@ -73,22 +72,27 @@
 		
 		global $CONFIG;
 		
-		// Add submenu options
+		$page_owner = page_owner_entity();
+		
+		// Group submenu option	
+			if ($page_owner instanceof ElggGroup && get_context() != "file") {
+				add_submenu_item(sprintf(elgg_echo("file:user"),$page_owner->name), $CONFIG->wwwroot . "pg/file/" . $page_owner->username);
+			}
+			
+		// General submenu options
+		
 			if (get_context() == "file") {
-				if ((can_write_to_container(page_owner()) || !page_owner()) && isloggedin()) {
+				if ((page_owner() == $_SESSION['guid'] || !page_owner()) && isloggedin()) {
 					add_submenu_item(sprintf(elgg_echo("file:yours"),page_owner_entity()->name), $CONFIG->wwwroot . "pg/file/" . page_owner_entity()->username);
 					add_submenu_item(sprintf(elgg_echo('file:yours:friends'),page_owner_entity()->name), $CONFIG->wwwroot . "pg/file/". page_owner_entity()->username . "/friends/");
-					add_submenu_item(elgg_echo('file:all'), $CONFIG->wwwroot . "mod/file/world.php");
-					add_submenu_item(elgg_echo('file:upload'), $CONFIG->wwwroot . "pg/file/". page_owner_entity()->username . "/new/");
 				} else if (page_owner()) {
-					$page_owner = page_owner_entity();
 					add_submenu_item(sprintf(elgg_echo("file:user"),$page_owner->name), $CONFIG->wwwroot . "pg/file/" . $page_owner->username);
 					if ($page_owner instanceof ElggUser) // This one's for users, not groups
 						add_submenu_item(sprintf(elgg_echo('file:friends'),$page_owner->name), $CONFIG->wwwroot . "pg/file/". $_SESSION['user']->username . "/friends/");
-					add_submenu_item(elgg_echo('file:all'), $CONFIG->wwwroot . "mod/file/world.php");
-				} else {
-					add_submenu_item(elgg_echo('file:all'), $CONFIG->wwwroot . "mod/file/world.php");
 				}
+				add_submenu_item(elgg_echo('file:all'), $CONFIG->wwwroot . "mod/file/world.php");
+				if (can_write_to_container(page_owner()))
+					add_submenu_item(elgg_echo('file:upload'), $CONFIG->wwwroot . "pg/file/". page_owner_entity()->username . "/new/");
 			}
 		
 	}
