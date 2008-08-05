@@ -77,6 +77,24 @@
 	}
 	
 	/**
+	 * Sets up submenus for the pages system.  Triggered on pagesetup.
+	 *
+	 */
+	function pages_submenus() {
+		
+		global $CONFIG;
+		
+		$page_owner = page_owner_entity();
+		
+		// Group submenu option	
+			if ($page_owner instanceof ElggGroup && get_context() != "pages") {
+				add_submenu_item(sprintf(elgg_echo("pages:group"),$page_owner->name), $CONFIG->wwwroot . "pg/pages/owned/" . $page_owner->username);
+			}
+			
+			
+    }
+	
+	/**
 	 * Pages page handler.
 	 *
 	 * @param array $page
@@ -251,4 +269,5 @@
 	
 	// Make sure the pages initialisation function is called on initialisation
 	register_elgg_event_handler('init','system','pages_init');
+	register_elgg_event_handler('pagesetup','system','pages_submenus');
 ?>
