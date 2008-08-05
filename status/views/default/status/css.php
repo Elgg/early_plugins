@@ -62,7 +62,8 @@
 	line-height:1.2em;
 	font-weight:bold;
 	color:#666666;
-	padding:3px;	
+	padding:3px;
+	margin:0;	
 }
 
 /* widget status box - input */

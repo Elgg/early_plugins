@@ -42,7 +42,7 @@ p.message_item_timestamp {
 	margin: 5px 10px 0 5px;
 }
 
-.messageboard .message {
+.messageboard .message p {
 	line-height: 1.2em;
 	background:#fffcd9;
 	margin:0 4px 4px 4px;
