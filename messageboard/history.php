@@ -27,15 +27,15 @@
 		$contents = get_annotations($users_array, "user", "", "messageboard", $value = "", $users_array, $limit = 10, $offset = 0, $order_by = "desc");
 	
     // Get the content to display	
-		$area1 = elgg_view_title("History");
-		$area1 .= elgg_view("messageboard/messageboard", array('annotation' => $contents));
+		$area2 = elgg_view_title("History");
+		$area2 .= elgg_view("messageboard/messageboard", array('annotation' => $contents));
 	
 	//$area1 = "<h2>Profile owner: " . $current_user . "</h2>";
 	//$area1 .= "<h2>User guid: " . $history_user . "</h2>";
 	    
 		
     //select the correct canvas area
-	    $body = elgg_view_layout("one_column", $area1);
+	    $body = elgg_view_layout("two_column_left_sidebar", '', $area2);
 		
 	// Display page
 		page_draw(sprintf(elgg_echo('shouts:user')),$body);
