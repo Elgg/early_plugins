@@ -11,16 +11,19 @@
 
 	require_once(dirname(dirname(dirname(__FILE__))) . "/engine/start.php");
 	gatekeeper();
-
+		
+	$page_guid = get_input('page_guid');
+	$pages = get_entity($page_guid);
+	
 	// Get the current page's owner
+		if ($container = $pages->container_guid) {
+			set_page_owner($container);
+		}
 		$page_owner = page_owner_entity();
 		if ($page_owner === false || is_null($page_owner)) {
 			$page_owner = $_SESSION['user'];
 			set_page_owner($page_owner->getGUID());
 		}
-		
-	$page_guid = get_input('page_guid');
-	$pages = get_entity($page_guid);
 	
 	$title = elgg_echo("pages:edit");
 	$body = elgg_view_title($title);
