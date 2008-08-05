@@ -41,7 +41,12 @@ $(document).ready(function(){
 <div id="mb_input_wrapper"><!-- start of mb_input_wrapper div -->
 
     <h2>Messageboard</h2>
-    
+  
+<?php 
+    //if not a member don't display the add comment to messageboard
+    if(is_group_member($entity->guid, $_SESSION['guid'])){
+?>
+
     <!-- message textarea -->
     <textarea name="message_content" id="testing" value="" class="input_textarea" /></textarea>
    
@@ -61,6 +66,10 @@ $(document).ready(function(){
     
     <!-- loading graphic -->
     <div id="loader" class="loading">  </div>
+    
+<?php
+    }
+?>
 
 </div><!-- end of mb_input_wrapper div -->
 
