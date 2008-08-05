@@ -24,13 +24,13 @@
 		$messages = $page_owner->getObjects('messages');
 		
     // Set the page title
-	    $area1 = elgg_view_title(elgg_echo("messages:sentmessages"));
+	    $area2 = elgg_view_title(elgg_echo("messages:sentmessages"));
 		
 	// Set content
-		$area1 .= elgg_view("messages/view",array('entity' => $messages, 'page_view' => "sent"));
+		$area2 .= elgg_view("messages/view",array('entity' => $messages, 'page_view' => "sent"));
 
 	// Format
-		$body = elgg_view_layout("one_column", $area1);
+		$body = elgg_view_layout("two_column_left_sidebar", '', $area2);
 		
 	// Draw page
 		page_draw(sprintf(elgg_echo('messages:sentMessages'),$page_owner->name),$body);

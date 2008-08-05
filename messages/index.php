@@ -21,14 +21,14 @@
 		$messages = get_entities_from_metadata("toId", $page_owner->getGUID(), "object", "messages", 0, 20, 0);
 
 	// Set the page title
-	    $area1 = elgg_view_title(elgg_echo("messages:inbox"));
+	    $area2 = elgg_view_title(elgg_echo("messages:inbox"));
 	    
 	// Display them. The last variable 'page_view' is to allow the view page to know where this data is coming from,
 	// in this case it is the inbox, this is necessary to ensure the correct display
-	    $area1 .= elgg_view("messages/view",array('entity' => $messages, 'page_view' => "inbox"));
+	    $area2 .= elgg_view("messages/view",array('entity' => $messages, 'page_view' => "inbox"));
 		
 	// format
-	    $body = elgg_view_layout("one_column", $area1);
+	    $body = elgg_view_layout("two_column_left_sidebar", '', $area2);
 
 	
 	// Draw page

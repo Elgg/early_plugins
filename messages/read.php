@@ -33,14 +33,18 @@
 	        }
 	        
         }
+        
+    // Get the logged in user
+		$page_owner = $_SESSION['user'];
+		set_page_owner($page_owner->getGUID());
 	    
     // Display it
-	    $area1 = elgg_view("object/messages",array(
+	    $area2 = elgg_view("object/messages",array(
 											'entity' => $message,
 											'entity_owner' => $page_owner,
 											'full' => true
 											));
-	    $body = elgg_view_layout("one_column", $area1);
+	    $body = elgg_view_layout("two_column_left_sidebar", '', $area2);
 
 	// Display page
 		page_draw(sprintf(elgg_echo('messages:message')),$body);
