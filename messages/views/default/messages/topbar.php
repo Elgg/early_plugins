@@ -21,6 +21,18 @@
 		$num = 0;
 	}
 
+	if($num == 0){
+
 ?>
 
-	<a href="<?php echo $vars['url']; ?>pg/messages/<?php echo $_SESSION['user']->username; ?>" class="pagelinks" ><?php echo elgg_echo("messages"); ?> (<?php echo $num; ?>)</a>
+	<a href="<?php echo $vars['url']; ?>pg/messages/<?php echo $_SESSION['user']->username; ?>" class="pagelinks privatemessages" ></a>
+	
+<?php
+    }else{
+?>
+
+    <a href="<?php echo $vars['url']; ?>pg/messages/<?php echo $_SESSION['user']->username; ?>" class="pagelinks privatemessages_new" >[<?php echo $num; ?>]</a>
+	
+<?php
+    }
+?>
