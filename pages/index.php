@@ -26,7 +26,12 @@
 	$limit = get_input("limit", 10);
 	$offset = get_input("offset", 0);
 	
-	$title = sprintf(elgg_echo("pages:user"),page_owner_entity()->name);
+	if($owner instanceof ElggGroup){
+		$title = sprintf(elgg_echo("pages:group"),$owner->name);
+	}else{
+		$title = sprintf(elgg_echo("pages:user"),$owner->name);
+	}
+
 	
 	// Get objects
 	$context = get_context();
