@@ -38,13 +38,7 @@
 		// Set up menu for logged in users
 		if (isloggedin()) 
 		{
-			add_menu(elgg_echo('file'), $CONFIG->wwwroot . "pg/file/" . $_SESSION['user']->username, array(
-/*				menu_item(sprintf(elgg_echo("file:yours"),$_SESSION['user']->name), $CONFIG->wwwroot . "pg/file/" . $_SESSION['user']->username),
-				menu_item(sprintf(elgg_echo('file:yours:friends'),$_SESSION['user']->name), $CONFIG->wwwroot . "pg/file/". $_SESSION['user']->username . "/friends/"),
-				// menu_item(elgg_echo('file:all'), $CONFIG->wwwroot . "pg/file/". $_SESSION['user']->username . "/world/"),
-				menu_item(elgg_echo('file:all'), $CONFIG->wwwroot . "mod/file/world.php"),
-				menu_item(elgg_echo('file:upload'), $CONFIG->wwwroot . "pg/file/". $_SESSION['user']->username . "/new/") */
-			));
+			add_menu(elgg_echo('file'), $CONFIG->wwwroot . "pg/file/" . $_SESSION['user']->username);
 		}
 				
 		// Extend CSS
@@ -52,6 +46,7 @@
 		
 		// Extend hover-over and profile menu	
 	    extend_view('profile/menu/links','file/menu');
+		extend_view('groups/right_column','file/groupprofile_files');
 		
 		// Register a page handler, so we can have nice URLs
 		register_page_handler('file','file_page_handler');
