@@ -239,9 +239,9 @@
 			if (($write_permission) && ($user))
 			{
 				// $list = get_write_access_array($user->guid);
-				$list = get_access_list($user->guid);
+				$list = get_access_array($user->guid); // get_access_list($user->guid);
 					
-				if (($write_permission!=0) && (isset($list[$write_permission])))
+				if (($write_permission!=0) && (in_array($write_permission,$list)))
 					return true;
 				
 			}
