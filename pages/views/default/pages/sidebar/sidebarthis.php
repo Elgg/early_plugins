@@ -13,7 +13,7 @@
 	$entity = $vars['entity'];
 	$parent = $vars['entity']->parent_guid;
 	
-	$currentpage = get_input('currentpage');
+	$currentpage = (int) get_input('currentpage');
 	if ($currentpage) {
 		
 		$path = pages_get_path($currentpage);

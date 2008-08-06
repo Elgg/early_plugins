@@ -186,7 +186,7 @@
 		set_input('treeguid',$guid);
 	}
 	
-	function pages_get_path(int $guid) {
+	function pages_get_path($guid) {
 		
 		if (!$entity = get_entity($guid)) return array();
 		
