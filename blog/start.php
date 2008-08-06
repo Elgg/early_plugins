@@ -50,6 +50,12 @@
 				
 			// Register a URL handler for blog posts
 				register_entity_url_handler('blog_url','object','blog');
+				
+			// Register this plugin's object for sending pingbacks
+				register_plugin_hook('pingback:object:subtypes', 'object', 'blog_pingback_subtypes');
+				
+			// Listen for new pingbacks
+				register_elgg_event_handler('create', 'object', 'blog_incoming_ping');
 		}
 		
 		function blog_pagesetup() {
@@ -121,6 +127,35 @@
 			$title = friendly_title($title);
 			return $CONFIG->url . "pg/blog/" . $blogpost->getOwnerEntity()->username . "/read/" . $blogpost->getGUID() . "/" . $title;
 			
+		}
+		
+		/**
+		 * This function adds 'blog' to the list of objects which will be looked for pingback urls.
+		 *
+		 * @param unknown_type $hook
+		 * @param unknown_type $entity_type
+		 * @param unknown_type $returnvalue
+		 * @param unknown_type $params
+		 * @return unknown
+		 */
+		function blog_pingback_subtypes($hook, $entity_type, $returnvalue, $params)
+		{
+			$returnvalue[] = 'blog';
+			
+			return $returnvalue;
+		}
+		
+		/**
+		 * Listen to incoming pings, this parses an incoming target url - sees if its for me, and then
+		 * either passes it back or prevents it from being created and attaches it as an annotation to a given
+		 *
+		 * @param unknown_type $event
+		 * @param unknown_type $object_type
+		 * @param unknown_type $object
+		 */
+		function blog_incoming_ping($event, $object_type, $object)
+		{
+			// TODO: Get incoming ping object, see if its a ping on a blog and if so attach it as a comment
 		}
 		
 	// Make sure the blog initialisation function is called on initialisation
