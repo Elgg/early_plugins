@@ -230,11 +230,12 @@
 	 */
 	function pages_write_permission_check($hook, $entity_type, $returnvalue, $params)
 	{
-		if ($params['entity']->getSubtype() == 'page') {
+		if ($params['entity']->getSubtype() == 'page'
+			|| $params['entity']->getSubtype() == 'page_top') {
 		
 			$write_permission = $params['entity']->write_access_id;
 			$user = $params['user'];
-					
+
 			if (($write_permission) && ($user))
 			{
 				// $list = get_write_access_array($user->guid);
