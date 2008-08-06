@@ -20,7 +20,11 @@
 		// Set up the menu for logged in users
 		if (isloggedin()) 
 		{
-			add_menu(elgg_echo('pages'), $CONFIG->wwwroot . "pg/pages/owned/" . $_SESSION['user']->username,'pages');
+			add_menu(elgg_echo('pages'), $CONFIG->wwwroot . "pg/pages/owned/" . $_SESSION['user']->username,array(
+				//menu_item(elgg_echo('pages:new'), $CONFIG->wwwroot."pg/pages/new/"),
+				//menu_item(elgg_echo('pages:yours'), $CONFIG->wwwroot . "pg/pages/owned/" . $_SESSION['user']->username),
+				//menu_item(elgg_echo('pages:all'), $CONFIG->wwwroot . "pg/pages/world/"),
+			),'pages');
 		}
 		else
 		{
@@ -48,7 +52,6 @@
 		extend_view('css','pages/css');
 		extend_view('metatags','pages/metatags');
 		extend_view('groups/menu/links', 'pages/menu'); // Add to groups context
-		extend_view('groups/right_column','pages/groupprofile_pages');
 		
 		// For now, we'll hard code the groups profile items as follows:
 		// TODO make this user configurable
@@ -255,6 +258,9 @@
 	function pages_container_permission_check($hook, $entity_type, $returnvalue, $params) {
 		
 		if (get_context() == "pages") {
+			if (page_owner()) {
+				if (can_write_to_container($_SESSION['user']->guid, page_owner())) return true;
+			}
 			if ($page_guid = get_input('page_guid',0)) {
 				$entity = get_entity($page_guid);
 			} else if ($parent_guid = get_input('parent_guid',0)) {
