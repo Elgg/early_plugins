@@ -19,7 +19,7 @@
 
 <div class="friends_status"><!-- start the friends status message -->
      
-	<div class="">
+	<div class="friends_status_message">
 	
 	    <!-- display the message -->
         <p>
@@ -28,7 +28,7 @@
     			?>
         </p>
     		
-    </div><!-- end widget_status_statusmessage -->
+    </div><!-- end friends_status_message -->
 				
     <div class="status_timestamp">
 		<p><small>

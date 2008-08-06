@@ -140,12 +140,24 @@
 /* friends status on 'friends' page */
 .friends_status {
 	float:right;
-	width:500px;
+	width:370px;
 	text-align:right;
 	margin: 0 4px 0 0;
+	padding:0;
+}
+.friends_status p {
+	margin: 0;
+	padding:0;
+	line-height:1em;
+}
+.friends_status_message {
+	height:27px;
+	overflow:hidden;
 }
 .status_timestamp {
-	color:#666666;	
+	color:#666666;
+	margin:0;
+	padding:0;
 }
 
 
