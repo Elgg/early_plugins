@@ -20,7 +20,7 @@
 			'file:yours:friends' => "Your friends' files",
 			'file:user' => "%s's files",
 			'file:friends' => "%s's friends' files",
-			'file:all' => "All files",
+			'file:all' => "All site files",
 			'file:more' => "more files",
 			'file:list' => "list view",
 			'file:gallery' => "gallery view",

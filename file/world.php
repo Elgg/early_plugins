@@ -14,6 +14,13 @@
 	$offset = get_input("offset", 0);
 	$tag = get_input("tag");
 	
+	// Get the current page's owner
+		$page_owner = page_owner_entity();
+		if ($page_owner === false || is_null($page_owner)) {
+			$page_owner = $_SESSION['user'];
+			set_page_owner($page_owner->getGUID());
+		}
+	
 	// Get objects
 	$area2 = elgg_view_title($title = elgg_echo('file:type:all'));
 	$area1 = get_filetype_cloud(); // the filter
