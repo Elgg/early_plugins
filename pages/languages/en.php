@@ -21,6 +21,7 @@
 			'pages:group' => "%s's pages",
 			'pages:all' => "All pages",
 			'pages:new' => "New page",
+			'pages:group' => "Group pages",
 			'pages:edit' => "Edit this page",
 			'pages:delete' => "Delete this page",
 			'pages:history' => "Page history",

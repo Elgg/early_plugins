@@ -20,11 +20,7 @@
 		// Set up the menu for logged in users
 		if (isloggedin()) 
 		{
-			add_menu(elgg_echo('pages'), $CONFIG->wwwroot . "pg/pages/owned/" . $_SESSION['user']->username,array(
-				//menu_item(elgg_echo('pages:new'), $CONFIG->wwwroot."pg/pages/new/"),
-				//menu_item(elgg_echo('pages:yours'), $CONFIG->wwwroot . "pg/pages/owned/" . $_SESSION['user']->username),
-				//menu_item(elgg_echo('pages:all'), $CONFIG->wwwroot . "pg/pages/world/"),
-			),'pages');
+			add_menu(elgg_echo('pages'), $CONFIG->wwwroot . "pg/pages/owned/" . $_SESSION['user']->username,'pages');
 		}
 		else
 		{
@@ -52,6 +48,7 @@
 		extend_view('css','pages/css');
 		extend_view('metatags','pages/metatags');
 		extend_view('groups/menu/links', 'pages/menu'); // Add to groups context
+		extend_view('groups/right_column','pages/groupprofile_pages');
 		
 		// For now, we'll hard code the groups profile items as follows:
 		// TODO make this user configurable
