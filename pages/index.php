@@ -38,14 +38,6 @@
 	
 	set_context('search');
 	
-	
-	// If there are no objects then prompt to add new ones
-	if (!get_entities('object', 'page_top', page_owner()))
-	{
-		forward($CONFIG->wwwroot . "pg/pages/new/?container_guid=" . page_owner());
-		exit;
-	}
-	
 	$objects = list_entities("object", "page_top", page_owner(), $limit, false);
 	
 	set_context($context);
