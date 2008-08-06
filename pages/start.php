@@ -255,7 +255,19 @@
 	function pages_container_permission_check($hook, $entity_type, $returnvalue, $params) {
 		
 		if (get_context() == "pages") {
-			return true;
+			if ($page_guid = get_input('page_guid',0)) {
+				$entity = get_entity($page_guid);
+			} else if ($parent_guid = get_input('parent_guid',0)) {
+				$entity = get_entity($parent_guid);
+			}
+			if ($entity instanceof ElggObject) {
+				if (
+						can_write_to_container($_SESSION['user']->guid, $entity->container_guid)
+						|| in_array($entity->write_access_id,get_access_list())
+					) {
+						return true;
+				}
+			}
 		}
 		
 	}
