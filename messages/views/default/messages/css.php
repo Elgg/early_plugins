@@ -35,8 +35,19 @@ MESSAGING PLUGIN
 	 background: #ffffff; 
 	 border-bottom: 1px solid #d6dbd2;
 }
-#messages .delete_msg {
-	text-align: right;
+
+#messages a.delete_msg {
+	display:block;
+	cursor: pointer;
+	width:14px;
+	height:14px;
+	margin:0;
+	background: url("<?php echo $vars['url']; ?>_graphics/icon_customise_remove.png") no-repeat right 0;
+	text-indent: -9000px;
+	float:right;
+}
+#messages a.delete_msg:hover {
+	background-position: right -16px;
 }
 
 #messages .usericon {
@@ -47,10 +58,15 @@ MESSAGING PLUGIN
 
 #messages .msgsender {
 	color:#666666;
-	line-height: 15px;
-	margin:4px 0 0 0;
+	line-height: 1em;
+	margin:0;
+	padding:0;
 	float:left;
 }
+#messages .msgsender small {
+	color:#AAAAAA;
+}
+
 
 #messages .msgsubject {
 	font-size: 120%;

@@ -55,11 +55,21 @@ p.message_item_timestamp {
 	line-height: 1.1em;
 }
 .message_buttons img {
-	width:10px;height:10px;
 	padding:0 0 0 0;
 }
 
-
+.message_buttons a.delete_message {
+	display:block;
+	cursor: pointer;
+	width:14px;
+	height:14px;
+	margin:0 3px 0 0;
+	background: url("<?php echo $vars['url']; ?>_graphics/icon_customise_remove.png") no-repeat 0 0;
+	text-indent: -9000px;
+}
+.message_buttons a.delete_message:hover {
+	background-position: 0 -16px;
+}
 
 
 

@@ -37,8 +37,8 @@
     ?>
 		    <p class="message_buttons">
 		    
-		    <a href=""><img src="<?php echo $vars['url']; ?>_graphics/icon_customise_remove.gif" title="delete" /></a>
-		    
+		    <a href="#" class="delete_message">delete</a>
+		    <!-- // needs the link info below adding to the a.delete_message above
 		        <?php
 
 			        echo elgg_view("output/confirmlink",array(
@@ -48,7 +48,7 @@
 													));
 		
 		        ?>
-		        
+		    //    -->
 		        <?php
 		            //if the message being looked at is owned by the current user, don't show the reply
 		            if($vars['annotation']->owner_guid != $_SESSION['guid']){
