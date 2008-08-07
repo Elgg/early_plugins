@@ -18,7 +18,7 @@
     add_submenu_item(sprintf(elgg_echo("pages:user"), page_owner_entity()->name), $CONFIG->url . "pg/pages/owned/" . page_owner_entity()->username);
     add_submenu_item(elgg_echo('pages:all'),$CONFIG->wwwroot."mod/pages/world.php");
     if (($owner) && ($owner->canWriteToContainer($_SESSION['user']))){
-        add_submenu_item(elgg_echo('pages:new'), $CONFIG->url . "pg/pages/new/");
+        add_submenu_item(elgg_echo('pages:new'), $CONFIG->url . "pg/pages/new/?container_guid=" . page_owner());
         add_submenu_item(elgg_echo('pages:welcome'), $CONFIG->url . "pg/pages/welcome/");
     }
     					
