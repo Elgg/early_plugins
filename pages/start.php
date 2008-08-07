@@ -49,8 +49,10 @@
 		register_action("pages/delete",false, $CONFIG->pluginspath . "pages/actions/pages/delete.php");
 		
 		// Extend some views
-		extend_view('css','pages/css');
-		extend_view('metatags','pages/metatags');
+		if (get_context() == 'pages') {
+			extend_view('css','pages/css');
+			extend_view('metatags','pages/metatags');
+		}
 		extend_view('groups/menu/links', 'pages/menu'); // Add to groups context
 		
 		// For now, we'll hard code the groups profile items as follows:
