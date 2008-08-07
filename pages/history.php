@@ -41,12 +41,10 @@
 	set_context($context);
 	
 	
-	$area1 = pages_get_entity_sidebar($pages);
-	
 	pages_set_navigation_parent($pages);
 	$area3 = elgg_view('pages/sidebar/tree');
 	
-	$body = elgg_view_layout('two_column_left_sidebar',$area1, $area2, $area3);
+	$body = elgg_view_layout('two_column_left_sidebar', '', $area2, $area3);
 	
 	page_draw($title, $body);
 ?>

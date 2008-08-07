@@ -36,9 +36,7 @@
 		$body .= elgg_echo("pages:noaccess");
 	}
 	
-	$sidebar = pages_get_entity_sidebar($pages);
-	
-	$body = elgg_view_layout('two_column_left_sidebar',$sidebar, $body);
+	$body = elgg_view_layout('two_column_left_sidebar', '', $body);
 	
 	page_draw($title, $body);
 ?>

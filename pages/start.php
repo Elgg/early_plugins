@@ -49,10 +49,7 @@
 		register_action("pages/delete",false, $CONFIG->pluginspath . "pages/actions/pages/delete.php");
 		
 		// Extend some views
-		if (get_context() == 'pages') {
-			extend_view('css','pages/css');
-			extend_view('metatags','pages/metatags');
-		}
+		extend_view('css','pages/css');
 		extend_view('groups/menu/links', 'pages/menu'); // Add to groups context
 		
 		// For now, we'll hard code the groups profile items as follows:
@@ -143,6 +140,8 @@
     				if (isset($page[1]))
     					set_input('page_guid', $page[1]);
     					
+    				 extend_view('metatags','pages/metatags');
+    					
     				 $entity = get_entity($page[1]);
     				 add_submenu_item(elgg_echo('pages:label:view'), $CONFIG->url . "pg/pages/view/{$page[1]}");
     				 if (($entity) && ($entity->canEdit())) add_submenu_item(elgg_echo('pages:label:edit'), $CONFIG->url . "pg/pages/edit/{$page[1]}");
@@ -153,6 +152,8 @@
     			case "history" :
     				if (isset($page[1]))
     					set_input('page_guid', $page[1]);
+    					
+    				 extend_view('metatags','pages/metatags');
     					
     				 $entity = get_entity($page[1]);
     				 add_submenu_item(elgg_echo('pages:label:view'), $CONFIG->url . "pg/pages/view/{$page[1]}");
