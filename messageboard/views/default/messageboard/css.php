@@ -34,8 +34,8 @@ p.message_item_timestamp {
 }
 /* wraps each message */
 .messageboard {
-	margin:5px 0 5px 0;
-    background:#f5f5f5;
+	margin:10px 0 10px 0;
+    background:#EEEEEE;
 }
 .message_sender .usericon {
 	float:left;
@@ -54,24 +54,24 @@ p.message_item_timestamp {
 	padding:0 0 3px 4px;
 	line-height: 1.1em;
 }
-.message_buttons img {
-	padding:0 0 0 0;
+p.message_buttons {
+	padding:0;
+	margin:0 0 3px 4px;
 }
 
 .message_buttons a.delete_message {
 	display:block;
+	float:right;
 	cursor: pointer;
 	width:14px;
 	height:14px;
-	margin:0 3px 0 0;
+	margin:0 3px 3px 0;
 	background: url("<?php echo $vars['url']; ?>_graphics/icon_customise_remove.png") no-repeat 0 0;
 	text-indent: -9000px;
 }
 .message_buttons a.delete_message:hover {
 	background-position: 0 -16px;
 }
-
-
 
 
 
