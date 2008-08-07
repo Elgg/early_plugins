@@ -20,7 +20,7 @@ $('a.show_file_desc').click(function () {
 		$number = 10;
 	
 	//get the user's files
-	$files = get_user_objects($vars['entity']->owner_guid, "file", $number, 0);
+	$files = get_user_objects($vars['entity']->guid, "file", $number, 0);
 	
 	//if there are some files, go get them
 	if ($files) {
