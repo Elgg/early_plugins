@@ -15,6 +15,8 @@
 	set_context('pages');
 	
 	$pages = get_entity($page_guid);
+	if (!$pages) forward();
+
 	$container = $pages->container_guid;
 	
 	if ($container) {
