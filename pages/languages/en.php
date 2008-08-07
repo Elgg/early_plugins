@@ -31,6 +31,10 @@
 			'pages:welcomeposted' => "Your welcome message has been posted",
 			'pages:navigation' => "Page navigation",
 	
+			'item:object:page_top' => 'Top-level pages',
+			'item:object:page' => 'Pages',
+			'item:object:page_welcome' => 'Pages welcome blocks',
+	
 	
 		/**
 		 * Form fields

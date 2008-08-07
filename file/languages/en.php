@@ -71,6 +71,8 @@
 			'file:river:item' => "a file",
 			'file:river:annotate' => "%s commented on",
 
+			'item:object:file' => 'Files',
+	
 		/**
 		 * Status messages
 		 */

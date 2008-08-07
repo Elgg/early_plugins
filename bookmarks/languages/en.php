@@ -29,6 +29,8 @@
 			'bookmarks:river:annotate' => '%s commented on',
 			'bookmarks:river:item' => 'an item',
 	
+			'item:object:bookmarks' => 'Bookmarked items',
+	
 	
 		/**
 		 * More text

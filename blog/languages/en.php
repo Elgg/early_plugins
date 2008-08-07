@@ -25,6 +25,8 @@
 	
 			'blog:strapline' => "%s",
 			
+			'item:object:blog' => 'Blog posts',
+	
 			
          /**
 	     * Blog river

@@ -24,6 +24,8 @@
 			'messages:sentmessages' => "Sent messages",
 			'messages:recent' => "Recent messages",
 			
+			'item:object:messages' => 'Messages',
+	
 		/**
 		 * Status messages
 		 */

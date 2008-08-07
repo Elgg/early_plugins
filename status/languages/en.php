@@ -20,6 +20,8 @@
 			'status:nostatus' => "No status has been set.",
 			'status:viewhistory' => "view history",
 	
+			'item:object:status' => 'Status messages',
+	
 	
         /**
 	     * Status river
