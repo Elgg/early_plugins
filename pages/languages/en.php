@@ -33,7 +33,7 @@
 	
 			'item:object:page_top' => 'Top-level pages',
 			'item:object:page' => 'Pages',
-			'item:object:page_welcome' => 'Pages welcome blocks',
+			'item:object:pages_welcome' => 'Pages welcome blocks',
 	
 	
 		/**
