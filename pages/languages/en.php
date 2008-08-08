@@ -19,7 +19,7 @@
 			'pages:yours' => "Your pages",
 			'pages:user' => "Pages home",
 			'pages:group' => "%s's pages",
-			'pages:all' => "All pages",
+			'pages:all' => "All site pages",
 			'pages:new' => "New page",
 			'pages:groupprofile' => "Group pages",
 			'pages:edit' => "Edit this page",
