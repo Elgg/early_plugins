@@ -19,7 +19,7 @@
     //the number of files to display
 	$num = (int) $vars['entity']->num_display;
 	if (!$num)
-		$num = 1;
+		$num = 8;
 		
 	//get the correct size
 	$size = (int) $vars['entity']->icon_size;
