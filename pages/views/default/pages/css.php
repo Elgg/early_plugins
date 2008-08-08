@@ -4,7 +4,6 @@
 	 * 
 	 * @package ElggPages
 	 * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License version 2
-	 * @author Marcus Povey
 	 * @copyright Curverider Ltd 2008
 	 * @link http://elgg.com/
 	 */
@@ -80,8 +79,8 @@
 .filetree span.file { background: url(<?php echo $vars['url']; ?>mod/pages/images/file.gif) 0 0 no-repeat; }
 
 .pagesTreeContainer {
-		margin: 15px;
-		height: 200px;
+		margin:0;
+		min-height: 200px;
 	}
 	
 /* delete, Dave's test addition */
