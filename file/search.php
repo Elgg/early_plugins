@@ -4,7 +4,7 @@
 	 * Elgg file search
 	 * 
 	 * @package ElggFile
-	 * @author Marcus Povey
+	 * @author Curverider Ltd
 	 * @copyright Curverider Ltd 2008
 	 * @link http://elgg.com/
 
