@@ -125,6 +125,10 @@ p.filerepo_owner {
 	min-height:60px;
 	background-color: #eeeeee;
 }
+.filerepo_title_owner_wrapper .filerepo_title,
+.filerepo_title_owner_wrapper .filerepo_owner {
+	margin-left: 70px !important;
+}
 .filerepo_file .filerepo_maincontent {
 	margin-left: 70px;
 }

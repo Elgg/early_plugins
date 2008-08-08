@@ -93,7 +93,6 @@
 						
 					?></a>					
 		</div>
-		<div class="filerepo_maincontent">
 		
 		<div class="filerepo_title_owner_wrapper">
 		<?php
@@ -112,7 +111,11 @@
 				<small><?php echo $friendlytime; ?></small></p>
 		</div>
 		</div>
-		<div class="filerepo_description"><?php echo autop($desc); ?></div>
+
+		
+		<div class="filerepo_maincontent">
+		
+				<div class="filerepo_description"><?php echo autop($desc); ?></div>
 		<div class="filerepo_tags"><div class="object_tag_string"><?php
 
 					echo elgg_view('output/tags',array('value' => $tags));
