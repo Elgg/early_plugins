@@ -58,13 +58,6 @@
 			    <a href="<?php echo $vars['entity']->getURL(); ?>">(<?php echo sprintf(elgg_echo("comments:count"),$num_comments); ?>)</a>
 			</p>
 			
-			<!-- display the actual blog post -->
-				<?php
-			
-							echo autop($vars['entity']->description);
-				
-				?>
-			
 			<!-- display tags -->
 			<p class="tags">
 				<?php
@@ -73,6 +66,13 @@
 				
 				?>
 			</p>
+			
+			<!-- display the actual blog post -->
+				<?php
+			
+							echo autop($vars['entity']->description);
+				
+				?>
 			
 			<!-- display edit options if it is the blog post owner -->
 			<p class="options">
