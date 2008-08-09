@@ -34,6 +34,7 @@
 	float:none;
 }
 
+
 .treeview li { 
 	margin: 0;
 	padding: 3px 0pt 3px 16px;
@@ -92,7 +93,7 @@
 }
 
 #pages_page .tags {
-    padding:10px 0 0 0;
-    border-top:1px solid #efefef;
-    margin:10px 0 10px 0;
+    padding:0 0 0 16px;
+    margin:10px 0 4px 0;
+	background:transparent url(<?php echo $vars['url']; ?>_graphics/icon_tag.gif) no-repeat scroll left 2px;
 }

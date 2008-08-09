@@ -12,7 +12,6 @@
 
 ?>
 
-
 .blog_post {
 	margin-bottom: 15px;
 	border-bottom: 1px solid #aaaaaa;
@@ -38,12 +37,16 @@
 }
 
 .blog_post .strapline {
-	margin: 8px 0 10px 35px;
-	color: #aaa;
-}
-.blog_post .tags {
-	margin:0 0 5px 0;
+	margin: 0 0 0 35px;
 	padding:0;
+	color: #aaa;
+	line-height:1em;
+}
+.blog_post p.tags {
+	background:transparent url(<?php echo $vars['url']; ?>_graphics/icon_tag.gif) no-repeat scroll left 2px;
+	margin:0 0 0 35px;
+	padding:0pt 0pt 0pt 16px;
+	min-height:22px;
 }
 .blog_post .options {
 	margin:0;
