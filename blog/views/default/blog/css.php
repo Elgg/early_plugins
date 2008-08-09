@@ -12,16 +12,19 @@
 
 ?>
 
+
 .blog_post {
 	margin-bottom: 15px;
 	border-bottom: 1px solid #aaaaaa;
 }
 
 .blog_post_icon {
-	position: absolute;
+	position: relative;
 	float:left;
-	margin:5px 0 0 0;
+	margin:3px 0 0 0;
+	padding:0;
 }
+
 
 .blog_post h3 {
 	font-size: 150%;
