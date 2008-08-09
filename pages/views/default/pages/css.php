@@ -34,7 +34,6 @@
 	float:none;
 }
 
-
 .treeview li { 
 	margin: 0;
 	padding: 3px 0pt 3px 16px;
@@ -97,3 +96,13 @@
     margin:10px 0 4px 0;
 	background:transparent url(<?php echo $vars['url']; ?>_graphics/icon_tag.gif) no-repeat scroll left 2px;
 }
+
+#pages_page img[align="left"] {
+	margin: 10px 20px 10px 0;
+	float:left;
+}
+#pages_page img[align="right"] {
+	margin: 10px 0 10px 10px;
+	float:right;
+}
+

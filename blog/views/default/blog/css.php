@@ -56,6 +56,15 @@
 	padding:0;
 }
 
+.blog_post_body img[align="left"] {
+	margin: 10px 10px 10px 0;
+	float:left;
+}
+.blog_post_body img[align="right"] {
+	margin: 10px 0 10px 10px;
+	float:right;
+}
+
 .blog-comments h3 {
 	font-size: 150%;
 	margin-bottom: 10px;

@@ -5,7 +5,7 @@
 	 * 
 	 * @package ElggBlog
 	 * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License version 2
-	 * @author Curverider Ltd <info@elgg.com>
+	 * @author Ben Werdmuller <ben@curverider.co.uk>
 	 * @copyright Curverider Ltd 2008
 	 * @link http://elgg.com/
 	 * 
@@ -55,9 +55,8 @@
 			        //get the number of comments
 			    	$num_comments = elgg_count_comments($vars['entity']);
 			    ?>
-			    <a href="<?php echo $vars['entity']->getURL(); ?>">(<?php echo sprintf(elgg_echo("comments:count"),$num_comments); ?>)</a>
+			    <a href="<?php echo $vars['entity']->getURL(); ?>">(<?php echo sprintf(elgg_echo("comments:count"),$num_comments); ?>)</a><br />
 			</p>
-			
 			<!-- display tags -->
 			<p class="tags">
 				<?php
@@ -66,14 +65,15 @@
 				
 				?>
 			</p>
-			
+			<div class="blog_post_body">
+
 			<!-- display the actual blog post -->
 				<?php
 			
 							echo autop($vars['entity']->description);
 				
 				?>
-			
+			</div>			
 			<!-- display edit options if it is the blog post owner -->
 			<p class="options">
 			<?php
