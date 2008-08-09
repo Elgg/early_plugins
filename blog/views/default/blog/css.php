@@ -56,8 +56,6 @@
 	padding:0;
 }
 
-
-
 .blog-comments h3 {
 	font-size: 150%;
 	margin-bottom: 10px;
