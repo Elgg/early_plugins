@@ -27,7 +27,7 @@
 		$area1 .= "</div>";
 		
     //select the correct canvas area
-	    $body = elgg_view_layout("one_column", $area1);
+	    $body = elgg_view_layout("two_column_left_sidebar", '', $area1);
 		
 	// Display page
 		page_draw(sprintf(elgg_echo('status:user'),$page_owner->name),$body);
