@@ -69,11 +69,11 @@
 		} else {
 		
 			$info = "<p> <a href=\"{$file->getURL()}\">{$title}</a></p>";
-			$info .= "<p class=\"filerepo_timestamp\"><small><a href=\"{$vars['url']}pg/file/{$owner->username}\">{$owner->name}</a> {$friendlytime}";
+			$info .= "<p class=\"owner_timestamp\"><a href=\"{$vars['url']}pg/file/{$owner->username}\">{$owner->name}</a> {$friendlytime}";
 			$numcomments = elgg_count_comments($file);
 			if ($numcomments)
 				$info .= ", <a href=\"{$file->getURL()}\">" . sprintf(elgg_echo("comments")) . " (" . $numcomments . ")</a>";
-			$info .= "</small></p>";
+			$info .= "</p>";
 			
 			// $icon = elgg_view("profile/icon",array('entity' => $owner, 'size' => 'small'));
 			$icon = "<a href=\"{$file->getURL()}\">" . elgg_view("file/icon", array("mimetype" => $mime, 'thumbnail' => $file->thumbnail, 'file_guid' => $file_guid)) . "</a>";

@@ -48,7 +48,7 @@
 			}
 		
 			$info = "<p class=\"shares_gallery_title\">". elgg_echo("bookmarks:shared") .": <a href=\"{$vars['entity']->getURL()}\">{$vars['entity']->title}</a></p>";
-			$info .= "<p class=\"shares_gallery_user\"><a href=\"{$vars['url']}pg/bookmarks/{$owner->username}\">{$owner->name}</a> <span class=\"shared_timestamp\">{$friendlytime}</span>";
+			$info .= "<p class=\"owner_timestamp\"><a href=\"{$vars['url']}pg/bookmarks/{$owner->username}\">{$owner->name}</a> {$friendlytime}";
 			$numcomments = elgg_count_comments($vars['entity']);
 			if ($numcomments)
 				$info .= ", <a href=\"{$vars['entity']->getURL()}\">".sprintf(elgg_echo("comments")). " (" . $numcomments . ")</a>";

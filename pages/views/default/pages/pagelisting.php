@@ -28,10 +28,10 @@
 		$owner = get_entity($owner_guid);
 		
 			
-		$info .= "<div>".sprintf(elgg_echo("pages:strapline"),
+		$info .= "<p class=\"owner_timestamp\">".sprintf(elgg_echo("pages:strapline"),
 						friendly_time($time_updated),
 						"<a href=\"" . $owner->getURL() . "\">" . $owner->name ."</a>"
-		) . "</div>";
+		) . "</p>";
 	}
 	
 	echo elgg_view_listing($icon, $info);
