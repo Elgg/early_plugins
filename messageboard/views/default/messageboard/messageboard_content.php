@@ -37,18 +37,15 @@
     ?>
 		    <p class="message_buttons">
 		    
-		    <a href="#" class="delete_message">delete</a>
-		    <!-- // needs the link info below adding to the a.delete_message above
 		        <?php
 
-			        echo elgg_view("output/confirmlink",array(
+			       echo "<div class='delete_message'>" . elgg_view("output/confirmlink",array(
 														'href' => $vars['url'] . "action/messageboard/delete?annotation_id=" . $vars['annotation']->id,
 														'text' => elgg_echo('delete'),
 														'confirm' => elgg_echo('deleteconfirm'),
-													));
+													)) . "</div>";
 		
 		        ?>
-		    //    -->
 		        <?php
 		            //if the message being looked at is owned by the current user, don't show the reply
 		            if($vars['annotation']->owner_guid != $_SESSION['guid']){
