@@ -59,7 +59,7 @@ p.message_buttons {
 	margin:0 0 3px 4px;
 }
 
-.message_buttons a.delete_message {
+.messageboard .delete_message a {
 	display:block;
 	float:right;
 	cursor: pointer;
@@ -69,7 +69,7 @@ p.message_buttons {
 	background: url("<?php echo $vars['url']; ?>_graphics/icon_customise_remove.png") no-repeat 0 0;
 	text-indent: -9000px;
 }
-.message_buttons a.delete_message:hover {
+.messageboard .delete_message a:hover {
 	background-position: 0 -16px;
 }
 

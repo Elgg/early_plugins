@@ -36,7 +36,7 @@ MESSAGING PLUGIN
 	 border-bottom: 1px solid #d6dbd2;
 }
 
-#messages a.delete_msg {
+#messages .delete_msg a {
 	display:block;
 	cursor: pointer;
 	width:14px;
@@ -46,7 +46,7 @@ MESSAGING PLUGIN
 	text-indent: -9000px;
 	float:right;
 }
-#messages a.delete_msg:hover {
+#messages .delete_msg a:hover {
 	background-position: right -16px;
 }
 
