@@ -57,6 +57,9 @@
 		// Register a URL handler for files
 		register_entity_url_handler('file_url','object','file');
 
+		// Register entity type
+		register_entity_type('object','file');
+		
 	}
 	
 	/**

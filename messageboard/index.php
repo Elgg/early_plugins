@@ -21,7 +21,7 @@
 		$contents = $entity->getAnnotations('messageboard', 50, 0, 'desc');
 	
     // Get the content to display
-        $area2 = elgg_view_title("MessageBoard");
+        $area2 = elgg_view_title(elgg_echo('messageboard:board'));
 		$area2 .= elgg_view("messageboard/forms/add");
 		$area2 .= elgg_view("messageboard/messageboard", array('annotation' => $contents));
 	    

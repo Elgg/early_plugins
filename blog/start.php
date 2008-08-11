@@ -56,6 +56,9 @@
 				
 			// Listen for new pingbacks
 				register_elgg_event_handler('create', 'object', 'blog_incoming_ping');
+				
+			// Register entity type
+				register_entity_type('object','blog');
 		}
 		
 		function blog_pagesetup() {

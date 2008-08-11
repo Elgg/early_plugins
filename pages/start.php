@@ -52,6 +52,10 @@
 		extend_view('css','pages/css');
 		extend_view('groups/menu/links', 'pages/menu'); // Add to groups context
 		
+		// Register entity type
+		register_entity_type('object','page');
+		register_entity_type('object','page_top');
+		
 		// For now, we'll hard code the groups profile items as follows:
 		// TODO make this user configurable
 		
