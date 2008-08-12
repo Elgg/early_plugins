@@ -125,8 +125,7 @@
 		<!-- display the reply form -->
 		<div id="message_reply_form">
 			<form action="<?php echo $vars['url']; ?>action/messages/send" method="post" name="messageForm">
-				<p><?php echo elgg_echo("messages:text"); ?></p>	
-    			<!-- populate the title space with the orginal message title, inserting re: before it -->						        
+				<!-- populate the title space with the orginal message title, inserting re: before it -->						        
 				<p><label><?php echo elgg_echo("messages:title"); ?>: <br /><input type='text' name='title' class="input-text" value='RE: <?php echo $vars['entity']->title; ?>' /></label></p>
 				<p><label><?php echo elgg_echo("messages:message"); ?>: <br />
 				<?php
