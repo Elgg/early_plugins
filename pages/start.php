@@ -24,9 +24,7 @@
 		}
 		else
 		{
-			add_menu(elgg_echo('pages'), $CONFIG->wwwroot . "mod/pages/",array(
-				menu_item(elgg_echo('pages:all'),$CONFIG->wwwroot."mod/pages/world.php"),
-			));
+			add_menu(elgg_echo('pages'), $CONFIG->wwwroot . "mod/pages/world.php");
 		}
 		
 		// Extend hover-over menu	
