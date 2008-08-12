@@ -54,7 +54,7 @@
 			
 			} else {
 				echo "<p class=\"filerepo_title\">{$title}</p>";
-				echo "<a href=\"{$file->getURL()}\">" . elgg_view("file/icon", array("mimetype" => $mime, 'thumbnail' => $file->thumbnail, 'file_guid' => $file_guid)) . "</a>";
+				echo "<a href=\"{$file->getURL()}\">" . elgg_view("file/icon", array("mimetype" => $mime, 'thumbnail' => $file->thumbnail, 'file_guid' => $file_guid, 'size' => 'large')) . "</a>";
 				echo "<p class=\"filerepo_timestamp\"><small><a href=\"{$vars['url']}pg/file/{$owner->username}\">{$owner->name}</a> {$friendlytime}</small></p>";
 				//get the number of comments
 				$numcomments = elgg_count_comments($file);
@@ -76,7 +76,7 @@
 			$info .= "</p>";
 			
 			// $icon = elgg_view("profile/icon",array('entity' => $owner, 'size' => 'small'));
-			$icon = "<a href=\"{$file->getURL()}\">" . elgg_view("file/icon", array("mimetype" => $mime, 'thumbnail' => $file->thumbnail, 'file_guid' => $file_guid)) . "</a>";
+			$icon = "<a href=\"{$file->getURL()}\">" . elgg_view("file/icon", array("mimetype" => $mime, 'thumbnail' => $file->thumbnail, 'file_guid' => $file_guid, 'size' => 'small')) . "</a>";
 			
 			echo elgg_view_listing($icon, $info);
 		

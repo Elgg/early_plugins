@@ -1,5 +1,10 @@
 <?php
 
-	echo "<img src=\"{$CONFIG->wwwroot}mod/file/graphics/icons/video.gif\" border=\"0\" />";
+	if ($vars['size'] == 'large') {
+		$ext = '_lrg';
+	} else {
+		$ext = '';
+	}
+	echo "<img src=\"{$CONFIG->wwwroot}mod/file/graphics/icons/video{$ext}.gif\" border=\"0\" />";
 
 ?>

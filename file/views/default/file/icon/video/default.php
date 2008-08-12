@@ -1,5 +1,5 @@
 <?php
 
-	echo elgg_view('file/icon/video');
+	echo elgg_view('file/icon/video',$vars);
 
 ?>
