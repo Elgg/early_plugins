@@ -1,3 +1,4 @@
+<div id="group_pages_widget">
 <h2><?php echo elgg_echo("pages:groupprofile"); ?></h2>
 <?php
 
@@ -5,3 +6,4 @@
 	echo $objects;
 	
 ?>
+</div>
