@@ -97,7 +97,10 @@
 			<label><?php echo elgg_echo("bookmarks:with"); ?></label><br />
 			<?php
 
-				echo elgg_view('bookmarks/sharing',array('shares' => $shares, 'owner' => $owner));
+				//echo elgg_view('bookmarks/sharing',array('shares' => $shares, 'owner' => $owner));
+				if ($friends = get_entities_from_relationship('friend',$owner->getGUID(),false,'user','', 0, "", 9999)) {
+					echo elgg_view('friends/picker',array('entities' => $friends, 'internalname' => 'shares'));
+				}
 			
 			?>
 		</p>
