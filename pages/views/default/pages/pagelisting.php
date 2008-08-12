@@ -12,7 +12,7 @@
 	$icon = elgg_view(
 			"graphics/icon", array(
 			'entity' => $vars['entity'],
-			'size' => 'small',
+			'size' => 'listview',
 		  )
 		);
 
