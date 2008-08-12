@@ -118,4 +118,9 @@ MESSAGING PLUGIN
 .new_messages_count {
 	color:#666666;
 }
+/* tinyMCE container */
+#message_reply_editor #message_tbl {
+	width:680px !important;
+}
+
 

@@ -112,7 +112,7 @@
 		</script>	
 		
 		
-		    <p><?php if($type != "sent")echo "<a href=\"javascript:void(0);\" class='message_reply'>Reply</a> "; ?> <?php echo elgg_view("output/confirmlink", array(
+		    <p><?php if($type != "sent")echo "<a href=\"javascript:void(0);\" class='message_reply'>Reply</a> &nbsp; "; ?> <?php echo elgg_view("output/confirmlink", array(
 																'href' => $vars['url'] . "action/messages/delete?message_id=" . $vars['entity']->getGUID() . "&type={$type}",
 																'text' => elgg_echo('delete'),
 																'confirm' => elgg_echo('deleteconfirm'),
@@ -128,6 +128,7 @@
 				<!-- populate the title space with the orginal message title, inserting re: before it -->						        
 				<p><label><?php echo elgg_echo("messages:title"); ?>: <br /><input type='text' name='title' class="input-text" value='RE: <?php echo $vars['entity']->title; ?>' /></label></p>
 				<p><label><?php echo elgg_echo("messages:message"); ?>: <br />
+				<div id="message_reply_editor">
 				<?php
 
 				    echo elgg_view("input/longtext", array(
@@ -135,8 +136,8 @@
 									"value" => '',
 													));
 			
-		        ?>
-				
+		        ?></div>
+				</label></p>
 				<p>
 	        			<?php
                 
