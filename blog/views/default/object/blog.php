@@ -55,7 +55,7 @@
 			        //get the number of comments
 			    	$num_comments = elgg_count_comments($vars['entity']);
 			    ?>
-			    <a href="<?php echo $vars['entity']->getURL(); ?>">(<?php echo sprintf(elgg_echo("comments:count"),$num_comments); ?>)</a><br />
+			    <a href="<?php echo $vars['entity']->getURL(); ?>"><?php echo sprintf(elgg_echo("comments")) . " (" . $num_comments . ")"; ?></a><br />
 			</p>
 			<!-- display tags -->
 			<p class="tags">
