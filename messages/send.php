@@ -24,7 +24,7 @@
 		} 
 		
     // Get the users friends; this is used in the drop down to select who to send the message to
-        $friends = $_SESSION['user']->getFriends();
+         $friends = $_SESSION['user']->getFriends('', 9999);
         
     // Set the page title
 	    $area2 = elgg_view_title(elgg_echo("messages:sendmessage"));
