@@ -80,12 +80,12 @@ $(document).ready(function(){
     	?>
     	
     	    <div id="status_message" class="status_input_form">
-    	        <textarea id="status_update_input" name="status_update_input"></textarea>
+    	        <textarea id="status_update_input"></textarea>
     	        <p><?php echo elgg_echo('status:nostatus'); ?></p>
     	    </div>
     	
     	   <!-- <p>
-    			<textarea name="status_message" id="status_message" class="status_input_form"><?php echo elgg_echo('status:nostatus'); ?></textarea>
+    			<textarea id="status_message" class="status_input_form"><?php echo elgg_echo('status:nostatus'); ?></textarea>
     		</p> -->
     		
          <?php 

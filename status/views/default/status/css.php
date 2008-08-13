@@ -108,6 +108,8 @@
 	font-weight:bold;
 	color:#666666;
 	padding:3px;
+	width:274px;
+	height:66px;
 }
 
 

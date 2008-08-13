@@ -85,7 +85,7 @@ $(document).ready(function(){
     	?>
     	
     	    <div id="status_message" class="status_input_form">
-    	        <textarea id="status_update_input" name="status_update_input"></textarea>
+    	        <textarea id="status_update_input"></textarea>
     	        <p><?php echo $vars['entity']->description; ?></p>
     	    </div>
     		
