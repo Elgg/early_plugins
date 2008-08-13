@@ -49,14 +49,12 @@ p.message_item_timestamp {
 	padding:4px;
 	border-bottom:1px dotted #cccccc;
 }
+
 .message_buttons {
-	font-size: 90%;
 	padding:0 0 3px 4px;
-	line-height: 1.1em;
-}
-p.message_buttons {
-	padding:0;
-	margin:0 0 3px 4px;
+	margin:0;
+	font-size: 90%;
+	color:#666666;
 }
 
 .messageboard .delete_message a {

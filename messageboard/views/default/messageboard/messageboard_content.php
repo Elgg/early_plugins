@@ -35,7 +35,7 @@
 	    if ($vars['annotation']->canEdit()) {
     			    
     ?>
-		    <p class="message_buttons">
+		    <div class="message_buttons">
 		    
 		        <?php
 
@@ -63,10 +63,10 @@
 		            }
 		        ?>
 		        
-		    </p>
+		    </div>
 		
     <?php
         } //end of can edit if statement
 	?>
-	<br class="clearfloat" />
+	<div class="clearfloat"></div>
 </div><!-- end of messageboard div -->
