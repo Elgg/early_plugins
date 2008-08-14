@@ -27,7 +27,7 @@
 	$page_guid = get_input('page_guid');
 	$pages = get_entity($page_guid);
 	
-	add_submenu_item(sprintf(elgg_echo("pages:user"), page_owner_entity()->name), $CONFIG->url . "pg/pages/owned/" . page_owner_entity()->username);
+	add_submenu_item(sprintf(elgg_echo("pages:user"), page_owner_entity()->name), $CONFIG->url . "pg/pages/owned/" . page_owner_entity()->username, 'pageslinksgeneral');
 					 
 	$title = $pages->title . ": " . elgg_echo("pages:history");
 	$area2 = elgg_view_title($title);
