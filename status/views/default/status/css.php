@@ -168,8 +168,13 @@
 * html .friends_status_message {
 	height: 32px;
 }
-
-
+/* IE7 */
+*:first-child+html .friends_status_message {
+	height: 30px;
+}
+*:first-child+html .friends_status p { 
+	line-height:1.3em;
+}
 
 
 
