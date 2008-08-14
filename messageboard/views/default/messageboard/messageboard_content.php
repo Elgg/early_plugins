@@ -28,24 +28,22 @@
     		
 	<!-- output the actual comment -->
 	<div class="message"><?php echo elgg_view("output/longtext",array("value" => $vars['annotation']->value)); ?></div>
+	<div class="message_buttons">
 		    
 	<?php
                
         // if the user looking at the comment can edit, show the delete link
 	    if ($vars['annotation']->canEdit()) {
     			    
-    ?>
-		    <div class="message_buttons">
-		    
-		        <?php
-
+  
 			       echo "<div class='delete_message'>" . elgg_view("output/confirmlink",array(
 														'href' => $vars['url'] . "action/messageboard/delete?annotation_id=" . $vars['annotation']->id,
 														'text' => elgg_echo('delete'),
 														'confirm' => elgg_echo('deleteconfirm'),
 													)) . "</div>";
 		
-		        ?>
+	    } //end of can edit if statement
+	?>
 		        <?php
 		            //if the message being looked at is owned by the current user, don't show the reply
 		            if($vars['annotation']->owner_guid != $_SESSION['guid']){
@@ -63,10 +61,6 @@
 		            }
 		        ?>
 		        
-		    </div>
-		
-    <?php
-        } //end of can edit if statement
-	?>
+		  </div>
 	<div class="clearfloat"></div>
 </div><!-- end of messageboard div -->
