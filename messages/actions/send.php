@@ -78,7 +78,7 @@
 				sprintf(
 							elgg_echo('messages:email:body'),
 							$_SESSION['user']->name,
-							$message_contents,
+							striptags($message_contents),
 							$CONFIG->wwwroot . "pg/messages/" . $user->username,
 							$_SESSION['user']->name,
 							$CONFIG->wwwroot . "mod/messages/send.php?send_to=" . $_SESSION['user']->getGUID()
