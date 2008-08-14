@@ -150,10 +150,10 @@
 .friends_status p {
 	margin: 0;
 	padding:0;
-	line-height:1em;
+	line-height:1.1em;
 }
 .friends_status_message {
-	height:27px;
+	height:29px;
 	overflow:hidden;
 }
 .status_timestamp {
@@ -161,8 +161,13 @@
 	margin:0;
 	padding:0;
 }
-
-
+/* IE 6 fix */
+* html .friends_status p { 
+	line-height:1.2em;
+}
+* html .friends_status_message {
+	height: 32px;
+}
 
 
 
