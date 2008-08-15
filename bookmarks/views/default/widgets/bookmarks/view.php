@@ -38,14 +38,15 @@ $(document).ready(function () {
 									  )
 					);
 
-				//get the share title
+				//get the bookmark title
 				$info = "<p class=\"shares_title\"><a href=\"{$s->getURL()}\">{$s->title}</a></p>";
 				
 				//get the user details
 				$info .= "<p class=\"shares_timestamp\"><small><a href=\"{$owner->getURL()}\">{$owner->name}</a> {$friendlytime}</small></p>";
 
-				//get the share description
-				$info .= "<a href=\"javascript:void(0);\" class=\"share_more_info\">more</a><br /><div class=\"share_desc\"><p>{$s->description}</p></div>";
+				//get the bookmark description
+				if($s->description)
+					$info .= "<a href=\"javascript:void(0);\" class=\"share_more_info\">more</a><br /><div class=\"share_desc\"><p>{$s->description}</p></div>";
 		
 				//display 
 				echo "<div class=\"shares_widget_wrapper\">";
