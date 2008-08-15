@@ -90,7 +90,7 @@
 			system_message(elgg_echo("messages:posted"));
 	
         // Forward to the users sentbox
-			forward("mod/messages/sent.php");	
+			forward('pg/messages/' . $_SESSION['user']->username);	
     
         } // end of message check if statement
      
