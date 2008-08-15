@@ -163,10 +163,10 @@
 }
 /* IE 6 fix */
 * html .friends_status p { 
-	line-height:1.2em;
+	line-height:1.3em;
 }
 * html .friends_status_message {
-	height: 32px;
+	height: 30px;
 }
 /* IE7 */
 *:first-child+html .friends_status_message {
