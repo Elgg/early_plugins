@@ -73,12 +73,13 @@
 	        
 		// Email notification
 			global $CONFIG;
+			$message_contents = strip_tags($message_contents);
 			if ($user->getGUID() != $_SESSION['user']->getGUID())
 			notify_user($user->getGUID(), $_SESSION['user']->getGUID(), elgg_echo('messages:email:subject'), 
 				sprintf(
 							elgg_echo('messages:email:body'),
 							$_SESSION['user']->name,
-							striptags($message_contents),
+							$message_contents,
 							$CONFIG->wwwroot . "pg/messages/" . $user->username,
 							$_SESSION['user']->name,
 							$CONFIG->wwwroot . "mod/messages/send.php?send_to=" . $_SESSION['user']->getGUID()
