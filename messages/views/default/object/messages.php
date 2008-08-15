@@ -46,7 +46,6 @@
     
         <div class="messages_single_icon"><!-- start of the message_user_icon div -->
             <!-- get the user icon, name and date -->
-            <p>
             <?php
                 // we need a different user icon and name depending on whether the user is reading the message
                 // from their inbox or sentbox. If it is the inbox, then the icon and name will be the person who sent
@@ -57,12 +56,12 @@
                     //get the icon
                     echo " " . elgg_view("profile/icon",array('entity' => $user_object, 'size' => 'tiny'));
                     //get the name
-                    echo "<br /><br />To: <b>" . $user_object->name . "</b><br />";
+                    echo "<br class=\"clearfloat\" /><p>To: <b>" . $user_object->name . "</b><br />";
                 }else{
                     //get the icon
                     echo " " . elgg_view("profile/icon",array('entity' => $vars['entity']->getOwnerEntity(), 'size' => 'tiny'));
                     //get the name
-                    echo "<br /><br />From: <b>" . $vars['entity']->getOwnerEntity()->name . "</b><br />";
+                    echo "<br class=\"clearfloat\" /><p>From: <b>" . $vars['entity']->getOwnerEntity()->name . "</b><br />";
                 }
             ?>
             <!-- get the time the message was sent -->
