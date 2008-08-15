@@ -17,6 +17,7 @@
 		$title = get_input('blogtitle');
 		$body = get_input('blogbody');
 		$tags = get_input('blogtags');
+		$access = get_input('access_id');
 
 	// Cache to the session
 		$_SESSION['blogtitle'] = $title;
@@ -41,7 +42,7 @@
 	// Set its owner to the current user
 			$blog->owner_guid = $_SESSION['user']->getGUID();
 	// For now, set its access to public (we'll add an access dropdown shortly)
-			$blog->access_id = 2;
+			$blog->access_id = $access;
 	// Set its title and description appropriately
 			$blog->title = $title;
 			$blog->description = $body;

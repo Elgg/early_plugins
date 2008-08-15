@@ -19,12 +19,14 @@
 			$title = $vars['entity']->title;
 			$body = $vars['entity']->description;
 			$tags = $vars['entity']->tags;
+			$access_id = $vars['entity']->access_id;
 		} else  {
 			$title = elgg_echo("blog:addpost");
 			$action = "blog/add";
 			$tags = "";
 			$title = "";
 			$description = "";
+			$access_id = 0;
 		}
 
 	// Just in case we have some cached details
@@ -71,6 +73,12 @@
 													));
 			
 			?>
+		</p>
+		<p>
+			<label>
+				<?php echo elgg_echo('access'); ?><br />
+				<?php echo elgg_view('input/access', array('internalname' => 'access_id','value' => $access_id)); ?>
+			</label>
 		</p>
 		<p>
 			<?php

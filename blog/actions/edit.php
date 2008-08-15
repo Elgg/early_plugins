@@ -17,6 +17,7 @@
 		$guid = (int) get_input('blogpost');
 		$title = get_input('blogtitle');
 		$body = get_input('blogbody');
+		$access = get_input('access_id');
 		$tags = get_input('blogtags');
 		
 	// Make sure we actually have permission to edit
@@ -42,7 +43,7 @@
 		// Get owning user
 				$owner = get_entity($blog->getOwner());
 		// For now, set its access to public (we'll add an access dropdown shortly)
-				$blog->access_id = 2;
+				$blog->access_id = $access;
 		// Set its title and description appropriately
 				$blog->title = $title;
 				$blog->description = $body;
