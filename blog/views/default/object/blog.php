@@ -65,6 +65,7 @@
 				
 				?>
 			</p>
+			<div class="clearfloat"></div>
 			<div class="blog_post_body">
 
 			<!-- display the actual blog post -->
