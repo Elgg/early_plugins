@@ -57,30 +57,6 @@ p.filerepo_owner {
 	text-decoration: none;
 }
 
-/* not used any more since types became tabbed menu?
-.filerepo_types h2 {
-	margin-bottom: 10px;
-}
-
-.filerepo_types a {
-	padding: 5px;
-	text-decoration: none;
-	background-color: #eee;
-	text-align: center;
-}
-
-.filerepo_types a:hover {
-	text-decoration: none;
-	color: #fff;
-	background: #0054a7;
-}
-.filerepo_types a.filerepo_types_current {
-	text-decoration: none;
-	color: #fff;
-	background: #0054a7;
-}
-*/
-
 /* FILE REPRO WIDGET VIEW */
 .filerepo_widget_singleitem {
 	background-color: #eeeeee;
@@ -110,11 +86,15 @@ p.filerepo_owner {
 	line-height: 1.2em;
 }
 
+.collapsable_box #filerepo_widget_layout {
+	margin:0;
+}
+
 /* widget gallery view */
 .filerepo_widget_galleryview img {
 	padding:2px;
     border:1px solid #efefef;
-    margin:4px;
+    margin:2px;
 }
 
 /* SINGLE ITEM VIEW */

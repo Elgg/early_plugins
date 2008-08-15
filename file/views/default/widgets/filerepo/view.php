@@ -73,7 +73,7 @@ $('a.show_file_desc').click(function () {
         //get a link to the users files
         $users_file_url = $vars['url'] . "pg/file/" . get_user($f->owner_guid)->username;
         	
-        echo "<p><a href=\"{$users_file_url}\">" . elgg_echo('file:more') . "</a></p>";
+        echo "<a href=\"{$users_file_url}\">" . elgg_echo('file:more') . "</a>";
         echo "</div>";
         	
 				
