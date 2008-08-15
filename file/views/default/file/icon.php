@@ -46,8 +46,8 @@
 			
 		break;
 		default :
-			if (!empty($mime) && elgg_view_exists("file/icon/{$mime}")) {
-				echo elgg_view("file/icon/{$mime}");
+			if (!empty($mime) && elgg_view_exists("file/icon/{$mime}", $vars)) {
+				echo elgg_view("file/icon/{$mime}", $vars);
 			} else if (!empty($mime) && elgg_view_exists("file/icon/" . substr($mime,0,strpos($mime,'/')) . "/default", $vars)) {
 				echo elgg_view("file/icon/" . substr($mime,0,strpos($mime,'/')) . "/default", $vars);
 			} else {
