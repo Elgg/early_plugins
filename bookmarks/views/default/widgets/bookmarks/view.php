@@ -13,13 +13,12 @@ $(document).ready(function () {
 	    //get the num of shares the user want to display
 		$num = $vars['entity']->num_display;
 		
-		//if no number has been set, default to 1
+		//if no number has been set, default to 4
 		if(!$num)
-			$num = 1;
+			$num = 4;
 			
-        //grab the shares
-		$user = $_SESSION['user'];
-		$shares = $user->getEntitiesFromRelationship('share', true, $num, 0);
+        //grab the users bookmarked items
+		$shares = get_entities('object', 'bookmarks',$vars['entity']->owner_guid, "", $num, 0, false);
 		
 		if($shares){
 
