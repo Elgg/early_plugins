@@ -69,8 +69,7 @@ $(document).ready(function(){
 
 </div><!-- end of mb_input_wrapper div -->
 
-<p>
-	<?php
+<?php
     
         //this for the first time the page loads, grab the latest 5 messages.
 		$contents = $entity->getAnnotations('messageboard', $num_display, 0, 'desc');
@@ -83,9 +82,8 @@ $(document).ready(function(){
 		} else {
     		
     		//put the required div on the page for the first message
-    		echo "<div id=\"messageboard_wrapper\" /></div>";
+    		echo "<div id=\"messageboard_wrapper\"></div>";
 	
     	}
 	
-	?>
-</p>
+?>

@@ -15,7 +15,7 @@
 		if (is_array($vars['annotation']) && sizeof($vars['annotation']) > 0) {
     		
     		//start the div which will wrap all the message board contents
-    		echo "<div id=\"messageboard_wrapper\" />";
+    		echo "<div id=\"messageboard_wrapper\">";
 			
     		//loop through all annotations and display
 			foreach($vars['annotation'] as $content) {
