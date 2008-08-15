@@ -23,7 +23,7 @@
 
 	// Get objects
 		set_context('search');
-		$area2 .= list_entities("object","file",page_owner(),10,false);
+		$area2 .= list_entities("object","file",page_owner(),10);
 		set_context('file');
 		$area1 = get_filetype_cloud(page_owner());
 		$body = elgg_view_layout('two_column_left_sidebar', $area1, $area2);

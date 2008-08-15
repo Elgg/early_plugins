@@ -75,9 +75,9 @@
 		$limit = 10;
 		if ($search_viewtype == "gallery") $limit = 12;
 		if (!empty($tag)) {
-			$area2 .= list_entities_from_metadata($md_type, $tag, $objecttype, $subtype, $owner_guid, $limit, false);
+			$area2 .= list_entities_from_metadata($md_type, $tag, $objecttype, $subtype, $owner_guid, $limit);
 		} else {
-			$area2 .= list_entities("object", "file", $owner_guid, $limit, false);
+			$area2 .= list_entities("object", "file", $owner_guid, $limit);
 		}
 		
 		set_context("file");

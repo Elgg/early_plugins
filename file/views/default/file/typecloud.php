@@ -52,7 +52,9 @@
 				$class = "";
 			}
 				
-			echo "<li {$class} ><a href=\"{$url}\">{$label}</a></li>";
+			add_submenu_item($label, $url, 'filetypes');
+			
+			//echo "<li {$class} ><a href=\"{$url}\">{$label}</a></li>";
 			
 		}
 		
