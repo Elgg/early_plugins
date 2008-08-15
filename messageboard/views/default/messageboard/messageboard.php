@@ -29,7 +29,7 @@
 			
 		} else {
     		
-    		echo "There is nothing on this message board yet.";
+    		echo elgg_echo("messageboard:none");
     		
 		}
 			

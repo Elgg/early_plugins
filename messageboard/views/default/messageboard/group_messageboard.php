@@ -40,7 +40,7 @@ $(document).ready(function(){
 
 <div id="mb_input_wrapper"><!-- start of mb_input_wrapper div -->
 
-    <h2>Messageboard</h2>
+    <h2><?php echo elgg_echo("messageboard:board"); ?></h2>
   
 <?php 
     //if not a member don't display the add comment to messageboard
@@ -57,11 +57,11 @@ $(document).ready(function(){
     <input type="hidden" name="pageOwner" value="<?php echo page_owner(); ?>" class="pageOwner"  />
    
     <!-- submit button -->
-    <input type="submit" id="postit" value="Post it">
+    <input type="submit" id="postit" value="<?php echo elgg_echo('messageboard:postit'); ?>">
     
     <!-- menu options -->
     <div id="messageboard_widget_menu">
-        <a href="<?php echo $vars['url']; ?>pg/messageboard/<?php echo get_entity(page_owner())->username; ?>">view all</a> | share a link | attach media
+        <a href="<?php echo $vars['url']; ?>pg/messageboard/<?php echo get_entity(page_owner())->username; ?>"><?php echo elgg_echo("messageboard:viewall"); ?></a>
     </div>
     
     <!-- loading graphic -->

@@ -7,6 +7,12 @@
 		 */
 	
 			'messageboard:board' => "Message board",
+			'messageboard:messageboard' => "message board",
+			'messageboard:viewall' => "View all",
+			'messageboard:postit' => "Post it",
+			'messageboard:history' => "history",
+			'messageboard:none' => "There is nothing on this message board yet",
+			'messageboard:num_display' => "Number of messages to display",
 			'messageboard:desc' => "This is a message board that you can put on your profile where other users can comment.",
 			
          /**

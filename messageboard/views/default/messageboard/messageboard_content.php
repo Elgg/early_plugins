@@ -53,9 +53,9 @@
     		            //create the url to their messageboard
     		            $user_mb = "pg/messageboard/" . $get_entity->username;
     		            
-    		            echo "<a href=\"" . $vars['url'] . $user_mb . "\">reply on " . $get_entity->username . "'s message board</a> | ";
+    		            echo "<a href=\"" . $vars['url'] . $user_mb . "\">reply on " . $get_entity->username . "'s " . elgg_echo('messageboard:messageboard') . "</a> | ";
     		            
-    		            echo "<a href=\"" . $vars['url'] . "mod/messageboard/history.php?user=" . $get_entity->guid ."\">history</a>"; 
+    		            echo "<a href=\"" . $vars['url'] . "mod/messageboard/history.php?user=" . $get_entity->guid ."\">" . elgg_echo('messageboard:history') . "</a>"; 
     		            
     		                		            
 		            }

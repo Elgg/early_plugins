@@ -22,7 +22,7 @@
      
      //if no num set, set to one
      if(!$num_display)
-        $num_display = 1;
+        $num_display = 5;
 	 
 ?>
 <script type="text/JavaScript">
@@ -61,7 +61,7 @@ $(document).ready(function(){
     
     <!-- menu options -->
     <div id="messageboard_widget_menu">
-        <a href="<?php echo $vars['url']; ?>pg/messageboard/<?php echo get_entity(page_owner())->username; ?>">view all</a> | share a link | attach media
+        <a href="<?php echo $vars['url']; ?>pg/messageboard/<?php echo get_entity(page_owner())->username; ?>"><?php echo elgg_echo("messageboard:viewall"); ?></a>
     </div>
     
     <!-- loading graphic -->

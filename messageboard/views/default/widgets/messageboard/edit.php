@@ -12,7 +12,7 @@
 
 ?>
 <p>
-    Number of messages to display:
+    <?php echo elgg_echo("messageboard:num_display"); ?>:
         <select name="params[num_display]">
 		    <option value="1" <?php if($vars['entity']->num_display == 1) echo "SELECTED"; ?>>1</option>
 		    <option value="2" <?php if($vars['entity']->num_display == 2) echo "SELECTED"; ?>>2</option>
@@ -26,6 +26,3 @@
 		    <option value="10" <?php if($vars['entity']->num_display == 6) echo "SELECTED"; ?>>10</option>
 		</select>
 </p>
-
-<p>Allow media</p>
-<p>Allow links</p>
