@@ -49,11 +49,13 @@ MESSAGING PLUGIN
 #messages .delete_msg a:hover {
 	background-position: right -16px;
 }
+/* IE6 */
+* html #messages .delete_msg a { background-position: right 4px; }
+* html #messages .delete_msg a:hover { background-position: right 4px; } 
 
 #messages .usericon {
 	float: left;
 	margin: 0 15px 0 0;
-	/* width:40px;height:40px;  temporary fix to make msg icons square */
 }
 
 #messages .msgsender {
