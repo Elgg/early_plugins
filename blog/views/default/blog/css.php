@@ -19,12 +19,10 @@
 }
 
 .blog_post_icon {
-	position: relative;
 	float:left;
 	margin:3px 0 0 0;
 	padding:0;
 }
-
 
 .blog_post h3 {
 	font-size: 150%;
