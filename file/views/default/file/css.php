@@ -8,16 +8,6 @@
 	 */
 ?>
 
-
-/*
-.filerepo_file {
-	width: 70px;
-	text-align:center;
-	position: absolute;
-	height: 100px;
-}
-*/
-
 p.filerepo_owner {
 	margin:0;
 	padding:0;
@@ -186,6 +176,7 @@ p.filerepo_owner {
 .filerepo_user_gallery_link a {
 	padding:2px 25px 5px 0;
 	background: transparent url(<?php echo $vars['url']; ?>_graphics/icon_gallery.gif) no-repeat right top;
+	display:block;
 }
 .filerepo_user_gallery_link a:hover {
 	background-position: right -40px;
