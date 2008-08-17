@@ -19,5 +19,8 @@
 		<a href="javascript:location.href='<?php echo $vars['url']; ?>mod/bookmarks/add.php?address='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title)"> <img src="<?php echo $vars['url']; ?>_graphics/elgg_bookmarklet.gif" border="0" title="<?php echo elgg_echo("bookmarks:this"); ?>" />   </a>
 	</p>
 	<p>
+		<?php echo elgg_echo("bookmarks:bookmarklet:descriptionie"); ?>
+	</p>
+	<p>
 		<?php echo elgg_echo("bookmarks:bookmarklet:description:conclusion"); ?>
 	</p>

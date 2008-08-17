@@ -43,6 +43,9 @@
 			'bookmarks:bookmarklet:description' =>
 					"The bookmarks bookmarklet allows you to share any resource you find on the web with your friends, or just bookmark it for yourself. To use it, simply drag the following button to your browser's links bar:",
 
+	        'bookmarks:bookmarklet:descriptionie' =>
+					"If you are using IE you will need to right click on the bookmarklet icon, then select 'add to favourites'.",
+
 			'bookmarks:bookmarklet:description:conclusion' =>
 					"You can then save any page you visit by clicking it at any time.",
 	
