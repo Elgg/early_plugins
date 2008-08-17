@@ -26,23 +26,27 @@
 	function pages_draw_child($childentity, $path) {
 		
 				$child = "\n\t\t{\n";
-				$child .= "\t\t\t\"text\": \"<a href=\\\"{$childentity->getURL()}\\\">{$childentity->title}</a>\",\n";
+				$child .= "\t\t\t\"text\": \"<a href=\\\"{$childentity->getURL()}\\\">{$childentity->title}</a>\"\n";
 				
+				$extras = "";
 				$haschild = get_entities_from_metadata('parent_guid',$childentity->guid,'','',0,9999);
 				if ($haschild) {
 					if (in_array($childentity->getGUID(),$path)) {
-						$child .= "\t\t\t\"expanded\": true,";
-						$child .= "\t\t\t\"children\": [\n";
+						$extras .= "\t\t\t\",expanded\": true";
+						$extras .= "\t\t\t\",children\": [\n";
 						
 						$childstring = "";
 						foreach($haschild as $subchild) {
-							if (!empty($childstring)) $childstring .= ", ";
-							$childstring .= pages_draw_child($subchild,$path);
+							$childstringtemp = pages_draw_child($subchild,$path);
+							if (!empty($childstringtemp)) {
+								if (!empty($childstring)) $childstring .= ", ";
+								$childstring .= $childstringtemp;
+							}
 						}
 						
-						$child .= $childstring . "\n\t\t\t]\n";
+						$extras .= $childstring . "\n\t\t\t]\n";
 					} else {
-						$child .= "\t\t\t\"id\": \"{$childentity->getGUID()}\",\n\t\t\t\"hasChildren\": true\n";
+						$extras .= ",\t\t\t\"id\": \"{$childentity->getGUID()}\",\n\t\t\t\"hasChildren\": true\n";
 					}
 					
 				}				
@@ -59,7 +63,11 @@
 			if (!$parent) echo "\t" . '"expanded": true,' . "\n";
 			if (!$parent) echo "\t" . '"children": [' . "\n";		
 			foreach($vars['children'] as $child) {
-				if (!empty($children)) $children .= ", \n";
+				$childrentemp = pages_draw_child($child,$path);
+				if (!empty($childrentemp)) {
+					if (!empty($children)) $children .= ", \n";
+					$children .= $childrentemp;
+				}
 				/*
 				 $children .= "\n\t\t{\n";
 				$children .= "\t\t\t\"text\": \"<a href=\\\"{$child->getURL()}\\\">{$child->title}</a>\",\n";
@@ -69,8 +77,7 @@
 					$children .= "\t\t\t\"id\": \"{$child->getGUID()}\",\n\t\t\t\"hasChildren\": true\n";
 				}				
 				$children .= "\t\t}";
-				*/
-				$children .= pages_draw_child($child,$path); 
+				*/ 
 			}
 			echo $children;
 			if (!$parent) echo "\t\t" . ']' . "\n";
