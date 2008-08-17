@@ -86,7 +86,7 @@
 				} else if (page_owner()) {
 					add_submenu_item(sprintf(elgg_echo("file:user"),$page_owner->name), $CONFIG->wwwroot . "pg/file/" . $page_owner->username);
 					if ($page_owner instanceof ElggUser) // This one's for users, not groups
-						add_submenu_item(sprintf(elgg_echo('file:friends'),$page_owner->name), $CONFIG->wwwroot . "pg/file/". $_SESSION['user']->username . "/friends/");
+						add_submenu_item(sprintf(elgg_echo('file:friends'),$page_owner->name), $CONFIG->wwwroot . "pg/file/". $page_owner->username . "/friends/");
 				}
 				add_submenu_item(elgg_echo('file:all'), $CONFIG->wwwroot . "mod/file/world.php");
 				if (can_write_to_container($_SESSION['guid'], page_owner()))
