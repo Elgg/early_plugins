@@ -37,10 +37,12 @@ p.message_item_timestamp {
 	margin:10px 0 10px 0;
     background:#EEEEEE;
 }
-.message_sender .usericon {
+.messageboard .message_sender {
 	float:left;
 	margin: 5px 10px 0 5px;
 }
+* html .messageboard .message_sender { margin: 5px 10px 0 2px; } /* IE6 */
+*+html .messageboard .message_sender {  } /* IE7 */
 
 .messageboard .message p {
 	line-height: 1.2em;
