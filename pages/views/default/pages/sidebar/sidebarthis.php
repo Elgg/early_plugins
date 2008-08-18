@@ -56,12 +56,13 @@
 	
 	if (!$parent) {
 		echo "{\n";
-		echo "\t\"text\": \"<a href=\\\"{$vars['entity']->getURL()}\\\">{$vars['entity']->title}</a>\",\n";
+		echo "\t\"text\": \"<a href=\\\"{$vars['entity']->getURL()}\\\">{$vars['entity']->title}</a>\"\n";
 	}
 		$children = "";
+		$temp = "";
 		if (isset($vars['children']) && is_array($vars['children']) && (!isset($vars['fulltree']) || $vars['fulltree'] == 0)) {
-			if (!$parent) echo "\t" . '"expanded": true,' . "\n";
-			if (!$parent) echo "\t" . '"children": [' . "\n";		
+			if (!$parent) $temp .= "\t" . '"expanded": true,' . "\n";
+			if (!$parent) $temp .= "\t" . '"children": [' . "\n";		
 			foreach($vars['children'] as $child) {
 				$childrentemp = pages_draw_child($child,$path);
 				if (!empty($childrentemp)) {
@@ -79,6 +80,7 @@
 				$children .= "\t\t}";
 				*/ 
 			}
+			if (!empty($temp)) echo ',' . $temp;
 			echo $children;
 			if (!$parent) echo "\t\t" . ']' . "\n";
 		
