@@ -16,7 +16,7 @@
 	// List bookmarks
 		$area2 = elgg_view_title(elgg_echo('bookmarks:inbox'));
 		set_context('search');
-		$area2 .= list_entities_from_relationship('bookmark',page_owner(),true,'object','bookmarks');
+		$area2 .= list_entities_from_relationship('share',page_owner(),true,'object','bookmarks');
 		set_context('bookmarks');
 		
 	// Format page

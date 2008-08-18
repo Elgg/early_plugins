@@ -19,7 +19,7 @@
     add_submenu_item(elgg_echo('pages:all'),$CONFIG->wwwroot."mod/pages/world.php", 'pageslinksgeneral');
     if (($owner) && ($owner->canWriteToContainer($_SESSION['user']))){
         add_submenu_item(elgg_echo('pages:new'), $CONFIG->url . "pg/pages/new/?container_guid=" . page_owner(), 'pagesactions');
-        add_submenu_item(elgg_echo('pages:welcome'), $CONFIG->url . "pg/pages/welcome/", 'pagesactions');
+        if ($owner instanceof ElggUser) add_submenu_item(elgg_echo('pages:welcome'), $CONFIG->url . "pg/pages/welcome/", 'pagesactions');
     }
     					
 	
