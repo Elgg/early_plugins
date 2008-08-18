@@ -14,7 +14,7 @@
 		require_once(dirname(dirname(dirname(__FILE__))) . "/engine/start.php");
 		
 	// If we're not logged in, forward to the front page
-		if (!isloggedin()) forward();
+		gatekeeper(); // if (!isloggedin()) forward();
 		
     // Get the current page's owner
 		$page_owner = page_owner_entity();

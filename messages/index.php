@@ -13,6 +13,9 @@
 	 // Load Elgg engine
 		require_once(dirname(dirname(dirname(__FILE__))) . "/engine/start.php");
 		
+	// You need to be logged in!
+		gatekeeper();
+		
 	// Get the logged in user, you can't see other peoples messages so use session id
 		$page_owner = $_SESSION['user'];
 		set_page_owner($page_owner->getGUID());

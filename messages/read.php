@@ -14,7 +14,7 @@
 		require_once(dirname(dirname(dirname(__FILE__))) . "/engine/start.php");
 		
 	// If we're not logged in, forward to the front page
-		if (!isloggedin()) forward(); 
+		gatekeeper();
 		
 	// Get the full message object to read
 	    $message = get_entity(get_input("message"));
