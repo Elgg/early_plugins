@@ -81,15 +81,11 @@
         				//display the link to 'delete'
         				
         				echo "<td width='70px'>";
-    				    echo "<a href='#' class='delete_msg'>delete</a>";
-    				    
-    				    // move link info below onto a.delete_msg above
-        				//echo "<td width='70px' class='delete_msg'>" . elgg_view("output/confirmlink", array(
-						//										'href' => $vars['url'] . "action/messages/delete?message_id=" . $message->getGUID() . "&type=sent",
-						//										'text' => elgg_echo('delete'),
-						//										'confirm' => elgg_echo('deleteconfirm'),
-						//									));
- 
+							echo "<div class='delete_msg'>" . elgg_view("output/confirmlink", array(
+							'href' => $vars['url'] . "action/messages/delete?message_id=" . $message->getGUID() . "&type=inbox",
+							'text' => elgg_echo('delete'),
+							'confirm' => elgg_echo('deleteconfirm'),
+						)) . "</div>";
  						echo "</td></tr></table>";
 						
     			    }//close hiddeTo if statement
