@@ -39,7 +39,7 @@
 		set_page_owner($page_owner->getGUID());
 	    
     // Display it
-	    $area2 = elgg_view("object/messages",array(
+	    $area2 = elgg_view("messages/messages",array(
 											'entity' => $message,
 											'entity_owner' => $page_owner,
 											'full' => true
