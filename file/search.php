@@ -14,16 +14,10 @@
 		require_once(dirname(dirname(dirname(__FILE__))) . "/engine/start.php");
 		
 	// Get input
+		$md_type = 'simpletype';
 		$tag = get_input('tag');
-		$subtype = get_input('subtype');
 		$search_viewtype = get_input('search_viewtype');
-		
-		if (!$objecttype = get_input('object')) {
-			$objecttype = "";
-		}
-		if (!$md_type = get_input('tagtype')) {
-			$md_type = "";			
-		}
+
 		$friends = (int) get_input('friends_guid',0);
 		if ($friends) {
 			if ($owner_guid = get_user_friends($user_guid, $subtype, 999999, 0)) {
@@ -75,7 +69,7 @@
 		$limit = 10;
 		if ($search_viewtype == "gallery") $limit = 12;
 		if (!empty($tag)) {
-			$area2 .= list_entities_from_metadata($md_type, $tag, $objecttype, $subtype, $owner_guid, $limit);
+			$area2 .= list_entities_from_metadata($md_type, $tag, 'object', 'file', $owner_guid, $limit);
 		} else {
 			$area2 .= list_entities("object", "file", $owner_guid, $limit);
 		}
