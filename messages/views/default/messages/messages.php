@@ -39,7 +39,7 @@
 ?>
     <!-- get the correct return url -->
     <div id="messages_return"><!-- start of messages_return div -->
-         <p><a href="<?php echo $url; ?>">&laquo; back to messages</a></p>
+         <p><a href="<?php echo $url; ?>">&laquo; <?php echo elgg_echo('messages:back'); ?></a></p>
     </div><!-- end of messages_return div -->
     
     <div class="messages_single"><!-- start of the message div -->
@@ -56,12 +56,12 @@
                     //get the icon
                     echo " " . elgg_view("profile/icon",array('entity' => $user_object, 'size' => 'tiny'));
                     //get the name
-                    echo "<br class=\"clearfloat\" /><p>To: <b>" . $user_object->name . "</b><br />";
+                    echo "<br class=\"clearfloat\" /><p>".elgg_echo('messages:to').": <b>" . $user_object->name . "</b><br />";
                 }else{
                     //get the icon
                     echo " " . elgg_view("profile/icon",array('entity' => $vars['entity']->getOwnerEntity(), 'size' => 'tiny'));
                     //get the name
-                    echo "<br class=\"clearfloat\" /><p>From: <b>" . $vars['entity']->getOwnerEntity()->name . "</b><br />";
+                    echo "<br class=\"clearfloat\" /><p>".elgg_echo('messages:from').": <b>" . $vars['entity']->getOwnerEntity()->name . "</b><br />";
                 }
             ?>
             <!-- get the time the message was sent -->
@@ -77,9 +77,9 @@
 		    if($main_message = $vars['entity']->getEntitiesFromRelationship("reply")){
         		
     		    if($type == "sent"){
-        		    echo "<div class='previous_message'><h3>Original message:</h3><p>";
+        		    echo "<div class='previous_message'><h3>".elgg_echo('messages:original').":</h3><p>";
     		    }else{
-    		        echo "<div class='previous_message'><h3>Your message:</h3><p>";
+    		        echo "<div class='previous_message'><h3>".elgg_echo('messages:yours').":</h3><p>";
 		        }
 		        
     		    echo $main_message[0][description] . "</p></div>";
@@ -111,7 +111,7 @@
 		</script>	
 		
 		
-		    <p><?php if($type != "sent")echo "<a href=\"javascript:void(0);\" class='message_reply'>Reply</a> &nbsp; "; ?> <?php echo elgg_view("output/confirmlink", array(
+		    <p><?php if($type != "sent")echo "<a href=\"javascript:void(0);\" class='message_reply'>".elgg_echo('messages:answer')."</a> &nbsp; "; ?> <?php echo elgg_view("output/confirmlink", array(
 																'href' => $vars['url'] . "action/messages/delete?message_id=" . $vars['entity']->getGUID() . "&type={$type}",
 																'text' => elgg_echo('delete'),
 																'confirm' => elgg_echo('deleteconfirm'),

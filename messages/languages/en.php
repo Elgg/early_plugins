@@ -7,6 +7,7 @@
 		 */
 	
 			'messages' => "Messages",
+            'messages:back' => "back to messages",
 			'messages:user' => "Your inbox",
 			'messages:sentMessages' => "Sent messages",
 			'messages:posttitle' => "%s's messages: %s",
@@ -16,6 +17,7 @@
 			'messages:message' => "Message",
 			'messages:title' => "Title",
 			'messages:to' => "To",
+            'messages:from' => "From",
 			'messages:fly' => "Let it fly",
 			'messages:replying' => "Message replying to",
 			'messages:inbox' => "Inbox",
@@ -23,6 +25,9 @@
 			'messages:compose' => "Send a message",
 			'messages:sentmessages' => "Sent messages",
 			'messages:recent' => "Recent messages",
+            'messages:original' => "Original message",
+            'messages:yours' => "Your message",
+            'messages:answer' => "Reply",
 			
 			'item:object:messages' => 'Messages',
 	
