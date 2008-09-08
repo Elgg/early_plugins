@@ -14,6 +14,8 @@
 	{
 		global $CONFIG;
 		
+		$CONFIG->disable_registration = true;
+		
 		if (current_page_url() != $CONFIG->url) 
 			extend_view('pageshells/pageshell', 'walledgarden/walledgarden'); 
 	}
