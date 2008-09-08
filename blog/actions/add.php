@@ -11,7 +11,10 @@
 	 */
 
 	// Make sure we're logged in (send us to the front page if not)
-		if (!isloggedin()) forward();
+		gatekeeper();
+
+        // Make sure action is secure
+        action_gatekeeper();
 
 	// Get input data
 		$title = get_input('blogtitle');

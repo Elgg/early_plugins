@@ -38,57 +38,45 @@
 
 ?>
 
-	<form action="<?php echo $vars['url']; ?>action/<?php echo $action; ?>" method="post">
-	
-		<p>
-			<label><?php echo elgg_echo("title"); ?><br />
-			<?php
+<?php
+                $title_label = elgg_echo('title');
+                $title_textbox = elgg_view('input/text', array('internalname' => 'blogtitle', 'value' => $title));
+                $text_label = elgg_echo('blog:text');
+                $text_textarea = elgg_view('input/longtext', array('internalname' => 'blogbody', 'value' => $body));
+                $tag_label = elgg_echo('tags');
+                $tag_input = elgg_view('input/tags', array('internalname' => 'blogtags', 'value' => $tags));
+                $access_label = elgg_echo('access');
+                $access_input = elgg_view('input/access', array('internalname' => 'access_id', 'value' => $access_id));
+                $submit_input = elgg_view('input/submit', array('internalname' => 'submit', 'value' => elgg_echo('save')));
 
-				echo elgg_view("input/text", array(
-									"internalname" => "blogtitle",
-									"value" => $title,
-													));
-			
-			?>
-			</label>
-		</p>
-		<p>
-			<label><?php echo elgg_echo("blog:text"); ?><br />
-			<?php
+                if (isset($vars['entity'])) {
+                  $entity_hidden = elgg_view('input/hidden', array('internalname' => 'blogpost', 'value' => $vars['entity']->getGUID()));
+                } else {
+                  $entity_hidden = '';
+                }
 
-				echo elgg_view("input/longtext",array(
-									"internalname" => "blogbody",
-									"value" => $body,
-													));
-			?>
-			</label>
+                $form_body = <<<EOT
+		<p>
+			<label>$title_label</label><br />
+                        $title_textbox
 		</p>
 		<p>
-			<label><?php echo elgg_echo("tags"); ?><br />
-			<?php
+			<label>$text_label</label><br />
+                        $text_textarea
+		</p>
+		<p>
+			<label>$tag_label</label><br />
+                        $tag_input
+		</p>
+		<p>
+			<label>$access_label</label><br />
+                        $access_input
+		</p>
+		<p>
+			$entity_hidden
+			$submit_input
+		</p>
+EOT;
 
-				echo elgg_view("input/tags", array(
-									"internalname" => "blogtags",
-									"value" => $tags,
-													));
-			
-			?>
-		</p>
-		<p>
-			<label>
-				<?php echo elgg_echo('access'); ?><br />
-				<?php echo elgg_view('input/access', array('internalname' => 'access_id','value' => $access_id)); ?>
-			</label>
-		</p>
-		<p>
-			<?php
-
-				if (isset($vars['entity'])) {
-					?><input type="hidden" name="blogpost" value="<?php echo $vars['entity']->getGUID(); ?>" /><?php
-				}
-			
-			?>
-			<input type="submit" name="submit" value="<?php echo elgg_echo('save'); ?>" />
-		</p>
-	
-	</form>
+      echo elgg_view('input/form', array('action' => "{$vars['url']}action/$action", 'body' => $form_body));
+?>
