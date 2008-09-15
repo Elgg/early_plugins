@@ -57,7 +57,7 @@ $(document).ready(function(){
     <input type="hidden" name="pageOwner" value="<?php echo page_owner(); ?>" class="pageOwner"  />
    
     <!-- submit button -->
-    <input type="submit" id="postit" value="Post it">
+    <input type="submit" id="postit" value="<?php echo elgg_echo('messageboard:postit'); ?>">
     
     <!-- menu options -->
     <div id="messageboard_widget_menu">
