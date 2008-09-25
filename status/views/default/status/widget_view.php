@@ -50,7 +50,7 @@ $(document).ready(function(){
         $('#status_update_form').hide();
         $('#status_update_input').val('').hide(); //empty any content and hide the hidden textarea
         $('#status_clear').show();
-        $("#status_message p").append('<?php echo addslashes($vars['entity']->description); ?>'); // the current status message
+        $("#status_message p").append('<?php echo addslashes(str_replace("\r", ' ', str_replace("\n", ' ', $vars['entity']->description))); ?>'); // the current status message
         
     });//end of function
     
@@ -86,7 +86,7 @@ $(document).ready(function(){
     	
     	    <div id="status_message" class="status_input_form">
     	        <textarea id="status_update_input"></textarea>
-    	        <p><?php echo $vars['entity']->description; ?></p>
+    	        <p><?php echo str_replace("\r", ' ', str_replace("\n", ' ', $vars['entity']->description)); ?></p>
     	    </div>
     		
          <?php 
