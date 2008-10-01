@@ -85,7 +85,7 @@
 		$page_owner = page_owner_entity();
 		
 		// Group submenu option	
-			if ($page_owner instanceof ElggGroup && get_context() != "pages") {
+			if ($page_owner instanceof ElggGroup && get_context() == 'groups') {
 				add_submenu_item(sprintf(elgg_echo("pages:group"),$page_owner->name), $CONFIG->wwwroot . "pg/pages/owned/" . $page_owner->username);
 			}
 			
@@ -142,7 +142,7 @@
     				 extend_view('metatags','pages/metatags');
     					
     				 $entity = get_entity($page[1]);
-    				 add_submenu_item(elgg_echo('pages:label:view'), $CONFIG->url . "pg/pages/view/{$page[1]}", 'pageslinks');
+    				 //add_submenu_item(elgg_echo('pages:label:view'), $CONFIG->url . "pg/pages/view/{$page[1]}", 'pageslinks');
     				 if (($entity) && ($entity->canEdit())) add_submenu_item(elgg_echo('pages:label:edit'), $CONFIG->url . "pg/pages/edit/{$page[1]}", 'pagesactions');
     				 add_submenu_item(elgg_echo('pages:label:history'), $CONFIG->url . "pg/pages/history/{$page[1]}", 'pageslinks');
     					
