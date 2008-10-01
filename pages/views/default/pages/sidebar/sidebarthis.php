@@ -26,14 +26,14 @@
 	function pages_draw_child($childentity, $path) {
 		
 				$child = "\n\t\t{\n";
-				$child .= "\t\t\t\"text\": \"<a href=\\\"{$childentity->getURL()}\\\">{$childentity->title}</a>\"\n";
+				$child .= "\t\t\t\"text\": \"<a href=\\\"{$childentity->getURL()}\\\">{$childentity->guid} {$childentity->title}</a>\"\n";
 				
 				$extras = "";
 				$haschild = get_entities_from_metadata('parent_guid',$childentity->guid,'','',0,9999);
 				if ($haschild) {
-					if (in_array($childentity->getGUID(),$path)) {
-						$extras .= "\t\t\t\",expanded\": true";
-						$extras .= "\t\t\t\",children\": [\n";
+					if (in_array($childentity->guid,$path)) {
+						$extras .= "\t\t\t,\"expanded\": true";
+						$extras .= "\t\t\t,\"children\": [\n";
 						
 						$childstring = "";
 						foreach($haschild as $subchild) {
@@ -50,7 +50,7 @@
 					}
 					
 				}				
-				$child .= "\t\t}"; 
+				$child .= $extras . "\t\t}"; 
 		return $child;
 	}
 	
@@ -58,6 +58,7 @@
 		echo "{\n";
 		echo "\t\"text\": \"<a href=\\\"{$vars['entity']->getURL()}\\\">{$vars['entity']->title}</a>\"\n";
 	}
+	
 		$children = "";
 		$temp = "";
 		if (isset($vars['children']) && is_array($vars['children']) && (!isset($vars['fulltree']) || $vars['fulltree'] == 0)) {
