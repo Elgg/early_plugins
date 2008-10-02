@@ -35,4 +35,4 @@
 });
 </script>
 <!-- show the textarea -->
-<textarea class="input-textarea" name="<?php echo $vars['internalname']; ?>" <?php echo $vars['js']; ?>><?php echo $vars['value']; ?></textarea> 
+<textarea class="input-textarea" name="<?php echo $vars['internalname']; ?>" <?php echo $vars['js']; ?>><?php echo htmlentities($vars['value'], null, 'UTF-8'); ?></textarea> 
