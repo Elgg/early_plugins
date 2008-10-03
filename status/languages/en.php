@@ -8,6 +8,8 @@
 	
 			'status' => "Status",
 			'status:user' => "%s's status",
+			'status:current'=> "Current status",
+			'status:desc'=> "This status widget shows your latest status.",
 			'status:posttitle' => "%s's status: %s",
 			'status:everyone' => "All site status",
 			'status:strapline' => "%s",

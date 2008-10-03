@@ -39,7 +39,7 @@
 				register_entity_url_handler('status_url','object','status');
 				
 			// Your status widget
-			    add_widget_type('status',"Current status","This status widget shows your latest status.");
+			    add_widget_type('status',elgg_echo("status:current"),elgg_echo("status:desc"));
 			    
 		}
 		
