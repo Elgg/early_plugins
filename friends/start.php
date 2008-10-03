@@ -20,7 +20,7 @@
 				register_translations($CONFIG->pluginspath . "friends/languages/");
     		
     		//add a widget
-			    add_widget_type('friends',"Friends",elgg_echo('friends:widget:description'));
+			    add_widget_type('friends',elgg_echo("friends"),elgg_echo('friends:widget:description'));
 			
 		}
 		
