@@ -66,6 +66,12 @@
 		 * History
 		 */
 			'pages:revision' => 'Revision created %s by %s',
+			
+		/**
+		 * Wdiget
+		 **/
+		 
+		    'pages:num' => 'Number of pages to display',
 	
 		/**
 		 * Submenu items

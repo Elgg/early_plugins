@@ -51,6 +51,9 @@
 		register_entity_type('object','page');
 		register_entity_type('object','page_top');
 		
+		//add a widget
+	    add_widget_type('pages',"Pages","This is a list of your pages.");
+		
 		// For now, we'll hard code the groups profile items as follows:
 		// TODO make this user configurable
 		
