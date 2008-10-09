@@ -50,6 +50,8 @@ p.message_item_timestamp {
 	margin:0 4px 4px 4px;
 	padding:4px;
 	border-bottom:1px dotted #cccccc;
+	overflow-y:hidden;
+	overflow-x:auto;
 }
 
 .message_buttons {
