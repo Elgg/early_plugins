@@ -14,7 +14,7 @@
     	 
     	 foreach($vars['entity'] as $welcome){
     	 
-    	    echo $welcome->description;
+    	    echo "<span class='pages_welcome_message'>" . $welcome->description . "</span>";
     	    
 	    }
     	 
@@ -22,7 +22,7 @@
 
 ?>
 
-    <p>Welcome to this Elgg pages plugin. This feature allows you to create pages on any topic and select who can view them and edit them.</p>
+    <p class="pages_welcome_message">Welcome to this Elgg pages plugin. This feature allows you to create pages on any topic and select who can view them and edit them.</p>
     
 <?php
     }

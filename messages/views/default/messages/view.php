@@ -98,7 +98,7 @@
 			
     } else {
         
-    	echo "<p>" . elgg_echo("messages:nomessages") . "</p>";
+    	"<p class='messages_nomessage_message'>" . elgg_echo("messages:nomessages") . "</p>";
     		
 	}//end of the first if statement
 ?>
