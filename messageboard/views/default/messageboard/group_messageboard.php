@@ -73,7 +73,6 @@ $(document).ready(function(){
 
 </div><!-- end of mb_input_wrapper div -->
 
-<p>
 	<?php
     
         //this for the first time the page loads, grab the latest 5 messages.
@@ -92,4 +91,3 @@ $(document).ready(function(){
     	}
 	
 	?>
-</p>
