@@ -9,7 +9,12 @@
 	 * @link http://elgg.com/
 	 */
 
-	$icon = "<img src=\"{$vars['url']}mod/pages/images/pages_icon.png\" />";
+	$icon = elgg_view(
+			"graphics/icon", array(
+			'entity' => $vars['entity'],
+			'size' => 'small',
+		  )
+		);
 
 	$info .= "<p><b><a href=\"" . $vars['entity']->getUrl() . "\">" . $vars['entity']->title . "</a></b></p>";
 
