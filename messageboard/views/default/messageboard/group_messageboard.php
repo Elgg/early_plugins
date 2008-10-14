@@ -24,7 +24,9 @@ $(document).ready(function(){
     $("#postit").click(function(){
         
         //display the ajax loading gif at the start of the function call
-        $('#loader').html('<img src="<?php echo $vars['url']; ?>_graphics/ajax_loader.gif" />');
+        //$('#loader').html('<img src="<?php echo $vars['url']; ?>_graphics/ajax_loader.gif" />');
+        $('#loader').html('<?php echo elgg_view('ajax/loader',array('slashes' => true)); ?>');
+        
         
         //load the results back into the message board contents and remove the loading gif
         //remember that the actual div being populated is determined on views/default/messageboard/messageboard.php     
@@ -72,6 +74,7 @@ $(document).ready(function(){
 ?>
 
 </div><!-- end of mb_input_wrapper div -->
+
 
 	<?php
     
