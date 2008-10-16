@@ -26,8 +26,8 @@
 		$area2 .= elgg_view_title(elgg_echo('bookmarks:this'), false);
 		
 	// If we've been given a bookmark to edit, grab it
-		if ($guid = get_input('bookmark',0)) {
-			$entity = get_entity($guid);
+		if ($this_guid = get_input('bookmark',0)) {
+			$entity = get_entity($this_guid);
 			if ($entity->canEdit()) {
 				$area2 .= elgg_view('bookmarks/form',array('entity' => $entity));
 			}
