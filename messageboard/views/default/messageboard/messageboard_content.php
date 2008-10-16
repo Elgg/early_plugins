@@ -27,7 +27,7 @@
     </p>
     		
 	<!-- output the actual comment -->
-	<div class="message"><?php echo elgg_view("output/longtext",array("value" => $vars['annotation']->value)); ?></div>
+	<div class="message"><?php echo elgg_view("output/longtext",array("value" => parse_urls($vars['annotation']->value))); ?></div>
 	<div class="message_buttons">
 		    
 	<?php
