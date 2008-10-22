@@ -24,6 +24,7 @@
    tinyMCE.init({
 	mode : "textareas",
 	theme : "advanced",
+	relative_urls : false,
 	theme_advanced_buttons1 : "bold,italic,underline,separator,strikethrough,bullist,numlist,undo,redo,link,unlink,image,blockquote,code",
 	theme_advanced_buttons2 : "",
 	theme_advanced_buttons3 : "",
