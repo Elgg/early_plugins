@@ -73,6 +73,13 @@
 			'file:river:annotate' => "%s commented on",
 
 			'item:object:file' => 'Files',
+			
+	    /**
+		 * Embed media
+		 **/
+		 
+		    'file:embed' => "Embed media",
+		    'file:embedall' => "All",
 	
 		/**
 		 * Status messages
