@@ -43,21 +43,27 @@
             $('#actual_embed_media').hide('slow');
                 return false;
             });
+            
+		$('a.embed_tag_link').click(function() {
+				$('#actual_embed_media_main').load('<?php echo $vars['url']; ?>mod/file/embed.php?username=<?php echo urlencode($vars['user']->username); ?>&simpletype=' + this.rel);
+				$('#actual_embed_media').show('slow');
+				return false;
+			});
 
     });
 </script>
 
 <div class="file_embed_media" style="background:#efefef;padding:4px 2px 2px 2px;margin:10px 3px 0 0;">   
-<p style="color:#000;"><b><?php echo elgg_echo("file:embed"); ?>:</b> <a href=""><?php echo elgg_echo("file:embedall"); ?></a> 
+<p style="color:#000;"><b><?php echo elgg_echo("file:embed"); ?>:</b> <a rel="all" class="embed_tag_link" href=""><?php echo elgg_echo("file:embedall"); ?></a> 
 <?php
     //display a link to the users file types
     foreach($get_user_files as $file){
-        echo "<a id=\"{$file->tag}\">" . $file->tag . "</a> ";
+        echo "<a class=\"embed_tag_link\" rel=\"{$file->tag}\" href=\"\">" . elgg_echo("file:type:" . $file->tag) . "</a> ";
     }
 ?>
 </p>
 <div id="actual_embed_media">
-    <p>This is going to be populated with some content.</p>
-    <a id="close_embed">close</a>
+    <div id="actual_embed_media_main"></div>
+    <a id="close_embed" href=""><?php echo elgg_echo('close'); ?></a>
 </div>
 </div>
