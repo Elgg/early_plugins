@@ -13,17 +13,6 @@
 	 $get_user_files = get_tags(0,10,'simpletype','object','file',$_SESSION['guid']);
 	
 ?>
-<style type="text/css">
-    #actual_embed_media {
-        height:100px;
-        border:2px solid #efefef;
-        background:#fff;
-        display:none;
-    }
-    #actual_embed_media p {
-        color:#000;
-    }
-</style>
 <script type="text/javascript">
     $(document).ready(function() {
         
@@ -47,6 +36,9 @@
 		$('a.embed_tag_link').click(function() {
 				$('#actual_embed_media_main').load('<?php echo $vars['url']; ?>mod/file/embed.php?username=<?php echo urlencode($vars['user']->username); ?>&simpletype=' + this.rel);
 				$('#actual_embed_media').show('slow');
+				return false;
+			});
+		$('#actual_embed_media_main img').click(function() {
 				return false;
 			});
 

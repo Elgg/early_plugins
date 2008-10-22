@@ -11,7 +11,12 @@
 
 	$file = $vars['entity'];
 	
-	$icon = elgg_view("file/icon", array("mimetype" => $file->mimetype, 'thumbnail' => $file->thumbnail, 'file_guid' => $file->guid));
+	if ($file->simpletype == 'image') {
+		$size = 'large';
+	} else {
+		$size = 'small';
+	}
+	$icon = elgg_view("file/icon", array("mimetype" => $file->mimetype, 'thumbnail' => $file->thumbnail, 'file_guid' => $file->guid, 'size' => $size));
 
 ?>
 

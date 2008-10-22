@@ -33,9 +33,14 @@
 		case 'image/gif' 	:
 		case 'image/bmp' 	: 
 			//$file = get_entity($file_guid);
-			if ($thumbnail)
-				echo "<img src=\"{$vars['url']}action/file/icon?file_guid={$vars['file_guid']}\" border=\"0\" />";
-			else 
+			if ($thumbnail) {
+				if ($size == 'small') {
+					echo "<img src=\"{$vars['url']}action/file/icon?file_guid={$vars['file_guid']}\" border=\"0\" />";
+				} else {
+					echo "<img src=\"{$vars['url']}mod/file/thumbnail.php?file_guid={$vars['file_guid']}\" border=\"0\" />";
+				}
+				
+			} else 
 			{
 				if ($size == 'large') {
 					echo "<img src=\"{$CONFIG->wwwroot}mod/file/graphics/icons/general_lrg.gif\" border=\"0\" />";
