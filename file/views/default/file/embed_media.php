@@ -16,7 +16,7 @@
 <script type="text/javascript">
     $(document).ready(function() {
         
-        $('#actual_embed_media').hide();
+        //$('#actual_embed_media').hide();
         
         $('a#image').click(function() {
             $('#actual_embed_media').show('slow');
@@ -45,8 +45,8 @@
     });
 </script>
 
-<div class="file_embed_media" style="background:#efefef;padding:4px 2px 2px 2px;margin:10px 3px 0 0;">   
-<p style="color:#000;"><b><?php echo elgg_echo("file:embed"); ?>:</b> <a rel="all" class="embed_tag_link" href=""><?php echo elgg_echo("file:embedall"); ?></a> 
+<div class="file_embed_media">   
+<p><b><?php echo elgg_echo("file:embed"); ?>:</b> <a rel="all" class="embed_tag_link" href=""><?php echo elgg_echo("file:embedall"); ?></a> 
 <?php
     //display a link to the users file types
     foreach($get_user_files as $file){
