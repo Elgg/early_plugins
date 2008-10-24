@@ -28,6 +28,7 @@
 			'file:gallery' => "gallery view",
 			'file:gallery_list' => "Gallery or list view",
 			'file:num_files' => "Number of files to display",
+			'file:user:gallery'=>'View %s gallery', 
 	
 			'file:upload' => "Upload a file",
 			
