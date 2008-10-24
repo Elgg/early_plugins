@@ -74,7 +74,7 @@
 							echo autop($vars['entity']->description);
 				
 				?>
-			</div>			
+			</div><div class="clearfloat"></div>			
 			<!-- display edit options if it is the blog post owner -->
 			<p class="options">
 			<?php
