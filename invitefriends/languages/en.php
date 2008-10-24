@@ -16,6 +16,10 @@
 		'invitefriends:introduction' => 'To invite friends to join you on this network, enter their email addresses below (one per line):',
 		'invitefriends:message' => 'Enter a message they will receive with your invitation:',
 		'invitefriends:subject' => 'Invitation to join %s',
+	
+		'invitefriends:success' => 'Your friends were invited.',
+		'invitefriends:failure' => 'Your friends could not be invited.',
+	
 		'invitefriends:message:default' => '
 Hi,
 
