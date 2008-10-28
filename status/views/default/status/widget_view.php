@@ -130,7 +130,7 @@ $(document).ready(function(){
 				</div><!-- end of status_update_form div -->   			
 				
 				<div id="status_clear"><!-- start of status clear div -->
-				    <input type="button" id="status_clear_button" value="clear status" />
+				    <input type="button" id="status_clear_button" value="<?php echo elgg_echo('status:clear'); ?>" />
 				</div><!-- end of of status clear div -->
 				
 	<?php
@@ -140,7 +140,7 @@ $(document).ready(function(){
 	?>
 		
 	<!-- display the show history link -->
-	<a href="<?php echo $vars['url']; ?>pg/status/<?php echo get_user($vars['entity']->owner_guid)->username; ?>">view history</a>
+	<a href="<?php echo $vars['url']; ?>pg/status/<?php echo get_user($vars['entity']->owner_guid)->username; ?>"><?php echo elgg_echo('status:viewhistory'); ?></a>
 		
 	<!-- loading graphic -->
     <div id="status_loading" class="loading">  </div>   
