@@ -16,9 +16,20 @@
 	 * 
 	 */
 
+	global $tinymce_js_loaded;
+	if (!isset($tinymce_js_loaded)) $tinymce_js_loaded = false;
+
+	if (!$tinymce_js_loaded) {
+	
 ?>
 <!-- include tinymce -->
 <script language="javascript" type="text/javascript" src="<?php echo $vars['url']; ?>mod/tinymce/tinymce/jscripts/tiny_mce/tiny_mce.js"></script>
+<?php
+
+		$tinymce_js_loaded = true;
+	}
+
+?>
 <!-- intialise tinymce, you can find other configurations here http://wiki.moxiecode.com/examples/tinymce/installation_example_01.php -->
 <script language="javascript" type="text/javascript">
    tinyMCE.init({
