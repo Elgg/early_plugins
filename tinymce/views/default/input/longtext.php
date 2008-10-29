@@ -24,12 +24,6 @@
 ?>
 <!-- include tinymce -->
 <script language="javascript" type="text/javascript" src="<?php echo $vars['url']; ?>mod/tinymce/tinymce/jscripts/tiny_mce/tiny_mce.js"></script>
-<?php
-
-		$tinymce_js_loaded = true;
-	}
-
-?>
 <!-- intialise tinymce, you can find other configurations here http://wiki.moxiecode.com/examples/tinymce/installation_example_01.php -->
 <script language="javascript" type="text/javascript">
    tinyMCE.init({
@@ -46,5 +40,12 @@
 	extended_valid_elements : "a[name|href|target|title|onclick],img[class|src|border=0|alt|title|hspace|vspace|width|height|align|onmouseover|onmouseout|name|style],hr[class|width|size|noshade],font[face|size|color|style],span[class|align|style]"
 });
 </script>
+<?php
+
+		$tinymce_js_loaded = true;
+	}
+
+?>
+
 <!-- show the textarea -->
 <textarea class="input-textarea" name="<?php echo $vars['internalname']; ?>" <?php echo $vars['js']; ?>><?php echo htmlentities($vars['value'], null, 'UTF-8'); ?></textarea> 
