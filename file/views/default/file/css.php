@@ -171,19 +171,3 @@ p.filerepo_owner {
 .filerepo_user_gallery_link a:hover {
 	background-position: right -40px;
 }
-
-/* Embed code */
-
-    #actual_embed_media {
-        height:100px;
-        border:2px solid #efefef;
-        background:#fff;
-        overflow: auto;
-        display:none;
-    }
-    #actual_embed_media p {
-        color:#000;
-    }
-    #actual_embed_media img {
-        width: 50px;
-    }
