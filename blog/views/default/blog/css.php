@@ -62,6 +62,9 @@
 	margin: 10px 0 10px 10px;
 	float:right;
 }
+.blog_post_body img {
+	margin: 10px !important;
+}
 
 .blog-comments h3 {
 	font-size: 150%;
