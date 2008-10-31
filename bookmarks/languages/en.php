@@ -22,6 +22,8 @@
 	
 			'bookmarks:delete:confirm' => "Are you sure you want to delete this resource?",
 	
+			'bookmarks:numbertodisplay' => 'Number of bookmarked items to display',
+	
 			'bookmarks:shared' => "Bookmarked",
 			'bookmarks:visit' => "Visit resource",
 			'bookmarks:recent' => "Recent bookmarks",

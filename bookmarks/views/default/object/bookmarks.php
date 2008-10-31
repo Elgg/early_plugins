@@ -89,7 +89,7 @@
 					//echo elgg_view('output/url',array('value' => $vars['entity']->address));
 				
 				?>
-				<a href="<?php echo $vars['entity']->address; ?>">Visit Resource</a>
+				<a href="<?php echo $vars['entity']->address; ?>"><?php echo elgg_echo('bookmarks:visit'); ?></a>
 			</p>
 		</div>		
 		<?php

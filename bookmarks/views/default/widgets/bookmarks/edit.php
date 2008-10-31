@@ -2,7 +2,7 @@
 
 ?>
 	<p>
-		Number of bookmarked items to display:
+		<?php echo elgg_echo('bookmarks:numbertodisplay'); ?>:
 		<select name="params[num_display]">
 		    <option value="1" <?php if($vars['entity']->num_display == 1) echo "SELECTED"; ?>>1</option>
 		    <option value="2" <?php if($vars['entity']->num_display == 2) echo "SELECTED"; ?>>2</option>

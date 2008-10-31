@@ -46,7 +46,7 @@ $(document).ready(function () {
 
 				//get the bookmark description
 				if($s->description)
-					$info .= "<a href=\"javascript:void(0);\" class=\"share_more_info\">more</a><br /><div class=\"share_desc\"><p>{$s->description}</p></div>";
+					$info .= "<a href=\"javascript:void(0);\" class=\"share_more_info\">".elgg_echo('bookmarks:more')."</a><br /><div class=\"share_desc\"><p>{$s->description}</p></div>";
 		
 				//display 
 				echo "<div class=\"shares_widget_wrapper\">";
@@ -57,7 +57,7 @@ $(document).ready(function () {
 			}
 
 			$user_inbox = $vars['url'] . "pg/bookmarks/" . $user->username . "/inbox";
-			echo "<a href=\"{$user_inbox}\">Bookmarks inbox</a>";
+			echo "<a href=\"{$user_inbox}\">".elgg_echo('bookmarks:inbox')."</a>";
 
 		}
 	
