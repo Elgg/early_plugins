@@ -51,12 +51,6 @@
 			// Your thewire widget
 			    add_widget_type('thewire',elgg_echo("thewire:read"),elgg_echo("thewire:yourdesc"));
 			    
-			// All site thewire widget
-			    add_widget_type('all_thewire',elgg_echo("thewire:everyone"),elgg_echo("thewire:sitedesc"));
-			    
-	        // Friends thewire widget
-			//    add_widget_type('friends_thewire',elgg_echo("thewire:friends"),elgg_echo("thewire:friendsdesc"));
-			    
 			// Register entity type
 				register_entity_type('object','thewire');
 				
