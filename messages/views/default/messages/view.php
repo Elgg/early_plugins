@@ -15,6 +15,7 @@
 	 */
 	 
 	// If there are any messages to view, view them
+	if (isloggedin())
     if (is_array($vars['entity']) && sizeof($vars['entity']) > 0) {
     		
 ?>
@@ -26,6 +27,8 @@
     		if($vars['page_view'] == "inbox") {
         		
     			foreach($vars['entity'] as $message) {
+    				if ($message->owner_guid == $vars['user']->guid
+    					|| $message->toID == $vars['user']->guid) {
         			
         			//make sure to only display the messages that have not been 'deleted' (1 = deleted)
     				if($message->hiddenFrom != 1){
@@ -56,6 +59,7 @@
 		                echo "</div>"; // close the message background div
 		                
     			    }//end of hiddenFrom if statement
+    				} // end of user check 
     				
     			}//end of for each loop
     			
