@@ -37,7 +37,7 @@
     if (isloggedin())
     if (isset($vars['entity'])) {
     	if ($vars['entity']->toID == $vars['user']->guid
-    		|| $vars['entity']->owner_guid == $vars['user']->guid)
+    		|| $vars['entity']->owner_guid == $vars['user']->guid) {
     		
 ?>
     <!-- get the correct return url -->
@@ -157,5 +157,6 @@
     </div><!-- end of the message div -->
 	
 <?php
+    		}
     }
 ?>
