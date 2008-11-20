@@ -16,6 +16,8 @@
 		
 		$CONFIG->disable_registration = true;
 		
+		elgg_set_viewtype('default');
+		
 		if (current_page_url() != $CONFIG->url) 
 			extend_view('pageshells/pageshell', 'walledgarden/walledgarden'); 
 	}
