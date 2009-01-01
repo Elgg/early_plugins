@@ -89,7 +89,9 @@
 		
 		// Group submenu option	
 			if ($page_owner instanceof ElggGroup && get_context() == 'groups') {
-				add_submenu_item(sprintf(elgg_echo("pages:group"),$page_owner->name), $CONFIG->wwwroot . "pg/pages/owned/" . $page_owner->username);
+    			if($page_owner->pages_enable == "yes"){
+				    add_submenu_item(sprintf(elgg_echo("pages:group"),$page_owner->name), $CONFIG->wwwroot . "pg/pages/owned/" . $page_owner->username);
+			    }
 			}
 			
 			

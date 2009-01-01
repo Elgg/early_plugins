@@ -1,3 +1,12 @@
+<?php
+ 
+    // Latest forum discussion for the group home page
+
+    //check to make sure this group forum has been activated
+    if($vars['entity']->files_enable == 'yes'){
+
+?>
+
 <script type="text/javascript">
 $(document).ready(function () {
 
@@ -55,3 +64,7 @@ $('a.show_file_desc').click(function () {
 ?>
 
 </div>
+
+<?php
+	}//end of activate check statement
+?>
