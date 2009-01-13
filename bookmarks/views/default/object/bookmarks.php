@@ -20,7 +20,7 @@
 			$parsed_url = parse_url($vars['entity']->address);
 			$faviconurl = $parsed_url['scheme'] . "://" . $parsed_url['host'] . "/favicon.ico";
 		
-			$info = "<p class=\"shares_gallery_title\">". elgg_echo("bookmarks:shared") .": <a href=\"{$vars['entity']->getURL()}\">{$vars['entity']->title}</a></p>";
+			$info = "<p class=\"shares_gallery_title\">". elgg_echo("bookmarks:shared") .": <a href=\"{$vars['entity']->getURL()}\">{$vars['entity']->title}</a> (<a href=\"{$vars['entity']->address}\">".elgg_echo('bookmarks:visit')."</a>)</p>";
 			$info .= "<p class=\"shares_gallery_user\">By: <a href=\"{$vars['url']}pg/bookmarks/{$owner->username}\">{$owner->name}</a> <span class=\"shared_timestamp\">{$friendlytime}</span></p>";
 			$numcomments = elgg_count_comments($vars['entity']);
 			if ($numcomments)
@@ -47,7 +47,7 @@
 				);
 			}
 		
-			$info = "<p class=\"shares_gallery_title\">". elgg_echo("bookmarks:shared") .": <a href=\"{$vars['entity']->getURL()}\">{$vars['entity']->title}</a></p>";
+			$info = "<p class=\"shares_gallery_title\">". elgg_echo("bookmarks:shared") .": <a href=\"{$vars['entity']->getURL()}\">{$vars['entity']->title}</a> (<a href=\"{$vars['entity']->address}\">".elgg_echo('bookmarks:visit')."</a>)</p>";
 			$info .= "<p class=\"owner_timestamp\"><a href=\"{$vars['url']}pg/bookmarks/{$owner->username}\">{$owner->name}</a> {$friendlytime}";
 			$numcomments = elgg_count_comments($vars['entity']);
 			if ($numcomments)
