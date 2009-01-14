@@ -58,6 +58,7 @@ You cannot reply to this email.",
 			'messageboard:blank' => "Sorry; you need to actually put something in the message area before we can save it.",
 			'messageboard:notfound' => "Sorry; we could not find the specified item.",
 			'messageboard:notdeleted' => "Sorry; we could not delete this message.",
+			'messageboard:somethingwentwrong' => "Something went wrong when trying to save your message, make sure you actually wrote a message.",
 	     
 			'messageboard:failure' => "An unexpected error occurred when adding your message. Please try again.",
 	

@@ -30,7 +30,7 @@
         
     } else {
         
-        echo "Something went wrong when trying to save your message, make sure you actually wrote a message.";
+        echo elgg_echo('messageboard:somethingwentwrong');
         
     }
     
