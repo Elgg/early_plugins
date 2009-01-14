@@ -56,7 +56,7 @@ $(document).ready(function () {
 
 			}
 
-			$user_inbox = $vars['url'] . "pg/bookmarks/" . $user->username . "/inbox";
+			$user_inbox = $vars['url'] . "pg/bookmarks/" . page_owner_entity()->username . "/inbox";
 			echo "<a href=\"{$user_inbox}\">".elgg_echo('bookmarks:inbox')."</a>";
 
 		}
