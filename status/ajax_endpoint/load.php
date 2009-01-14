@@ -34,7 +34,7 @@
 	    // For now, set its access to public (we'll add an access dropdown shortly)
 			$status->access_id = 2;
 	    // Set its description appropriately, this is the status
-			$status->description = $status_message;
+			$status->description = substr($status_message, 0, 140); // limit status messages to 140 chars
 			
 	    //set the state metadata field; state=history is your old status messages, state=current is the latest one
 	        $status->state = "current";
