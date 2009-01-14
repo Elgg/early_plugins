@@ -52,7 +52,7 @@
 		register_entity_type('object','page_top');
 		
 		//add a widget
-	    add_widget_type('pages',"Pages","This is a list of your pages.");
+	    add_widget_type('pages',elgg_echo('pages'),elgg_echo('pages:widget:description'));
 		
 		// For now, we'll hard code the groups profile items as follows:
 		// TODO make this user configurable

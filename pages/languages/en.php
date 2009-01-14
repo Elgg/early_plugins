@@ -68,10 +68,11 @@
 			'pages:revision' => 'Revision created %s by %s',
 			
 		/**
-		 * Wdiget
+		 * Widget
 		 **/
 		 
 		    'pages:num' => 'Number of pages to display',
+			'pages:widget:description' => "This is a list of your pages.",
 	
 		/**
 		 * Submenu items
