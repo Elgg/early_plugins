@@ -13,6 +13,8 @@
 	// Start engine
 		require_once(dirname(dirname(dirname(__FILE__))) . "/engine/start.php");
 
+		gatekeeper();
+		
     // Get the current page's owner
 		$page_owner = page_owner_entity();
 		if ($page_owner === false || is_null($page_owner) && ($_SESSION['user'])) {
