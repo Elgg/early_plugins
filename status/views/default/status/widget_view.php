@@ -125,8 +125,8 @@ $(document).ready(function(){
 			?>
 			    
 				<div id="status_update_form"><!-- start of status_update_form div -->
-				    <input type="button" id="status_save_button" value="save" />
-				    <input type="button" id="status_cancel_button" value="cancel" />
+				    <input type="button" id="status_save_button" value="<?php elgg_echo('save'); ?>" />
+				    <input type="button" id="status_cancel_button" value="<?php elgg_echo('cancel'); ?>" />
 				</div><!-- end of status_update_form div -->   			
 				
 				<div id="status_clear"><!-- start of status clear div -->
