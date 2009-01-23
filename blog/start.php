@@ -25,9 +25,6 @@
 			// Load system configuration
 				global $CONFIG;
 				
-			// Load the language file
-				register_translations($CONFIG->pluginspath . "blog/languages/");
-				
 			// Set up menu for logged in users
 				if (isloggedin()) {
     				

@@ -26,9 +26,6 @@
     	    // Load system configuration
 				global $CONFIG;
 				
-			// Load the language file
-				register_translations($CONFIG->pluginspath . "messages/languages/");
-				
 			//add submenu options
 				if (get_context() == "messages") {
 					add_submenu_item(elgg_echo('messages:inbox'), $CONFIG->wwwroot . "pg/messages/" . $_SESSION['user']->username);

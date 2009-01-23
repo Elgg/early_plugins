@@ -26,9 +26,6 @@
 			// Load system configuration
 				global $CONFIG;
 				
-			// Load the language file
-				register_translations($CONFIG->pluginspath . "status/languages/");
-				
 			// Extend system CSS with our own styles, which are defined in the status/css view
 				extend_view('css','status/css');
 				
