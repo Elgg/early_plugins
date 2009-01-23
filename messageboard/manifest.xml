@@ -4,5 +4,5 @@
         <field key="version" value="1.0" />
         <field key="description" value="This plugin allows users and groups to attach a message board to their profile for other users to post comments and media." />
         <field key="website" value="http://www.elgg.org/" />
-        <field key="copyright" value="(C) Curverider 2008" />
+        <field key="copyright" value="(C) Curverider 2008-2009" />
 </plugin_manifest>
