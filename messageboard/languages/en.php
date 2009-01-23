@@ -14,6 +14,8 @@
 			'messageboard:none' => "There is nothing on this message board yet",
 			'messageboard:num_display' => "Number of messages to display",
 			'messageboard:desc' => "This is a message board that you can put on your profile where other users can comment.",
+	
+			'messageboard:history' => "History",
 			
          /**
 	     * Message board widget river
