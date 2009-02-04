@@ -37,6 +37,8 @@
 	if($parent_page = get_entity(get_input("page_guid")))
 	    $parent = $parent_page;
 	    
+	$title = $pages->title;
+	
 	// Breadcrumbs
 	$body = elgg_view('pages/breadcrumbs', array('page_owner' => page_owner_entity(), 'parent' => $parent));
 	
