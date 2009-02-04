@@ -43,7 +43,7 @@
 	// Set its owner to the current user
 			$message->owner_guid = $_SESSION['user']->getGUID();
 	// For now, set its access to public (we'll add an access dropdown shortly)
-			$message->access_id = 2;
+			$message->access_id = ACCESS_PUBLIC;
 	// Set its description appropriately
 			$message->title = $title;
 			$message->description = $message_contents;

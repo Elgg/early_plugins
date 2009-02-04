@@ -32,7 +32,7 @@
 	    // Set its owner to the current user
 			$status->owner_guid = $_SESSION['user']->getGUID();
 	    // For now, set its access to public (we'll add an access dropdown shortly)
-			$status->access_id = 2;
+			$status->access_id = ACCESS_PUBLIC;
 	    // Set its description appropriately, this is the status
 			$status->description = substr($status_message, 0, 140); // limit status messages to 140 chars
 			

@@ -19,7 +19,7 @@
 	 }else{
     	 $current_message = '';
     	 $object_guid = '';
-    	 $access_id = 0;
+    	 $access_id = ACCESS_PRIVATE;
 	 }
 	 
 	 $page_owner = $vars['owner']->guid;

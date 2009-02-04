@@ -26,7 +26,7 @@
 			$tags = "";
 			$title = "";
 			$description = "";
-			$access_id = 0;
+			$access_id = ACCESS_PRIVATE;
 		}
 
 	// Just in case we have some cached details

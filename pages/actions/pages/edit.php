@@ -73,10 +73,10 @@
 		}
 		
 		// Access ids
-		$page->access_id = (int)get_input('access_id', 0);
+		$page->access_id = (int)get_input('access_id', ACCESS_PRIVATE);
 		
 		// Write access id
-		$page->write_access_id = (int)get_input('write_access_id', 0);
+		$page->write_access_id = (int)get_input('write_access_id', ACCESS_PRIVATE);
 		
 		// Set parent
 		$page->parent_guid = $parent_guid;
