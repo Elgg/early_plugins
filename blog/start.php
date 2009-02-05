@@ -139,9 +139,11 @@
 			{
 				$descr = $entity->description;
 				$title = $entity->title;
+				global $CONFIG;
+				$url = $CONFIG->wwwroot . "pg/view/" . $entity->guid;
 				if ($method == 'sms') {
 					$owner = $entity->getOwnerEntity();
-					return $owner->name . ' ' . elgg_echo("blog:via") . ': ' . $title;
+					return $owner->name . ' ' . elgg_echo("blog:via") . ': ' . $url . ' (' . $title . ')';
 				}
 				if ($method == 'email') {
 					$owner = $entity->getOwnerEntity();
