@@ -51,6 +51,16 @@
 		register_entity_type('object','page');
 		register_entity_type('object','page_top');
 		
+		// Register granular notification for this type
+			if (is_callable('register_notification_object')){
+				register_notification_object('object', 'page_top', elgg_echo('pages:new'));
+				register_notification_object('object', 'page', elgg_echo('pages:new'));
+			}
+
+		// Listen to notification events and supply a more useful message
+			register_plugin_hook('notify:entity:message', 'object', 'page_notify_message');
+
+		
 		//add a widget
 	    add_widget_type('pages',elgg_echo('pages'),elgg_echo('pages:widget:description'));
 		
@@ -173,6 +183,40 @@
 		}
 		
 	}
+	
+	/**
+	* Returns a more meaningful message
+	*
+	* @param unknown_type $hook
+	* @param unknown_type $entity_type
+	* @param unknown_type $returnvalue
+	* @param unknown_type $params
+	*/
+		function page_notify_message($hook, $entity_type, $returnvalue, $params)
+		{
+			$entity = $params['entity'];
+			$to_entity = $params['to_entity'];
+			$method = $params['method'];
+			if (($entity instanceof ElggEntity) && (($entity->getSubtype() == 'page_top') || ($entity->getSubtype() == 'page')))
+			{
+				$descr = $entity->description;
+				$title = $entity->title;
+				if ($method == 'sms') {
+					$owner = $entity->getOwnerEntity();
+					return $owner->username . ' ' . elgg_echo("pages:via") . ': ' . $title;
+				}
+				if ($method == 'email') {
+					$owner = $entity->getOwnerEntity();
+					return $owner->username . ' ' . elgg_echo("pages:via") . ': ' . $title . "\n\n" . $descr . "\n\n" . $entity->getURL();
+				}
+				if ($method == 'web') {
+					$owner = $entity->getOwnerEntity();
+					return $owner->username . ' ' . elgg_echo("pages:via") . ': ' . $title . "\n\n" . $descr . "\n\n" . $entity->getURL();
+				}
+			}
+			return null;
+		}
+
 	
 	/**
 	 * Sets the parent of the current page, for navigation purposes

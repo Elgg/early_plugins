@@ -30,7 +30,7 @@
 			'pages:welcomeerror' => "There was a problem saving your welcome message",
 			'pages:welcomeposted' => "Your welcome message has been posted",
 			'pages:navigation' => "Page navigation",
-	
+	        'pages:via' => "via pages",
 			'item:object:page_top' => 'Top-level pages',
 			'item:object:page' => 'Pages',
 			'item:object:pages_welcome' => 'Pages welcome blocks',
