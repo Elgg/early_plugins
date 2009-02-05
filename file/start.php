@@ -56,6 +56,14 @@
 		
 		// Register a URL handler for files
 		register_entity_url_handler('file_url','object','file');
+		
+		// Register granular notification for this type
+		if (is_callable('register_notification_object'))
+			register_notification_object('object', 'file', elgg_echo('file:newupload'));
+
+		// Listen to notification events and supply a more useful message
+		register_plugin_hook('notify:entity:message', 'object', 'file_notify_message');
+
 
 		// Register entity type
 		register_entity_type('object','file');
@@ -137,6 +145,40 @@
 		}
 		
 	}
+	
+	/**
+		 * Returns a more meaningful message
+		 *
+		 * @param unknown_type $hook
+		 * @param unknown_type $entity_type
+		 * @param unknown_type $returnvalue
+		 * @param unknown_type $params
+    */
+		function file_notify_message($hook, $entity_type, $returnvalue, $params)
+		{
+			$entity = $params['entity'];
+			$to_entity = $params['to_entity'];
+			$method = $params['method'];
+			if (($entity instanceof ElggEntity) && ($entity->getSubtype() == 'file'))
+			{
+				$descr = $entity->description;
+				$title = $entity->title;
+				if ($method == 'sms') {
+					$owner = $entity->getOwnerEntity();
+					return $owner->username . ' ' . elgg_echo("file:via") . ': ' . $title;
+				}
+				if ($method == 'email') {
+					$owner = $entity->getOwnerEntity();
+					return $owner->username . ' ' . elgg_echo("file:via") . ': ' . $entity->title . "\n\n" . $descr . "\n\n" . $entity->getURL();
+				}
+				if ($method == 'web') {
+					$owner = $entity->getOwnerEntity();
+					return $owner->username . ' ' . elgg_echo("file:via") . ': ' . $entity->title . "\n\n" . $descr . "\n\n" . $entity->getURL();
+				}
+			}
+			return null;
+		}
+
 	
 	/**
 	 * Returns an overall file type from the mimetype

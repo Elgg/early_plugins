@@ -29,7 +29,7 @@
 			'file:gallery_list' => "Gallery or list view",
 			'file:num_files' => "Number of files to display",
 			'file:user:gallery'=>'View %s gallery', 
-	
+	        'file:via' => 'via files',
 			'file:upload' => "Upload a file",
 			
 			'file:file' => "File",
