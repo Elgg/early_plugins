@@ -15,7 +15,7 @@
 			'blog:friends' => "Friends' blogs",
 			'blog:yourfriends' => "Your friends' latest blogs",
 			'blog:everyone' => "All site blogs",
-	
+	        'blog:via' => "via blog",
 			'blog:read' => "Read blog",
 	
 			'blog:addpost' => "Write a blog post",

@@ -48,6 +48,14 @@
 			// Register a URL handler for blog posts
 				register_entity_url_handler('blog_url','object','blog');
 				
+			// Register granular notification for this type
+			if (is_callable('register_notification_object'))
+				register_notification_object('object', 'blog', elgg_echo('blog:newpost'));
+
+			// Listen to notification events and supply a more useful message
+			register_plugin_hook('notify:entity:message', 'object', 'blog_notify_message');
+
+				
 			// Register this plugin's object for sending pingbacks
 				register_plugin_hook('pingback:object:subtypes', 'object', 'blog_pingback_subtypes');
 				
@@ -112,6 +120,39 @@
 			
 			return false;
 			
+		}
+		
+		/**
+		 * Returns a more meaningful message
+		 *
+		 * @param unknown_type $hook
+		 * @param unknown_type $entity_type
+		 * @param unknown_type $returnvalue
+		 * @param unknown_type $params
+		 */
+		function blog_notify_message($hook, $entity_type, $returnvalue, $params)
+		{
+			$entity = $params['entity'];
+			$to_entity = $params['to_entity'];
+			$method = $params['method'];
+			if (($entity instanceof ElggEntity) && ($entity->getSubtype() == 'blog'))
+			{
+				$descr = $entity->description;
+				$title = $entity->title;
+				if ($method == 'sms') {
+					$owner = $entity->getOwnerEntity();
+					return $owner->name . ' ' . elgg_echo("blog:via") . ': ' . $title;
+				}
+				if ($method == 'email') {
+					$owner = $entity->getOwnerEntity();
+					return $owner->name . ' ' . elgg_echo("blog:via") . ': ' . $title . "\n\n" . $descr . "\n\n" . $entity->getURL();
+				}
+				if ($method == 'web') {
+					$owner = $entity->getOwnerEntity();
+					return $owner->name . ' ' . elgg_echo("blog:via") . ': ' . $title . "\n\n" . $descr . "\n\n" . $entity->getURL();
+				}
+			}
+			return null;
 		}
 
 		/**
