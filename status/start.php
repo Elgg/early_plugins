@@ -38,6 +38,13 @@
 			// Your status widget
 			    add_widget_type('status',elgg_echo("status:current"),elgg_echo("status:desc"));
 			    
+			// Register granular notification for this type
+			if (is_callable('register_notification_object'))
+				register_notification_object('object', 'status', elgg_echo('status:update'));
+
+			// Listen to notification events and supply a more useful message
+				register_plugin_hook('notify:entity:message', 'object', 'status_notify_message');
+			    
 		}
 		
 		/**
@@ -78,6 +85,40 @@
 			return $CONFIG->url . "pg/status/" . $statuspost->getOwnerEntity()->username;
 			
 		}
+		
+	/**
+		 * Returns a more meaningful message
+		 *
+		 * @param unknown_type $hook
+		 * @param unknown_type $entity_type
+		 * @param unknown_type $returnvalue
+		 * @param unknown_type $params
+	*/
+		function status_notify_message($hook, $entity_type, $returnvalue, $params)
+		{
+			$entity = $params['entity'];
+			$to_entity = $params['to_entity'];
+			$method = $params['method'];
+			if (($entity instanceof ElggEntity) && ($entity->getSubtype() == 'status'))
+			{
+				$descr = $entity->description;
+				//$title = $entity->title;
+				if ($method == 'sms') {
+					$owner = $entity->getOwnerEntity();
+					return $owner->username . ' ' . elgg_echo("status:via") . ': ' . $descr;
+				}
+				if ($method == 'email') {
+					$owner = $entity->getOwnerEntity();
+					return $owner->username . ' ' . elgg_echo("status:via") . ': ' . $descr;
+				}
+				if ($method == 'web') {
+					$owner = $entity->getOwnerEntity();
+					return $owner->username . ' ' . elgg_echo("status:via") . ': ' . $descr;
+				}
+			}
+			return null;
+		}
+
 	
 	// Make sure the status initialisation function is called on initialisation
 		register_elgg_event_handler('init','system','status_init');

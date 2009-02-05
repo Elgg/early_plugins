@@ -21,7 +21,8 @@
 			'status:delete' => "delete status",
 			'status:nostatus' => "No status has been set.",
 			'status:viewhistory' => "view history",
-	
+	        'status:update' => "Status update",
+			'status:via' => 'via status',
 			'item:object:status' => 'Status messages',
 	
 	
