@@ -15,6 +15,8 @@
 			'bookmarks:bookmarklet' => "Get bookmarklet",
 			'bookmarks:inbox' => "Bookmarks inbox",
 			'bookmarks:more' => "More bookmarks",
+			'bookmarks:new' => "A new bookmarked item",
+			'bookmarks:via' => "via bookmarks",
 			'bookmarks:shareditem' => "Bookmarked item",
 			'bookmarks:with' => "Share with",
 	

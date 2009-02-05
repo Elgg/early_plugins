@@ -38,6 +38,13 @@
 				
 			// Add our CSS
 				extend_view('css','bookmarks/css');
+				
+			// Register granular notification for this type
+			if (is_callable('register_notification_object'))
+				register_notification_object('object', 'bookmarks', elgg_echo('bookmarks:new'));
+
+			// Listen to notification events and supply a more useful message
+			   register_plugin_hook('notify:entity:message', 'object', 'bookmarks_notify_message');
 			
 			// Register a URL handler for shared items
 				register_entity_url_handler('bookmark_url','object','bookmarks');
@@ -100,6 +107,41 @@
 			return $CONFIG->url . "pg/bookmarks/" . $entity->getOwnerEntity()->username . "/read/" . $entity->getGUID() . "/" . $title;
 			
 		}
+		
+	    /**
+		 * Returns a more meaningful message
+		 *
+		 * @param unknown_type $hook
+		 * @param unknown_type $entity_type
+		 * @param unknown_type $returnvalue
+		 * @param unknown_type $params
+	    */
+		function bookmarks_notify_message($hook, $entity_type, $returnvalue, $params)
+		{
+			$entity = $params['entity'];
+			$to_entity = $params['to_entity'];
+			$method = $params['method'];
+			if (($entity instanceof ElggEntity) && ($entity->getSubtype() == 'bookmarks'))
+			{
+				$descr = $entity->description;
+				$title = $entity->title;
+				if ($method == 'sms') {
+					$owner = $entity->getOwnerEntity();
+					return $owner->username . ' ' . elgg_echo("bookmarks:via") . ': ' . $title;
+				}
+				if ($method == 'email') {
+					$owner = $entity->getOwnerEntity();
+					return $owner->username . ' ' . elgg_echo("bookmarks:via") . ': ' . $title . "\n\n" . $descr . "\n\n" . $entity->getURL();
+				}
+				if ($method == 'web') {
+					$owner = $entity->getOwnerEntity();
+					return $owner->username . ' ' . elgg_echo("bookmarks:via") . ': ' . $title . "\n\n" . $descr . "\n\n" . $entity->getURL();
+				}
+
+			}
+			return null;
+		}
+
 		
 	// Make sure the initialisation function is called on initialisation
 		register_elgg_event_handler('init','system','bookmarks_init');
