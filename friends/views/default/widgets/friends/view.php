@@ -39,7 +39,7 @@
 
 		foreach($friends as $friend) {
 			echo "<div class=\"widget_friends_singlefriend\" >";
-			echo elgg_view("profile/icon",array('entity' => get_user($friend->guid), 'size' => $size_value, 'override' => 'true'));
+			echo elgg_view("profile/icon",array('entity' => get_user($friend->guid), 'size' => $size_value));
 			echo "</div>";
 		}
 
