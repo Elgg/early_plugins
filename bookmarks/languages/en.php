@@ -15,11 +15,10 @@
 			'bookmarks:bookmarklet' => "Get bookmarklet",
 			'bookmarks:inbox' => "Bookmarks inbox",
 			'bookmarks:more' => "More bookmarks",
-			'bookmarks:new' => "A new bookmarked item",
-			'bookmarks:via' => "via bookmarks",
 			'bookmarks:shareditem' => "Bookmarked item",
 			'bookmarks:with' => "Share with",
-	
+			'bookmarks:new' => "A new bookmarked item",
+			'bookmarks:via' => "via bookmarks",
 			'bookmarks:address' => "Address of the resource to bookmark",
 	
 			'bookmarks:delete:confirm' => "Are you sure you want to delete this resource?",
