@@ -21,9 +21,9 @@
 			'status:delete' => "delete status",
 			'status:nostatus' => "No status has been set.",
 			'status:viewhistory' => "view history",
-	        'status:update' => "Status update",
-			'status:via' => 'via status',
+			'status:update' => "Status update",
 			'item:object:status' => 'Status messages',
+			'status:via' => 'via status',
 	
 	
         /**
@@ -31,7 +31,7 @@
 	     **/
 	        
 	        //generic terms to use
-	        'status:river:created' => "%s updated",
+	        'status:river:created' => "%s is",
 	        
 	        //these get inserted into the river links to take the user to the entity
 	        'status:river:create' => "their status.",

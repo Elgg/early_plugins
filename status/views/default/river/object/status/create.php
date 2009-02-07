@@ -22,8 +22,9 @@
 	//get the correct action message to display
 	$string = sprintf(elgg_echo("status:river:created"),$url) . " ";
 	
-	//add the url and message to the output
-	$string .= "<a href=\"" . $object->getURL() . "\">" . elgg_echo("status:river:create") . "</a>";
+	// display the status
+	$string .= $object->description . " | " . elgg_echo("status:via");
+
 
 ?>
 
