@@ -15,7 +15,8 @@
 			'blog:friends' => "Friends' blogs",
 			'blog:yourfriends' => "Your friends' latest blogs",
 			'blog:everyone' => "All site blogs",
-	        'blog:via' => "via blog",
+			'blog:newpost' => "New blog post",
+			'blog:via' => "via blog",
 			'blog:read' => "Read blog",
 	
 			'blog:addpost' => "Write a blog post",
@@ -38,9 +39,9 @@
 	        'blog:river:posted' => "%s posted",
 	        
 	        //these get inserted into the river links to take the user to the entity
-	        'blog:river:create' => "a new blog post.",
-	        'blog:river:update' => "a blog post.",
-	        'blog:river:annotate:create' => "a comment on a blog post.",
+	        'blog:river:create' => "a new blog post titled",
+	        'blog:river:update' => "a blog post titled",
+	        'blog:river:annotate:create' => "a comment on this blog post",
 			
 	
 		/**
