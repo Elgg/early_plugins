@@ -105,7 +105,7 @@
 <?php
 
 			// If we've been asked to display the full view
-				if (isset($vars['full']) && $vars['full'] == true) {
+				if (isset($vars['full']) && $vars['full'] == true && $vars['entity']->comments_on == 'on') {
 					echo elgg_view_comments($vars['entity']);
 				}
 				

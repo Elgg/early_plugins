@@ -23,7 +23,17 @@
 		$area2 = elgg_view_title(elgg_echo('blog:everyone'));
 
 		$area2 .= list_entities('object','blog',0,10,false);
-		$body = elgg_view_layout("two_column_left_sidebar", '', $area1 . $area2);
+
+		// get tagcloud
+		$area3 = "This will be a tagcloud for all blog posts";
+
+		// get categories
+		$area3 .= "This will be categories";
+
+		// get recent comments
+		$area3 .= "This will be categories";
+
+		$body = elgg_view_layout("blog_layout", '', $area2, $area3);
 		
 	// Display page
 		page_draw(elgg_echo('blog:everyone'),$body);

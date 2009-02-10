@@ -22,13 +22,13 @@
 		}
 		
 	//set the title
-		$area2 = elgg_view_title(elgg_echo('blog:addpost'));
+		$area1 = elgg_view_title(elgg_echo('blog:addpost'));
 
 	// Get the form
-		$area2 .= elgg_view("blog/forms/edit");
+		$area1 .= elgg_view("blog/forms/edit");
 		
 	// Display page
-		page_draw(elgg_echo('blog:addpost'),elgg_view_layout("two_column_left_sidebar", $area1, $area2));
+		page_draw(elgg_echo('blog:addpost'),elgg_view_layout("edit_layout", $area1));
 
 		
 ?>

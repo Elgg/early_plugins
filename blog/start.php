@@ -48,6 +48,9 @@
 			// Register a URL handler for blog posts
 				register_entity_url_handler('blog_url','object','blog');
 				
+			// Register this plugin's object for sending pingbacks
+				register_plugin_hook('pingback:object:subtypes', 'object', 'blog_pingback_subtypes');
+
 			// Register granular notification for this type
 			if (is_callable('register_notification_object'))
 				register_notification_object('object', 'blog', elgg_echo('blog:newpost'));
@@ -55,9 +58,6 @@
 			// Listen to notification events and supply a more useful message
 			register_plugin_hook('notify:entity:message', 'object', 'blog_notify_message');
 
-				
-			// Register this plugin's object for sending pingbacks
-				register_plugin_hook('pingback:object:subtypes', 'object', 'blog_pingback_subtypes');
 				
 			// Listen for new pingbacks
 				register_elgg_event_handler('create', 'object', 'blog_incoming_ping');
@@ -121,7 +121,7 @@
 			return false;
 			
 		}
-		
+
 		/**
 		 * Returns a more meaningful message
 		 *
@@ -139,23 +139,18 @@
 			{
 				$descr = $entity->description;
 				$title = $entity->title;
-				global $CONFIG;
-				$url = $CONFIG->wwwroot . "pg/view/" . $entity->guid;
 				if ($method == 'sms') {
 					$owner = $entity->getOwnerEntity();
-					return $owner->name . ' ' . elgg_echo("blog:via") . ': ' . $url . ' (' . $title . ')';
+					return $owner->username . ' via blog: ' . $title;
 				}
 				if ($method == 'email') {
 					$owner = $entity->getOwnerEntity();
-					return $owner->name . ' ' . elgg_echo("blog:via") . ': ' . $title . "\n\n" . $descr . "\n\n" . $entity->getURL();
-				}
-				if ($method == 'web') {
-					$owner = $entity->getOwnerEntity();
-					return $owner->name . ' ' . elgg_echo("blog:via") . ': ' . $title . "\n\n" . $descr . "\n\n" . $entity->getURL();
+					return $owner->username . ' via blog: ' . $title . "\n\n" . $descr . "\n\n" . $entity->getURL();
 				}
 			}
 			return null;
 		}
+
 
 		/**
 		 * Populates the ->getUrl() method for blog objects

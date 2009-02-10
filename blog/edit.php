@@ -27,9 +27,9 @@
 			
 			if ($post->canEdit()) {
 				
-				$area2 = elgg_view_title(elgg_echo('blog:editpost'));
-				$area2 .= elgg_view("blog/forms/edit", array('entity' => $post));
-				$body = elgg_view_layout("two_column_left_sidebar", $area1, $area2);
+				$area1 = elgg_view_title(elgg_echo('blog:editpost'));
+				$area1 .= elgg_view("blog/forms/edit", array('entity' => $post));
+				$body = elgg_view_layout("edit_layout", $area1);
 				
 			}
 			

@@ -22,6 +22,7 @@
 		$body = get_input('blogbody');
 		$access = get_input('access_id');
 		$tags = get_input('blogtags');
+		$comments_on = get_input('comments_select');
 		
 	// Make sure we actually have permission to edit
 		$blog = get_entity($guid);
@@ -60,6 +61,9 @@
 				if (is_array($tagarray)) {
 					$blog->tags = $tagarray;
 				}
+
+				$blog->comments_on = $comments_on; //whether the users wants to allow comments or not on the blog post
+
 		// Success message
 				system_message(elgg_echo("blog:posted"));
 		// Remove the blog post cache

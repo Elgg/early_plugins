@@ -21,6 +21,7 @@
 		$body = get_input('blogbody');
 		$tags = get_input('blogtags');
 		$access = get_input('access_id');
+		$comments_on = get_input('comments_select');
 
 	// Cache to the session
 		$_SESSION['blogtitle'] = $title;
@@ -58,6 +59,8 @@
 			if (is_array($tagarray)) {
 				$blog->tags = $tagarray;
 			}
+			$blog->comments_on = $comments_on; //whether the users wants to allow comments or not on the blog post
+
 	// Success message
 			system_message(elgg_echo("blog:posted"));
 	// Remove the blog post cache
