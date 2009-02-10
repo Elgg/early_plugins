@@ -39,6 +39,12 @@
 	theme_advanced_resizing : true,
 	extended_valid_elements : "a[name|href|target|title|onclick],img[class|src|border=0|alt|title|hspace|vspace|width|height|align|onmouseover|onmouseout|name|style],hr[class|width|size|noshade],font[face|size|color|style],span[class|align|style]"
 });
+function toggleEditor(id) {
+if (!tinyMCE.get(id))
+	tinyMCE.execCommand('mceAddControl', false, id);
+else
+	tinyMCE.execCommand('mceRemoveControl', false, id);
+}
 </script>
 <?php
 
@@ -49,3 +55,4 @@
 
 <!-- show the textarea -->
 <textarea class="input-textarea" name="<?php echo $vars['internalname']; ?>" <?php echo $vars['js']; ?>><?php echo htmlentities($vars['value'], null, 'UTF-8'); ?></textarea> 
+<p><a href="javascript:toggleEditor('<?php echo $vars['internalname']; ?>');"><?php echo elgg_echo('tinymce:remove'); ?></a></p>
