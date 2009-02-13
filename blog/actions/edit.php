@@ -66,6 +66,8 @@
 
 		// Success message
 				system_message(elgg_echo("blog:posted"));
+		//add to the river
+				add_to_river('river/object/blog/update','update',$_SESSION['user']->guid,$blog->guid);
 		// Remove the blog post cache
 				unset($_SESSION['blogtitle']); unset($_SESSION['blogbody']); unset($_SESSION['blogtags']);
 		// Forward to the main blog page
