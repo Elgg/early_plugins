@@ -171,7 +171,14 @@
 	        $thewire->method = $method; //method, e.g. via site, sms etc
 	        $thewire->parent = $parent; //used if the note is a reply
 	        
-	        return $thewire->save();
+	        //save
+			$save = $thewire->save();
+
+			if($save)
+				add_to_river('river/object/thewire/create','create',$_SESSION['user']->guid,$thewire->guid);
+	        
+	        return $save;
+
 		}
 		
 		/**
