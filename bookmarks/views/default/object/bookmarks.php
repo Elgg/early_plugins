@@ -61,6 +61,7 @@
 
 ?>
 	<?php echo elgg_view_title(elgg_echo('bookmarks:shareditem'), false); ?>
+	<div class="contentWrapper">
 	<div class="sharing_item">
 	
 		<div class="sharing_item_title">
@@ -125,7 +126,7 @@
 		echo elgg_view_comments($vars['entity']);
 
 ?>
-	
+</div>	
 <?php
 
 	}

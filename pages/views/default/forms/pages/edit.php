@@ -13,6 +13,7 @@
 	$container_guid = get_input('container_guid');
 	if (!$container_guid) $container_guid = page_owner();
 ?>
+<div class="contentWrapper">
 <form action="<?php echo $vars['url']; ?>action/pages/edit" method="post">
 
 <?php
@@ -64,3 +65,4 @@
 	</p>
 
 </form>
+</div>

@@ -38,7 +38,7 @@
 		}
 
 ?>
-
+<div class="contentWrapper">
 	<form action="<?php echo $vars['url']; ?>action/bookmarks/add" method="post">
 	
 		<p>
@@ -123,3 +123,4 @@
 		</p>
 	
 	</form>
+</div>

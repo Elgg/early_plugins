@@ -11,7 +11,7 @@
 	 */
 
 ?>
-
+	<div class="contentWrapper">
 	<p>
 		<?php echo elgg_echo("bookmarks:bookmarklet:description"); ?>
 	</p>
@@ -24,3 +24,4 @@
 	<p>
 		<?php echo elgg_echo("bookmarks:bookmarklet:description:conclusion"); ?>
 	</p>
+	</div>

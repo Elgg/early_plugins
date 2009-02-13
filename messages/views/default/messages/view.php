@@ -75,7 +75,7 @@
         				
         				//get the correct user entity
         				$user = get_entity($message->toID);
-        				
+        				echo "<div class=\"message_sent\" />";
         				echo "<table width=\"100%\" cellspacing='0'><tr>";
         				
         				//get the icon for the user the message was sent to
@@ -90,7 +90,7 @@
 							'text' => elgg_echo('delete'),
 							'confirm' => elgg_echo('deleteconfirm'),
 						)) . "</div>";
- 						echo "</td></tr></table>";
+ 						echo "</td></tr></table></div>";
 						
     			    }//close hiddeTo if statement
     				

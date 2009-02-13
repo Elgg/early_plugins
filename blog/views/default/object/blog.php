@@ -33,6 +33,8 @@
 			
 ?>
 
+	<div class="contentWrapper">
+	
 	<div class="blog_post">
 		<h3><a href="<?php echo $vars['entity']->getURL(); ?>"><?php echo $vars['entity']->title; ?></a></h3>
 		<!-- display the user icon -->
@@ -100,6 +102,7 @@
 			
 			?>
 			</p>
+		</div>
 		</div>
 
 <?php

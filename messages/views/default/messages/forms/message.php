@@ -20,7 +20,7 @@
 	 $send_to = get_input('send_to');
 	 
 ?>
-
+	<div class="contentWrapper">
 	<form action="<?php echo $vars['url']; ?>action/messages/send" method="post" name="messageForm">
 			
 	    <?php
@@ -76,3 +76,4 @@
 		<p><input type="submit" class="submit_button" value="<?php echo elgg_echo("messages:fly"); ?>!" /></p>
 	
 	</form>
+	</div>

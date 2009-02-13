@@ -15,7 +15,7 @@
 		if (!empty($wire_user)) { $msg = '@' . $wire_user . ' '; } else { $msg = ''; }
 
 ?>
-
+<div class="contentWrapper">
 <script>
 function textCounter(field,cntfield,maxlimit) {
     // if too long...trim it!
@@ -51,3 +51,4 @@ function textCounter(field,cntfield,maxlimit) {
 		
 	
 	</form>
+</div>

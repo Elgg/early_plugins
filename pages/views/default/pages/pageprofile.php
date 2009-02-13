@@ -25,7 +25,7 @@
 	}
 	
 ?>	
-	
+	<div class="contentWrapper">	
 	<div id="pages_page">
 	
 <?php	
@@ -63,4 +63,6 @@
 		
 		?>
 	</p>
+</div>
+
 </div>
