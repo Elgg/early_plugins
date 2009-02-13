@@ -58,6 +58,8 @@
 				}
 			}
 			system_message(elgg_echo('bookmarks:save:success'));
+			//add to river
+			add_to_river('river/object/bookmarks/create','create',$_SESSION['user']->guid,$entity->guid);
 			forward($entity->getURL());
 		} else {
 			register_error(elgg_echo('bookmarks:save:failed'));

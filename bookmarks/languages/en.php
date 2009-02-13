@@ -30,7 +30,7 @@
 			'bookmarks:recent' => "Recent bookmarks",
 	
 			'bookmarks:river:created' => '%s bookmarked',
-			'bookmarks:river:annotate' => '%s commented on',
+			'bookmarks:river:annotate' => 'posted a comment on this bookmarked item',
 			'bookmarks:river:item' => 'an item',
 	
 			'item:object:bookmarks' => 'Bookmarked items',
