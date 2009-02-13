@@ -36,8 +36,8 @@
 			// Extend system CSS with our own styles, which are defined in the thewire/css view
 				extend_view('css','thewire/css');
 				
-		    // Extend system JS with our own javascript, which are defined in the thewire/scripts view
-				// extend_view('js','thewire/scripts/counter'); FIND OUT ABOUT THIS
+		    //extend the wire view at the top of all site activity
+				extend_view('activity/thewire', 'thewire/activity_view');
 				
 			// Register a page handler, so we can have nice URLs
 				register_page_handler('thewire','thewire_page_handler');
