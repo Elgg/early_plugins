@@ -86,9 +86,10 @@
 		}
 	}
 		
-	if ($result)
+	if ($result){
 		system_message(elgg_echo("file:saved"));
-	else
+		add_to_river('river/object/file/create','create',$_SESSION['user']->guid,$file->guid);
+    }else
 		register_error(elgg_echo("file:uploadfailed"));
 		
 	$container_user = get_entity($container_guid);
