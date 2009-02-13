@@ -24,6 +24,9 @@
 	        'messageboard:river:annotate' => "%s has had a new comment posted on their message board.",
 	        'messageboard:river:create' => "%s added the message board widget.",
 	        'messageboard:river:update' => "%s updated their message board widget.",
+	        'messageboard:river:added' => "%s posted on",
+		    'messageboard:river:messageboard' => "message board",
+
 			
 		/**
 		 * Status messages

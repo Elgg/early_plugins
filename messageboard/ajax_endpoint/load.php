@@ -26,7 +26,10 @@
     if($message){
         
        //attach the annotation to the user object
-       $user->annotate('messageboard',$message,$user->access_id, $_SESSION['user']->getGUID()); 
+       $user->annotate('messageboard',$message,$user->access_id, $_SESSION['user']->getGUID());
+       // add to river
+	    add_to_river('river/object/messageboard/create','messageboard',$_SESSION['user']->guid,$user->guid);
+ 
         
     } else {
         
