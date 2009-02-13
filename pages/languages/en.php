@@ -34,6 +34,12 @@
 			'item:object:page_top' => 'Top-level pages',
 			'item:object:page' => 'Pages',
 			'item:object:pages_welcome' => 'Pages welcome blocks',
+			
+		/**
+		* River
+		**/
+		
+		    'page:river:annotate' => "a comment on this page",
 	
 	
 		/**

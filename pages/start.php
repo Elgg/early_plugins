@@ -52,10 +52,8 @@
 		register_entity_type('object','page_top');
 		
 		// Register granular notification for this type
-			if (is_callable('register_notification_object')){
-				register_notification_object('object', 'page_top', elgg_echo('pages:new'));
+			if (is_callable('register_notification_object'))
 				register_notification_object('object', 'page', elgg_echo('pages:new'));
-			}
 
 		// Listen to notification events and supply a more useful message
 			register_plugin_hook('notify:entity:message', 'object', 'page_notify_message');

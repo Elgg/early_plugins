@@ -93,6 +93,9 @@
 				
 		
 			system_message(elgg_echo("pages:saved"));
+			
+			//add to river
+			add_to_river('river/object/page/create','create',$_SESSION['user']->guid,$page->guid);
 		
 			// Forward to the user's profile
 			forward($page->getUrl());
