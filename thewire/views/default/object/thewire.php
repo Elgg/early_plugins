@@ -36,6 +36,8 @@
 	    <!-- the actual shout -->
 		<p class="note_body">
 
+			<span style='float:right;'>
+			
 			<a href="<?php echo $vars['url']; ?>mod/thewire/add.php?wire_username=<?php echo $vars['entity']->getOwnerEntity()->username; ?>" class="reply">reply</a>
 		<?php
 /*		    //only have a reply option for main notes, not other replies
@@ -46,20 +48,8 @@
 	        }
 */
 	    ?>
-		
-		<?php
-		    echo "<b>{$user_name}: </b>";
-		    
-
-		    $desc = $vars['entity']->description;
-
-		    $desc = preg_replace('/\@([A-Za-z0-9\_\.\-]*)/i','@<a href="' . $vars['url'] . 'pg/thewire/$1">$1</a>',$desc);
-			echo parse_urls($desc);
-		?>
-
-		
-
-		<?php
+	    <br />
+	    		<?php
 				   
 			// if the user looking at thewire post can edit, show the delete link
 			if ($vars['entity']->canEdit()) {
@@ -73,7 +63,24 @@
 			
 			} //end of can edit if statement
 		?>
+	    
+	    </span>
+	    
 		
+		<?php
+		    echo "<b>{$user_name}: </b>";
+		    
+
+		    $desc = $vars['entity']->description;
+
+		    $desc = preg_replace('/\@([A-Za-z0-9\_\.\-]*)/i','@<a href="' . $vars['url'] . 'pg/thewire/$1">$1</a>',$desc);
+			echo parse_urls($desc);
+		?>
+		
+		
+
+
+		</p>
 		<div class="note_date">
 		
 		<?php

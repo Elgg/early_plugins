@@ -55,6 +55,9 @@
 	border: 2px solid #0054a7;
 	text-decoration: none;
 }
+.thewire_options {
+	float:right;
+}
 .thewire-post .delete_note a {
 	display:block;
 	float:right;
