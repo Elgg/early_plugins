@@ -79,6 +79,7 @@
         <!-- latest members -->
         <div id="index_box">
             <h2><?php echo elgg_echo("custom:members"); ?></h2>
+            <div class="contentWrapper">
             <?php 
                 if(isset($vars['area3'])) {
                     //display member avatars
@@ -90,6 +91,7 @@
                 }
             ?>
 	        <div class="clearfloat"></div>
+	        </div>
         </div>
         <!-- latest blogs -->
         <div id="index_box">
