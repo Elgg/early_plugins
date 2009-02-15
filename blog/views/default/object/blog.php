@@ -14,6 +14,9 @@
 
 		if (isset($vars['entity'])) {
 			
+			//display comments link?
+			$comments_on = $vars['entity']->comments_on;
+			
 			if (get_context() == "search") {
 				
 				//display the correct layout depending on gallery or list view
@@ -54,10 +57,14 @@
 				<?php echo elgg_echo('by'); ?> <a href="<?php echo $vars['url']; ?>pg/blog/<?php echo $vars['entity']->getOwnerEntity()->username; ?>"><?php echo $vars['entity']->getOwnerEntity()->name; ?></a> &nbsp; 
 				<!-- display the comments link -->
 				<?php
+					if($comments_on){
 			        //get the number of comments
 			    	$num_comments = elgg_count_comments($vars['entity']);
 			    ?>
 			    <a href="<?php echo $vars['entity']->getURL(); ?>"><?php echo sprintf(elgg_echo("comments")) . " (" . $num_comments . ")"; ?></a><br />
+			    <?php
+		    		}
+		    	?>
 			</p>
 			<!-- display tags -->
 			<p class="tags">
