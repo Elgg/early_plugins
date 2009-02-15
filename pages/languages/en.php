@@ -18,7 +18,7 @@
 			'pages' => "Pages",
 			'pages:yours' => "Your pages",
 			'pages:user' => "Pages home",
-			'pages:group' => "%s's pages",
+			'pages:group' => "Group pages",
 			'pages:all' => "All site pages",
 			'pages:new' => "New page",
 			'pages:groupprofile' => "Group pages",
