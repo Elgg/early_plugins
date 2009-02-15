@@ -12,7 +12,11 @@
 <?php
 
     $objects = list_entities("object", "page_top", page_owner(), 5, false);
-	echo $objects;
+	
+    if($objects)
+		echo $objects;
+	else
+		echo elgg_echo("pages:nogroup");
 	
 ?>
 </div>
