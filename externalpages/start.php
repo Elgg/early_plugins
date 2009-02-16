@@ -42,7 +42,7 @@
 	function expages_url($expage) {
 			
 			global $CONFIG;
-			return $CONFIG->url . "pg/thewire/" . $thewirepost->getOwnerEntity()->username;
+			return $CONFIG->url . "pg/expages/";
 			
 	}
 	
