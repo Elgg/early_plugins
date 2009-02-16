@@ -1,0 +1,75 @@
+<?php
+
+	/**
+	 * Elgg edit frontpage
+	 * 
+	 * @package ElggExpages
+	 * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License version 2
+	 * @author Curverider Ltd <info@elgg.com>
+	 * @copyright Curverider Ltd 2008-2009
+	 * @link http://elgg.com/
+	 * 
+	 */
+	 
+	 //action
+	 $action = "expages/addfront";
+	 
+	 //grab the required entity
+	 $page_contents = get_entities("object", $type, 0, "", 1);
+	 
+	if($page_contents){
+		 foreach($page_contents as $pc){
+			 $description_left = $pc->description;
+			 $description_right = $pc->desc_right;
+			 $guid = $pc->guid;
+		 }
+	}else {		
+		$tags = "";
+		$description = "";
+	}
+		
+	// set the required form variables
+		$input_area = elgg_view('input/longtext', array('internalname' => 'expagescontent', 'value' => $description));
+		$tag_input = elgg_view('input/tags', array('internalname' => 'expagestags', 'value' => $tags));
+        $submit_input = elgg_view('input/submit', array('internalname' => 'submit', 'value' => elgg_echo('save')));
+		$hidden_value = elgg_view('input/hidden', array('internalname' => 'content_type', 'value' => $type));
+		$hidden_guid = elgg_view('input/hidden', array('internalname' => 'expage_guid', 'value' => $guid));
+		$tag_label = elgg_echo('tags') . "<br/>";         
+		
+	//preview link
+		echo "<div class=\"page_preview\"><a href=\"#preview\">" . elgg_echo('expages:preview') . "</a></div>";
+		
+	//construct the form
+		$form_body = <<<EOT
+
+		<p>$input_area</p>
+		<p>
+			$tag_label
+			$tag_input
+		</p>
+			$hidden_value
+			$hidden_guid
+			<br />
+			$submit_input
+
+EOT;
+?>
+<?php
+	//display the form
+	echo elgg_view('input/form', array('action' => "{$vars['url']}action/$action", 'body' => $form_body));
+?>
+
+<!-- preview page contents -->
+<div class="expage_preview">
+<a name="preview"></a>
+<h2>Preview</h2>
+<?php 
+	if($description){
+		echo "The left column header space<br />";
+		echo $description;
+		echo "The right column header space<br />";
+		echo $description;
+	}else
+		echo elgg_echo('expages:nopreview');
+?>
+</div>
