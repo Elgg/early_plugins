@@ -31,6 +31,8 @@
 			'file:user:gallery'=>'View %s gallery', 
 	        'file:via' => 'via files',
 			'file:upload' => "Upload a file",
+	
+			'file:newupload' => 'New file upload',
 			
 			'file:file' => "File",
 			'file:title' => "Title",
