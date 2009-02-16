@@ -22,8 +22,10 @@
 		// Register entity type
 		register_entity_type('object','expages');
 		
-		// extend the footer view with appropriate links
+		// extend views
 		extend_view('footer/links', 'expages/footer_menu');
+		extend_view('index/righthandside', 'expages/front_right');
+		extend_view('index/lefthandside', 'expages/front_left');
 		
 	}
 	
@@ -72,6 +74,7 @@
 	// Register actions
 		global $CONFIG;
 		register_action("expages/add",false,$CONFIG->pluginspath . "externalpages/actions/add.php");
+		register_action("expages/addfront",false,$CONFIG->pluginspath . "externalpages/actions/addfront.php");
 		register_action("expages/edit",false,$CONFIG->pluginspath . "externalpages/actions/edit.php");
 		register_action("expages/delete",false,$CONFIG->pluginspath . "externalpages/actions/delete.php");
 			

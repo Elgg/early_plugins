@@ -15,12 +15,12 @@
 	 $action = "expages/addfront";
 	 
 	 //grab the required entity
-	 $page_contents = get_entities("object", $type, 0, "", 1);
+	 $page_contents = get_entities("object", "front", 0, "", 1);
 	 
 	if($page_contents){
 		 foreach($page_contents as $pc){
-			 $description_left = $pc->description;
-			 $description_right = $pc->desc_right;
+			 $description_right = $pc->description;
+			 $description_left = $pc->title;
 			 $guid = $pc->guid;
 		 }
 	}else {		
@@ -29,12 +29,12 @@
 	}
 		
 	// set the required form variables
-		$input_area = elgg_view('input/longtext', array('internalname' => 'expagescontent', 'value' => $description));
-		$tag_input = elgg_view('input/tags', array('internalname' => 'expagestags', 'value' => $tags));
-        $submit_input = elgg_view('input/submit', array('internalname' => 'submit', 'value' => elgg_echo('save')));
-		$hidden_value = elgg_view('input/hidden', array('internalname' => 'content_type', 'value' => $type));
-		$hidden_guid = elgg_view('input/hidden', array('internalname' => 'expage_guid', 'value' => $guid));
-		$tag_label = elgg_echo('tags') . "<br/>";         
+		$input_area_left = elgg_view('input/longtext', array('internalname' => 'front_left', 'value' => $description_left));
+		$input_area_right = elgg_view('input/longtext', array('internalname' => 'front_right', 'value' => $description_right));
+		$submit_input = elgg_view('input/submit', array('internalname' => 'submit', 'value' => elgg_echo('save')));
+		$hidden_guid = elgg_view('input/hidden', array('internalname' => 'front_guid', 'value' => $guid));
+		$lefthand = elgg_echo("expages:lefthand");
+		$righthand = elgg_echo("expages:righthand");
 		
 	//preview link
 		echo "<div class=\"page_preview\"><a href=\"#preview\">" . elgg_echo('expages:preview') . "</a></div>";
@@ -42,12 +42,11 @@
 	//construct the form
 		$form_body = <<<EOT
 
-		<p>$input_area</p>
-		<p>
-			$tag_label
-			$tag_input
-		</p>
-			$hidden_value
+		<p><b>$lefthand</b></p>
+		<p>$input_area_left</p>
+		<p><b>$righthand</b></p>
+		<p>$input_area_right</p>
+		
 			$hidden_guid
 			<br />
 			$submit_input
@@ -64,11 +63,13 @@ EOT;
 <a name="preview"></a>
 <h2>Preview</h2>
 <?php 
-	if($description){
+	if($description_left){
 		echo "The left column header space<br />";
-		echo $description;
+		echo $description_left;
+	}
+	if($description_right){
 		echo "The right column header space<br />";
-		echo $description;
+		echo $description_right;
 	}else
 		echo elgg_echo('expages:nopreview');
 ?>

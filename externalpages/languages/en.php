@@ -16,6 +16,8 @@
 			'expages:nopreview' => "No preview yet available",
 			'expages:preview' => "Preview",
 			'expages:notset' => "This page has not been set up yet.",
+			'expages:lefthand' => "The lefthand information pane",
+			'expages:righthand' => "The righthand information pane",
 			
 	
 		/**
