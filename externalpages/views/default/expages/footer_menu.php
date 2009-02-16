@@ -18,5 +18,4 @@
 <a href="<?php echo $vars['url']; ?>pg/expages/read/about/"><?php echo elgg_echo('expages:about'); ?></a> |
 <a href="<?php echo $vars['url']; ?>pg/expages/read/terms/"><?php echo elgg_echo('expages:terms'); ?></a> |
 <a href="<?php echo $vars['url']; ?>pg/expages/read/privacy/"><?php echo elgg_echo('expages:privacy'); ?></a> |
-<a href="<?php echo $vars['url']; ?>pg/expages/read/contact/"><?php echo elgg_echo('expages:contact'); ?></a> |
 </div>
