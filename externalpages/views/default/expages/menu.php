@@ -22,6 +22,5 @@
 	<li><a href="<?php echo $url; ?>about"><?php echo elgg_echo('expages:about'); ?></a></li>
 	<li><a href="<?php echo $url; ?>terms"><?php echo elgg_echo('expages:terms'); ?></a></li>
 	<li><a href="<?php echo $url; ?>privacy"><?php echo elgg_echo('expages:privacy'); ?></a></li>
-	<li><a href="<?php echo $url; ?>contact"><?php echo elgg_echo('expages:contact'); ?></a></li>
 </ul>
 </div>
