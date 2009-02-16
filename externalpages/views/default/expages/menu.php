@@ -16,7 +16,7 @@
 
 ?>
 
-<div class="external_menu">
+<div id="friendsPickerNavigationTabs">
 <ul>
 	<li><a href="<?php echo $url; ?>front"><?php echo elgg_echo('expages:frontpage'); ?></a></li>
 	<li><a href="<?php echo $url; ?>about"><?php echo elgg_echo('expages:about'); ?></a></li>

@@ -37,7 +37,7 @@
 		$righthand = elgg_echo("expages:righthand");
 		
 	//preview link
-		echo "<div class=\"page_preview\"><a href=\"#preview\">" . elgg_echo('expages:preview') . "</a></div>";
+	//	echo "<div class=\"page_preview\"><a href=\"#preview\">" . elgg_echo('expages:preview') . "</a></div>";
 		
 	//construct the form
 		$form_body = <<<EOT
@@ -59,6 +59,7 @@ EOT;
 ?>
 
 <!-- preview page contents -->
+<!--
 <div class="expage_preview">
 <a name="preview"></a>
 <h2>Preview</h2>
@@ -74,3 +75,4 @@ EOT;
 		echo elgg_echo('expages:nopreview');
 ?>
 </div>
+-->
