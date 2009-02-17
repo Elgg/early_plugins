@@ -6,7 +6,7 @@
 	 
 ?>
 
-<div class="member_search">
+<div class="sidebarBox">
 <h3><?php echo elgg_echo('members:searchtag'); ?></h3>
 <form id="searchform" action="<?php echo $vars['url']; ?>mod/members/index.php?" method="get">
 	<input type="text" name="search_tag" value="Search" onclick="if (this.value=='Search') { this.value='' }" class="search_input" />

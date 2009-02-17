@@ -19,6 +19,8 @@
 			// Load the language file
 				register_translations($CONFIG->pluginspath . "members/languages/");
 				
+				extend_view('css','members/css');
+				
 				
     	    // Set up menu for logged in users
 				if (isloggedin()) {

@@ -49,7 +49,7 @@
 	    $area2 = elgg_view_title(elgg_echo("members:members"));
 	    
 	// get members submenu
-		$area2 .= elgg_view("members/members_sort_menu", array("count" => $members, "filter" => $filter));
+		$area2 .= "<div class='contentWrapper members'>" . elgg_view("members/members_sort_menu", array("count" => $members, "filter" => $filter));
 	    
 	//get the correct view based on filter
 		switch($filter){
@@ -66,6 +66,8 @@
 			$area2 .= list_entities("user","",0,30,false);
 			break;
 		}
+		
+		$area2 .= "</div>";
     
     //select the correct canvas area
 	    $body = elgg_view_layout("sidebar_boxes", $area1, $area2);
