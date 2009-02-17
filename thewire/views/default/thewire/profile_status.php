@@ -7,7 +7,7 @@
 	$page_owner = page_owner();
 
 	//grab the users latest from the wire
-	$latest_wire = get_entities("object", "thewire", $page_owner, 1, true, false, false);
+	$latest_wire = get_entities("object", "thewire", $page_owner, "", 1, 0, false, 0, null); 
 	
 	if($latest_wire){
 		foreach($latest_wire as $lw){
