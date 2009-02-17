@@ -4,11 +4,11 @@
 	 * New wire post view for the activity stream
 	 */
 	 
-	$page_owner = page_owner();
+	$owner = $vars['entity']->guid;
 
 	//grab the users latest from the wire
-	$latest_wire = get_entities("object", "thewire", $page_owner, "", 1, 0, false, 0, null); 
-	
+	$latest_wire = get_entities("object", "thewire", $owner, "", 1, 0, false, 0, null); 
+
 	if($latest_wire){
 		foreach($latest_wire as $lw){
 			$content = $lw->description;
