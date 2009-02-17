@@ -17,7 +17,7 @@
 			//display comments link?
 			$comments_on = $vars['entity']->comments_on;
 			
-			if (get_context() == "search") {
+			if (get_context() == "search" && $vars['entity'] instanceof ElggObject) {
 				
 				//display the correct layout depending on gallery or list view
 				if (get_input('search_viewtype') == "gallery") {
@@ -34,16 +34,29 @@
 				
 			} else {
 			
+				if ($vars['entity'] instanceof ElggObject) {
+					
+					$url = $vars['entity']->getURL();
+					$owner = $vars['entity']->getOwnerEntity();
+					$canedit = $vars['entity']->canEdit();
+					
+				} else {
+					
+					$url = 'javascript:history.go(-1);';
+					$owner = $vars['user'];
+					$canedit = false;
+					
+				}
 ?>
 
 	<div class="contentWrapper">
 	
 	<div class="blog_post">
-		<h3><a href="<?php echo $vars['entity']->getURL(); ?>"><?php echo $vars['entity']->title; ?></a></h3>
+		<h3><a href="<?php echo $url; ?>"><?php echo $vars['entity']->title; ?></a></h3>
 		<!-- display the user icon -->
 		<div class="blog_post_icon">
 		    <?php
-		        echo elgg_view("profile/icon",array('entity' => $vars['entity']->getOwnerEntity(), 'size' => 'tiny'));
+		        echo elgg_view("profile/icon",array('entity' => $owner, 'size' => 'tiny'));
 			?>
 	    </div>
 			<p class="strapline">
@@ -54,14 +67,14 @@
 					);
 				
 				?>
-				<?php echo elgg_echo('by'); ?> <a href="<?php echo $vars['url']; ?>pg/blog/<?php echo $vars['entity']->getOwnerEntity()->username; ?>"><?php echo $vars['entity']->getOwnerEntity()->name; ?></a> &nbsp; 
+				<?php echo elgg_echo('by'); ?> <a href="<?php echo $vars['url']; ?>pg/blog/<?php echo $owner->username; ?>"><?php echo $owner->name; ?></a> &nbsp; 
 				<!-- display the comments link -->
 				<?php
-					if($comments_on){
+					if($comments_on && $vars['entity'] instanceof ElggObject){
 			        //get the number of comments
-			    	$num_comments = elgg_count_comments($vars['entity']);
+			    		$num_comments = elgg_count_comments($vars['entity']);
 			    ?>
-			    <a href="<?php echo $vars['entity']->getURL(); ?>"><?php echo sprintf(elgg_echo("comments")) . " (" . $num_comments . ")"; ?></a><br />
+			    	<a href="<?php echo $url; ?>"><?php echo sprintf(elgg_echo("comments")) . " (" . $num_comments . ")"; ?></a><br />
 			    <?php
 		    		}
 		    	?>
@@ -88,7 +101,7 @@
 			<p class="options">
 			<?php
 	
-				if ($vars['entity']->canEdit()) {
+				if ($canedit) {
 					
 				?>
 					<a href="<?php echo $vars['url']; ?>mod/blog/edit.php?blogpost=<?php echo $vars['entity']->getGUID(); ?>"><?php echo elgg_echo("edit"); ?></a>  &nbsp; 
@@ -115,7 +128,7 @@
 <?php
 
 			// If we've been asked to display the full view
-				if (isset($vars['full']) && $vars['full'] == true && $vars['entity']->comments_on == 'on') {
+				if (isset($vars['full']) && $vars['full'] == true && $vars['entity']->comments_on == 'on' && $vars['entity'] instanceof ElggEntity) {
 					echo elgg_view_comments($vars['entity']);
 				}
 				

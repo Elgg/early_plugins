@@ -26,16 +26,18 @@
 			$action = "blog/add";
 			$tags = "";
 			$title = "";
-			$comments_on = "";
+			$comments_on = true;
 			$description = "";
 			$access_id = 0;
 		}
 
 	// Just in case we have some cached details
-		if (isset($vars['blogtitle'])) {
-			$title = $vars['blogtitle'];
-			$body = $vars['blogbody'];
-			$tags = $vars['blogtags'];
+		if (empty($body)) {
+			$body = $vars['user']->blogbody;
+			if (!empty($body)) {
+				$title = $vars['user']->blogtitle;
+				$tags = $vars['user']->blogtags;
+			}
 		}
 
 	// set the required variables
@@ -50,16 +52,25 @@
 
 		  //$comments_select = elgg_view('input/checkboxes', array('internalname' => 'comments_on', 'value' => ''));
 		  if($comments_on)
-		  	$comments_on_switch = "checked";
+		  	$comments_on_switch = "checked=\"checked\"";
 		  else
 			$comment_on_switch = "";
 
-                $access_input = elgg_view('input/access', array('internalname' => 'access_id', 'value' => $access_id));
-                $submit_input = elgg_view('input/submit', array('internalname' => 'submit', 'value' => elgg_echo('publish')));
+          $access_input = elgg_view('input/access', array('internalname' => 'access_id', 'value' => $access_id));
+          $submit_input = elgg_view('input/submit', array('internalname' => 'submit', 'value' => elgg_echo('publish')));
 		  $conversation = elgg_echo('Conversation');
-		  $publish = elgg_echo('Publish');
-		  $cat = elgg_echo('Categories');
-
+		  $publish = elgg_echo('publish');
+		  $cat = elgg_echo('categories');
+		  $preview = elgg_echo('blog:preview');
+		  $privacy = elgg_echo('access');
+		  $savedraft = elgg_echo('blog:draft:save');
+		  $draftsaved = elgg_echo('blog:draft:saved');
+		  $never = elgg_echo('blog:never');
+		  $allowcomments = elgg_echo('blog:comments:allow');
+		  
+	// INSERT EXTRAS HERE
+		  $extras = elgg_view('blog/forms/edit/extras',$vars);
+		  
 ?>
 
 <?php
@@ -70,43 +81,35 @@
 
     		<div id="blog_edit_sidebar">
 			<div id="content_area_user_title">
-				<div class="preview_button"><a href="">Preview</a></div>
-			<h2>$publish</h2></div>
+				<div class="preview_button"><a href="#" onclick="javascript:saveDraft(true);return false;">{$preview}</a></div>
+			<h2>{$publish}</h2></div>
 			<div class="publish_controls">
-				<p><a href="">Save draft</a>
-				
+				<p>
+					<a href="#" onclick="javascript:saveDraft(false);return false;">{$savedraft}</a>
 				</p>
 			</div>
 			<div class="publish_options">
-				<p><b>Publish:</b> now <a href="">edit</a></p>
-				<p class="auto_save">Draft Saved 5 mins ago</p>
+				<!-- <p><b>{$publish}:</b> now <a href="">edit</a></p> -->
+				<p class="auto_save">{$draftsaved}: <span id="draftSavedCounter">{$never}</span></p>
 			</div>
 			<div class="blog_access">
-				<p>Privacy: $access_input
+				<p>{$privacy}: {$access_input}
 			</p></div>
 			<div class="publish_blog">
-				$submit_input
+				{$submit_input}
 			</div>
 		</div>
 
 		<div id="blog_edit_sidebar">
-			<div id="content_area_user_title"><h2>$conversation</h2></div>
+			<div id="content_area_user_title"><h2>{$conversation}</h2></div>
 			<div class="allow_comments">
-				<p><input type="checkbox" name="comments_select"  $comments_on_switch /> allow comments</p>
+				<p><label>
+					<input type="checkbox" name="comments_select"  {$comments_on_switch} /> {$allowcomments}
+					</label></p>
 			</div>
 		</div>
 
-		<div id="blog_edit_sidebar">
-			<div id="content_area_user_title"><h2>$cat</h2></div>
-			<div class="categories">
-				<ul>
-				<li><input type="checkbox" name="comments" checked /> elgg development</li>
-				<li><input type="checkbox" name="comments" checked /> news</li>
-				<li><input type="checkbox" name="comments" checked /> education</li>
-				<li><input type="checkbox" name="comments" checked /> commercial</li>
-				</ul>
-			</div>
-		</div>
+		{$extras}
 
 	</div><!-- /two_column_left_sidebar_210 -->
 
@@ -148,5 +151,31 @@ EOT;
 	</div><div class="clearfloat"></div><!-- /two_column_left_sidebar_maincontent -->
 EOT;
 
-      echo elgg_view('input/form', array('action' => "{$vars['url']}action/$action", 'body' => $form_body));
+      echo elgg_view('input/form', array('action' => "{$vars['url']}action/$action", 'body' => $form_body, 'internalid' => 'blogPostForm'));
 ?>
+
+<script type="text/javascript">
+	setInterval( "saveDraft()", 120000);
+	function saveDraft(preview) {
+		
+		temppreview = preview;
+		
+		var drafturl = "<?php echo $vars['url']; ?>mod/blog/savedraft.php";
+		var temptitle = $("input[@name='blogtitle']").val();
+		var tempbody = $("textarea[@name='blogbody']").val();
+		var temptags = $("input[@name='blogtags']").val();
+		
+		var postdata = { blogtitle: temptitle, blogbody: tempbody, blogtags: temptags };
+		
+		$.post(drafturl, postdata, function() {
+			var d = new Date();
+			$("span#draftSavedCounter").html(d.getHours() + ":" + d.getMinutes());
+			if (temppreview == true) {
+				$("form#blogPostForm").attr("action","<?php echo $vars['url']; ?>mod/blog/preview.php");
+				$("form#blogPostForm").submit();
+			}
+		});
+				
+	}
+	
+</script>

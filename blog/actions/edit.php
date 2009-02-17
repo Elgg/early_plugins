@@ -29,9 +29,10 @@
 		if ($blog->getSubtype() == "blog" && $blog->canEdit()) {
 	
 		// Cache to the session
-			$_SESSION['blogtitle'] = $title;
-			$_SESSION['blogbody'] = $body;
-			$_SESSION['blogtags'] = $tags;
+			
+			$_SESSION['user']->blogtitle = $title;
+			$_SESSION['user']->blogbody = $body;
+			$_SESSION['user']->blogtags = $tags;
 			
 		// Convert string of tags into a preformatted array
 			$tagarray = string_to_tag_array($tags);
@@ -69,7 +70,10 @@
 		//add to the river
 				add_to_river('river/object/blog/update','update',$_SESSION['user']->guid,$blog->guid);
 		// Remove the blog post cache
-				unset($_SESSION['blogtitle']); unset($_SESSION['blogbody']); unset($_SESSION['blogtags']);
+				//unset($_SESSION['blogtitle']); unset($_SESSION['blogbody']); unset($_SESSION['blogtags']);
+				remove_metadata($_SESSION['user']->guid,'blogtitle');
+				remove_metadata($_SESSION['user']->guid,'blogbody');
+				remove_metadata($_SESSION['user']->guid,'blogtags');
 		// Forward to the main blog page
 				forward("pg/blog/" . $owner->username);
 					
