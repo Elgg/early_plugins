@@ -37,14 +37,29 @@
         $submit_input = elgg_view('input/submit', array('internalname' => 'submit', 'value' => elgg_echo('save')));
 		$hidden_value = elgg_view('input/hidden', array('internalname' => 'content_type', 'value' => $type));
 		$hidden_guid = elgg_view('input/hidden', array('internalname' => 'expage_guid', 'value' => $guid));
-		$tag_label = elgg_echo('tags') . "<br/>";         
+		$tag_label = elgg_echo('tags') . "<br/>";  
 		
+		//type
+		$type = $vars['type'];
+		//set the url
+		$url = $vars['url'] . "pg/expages/index.php?type=";
+		
+		if($type == 'about') { 
+			$external_page_title = elgg_echo('expages:about');
+		}
+		else if($type == 'terms') {
+			$external_page_title = elgg_echo('expages:terms');
+		}
+		else if($type == 'privacy') {
+			$external_page_title = elgg_echo('expages:privacy');     
+		}
 	//preview link
 	//	echo "<div class=\"page_preview\"><a href=\"#preview\">" . elgg_echo('expages:preview') . "</a></div>";
 		
 	//construct the form
 		$form_body = <<<EOT
 
+		<h3 class='settings'>$external_page_title</h3>
 		<p>$input_area</p>
 		<p>
 			$tag_label

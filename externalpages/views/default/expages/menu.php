@@ -19,7 +19,7 @@
 
 ?>
 
-<div id="friendsPickerNavigationTabs">
+<div id="elgg_horizontal_tabbed_nav">
 <ul>
 	<li <?php if($type == 'front') echo "class = 'selected'"; ?>><a href="<?php echo $url; ?>front"><?php echo elgg_echo('expages:frontpage'); ?></a></li>
 	<li <?php if($type == 'about') echo "class = 'selected'"; ?>><a href="<?php echo $url; ?>about"><?php echo elgg_echo('expages:about'); ?></a></li>

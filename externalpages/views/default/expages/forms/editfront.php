@@ -42,9 +42,9 @@
 	//construct the form
 		$form_body = <<<EOT
 
-		<p><b>$lefthand</b></p>
+		<h3 class='settings'>$lefthand</h3>
 		<p>$input_area_left</p>
-		<p><b>$righthand</b></p>
+		<h3 class='settings'>$righthand</h3>
 		<p>$input_area_right</p>
 		
 			$hidden_guid
