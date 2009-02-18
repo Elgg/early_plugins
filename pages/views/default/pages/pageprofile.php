@@ -43,7 +43,17 @@
 			?>
 		</p>
 		
-<?php		
+<?php
+		$cats = elgg_view('categories/view',$vars);
+		if (!empty($cats)) {
+			
+?>
+		<p class="categories">
+			<?php echo $cats; ?>
+		</p>
+<?php
+			
+		}
 	}
 
 	// last edit & by whome

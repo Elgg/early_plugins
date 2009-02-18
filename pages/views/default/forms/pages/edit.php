@@ -44,6 +44,18 @@
 <?php
 			
 		}
+		$cats = elgg_view('categories',$vars);
+		if (!empty($cats)) {
+			
+?>
+	<p>
+		<?php 
+			echo $cats;
+		?>
+	</p>
+<?php
+			
+		}
 
 ?>
 	<p>
