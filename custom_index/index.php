@@ -29,7 +29,7 @@
 	$login = elgg_view("account/forms/login");
 	
     //display the contents in our new canvas layout
-	$body = elgg_view_layout('new_index',$blogs, $files, $newest_members, $login, $groups, $bookmarks);
+	$body = elgg_view_layout('new_index',$login, $files, $newest_members, $blogs, $groups, $bookmarks);
    
     page_draw($title, $body);
 		
