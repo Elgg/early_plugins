@@ -87,6 +87,13 @@
 				
 				?>
 			</p>
+			<p class="categories">
+				<?php
+	
+					echo elgg_view('categories/view', $vars);
+				
+				?>
+			</p>
 			<div class="clearfloat"></div>
 			<div class="blog_post_body">
 
