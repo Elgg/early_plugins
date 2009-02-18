@@ -19,9 +19,6 @@
 		// Register a URL handler for external pages
 		register_entity_url_handler('expages_url','object','expages');
 		
-		// Register entity type
-		register_entity_type('object','expages');
-		
 		// extend views
 		extend_view('footer/links', 'expages/footer_menu');
 		extend_view('index/righthandside', 'expages/front_right');
