@@ -82,6 +82,20 @@
 			
 			?>
 		</p>
+<?php
+
+		$categories = elgg_view('categories',$vars);
+		if (!empty($categories)) {
+?>
+
+		<p>
+			<?php echo $categories; ?>
+		</p>
+
+<?php
+		}
+
+?>
 		<p>
 			<label>
 				<?php echo elgg_echo('access'); ?><br />

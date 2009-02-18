@@ -120,7 +120,24 @@
 
 					echo elgg_view('output/tags',array('value' => $tags));
 				
-				?></div></div>
+				?></div>
+<?php
+
+		$categories = elgg_view('categories/view',$vars);
+		if (!empty($categories)) {
+?>
+		<div class="filerepo_categories">
+			<?php
+
+				echo $categories;
+			
+			?>
+		</div>
+<?php
+		}
+
+?>
+				</div>
 		<?php 
 			if (elgg_view_exists('file/specialcontent/' . $mime)) {
 				echo "<div class=\"filerepo_specialcontent\">".elgg_view('file/specialcontent/' . $mime, $vars)."</div>";
