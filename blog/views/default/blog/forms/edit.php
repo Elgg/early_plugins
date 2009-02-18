@@ -69,7 +69,8 @@
 		  $allowcomments = elgg_echo('blog:comments:allow');
 		  
 	// INSERT EXTRAS HERE
-		  $extras = elgg_view('blog/forms/edit/extras',$vars);
+		  $extras = elgg_view('categories',$vars);
+		  if (!empty($extras)) $extras = '<div id="blog_edit_sidebar">' . $extras . '</div>';
 		  
 ?>
 
