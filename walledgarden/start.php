@@ -21,21 +21,20 @@
 		if (current_page_url() != $CONFIG->url) 
 			extend_view('pageshells/pageshell', 'walledgarden/walledgarden');
 		
-		// Extend system CSS with our own styles
-				extend_view('css','walledgarden/css');
-				
-       // Replace the default index page
-			register_plugin_hook('index','system','custom_index');
-			
+		extend_view('css','walledgarden/css');
+		
+		// Replace the default index page if the custom index plugin does not exist
+		if(!is_plugin_enabled("custom_index"))
+			register_plugin_hook('index','system','walledgarden_index');
 
 	}
 	
-	function custom_index() {
+	 function walledgarden_index() {
 			
 			if (!@include_once(dirname(dirname(__FILE__))) . "/walledgarden/index.php") return false;
 			return true;
 			
-	}
+		}
 	
 	register_elgg_event_handler('init','system','walledgarden_init');
 ?>
