@@ -25,6 +25,7 @@
 	 $page_owner = $vars['owner']->guid;
 	 
 ?>
+<div class="contentWrapper">
 <form action="<?php echo $vars['url']; ?>action/pages/editwelcome" method="post">
 
     <p>
@@ -55,3 +56,4 @@
     
 	<input type="submit" class="submit_button" value="<?php echo elgg_echo("save"); ?>" />
 </form>
+</div>
