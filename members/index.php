@@ -57,7 +57,7 @@
 			$area2 .= list_entities("user","",0,30,false);
 			break;
 			case "pop":
-			$area2 .= get_entities_from_relationship("friends_of", 0, false, "", "", 0, "", $limit, $offset, false, 0);		
+			$area2 .= list_entities_by_relationship_count('friend', true);
 			break;
 			case "active":
 			$area2 .= elgg_view("members/online"); //find_active_users(600, $limit, $offset);
