@@ -15,6 +15,9 @@
 	global $CONFIG;
 	
 	// Get the current page's owner
+		if ($container = (int) get_input('container_guid')) {
+			set_page_owner($container);
+		}
 		$page_owner = page_owner_entity();
 		if ($page_owner === false || is_null($page_owner)) {
 			$page_owner = $_SESSION['user'];
@@ -23,7 +26,9 @@
     
 	//get the owners welcome message if it exists
 	$welcome_message = get_entities("object", "pages_welcome", $page_owner->getGUID(), '', 1);
-	
+	global $CONFIG;
+	add_submenu_item(sprintf(elgg_echo("pages:user"), page_owner_entity()->name), $CONFIG->url . "pg/pages/owned/" . page_owner_entity()->username, 'pageslinksgeneral');
+    
 	$title = elgg_echo("pages:welcome");
 	$area2 .= elgg_view_title($title);
 	$area2 .= elgg_view("forms/pages/editwelcome", array('entity' => $welcome_message, 'owner' => $page_owner));
