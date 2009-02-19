@@ -10,7 +10,7 @@
 		'twitter:username' => 'Enter your twitter username.',
 		'twitter:num' => 'The number of tweets to show.',
 		'twitter:visit' => 'visit my twitter',
-		'twitter:notset' => 'Twitter not yet set',
+		'twitter:notset' => 'This Twitter widget is not yet set to go. To display your latest tweets, click on - edit - and fill in your details',
 		
 		
 		 /**

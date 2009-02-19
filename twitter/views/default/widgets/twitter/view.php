@@ -25,11 +25,11 @@
 <p class="visit_twitter"><a href="http://twitter.com/<?php echo $username; ?>"><?php echo elgg_echo("twitter:visit"); ?></a></p>
 <script type="text/javascript" src="http://twitter.com/javascripts/blogger.js"></script>
 <script type="text/javascript" src="http://twitter.com/statuses/user_timeline/<?php echo $username; ?>.json?callback=twitterCallback2&count=<?php echo $num; ?>"></script>
-</div>
 <?php 
     } else {
         
-      echo "<p>" . elgg_echo("twitter:notset") . ".</p>";
+      echo "<div class=\"contentWrapper\"><p>" . elgg_echo("twitter:notset") . ".</p></div>";
       
   }
 ?>
+</div>
