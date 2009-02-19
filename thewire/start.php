@@ -29,7 +29,7 @@
 			// Set up menu for logged in users
 				if (isloggedin()) {
 		
-					add_menu(elgg_echo('thewire'), $CONFIG->wwwroot . "pg/thewire/");
+					add_menu(elgg_echo('thewire'), $CONFIG->wwwroot . "mod/thewire/everyone.php");
 			
 				} 
 				
