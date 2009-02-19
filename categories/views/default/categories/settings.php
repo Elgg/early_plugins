@@ -4,11 +4,11 @@
 
 ?>
 
-	<div class="categories_explanation">
+	<div class="contentWrapper">
 		<p>
 			<?php echo elgg_echo('categories:explanation'); ?>
 		</p>
-	</div>
+	
 
 <?php
 
@@ -22,3 +22,4 @@
 					);
 
 ?>
+</div>
