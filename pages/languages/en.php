@@ -40,8 +40,13 @@
 		* River
 		**/
 		
-		    'page:river:annotate' => "a comment on this page",
-	
+		    'pages:river:annotate' => "a comment on this page",
+		    'pages:river:created' => "%s wrote",
+	        'pages:river:updated' => "%s updated",
+	        'pages:river:posted' => "%s posted",
+			'pages:river:create' => "a new page titled",
+	        'pages:river:update' => "a page titled",
+	        'pages:river:annotate' => "a comment on this page",
 	
 		/**
 		 * Form fields
