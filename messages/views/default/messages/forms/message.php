@@ -45,11 +45,12 @@
             <p><label><?php echo elgg_echo("messages:to"); ?>: </label>
     	    <select name='send_to'>
     	    <?php 
-    			    
+    			//make the first option blank
+    	    	echo "<option value=''></option>";
     	        foreach($vars['friends'] as $friend){
         			   
         	        //populate the send to box with a user's friends
-    			    echo "<option value='{$friend->guid}'>" . $friend->username . "</option>";
+    			    echo "<option value='{$friend->guid}'>" . $friend->name . "</option>";
     			        
     		    }
     		        
