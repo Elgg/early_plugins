@@ -80,12 +80,28 @@
 					} else if (page_owner()) {
 						$page_owner = page_owner_entity();
 						add_submenu_item(sprintf(elgg_echo('blog:user'),$page_owner->name),$CONFIG->wwwroot."pg/blog/" . $page_owner->username);
-						if ($page_owner instanceof ElggUser) // Sorry groups, this isn't for you.
+						if ($page_owner instanceof ElggUser) { // Sorry groups, this isn't for you.
 							add_submenu_item(sprintf(elgg_echo('blog:user:friends'),$page_owner->name),$CONFIG->wwwroot."pg/blog/" . $page_owner->username . "/friends/");
+						}
 						add_submenu_item(elgg_echo('blog:everyone'),$CONFIG->wwwroot."mod/blog/everyone.php");
 					} else {
 						add_submenu_item(elgg_echo('blog:everyone'),$CONFIG->wwwroot."mod/blog/everyone.php");
 					}
+					
+					if (page_owner()) {
+						
+						if ($dates = get_entity_dates('object','blog',page_owner())) {
+							foreach($dates as $date) {
+								$timestamplow = mktime(0,0,0,substr($date,4,2),1,substr($date,0,4));
+								$timestamphigh = mktime(0,0,0,((int) substr($date,4,2)) + 1,1,substr($date,0,4));
+								if (!isset($page_owner)) $page_owner = page_owner_entity();
+								$link = $CONFIG->wwwroot . 'pg/blog/' . $page_owner->username . '/archive/' . $timestamplow . '/' . $timestamphigh;
+								add_submenu_item(sprintf(elgg_echo('date:month:'.substr($date,4,2)),substr($date,0,4)),$link,'zzzarchive');
+							}								
+						}
+						
+					}
+					
 				}
 			
 		}
@@ -103,13 +119,24 @@
 				set_input('username',$page[0]);
 			}
 			
+			// In case we have further input
+			if (isset($page[2])) {
+				set_input('param2',$page[2]);
+			}
+			// In case we have further input
+			if (isset($page[3])) {
+				set_input('param3',$page[3]);
+			}
+			
 			// The second part dictates what we're doing
 			if (isset($page[1])) {
 				switch($page[1]) {
 					case "read":		set_input('blogpost',$page[2]);
-										@include(dirname(__FILE__) . "/read.php");
+										include(dirname(__FILE__) . "/read.php");
 										break;
-					case "friends":		@include(dirname(__FILE__) . "/friends.php");
+					case "archive":		include(dirname(__FILE__) . "/archive.php");
+										break;
+					case "friends":		include(dirname(__FILE__) . "/friends.php");
 										break;
 				}
 			// If the URL is just 'blog/username', or just 'blog/', load the standard blog index
