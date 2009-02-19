@@ -88,7 +88,7 @@
 						add_submenu_item(elgg_echo('blog:everyone'),$CONFIG->wwwroot."mod/blog/everyone.php");
 					}
 					
-					if (page_owner()) {
+					if (!defined('everyoneblog') && page_owner()) {
 						
 						if ($dates = get_entity_dates('object','blog',page_owner())) {
 							foreach($dates as $date) {
@@ -96,7 +96,7 @@
 								$timestamphigh = mktime(0,0,0,((int) substr($date,4,2)) + 1,1,substr($date,0,4));
 								if (!isset($page_owner)) $page_owner = page_owner_entity();
 								$link = $CONFIG->wwwroot . 'pg/blog/' . $page_owner->username . '/archive/' . $timestamplow . '/' . $timestamphigh;
-								add_submenu_item(sprintf(elgg_echo('date:month:'.substr($date,4,2)),substr($date,0,4)),$link,'zzzarchive');
+								add_submenu_item(sprintf(elgg_echo('date:month:'.substr($date,4,2)),substr($date,0,4)),$link,'filter');
 							}								
 						}
 						

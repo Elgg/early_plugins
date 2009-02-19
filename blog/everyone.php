@@ -11,15 +11,13 @@
 	 */
 
 	// Load Elgg engine
+		define('everyoneblog','true');
 		require_once(dirname(dirname(dirname(__FILE__))) . "/engine/start.php");
 	
 // Get the current page's owner
-		$page_owner = page_owner_entity();
-		if ($page_owner === false || is_null($page_owner)) {
-			$page_owner = $_SESSION['user'];
-			set_page_owner($_SESSION['guid']);
-		}
-			
+		$page_owner = $_SESSION['user'];
+		set_page_owner($_SESSION['guid']);
+		
 		$area2 = elgg_view_title(elgg_echo('blog:everyone'));
 
 		$area2 .= list_entities('object','blog',0,10,false);

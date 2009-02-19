@@ -1,7 +1,7 @@
 <?php
 
 	/**
-	 * Elgg blog friends page
+	 * Elgg blog archive page
 	 * 
 	 * @package ElggBlog
 	 * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License version 2
@@ -11,7 +11,6 @@
 	 */
 
 	// Load Elgg engine
-		define('everyoneblog','true');
 		require_once(dirname(dirname(dirname(__FILE__))) . "/engine/start.php");
 		
 	// Get the current page's owner
@@ -20,22 +19,32 @@
 			$page_owner = $_SESSION['user'];
 			set_page_owner($_SESSION['guid']);
 		}
-		if (!($page_owner instanceof ElggEntity)) forward();
-
-	//set the title
-        if($page_owner == $_SESSION['user']){
-			$area2 = elgg_view_title(elgg_echo('blog:yourfriends'));
-		}else{
-			$area2 = elgg_view_title($page_owner->username . "'s " . elgg_echo('blog:friends'));
+		
+	// Get timestamp upper and lower bounds
+		$timelower = (int) get_input('param2');
+		$timeupper = (int) get_input('param3');
+		if (empty($timelower)) {
+			forward('pg/blog/'.$page_owner->username);
+			exit;
 		}
+		if (empty($timeupper)) {
+			$timeupper = $timelower + (86400 * 30);
+		}
+
+	// Set blog title
+		$area2 = elgg_view_title(elgg_echo());
 		
 	// Get a list of blog posts
-		$area2 .= list_user_friends_objects($page_owner->getGUID(),'blog',10,false);
+		$area2 .= list_user_objects($page_owner->getGUID(),'blog',10,false,false,true,$timelower,$timeupper);
+
+	// Get blog tags
+
+	// Get blog categories
 		
 	// Display them in the page
         $body = elgg_view_layout("blog_layout", '', $area1 . $area2);
 		
 	// Display page
-		page_draw(elgg_echo('blog:friends'),$body);
+		page_draw(sprintf(elgg_echo('blog:user'),$page_owner->name),$body);
 		
 ?>
