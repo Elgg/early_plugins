@@ -19,11 +19,12 @@
     <!-- left column content -->
     <div id="index_left">
         <!-- welcome message -->
-        <div id="index_welcome">
-        	<h2>Welcome 
+        <div id="index_welcome"> 
         	<?php
         		if (!isloggedin()){
-        			echo $_SESSION['username']; 
+	        		echo "<h2>" . elgg_echo("welcome") . " ";
+        			echo $_SESSION['username'];
+        			echo "</h2>";
     			}
         	?>
         	</h2>

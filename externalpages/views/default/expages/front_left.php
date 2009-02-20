@@ -19,6 +19,8 @@
 			foreach($contents as $c){
 				echo $c->title; // title is the left hand content
 			}
+		}else{
+			echo elgg_echo("expages:addcontent");
 		}
 
 ?>

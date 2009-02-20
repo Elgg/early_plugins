@@ -18,7 +18,7 @@
 			'expages:notset' => "This page has not been set up yet.",
 			'expages:lefthand' => "The lefthand information pane",
 			'expages:righthand' => "The righthand information pane",
-			
+			'expages:addcontent' => "You can add content here via your admin tools. Look for the external pages link under admin.",
 	
 		/**
 		 * Status messages
