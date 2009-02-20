@@ -19,7 +19,7 @@
 
 ?>
 
-		<div id="content_area_user_title"><h2><?php echo elgg_echo('categories'); ?></h2></div>
+		<div id="content_area_user_title"><h2 class="categoriestitle"><?php echo elgg_echo('categories'); ?></h2></div>
 		<div class="categories">
 			<p>
 			
