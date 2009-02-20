@@ -38,9 +38,7 @@
 	    // add a messageboard widget
             add_widget_type('messageboard',"". elgg_echo("messageboard:board") . "","" . elgg_echo("messageboard:desc") . ".", "profile");
             
-        // extend the group members view
-            extend_view('groups/left_column','messageboard/group_messageboard');
-				
+    
     }
     
     /**
