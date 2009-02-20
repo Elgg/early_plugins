@@ -81,7 +81,7 @@
 		$page_owner = page_owner_entity();
 		
 		// Group submenu option	
-			if ($page_owner instanceof ElggGroup && get_context() != "file") {
+			if ($page_owner instanceof ElggGroup && get_context() == "groups") {
     			if($page_owner->files_enable == "yes"){ 
 				    add_submenu_item(sprintf(elgg_echo("file:group"),$page_owner->name), $CONFIG->wwwroot . "pg/file/" . $page_owner->username);
 			    }
