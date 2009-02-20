@@ -49,7 +49,7 @@
 				}
 ?>
 
-	<div class="contentWrapper">
+	<div class="contentWrapper singleview">
 	
 	<div class="blog_post">
 		<h3><a href="<?php echo $url; ?>"><?php echo $vars['entity']->title; ?></a></h3>
