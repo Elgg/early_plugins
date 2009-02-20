@@ -10,6 +10,8 @@
 
 	global $CONFIG;
 	
+	gatekeeper();
+	
 	// Get variables
 	$title = get_input("title");
 	$desc = get_input("description");
