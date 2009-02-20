@@ -21,13 +21,12 @@
         <!-- welcome message -->
         <div id="index_welcome"> 
         	<?php
-        		if (!isloggedin()){
+        		if (isloggedin()){
 	        		echo "<h2>" . elgg_echo("welcome") . " ";
         			echo $_SESSION['username'];
         			echo "</h2>";
     			}
         	?>
-        	</h2>
             <?php
             	//include a view that plugins can extend
             	echo elgg_view("index/lefthandside");
