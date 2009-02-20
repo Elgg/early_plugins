@@ -16,9 +16,10 @@
     if($objects)
 		echo $objects;
 	else
-		echo elgg_echo("pages:nogroup");
+		echo "<div class=\"forum_latest\">" . elgg_echo("pages:nogroup") . "</div>";
 	
 ?>
+<br class="clearfloat" />
 </div>
 
 <?php

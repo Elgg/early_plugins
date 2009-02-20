@@ -57,12 +57,12 @@ $('a.show_file_desc').click(function () {
        
 	} else {
 		
-		echo elgg_echo("file:none");
-		
+		echo "<div class=\"forum_latest\">" . elgg_echo("file:none") . "</div>";
+
 	}
 
 ?>
-
+<br class="clearfloat" />
 </div>
 
 <?php
