@@ -10,5 +10,6 @@
 	 */
 
 	// Forward!
-	gatekeeper();
+	if (!defined('externalpage'))
+		gatekeeper();
 ?>

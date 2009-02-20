@@ -18,7 +18,8 @@
 		
 		elgg_set_viewtype('default');
 		
-		if (current_page_url() != $CONFIG->url) 
+		if (current_page_url() != $CONFIG->url
+			&& !defined('externalpage')) 
 			extend_view('pageshells/pageshell', 'walledgarden/walledgarden');
 		
 		extend_view('css','walledgarden/css');
