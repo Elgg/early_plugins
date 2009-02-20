@@ -58,7 +58,7 @@ else
 
 <!-- show the textarea -->
 <textarea class="input-textarea" name="<?php echo $vars['internalname']; ?>" <?php echo $vars['js']; ?>><?php echo htmlentities($vars['value'], null, 'UTF-8'); ?></textarea> 
-<p><a href="javascript:toggleEditor('<?php echo $vars['internalname']; ?>');"><?php echo elgg_echo('tinymce:remove'); ?></a></p>
+<div><a class="toggle_editor" href="javascript:toggleEditor('<?php echo $vars['internalname']; ?>');"><?php echo elgg_echo('tinymce:remove'); ?></a></div>
 
 <script type="text/javascript">
 	setInterval( "tinymce<?php echo $rand; ?>export()", 5000);
