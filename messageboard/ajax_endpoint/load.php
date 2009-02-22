@@ -25,11 +25,28 @@
     //stage one - if a message was posted, add it as an annotation    
     if($message){
         
-       //attach the annotation to the user object
-       $user->annotate('messageboard',$message,$user->access_id, $_SESSION['user']->getGUID());
-       // add to river
-	    add_to_river('river/object/messageboard/create','messageboard',$_SESSION['user']->guid,$user->guid);
- 
+       // If posting the comment was successful, send message
+	   	if ($user->annotate('messageboard',$message,$user->access_id, $_SESSION['user']->getGUID())) {
+					
+			global $CONFIG;
+					
+			if ($user->getGUID() != $_SESSION['user']->getGUID())
+				notify_user($user->getGUID(), $_SESSION['user']->getGUID(), elgg_echo('messageboard:email:subject'), 
+				sprintf(
+					elgg_echo('messageboard:email:body'),
+					$_SESSION['user']->name,
+					$message,
+					$CONFIG->wwwroot . "pg/messageboard/" . $user->username,
+					$_SESSION['user']->name,
+					$_SESSION['user']->getURL()
+					)
+				); 
+       		
+			// add to river
+	    	add_to_river('river/object/messageboard/create','messageboard',$_SESSION['user']->guid,$user->guid);
+   		}else{
+	   		register_error(elgg_echo("messageboard:failure"));
+		}
         
     } else {
         
