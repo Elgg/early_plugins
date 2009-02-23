@@ -79,7 +79,7 @@ $('a.show_file_desc').click(function () {
 				
 	} else {
 		
-		echo elgg_echo("file:none");
+		echo "<div class=\"contentWrapper\">" . elgg_echo("file:none") . "</div>";
 		
 	}
 

@@ -119,14 +119,14 @@
 		?>
 	
 	</div>
-	
+	</div>
 <?php
 
 	if ($vars['full'])
 		echo elgg_view_comments($vars['entity']);
 
 ?>
-</div>	
+	
 <?php
 
 	}
