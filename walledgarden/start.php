@@ -24,7 +24,7 @@
 				forward();
 				exit;
 			}
-			// extend_view('pageshells/pageshell', 'walledgarden/walledgarden');
+			extend_view('pageshells/pageshell', 'walledgarden/walledgarden');
 		
 		extend_view('css','walledgarden/css');
 		
