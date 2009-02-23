@@ -28,7 +28,10 @@
 			$title = "";
 			$comments_on = true;
 			$description = "";
-			$access_id = ACCESS_DEFAULT;
+			if (defined(ACCESS_DEFAULT))
+				$access_id = ACCESS_DEFAULT;
+			else
+				$access_id = 0;
 		}
 
 	// Just in case we have some cached details

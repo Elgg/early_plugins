@@ -23,7 +23,10 @@
 			$tags = "";
 			$title = "";
 			$description = "";
-			$access_id = ACCESS_DEFAULT;
+			if (defined(ACCESS_DEFAULT))
+				$access_id = ACCESS_DEFAULT;
+			else
+				$access_id = 0;
 		}
 	
 ?>

@@ -18,8 +18,13 @@
 		$new_page = true;
 		
 		// bootstrap the access permissions in the entity array so we can use defaults
-		$vars['entity']->access_id = ACCESS_DEFAULT;
-		$vars['entity']->write_access_id = ACCESS_DEFAULT;
+		if (defined(ACCESS_DEFAULT)) {
+			$vars['entity']->access_id = ACCESS_DEFAULT;
+			$vars['entity']->write_access_id = ACCESS_DEFAULT;
+		} else {
+			$vars['entity']->access_id = 0;
+			$vars['entity']->write_access_id = 0;
+		}
 	}
 ?>
 <div class="contentWrapper">
