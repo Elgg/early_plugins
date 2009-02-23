@@ -17,13 +17,6 @@
 		$CONFIG->disable_registration = true;
 		
 		// elgg_set_viewtype('default');
-		
-		if (current_page_url() != $CONFIG->url
-			&& !defined('externalpage')
-			&& !isloggedin()) {
-				forward();
-				exit;
-			}
 			extend_view('pageshells/pageshell', 'walledgarden/walledgarden');
 		
 		extend_view('css','walledgarden/css');
@@ -34,6 +27,18 @@
 
 	}
 	
+	function walledgarden_pagesetup() {
+		
+		global $CONFIG;
+		if (current_page_url() != $CONFIG->url
+			&& !defined('externalpage')
+			&& !isloggedin()) {
+				forward();
+				exit;
+			}
+		
+	}
+	
 	 function walledgarden_index() {
 			
 			if (!@include_once(dirname(dirname(__FILE__))) . "/walledgarden/index.php") return false;
@@ -42,4 +47,5 @@
 		}
 	
 	register_elgg_event_handler('init','system','walledgarden_init');
+	register_elgg_event_handler('pagesetup','system','walledgarden_pagesetup');
 ?>
