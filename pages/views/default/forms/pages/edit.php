@@ -12,6 +12,15 @@
 	$parent_guid = get_input('parent_guid');
 	$container_guid = get_input('container_guid');
 	if (!$container_guid) $container_guid = page_owner();
+	
+	$new_page = false;
+	if (!$vars['entity']) {
+		$new_page = true;
+		
+		// bootstrap the access permissions in the entity array so we can use defaults
+		$vars['entity']->access_id = ACCESS_DEFAULT;
+		$vars['entity']->write_access_id = ACCESS_DEFAULT;
+	}
 ?>
 <div class="contentWrapper">
 <form action="<?php echo $vars['url']; ?>action/pages/edit" method="post">
@@ -24,7 +33,7 @@
 			
 			$disabled = "";
 			
-			if (($vars['entity']) && ($shortname == 'title'))
+			if (!$new_page && ($shortname == 'title'))
 			{
 				$disabled = true;
 			}
@@ -60,7 +69,7 @@
 ?>
 	<p>
 		<?php
-			if ($vars['entity'])
+			if (!$new_page)
 			{ 
 			?><input type="hidden" name="pages_guid" value="<?php echo $vars['entity']->getGUID(); ?>" /><?php 
 			}
@@ -71,8 +80,8 @@
 				?><input type="hidden" name="container_guid" value="<?php echo $container_guid; ?>" /><?php 
 			}
 		?>
-		<input type="hidden" name="parent_guid" value="<?php if ($vars['entity']) echo $vars['entity']->parent_guid; else echo $parent_guid; ?>" />
-		<input type="hidden" name="owner_guid" value="<?php if ($vars['entity']) echo $vars['entity']->owner_guid; else echo page_owner(); ?>" />
+		<input type="hidden" name="parent_guid" value="<?php if (!$new_page) echo $vars['entity']->parent_guid; else echo $parent_guid; ?>" />
+		<input type="hidden" name="owner_guid" value="<?php if (!$new_page) echo $vars['entity']->owner_guid; else echo page_owner(); ?>" />
 		<input type="submit" class="submit_button" value="<?php echo elgg_echo("save"); ?>" />
 	</p>
 

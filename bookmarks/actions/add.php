@@ -14,7 +14,7 @@
 		$guid = get_input('bookmark_guid',0);
 		$description = get_input('description');
 		$address = get_input('address');
-		$access = get_input('access',ACCESS_PRIVATE);
+		$access = get_input('access');
 		$shares = get_input('shares',array());
 		
 		$tags = get_input('tags');

@@ -23,7 +23,7 @@
 			$tags = "";
 			$title = "";
 			$description = "";
-			$access_id = ACCESS_PRIVATE;
+			$access_id = ACCESS_DEFAULT;
 		}
 	
 ?>

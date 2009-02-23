@@ -31,7 +31,7 @@
 			if ($address == "previous")
 				$address = $_SERVER['HTTP_REFERER'];
 			$tags = array();
-			$access_id = ACCESS_PRIVATE;
+			$access_id = ACCESS_DEFAULT;
 			$shares = array();
 			$owner = $vars['user'];
 			
