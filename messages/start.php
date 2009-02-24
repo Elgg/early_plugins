@@ -50,13 +50,15 @@
 				
 			// Register a notification handler for site messages
 				register_notification_handler("site", "messages_site_notify_handler");
+				register_plugin_hook('notify:entity:message','object','messages_notification_msg');
+				if (is_callable('register_notification_object'))
+					register_notification_object('object','messages','messages:new');
 				
 		    // Shares widget
 			  //  add_widget_type('messages',elgg_echo("messages:recent"),elgg_echo("messages:widget:description"));
 			    
 			// Override metadata permissions
 			    register_plugin_hook('permissions_check:metadata','object','messages_can_edit_metadata');
-			    
 		}
 		
 		/**
@@ -97,7 +99,32 @@
 			
 		}
 		
-/**
+		/**
+		 * We really don't want to send a notification message when a message is sent, if the method is messages ...
+		 *
+		 */
+		function messages_notification_msg($hook_name, $entity_type, $return_value, $parameters) {
+
+			if ($parameters['entity'] instanceof ElggEntity) {
+				
+				if ($parameters['entity']->getSubtype() == 'messages') {
+					if ($parameters['method'] == 'email') {
+						return sprintf(
+									elgg_echo('messages:email:body'),
+									get_loggedin_user()->name,
+									$message_contents,
+									$CONFIG->wwwroot . "pg/messages/" . $user->username,
+									get_loggedin_user()->name,
+									$CONFIG->wwwroot . "mod/messages/send.php?send_to=" . get_loggedin_user()->guid
+								);
+					}
+				}
+			}
+			return null;
+			
+		}
+		
+		/**
 		 * Override the canEdit function to return true for messages within a particular context.
 		 *
 		 */
@@ -185,8 +212,9 @@
 		    	        $create_relationship = add_entity_relationship($message_sent->guid, "reply", $reply);		    	        
 			        }
 			        
+			        /*
 			        global $CONFIG;
-					$message_contents = strip_tags($body);
+					//$message_contents = strip_tags($body);
 					if ($send_to != get_loggedin_user() && $notify)
 					notify_user($send_to, get_loggedin_user(), elgg_echo('messages:email:subject'), 
 						sprintf(
@@ -198,6 +226,8 @@
 									$CONFIG->wwwroot . "mod/messages/send.php?send_to=" . get_loggedin_user()->guid
 								)
 			);
+					*/
+					
 			    	$messagesendflag = 0;    
 			        return $success;
 			
@@ -249,7 +279,7 @@
 		    							'toId' => $_SESSION['user']->guid,
 		    							'readYet' => 0,
 		    							'msg' => 1
-		    									   ),"object", "messages", 0, 10, 0, "", 0, false);
+		    									   ),"object", "messages", $_SESSION['user']->guid, 10, 0, "", 0, false);
 		
 			if (is_array($num_messages))
 				$counter = sizeof($num_messages);
