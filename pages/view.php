@@ -14,6 +14,8 @@
 	$page_guid = get_input('page_guid');
 	set_context('pages');
 	
+	if (is_callable('group_gatekeeper')) group_gatekeeper();
+	
 	$pages = get_entity($page_guid);
 	if (!$pages) forward();
 

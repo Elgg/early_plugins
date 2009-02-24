@@ -20,6 +20,8 @@
 	} else {
 		set_page_owner($pages->owner_guid);
 	}
+	
+	if (is_callable('group_gatekeeper')) group_gatekeeper();
 
 	$limit = (int)get_input('limit', 20);
 	$offset = (int)get_input('offset');
