@@ -11,6 +11,7 @@
 	require_once(dirname(dirname(dirname(__FILE__))) . "/engine/start.php");
 
 	gatekeeper();
+	if (is_callable('group_gatekeeper')) group_gatekeeper();
 
 	// Render the file upload page
 

@@ -14,6 +14,8 @@
 	//require_once(dirname(dirname(dirname(__FILE__))) . "/engine/start.php");
 	require_once(dirname(dirname(dirname(__FILE__))) . "/engine/start.php");
 
+	if (is_callable('group_gatekeeper')) group_gatekeeper();
+	
 	//set the title
 		if(page_owner() == $_SESSION['user']){
 			$area2 = elgg_view_title($title = elgg_echo('file:yours'));

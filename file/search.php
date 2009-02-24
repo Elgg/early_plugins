@@ -12,6 +12,7 @@
 
 	// Load Elgg engine
 		require_once(dirname(dirname(dirname(__FILE__))) . "/engine/start.php");
+
 		
 	// Get input
 		$md_type = 'simpletype';
@@ -43,6 +44,8 @@
 					set_page_owner($owner_guid);
 			}
 		}
+		
+		if (is_callable('group_gatekeeper')) group_gatekeeper();
 
 		if (empty($tag)) {
 			$area2 = elgg_view_title(elgg_echo('file:type:all'));
