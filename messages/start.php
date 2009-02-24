@@ -165,6 +165,9 @@
 		            $message_sent->hiddenFrom = 0; // this is used when a user deletes a message in their sentbox, it is a flag
 		            $message_sent->hiddenTo = 0; // this is used when a user deletes a message in their inbox
 		            
+		            $message_to->msg = 1;
+		            $message_sent->msg = 1;
+		            
 			    // Save the copy of the message that goes to the recipient
 					$success = $message_to->save();
 					
@@ -241,20 +244,21 @@
         function count_unread_messages() {
             
             //get the users inbox messages
-		    $num_messages = get_entities_from_metadata("toId", $_SESSION['user']->getGUID(), "object", "messages", 0, 10, 0, "", 0, false);
+		    //$num_messages = get_entities_from_metadata("toId", $_SESSION['user']->getGUID(), "object", "messages", 0, 10, 0, "", 0, false);
+		    $num_messages = get_entities_from_metadata_multi(array(
+		    							'toId' => $_SESSION['user']->guid,
+		    							'readYet' => 0,
+		    							'msg' => 1
+		    									   ),"object", "messages", 0, 10, 0, "", 0, false);
 		
-		    //set a counter
-		    $counter = 0;
-		
-		    //loop through the inbox and count the number unread
-		    foreach($num_messages as $num){
-    		
-    		    if($num->readYet == 0)
-    		        $counter++;	   
-    		    
-            }
-            
-            return $counter;
+			if (is_array($num_messages))
+				$counter = sizeof($num_messages);
+			else
+				$counter = 0;
+				
+			system_message(var_export($num_messages,true));
+				
+		    return $counter;
             
         }
         
