@@ -29,7 +29,7 @@
             'messages:yours' => "Your message",
             'messages:answer' => "Reply",
 			
-			'notification:method:site' => 'Site messages',
+			'notification:method:site' => 'Site',
 	
 			'messages:error' => 'There was a problem saving your message. Please try again.',
 	

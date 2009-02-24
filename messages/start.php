@@ -49,7 +49,7 @@
 				extend_view('profile/menu/links','messages/menu');
 				
 			// Register a notification handler for site messages
-				register_notification_handler("web", "messages_site_notify_handler");
+				register_notification_handler("site", "messages_site_notify_handler");
 				
 		    // Shares widget
 			  //  add_widget_type('messages',elgg_echo("messages:recent"),elgg_echo("messages:widget:description"));

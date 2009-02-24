@@ -126,3 +126,25 @@ MESSAGING PLUGIN
 }
 
 
+#notificationstable td.sitetogglefield {
+	width:50px;
+	text-align: center;
+	vertical-align: middle;
+}
+#notificationstable td.sitetogglefield input {
+	margin-right:16px;
+	margin-top:5px;
+}
+#notificationstable td.sitetogglefield a {
+	width:46px;
+	height:24px;
+	cursor: pointer;
+	display: block;
+	outline: none;
+}
+#notificationstable td.sitetogglefield a.sitetoggleOff {
+	background: url(<?php echo $vars['url']; ?>mod/messages/graphics/icon_notifications_site.gif) no-repeat right 1px;
+}
+#notificationstable td.sitetogglefield a.sitetoggleOn {
+	background: url(<?php echo $vars['url']; ?>mod/messages/graphics/icon_notifications_site.gif) no-repeat right -38px ;
+}
