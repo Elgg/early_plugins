@@ -29,6 +29,8 @@
             'messages:yours' => "Your message",
             'messages:answer' => "Reply",
 			
+			'messages:error' => 'There was a problem saving your message. Please try again.',
+	
 			'item:object:messages' => 'Messages',
 	
 		/**

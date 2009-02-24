@@ -61,13 +61,128 @@
 		 *
 		 */
 		function messages_can_edit_metadata($hook_name, $entity_type, $return_value, $parameters) {
+
+			global $messagesendflag;
 			
-			$entity = $parameters['entity'];
-			if ($entity->getSubtype() == "messages") {
+			if ($messagesendflag == 1) {
+				$entity = $parameters['entity'];
+				if ($entity->getSubtype() == "messages") {
+					return true;
+				}
+			}
+			
+			return $return_value;
+			
+		}
+		
+		/**
+		 * Override the canEdit function to return true for messages within a particular context.
+		 *
+		 */
+		function messages_can_edit($hook_name, $entity_type, $return_value, $parameters) {
+			
+			global $messagesendflag;
+			
+			if ($messagesendflag == 1) {
+				$entity = $parameters['entity'];
+				if ($entity->getSubtype() == "messages") {
+					return true;
+				}
+			}
+			
+			return $return_value;
+			
+		}
+		
+/**
+		 * Override the canEdit function to return true for messages within a particular context.
+		 *
+		 */
+		function messages_can_edit_container($hook_name, $entity_type, $return_value, $parameters) {
+			
+			global $messagesendflag;
+			
+			if ($messagesendflag == 1) {
 				return true;
 			}
 			
 			return $return_value;
+			
+		}
+		
+		function messages_send($subject, $body, $send_to, $from = 0, $reply = 0) {
+			
+				global $messagesendflag;
+				$messagesendflag = 1;
+				
+			// If $from == 0, set to current user
+					if ($from == 0)
+						$from = (int) get_loggedin_user()->guid;
+						
+		    // Initialise a new ElggObject
+					$message_to = new ElggObject();
+					$message_sent = new ElggObject();
+			// Tell the system it's a message
+					$message_to->subtype = "messages";
+					$message_sent->subtype = "messages";
+			// Set its owner to the current user
+					// $message_to->owner_guid = $_SESSION['user']->getGUID();
+					$message_to->owner_guid = $send_to;
+					$message_to->container_guid = $send_to;
+					$message_sent->owner_guid = $from;
+					$message_sent->container_guid = $from;
+			// For now, set its access to public (we'll add an access dropdown shortly)
+					$message_to->access_id = ACCESS_PUBLIC;
+					$message_sent->access_id = ACCESS_PUBLIC;
+			// Set its description appropriately
+					$message_to->title = $subject;
+					$message_to->description = $body;
+					$message_sent->title = $subject;
+					$message_sent->description = $body;
+		    // set the metadata
+		            $message_to->toId = $send_to; // the user receiving the message
+		            $message_to->fromId = $from; // the user receiving the message
+		            $message_to->readYet = 0; // this is a toggle between 0 / 1 (1 = read)
+		            $message_to->hiddenFrom = 0; // this is used when a user deletes a message in their sentbox, it is a flag
+		            $message_to->hiddenTo = 0; // this is used when a user deletes a message in their inbox
+		            $message_sent->toId = $send_to; // the user receiving the message
+		            $message_sent->fromId = $from; // the user receiving the message
+		            $message_sent->readYet = 0; // this is a toggle between 0 / 1 (1 = read)
+		            $message_sent->hiddenFrom = 0; // this is used when a user deletes a message in their sentbox, it is a flag
+		            $message_sent->hiddenTo = 0; // this is used when a user deletes a message in their inbox
+		            
+			    // Save the copy of the message that goes to the recipient
+					$success = $message_to->save();
+					
+				// Save the copy of the message that goes to the sender
+					$success2 = $message_sent->save();
+					
+					$message_to->access_id = ACCESS_PRIVATE;
+					$message_to->save();
+					$message_sent->access_id = ACCESS_PRIVATE;
+					$message_sent->save();
+					
+			    // if the new message is a reply then create a relationship link between the new message
+			    // and the message it is in reply to
+			        if($reply && $success){
+		    	        $create_relationship = add_entity_relationship($message_sent->guid, "reply", $reply);		    	        
+			        }
+			        
+			        global $CONFIG;
+					$message_contents = strip_tags($body);
+					if ($send_to != get_loggedin_user())
+					notify_user($send_to, get_loggedin_user(), elgg_echo('messages:email:subject'), 
+						sprintf(
+									elgg_echo('messages:email:body'),
+									get_loggedin_user()->name,
+									$message_contents,
+									$CONFIG->wwwroot . "pg/messages/" . $user->username,
+									get_loggedin_user()->name,
+									$CONFIG->wwwroot . "mod/messages/send.php?send_to=" . get_loggedin_user()->guid
+								)
+			);
+			    	$messagesendflag = 0;    
+			        return $success;
 			
 		}
 		
@@ -131,6 +246,9 @@
 		
 	// Make sure the messages initialisation function is called on initialisation
 		register_elgg_event_handler('init','system','messages_init');
+		
+		register_plugin_hook('permissions_check','object','messages_can_edit');
+		register_plugin_hook('container_permissions_check','object','messages_can_edit_container');
 		
 	// Register actions
 		global $CONFIG;

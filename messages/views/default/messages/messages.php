@@ -62,9 +62,9 @@
                     echo "<br class=\"clearfloat\" /><p>".elgg_echo('messages:to').": <b>" . $user_object->name . "</b><br />";
                 }else{
                     //get the icon
-                    echo " " . elgg_view("profile/icon",array('entity' => $vars['entity']->getOwnerEntity(), 'size' => 'tiny'));
+                    echo " " . elgg_view("profile/icon",array('entity' => get_entity($vars['entity']->fromId), 'size' => 'tiny'));
                     //get the name
-                    echo "<br class=\"clearfloat\" /><p>".elgg_echo('messages:from').": <b>" . $vars['entity']->getOwnerEntity()->name . "</b><br />";
+                    echo "<br class=\"clearfloat\" /><p>".elgg_echo('messages:from').": <b>" . get_entity($vars['entity']->fromId)->name . "</b><br />";
                 }
             ?>
             <!-- get the time the message was sent -->
@@ -146,7 +146,7 @@
 	            				//pass across the guid of the message being replied to
     	        				echo "<input type='hidden' name='reply' value='" . $vars['entity']->getGUID() . "' />";
     	        				//pass along the owner of the message being replied to
-    	        				echo "<input type='hidden' name='send_to' value='" . $vars['entity']->owner_guid . "' />";
+    	        				echo "<input type='hidden' name='send_to' value='" . $vars['entity']->fromId . "' />";
 	
 	        			?>
 	        			<input type="submit" class="submit_button" value="<?php echo elgg_echo("messages:fly"); ?>!" />

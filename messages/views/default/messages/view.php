@@ -43,7 +43,8 @@
                         //set the table
         				echo "<table width=\"100%\" cellspacing='0'><tr>";       
                         //get the icon of the user who owns the message
-        				echo "<td width='200px'>" . elgg_view("profile/icon",array('entity' => $message->getOwnerEntity(), 'size' => 'tiny')) . "<div class='msgsender'><b>" . $message->getOwnerEntity()->name . "</b><br /><small>" . friendly_time($message->time_created) . "</small></div></td>";
+                        $from = get_entity($message->fromId);
+        				echo "<td width='200px'>" . elgg_view("profile/icon",array('entity' => $from, 'size' => 'tiny')) . "<div class='msgsender'><b>" . $from->name . "</b><br /><small>" . friendly_time($message->time_created) . "</small></div></td>";
         				//display the message title
     				    echo "<td><div class='msgsubject'><a href=\"{$message->getURL()}\">" . $message->title . "</a></div></td>";
     				    //display the link to 'delete'

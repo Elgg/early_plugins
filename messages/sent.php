@@ -18,10 +18,11 @@
 		
 	// Get the logged in user
 		$page_owner = $_SESSION['user'];
-		set_page_owner($page_owner->getGUID());
+		set_page_owner($page_owner->guid);
 		
     // Display all the messages a user owns, these will make up the sentbox
-		$messages = $page_owner->getObjects('messages');
+		$messages = get_entities_from_metadata('fromId',$_SESSION['user']->guid,'object','messages', $page_owner->guid, 999, 0); 
+		//$page_owner->getObjects('messages');
 		
     // Set the page title
 	    $area2 = elgg_view_title(elgg_echo("messages:sentmessages"));

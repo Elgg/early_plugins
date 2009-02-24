@@ -27,7 +27,7 @@
 	        //pass across the guid of the message being replied to
     	    echo "<input type='hidden' name='reply' value='" . $vars['entity']->getGUID() . "' />";
     	    //pass along the owner of the message being replied to
-    	    echo "<input type='hidden' name='send_to' value='" . $vars['entity']->owner_guid . "' />";
+    	    echo "<input type='hidden' name='send_to' value='BAAA" . $vars['entity']->fromId . "' />";
 	
 	    ?>
 	    <input type="submit" class="submit_button" value="<?php echo elgg_echo("messages:fly"); ?>!" />
