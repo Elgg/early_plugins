@@ -47,6 +47,7 @@
 			'pages:river:create' => "a new page titled",
 	        'pages:river:update' => "a page titled",
 	        'pages:river:annotate' => "a comment on this page",
+	        'pages_top:river:annotate' => "a comment on this page",
 	
 		/**
 		 * Form fields
