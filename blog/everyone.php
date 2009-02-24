@@ -31,7 +31,7 @@
 		// get recent comments
 		$area3 .= "This will be categories";
 
-		$body = elgg_view_layout("blog_layout", '', $area2, $area3);
+		$body = elgg_view_layout("two_column_left_sidebar", '', $area2, $area3);
 		
 	// Display page
 		page_draw(elgg_echo('blog:everyone'),$body);
