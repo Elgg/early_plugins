@@ -48,6 +48,9 @@
 	        // Extend hover-over and profile menu	
 				extend_view('profile/menu/links','messages/menu');
 				
+			// Register a notification handler for site messages
+				register_notification_handler("site", "messages_site_notify_handler");
+				
 		    // Shares widget
 			  //  add_widget_type('messages',elgg_echo("messages:recent"),elgg_echo("messages:widget:description"));
 			    
@@ -243,6 +246,21 @@
             return $counter;
             
         }
+        
+        function messages_site_notify_handler(ElggEntity $from, ElggUser $to, $subject, $message, array $params = NULL)
+		{
+			global $CONFIG;
+			
+			if (!$from)
+				throw new NotificationException(sprintf(elgg_echo('NotificationException:MissingParameter'), 'from'));
+				 
+			if (!$to)
+				throw new NotificationException(sprintf(elgg_echo('NotificationException:MissingParameter'), 'to'));
+				
+			return messages_send($subject,$message,$to->guid,$from->guid);
+			
+		}
+	
 		
 	// Make sure the messages initialisation function is called on initialisation
 		register_elgg_event_handler('init','system','messages_init');
