@@ -113,7 +113,18 @@
 			
 		}
 		
-		function messages_send($subject, $body, $send_to, $from = 0, $reply = 0) {
+		/**
+		 * Send an internal message
+		 *
+		 * @param string $subject The subject line of the message
+		 * @param string $body The body of the mesage
+		 * @param int $send_to The GUID of the user to send to
+		 * @param int $from Optionally, the GUID of the user to send from
+		 * @param int $reply The GUID of the message to reply from (default: none)
+		 * @param true|false $notify Send a notification (default: true)
+		 * @return true|false Depending on success
+		 */
+		function messages_send($subject, $body, $send_to, $from = 0, $reply = 0, $notify = true) {
 			
 				global $messagesendflag;
 				$messagesendflag = 1;
@@ -173,7 +184,7 @@
 			        
 			        global $CONFIG;
 					$message_contents = strip_tags($body);
-					if ($send_to != get_loggedin_user())
+					if ($send_to != get_loggedin_user() && $notify)
 					notify_user($send_to, get_loggedin_user(), elgg_echo('messages:email:subject'), 
 						sprintf(
 									elgg_echo('messages:email:body'),
@@ -257,7 +268,7 @@
 			if (!$to)
 				throw new NotificationException(sprintf(elgg_echo('NotificationException:MissingParameter'), 'to'));
 				
-			return messages_send($subject,$message,$to->guid,$from->guid);
+			return messages_send($subject,$message,$to->guid,$from->guid,0,false);
 			
 		}
 	
