@@ -13,9 +13,6 @@
 	// Load Elgg engine
 		require_once(dirname(dirname(dirname(__FILE__))) . "/engine/start.php");
 		
-	//gatekeeper
-		gatekeeper();
-		
 	// Get the current page's owner
 		$page_owner = page_owner_entity();
 		if ($page_owner === false || is_null($page_owner)) {
@@ -31,8 +28,7 @@
 			$filter = "newest";
 	
 	// search options
-		$search_name = get_input('search_name');
-		$search_tag = get_input('search_tag');
+		$tag = get_input('tag');
 		
 	//search members
 		$area1 = elgg_view("members/search");
@@ -63,7 +59,15 @@
 			$area2 .= list_entities_by_relationship_count('friend', true);
 			break;
 			case "active":
-			$area2 .= elgg_view("members/online"); //find_active_users(600, $limit, $offset);
+			$area2 .= elgg_view("members/online");
+			break;
+			case "search":
+			set_context('search');
+			$area2 .= list_user_search($tag);
+			break;
+			case "search_tags":
+			$area2 .= trigger_plugin_hook('search','',$tag,"");
+			$area2 .= list_entities_from_metadata("", $tag, "user", "", "", 10, false, false);
 			break;
 			case 'default':
 			$area2 .= list_entities("user","",0,30,false);
