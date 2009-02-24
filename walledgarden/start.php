@@ -25,7 +25,7 @@
 		if(!is_plugin_enabled("custom_index"))
 			register_plugin_hook('index','system','walledgarden_index');
 		// Turn off simple cache if enabled
-		if (function_exists('elgg_view_disable_simplecache') {
+		if (function_exists('elgg_view_disable_simplecache')) {
     		elgg_view_disable_simplecache();
 		}
 
