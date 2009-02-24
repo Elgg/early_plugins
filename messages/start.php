@@ -256,8 +256,6 @@
 			else
 				$counter = 0;
 				
-			system_message(var_export($num_messages,true));
-				
 		    return $counter;
             
         }
