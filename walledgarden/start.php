@@ -25,9 +25,8 @@
 		if(!is_plugin_enabled("custom_index"))
 			register_plugin_hook('index','system','walledgarden_index');
 		// Turn off simple cache if enabled
-		if ($CONFIG->simplecache_enabled) {
-    		datalist_set('simplecache_enabled',0);
-    		$CONFIG->simplecache_enabled = 0;
+		if (function_exists('elgg_view_disable_simplecache') {
+    		elgg_view_disable_simplecache();
 		}
 
 	}
