@@ -13,18 +13,18 @@
 ?>
 
 <div class="contentWrapper notitle">
-<p>
+<p><label>
 	<?php echo elgg_echo('invitefriends:introduction'); ?>
-</p>
-<textarea class="input-textarea" name="emails" ></textarea>
-<p>
+</label>
+<textarea class="input-textarea" name="emails" ></textarea></p>
+<p><label>
 	<?php echo elgg_echo('invitefriends:message'); ?>
-</p>
+</label>
 <textarea class="input-textarea" name="emailmessage" ><?php
 
 	echo sprintf(elgg_echo('invitefriends:message:default'),$CONFIG->site->name);
 
-?></textarea>
+?></textarea></p>
 <?php
 
 	echo elgg_view('input/submit', array('value' => elgg_echo('save')));
