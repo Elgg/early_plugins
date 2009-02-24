@@ -143,8 +143,8 @@ MESSAGING PLUGIN
 	outline: none;
 }
 #notificationstable td.sitetogglefield a.sitetoggleOff {
-	background: url(<?php echo $vars['url']; ?>mod/messages/graphics/icon_notifications_site.gif) no-repeat right 1px;
+	background: url(<?php echo $vars['url']; ?>mod/messages/graphics/icon_notifications_site.gif) no-repeat right 2px;
 }
 #notificationstable td.sitetogglefield a.sitetoggleOn {
-	background: url(<?php echo $vars['url']; ?>mod/messages/graphics/icon_notifications_site.gif) no-repeat right -38px ;
+	background: url(<?php echo $vars['url']; ?>mod/messages/graphics/icon_notifications_site.gif) no-repeat right -36px ;
 }
