@@ -29,7 +29,7 @@
 			
 		} else {
     		
-    		echo elgg_echo("messageboard:none");
+    		echo "<div class='contentWrapper'>" . elgg_echo("messageboard:none") . "</div>";
     		
 		}
 			
