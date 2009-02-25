@@ -253,6 +253,7 @@
 				switch($page[1]) {
 					case "read":		set_input('message',$page[2]);
 										@include(dirname(__FILE__) . "/read.php");
+										return true;
 										break;
 				}
 			// If the URL is just 'messages/username', or just 'messages/', load the standard messages index
