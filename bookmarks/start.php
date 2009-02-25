@@ -74,13 +74,13 @@
 			if (isset($page[1])) {
 				switch($page[1]) {
 					case "read":		set_input('guid',$page[2]);
-										@include(dirname(dirname(dirname(__FILE__))) . "/entities/index.php");
+										@include(dirname(dirname(dirname(__FILE__))) . "/entities/index.php"); return true;
 										break;
-					case "friends":		@include(dirname(__FILE__) . "/friends.php");
+					case "friends":		@include(dirname(__FILE__) . "/friends.php"); return true;
 										break;
-					case "inbox":		@include(dirname(__FILE__) . "/inbox.php");
+					case "inbox":		@include(dirname(__FILE__) . "/inbox.php"); return true;
 										break;
-					case "items":		@include(dirname(__FILE__) . "/index.php");
+					case "items":		@include(dirname(__FILE__) . "/index.php"); return true;
 										break;
 				}
 			// If the URL is just 'bookmarks/username', or just 'bookmarks/', load the standard bookmarks index

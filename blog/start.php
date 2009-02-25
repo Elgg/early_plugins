@@ -132,11 +132,11 @@
 			if (isset($page[1])) {
 				switch($page[1]) {
 					case "read":		set_input('blogpost',$page[2]);
-										include(dirname(__FILE__) . "/read.php");
+										include(dirname(__FILE__) . "/read.php"); return true;
 										break;
-					case "archive":		include(dirname(__FILE__) . "/archive.php");
+					case "archive":		include(dirname(__FILE__) . "/archive.php"); return true;
 										break;
-					case "friends":		include(dirname(__FILE__) . "/friends.php");
+					case "friends":		include(dirname(__FILE__) . "/friends.php"); return true;
 										break;
 				}
 			// If the URL is just 'blog/username', or just 'blog/', load the standard blog index

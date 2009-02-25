@@ -65,8 +65,10 @@
 				switch($page[1]) {
 					case "read":		set_input('statuspost',$page[2]);
 										@include(dirname(__FILE__) . "/read.php");
+										return true;
 										break;
 					case "friends":		// TODO: add friends status page here
+										return true;
 										break;
 				}
 			// If the URL is just 'status/username', or just 'status/', load the standard status index
