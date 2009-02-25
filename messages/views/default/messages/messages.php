@@ -97,7 +97,7 @@
 		
 		<!-- display the message -->
 		<div class="messagebody">
-		<p><?php echo $vars['entity']->description; ?></p>
+		<p><?php echo elgg_view('output/longtext',array('value' => $vars['entity']->description)); ?></p>
 		</div>
 		
 		<!-- display the edit options, reply and delete -->
