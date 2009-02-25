@@ -67,12 +67,10 @@
     <!-- right hand column -->
     <div id="index_right">
         <!-- more content -->
-	    <div id="index_welcome">
-	        <?php
-            	//include a view that plugins can extend
-            	echo elgg_view("index/righthandside");
-            ?>
-        </div>
+	    <?php
+            //include a view that plugins can extend
+            echo elgg_view("index/righthandside");
+        ?>
         <!-- latest members -->
         <div id="index_box">
             <h2><?php echo elgg_echo("custom:members"); ?></h2>
