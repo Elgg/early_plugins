@@ -18,7 +18,7 @@
 		$new_page = true;
 		
 		// bootstrap the access permissions in the entity array so we can use defaults
-		if (defined(ACCESS_DEFAULT)) {
+		if (defined('ACCESS_DEFAULT')) {
 			$vars['entity']->access_id = ACCESS_DEFAULT;
 			$vars['entity']->write_access_id = ACCESS_DEFAULT;
 		} else {

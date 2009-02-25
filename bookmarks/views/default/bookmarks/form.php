@@ -31,7 +31,7 @@
 			if ($address == "previous")
 				$address = $_SERVER['HTTP_REFERER'];
 			$tags = array();
-			if (defined(ACCESS_DEFAULT))
+			if (defined('ACCESS_DEFAULT'))
 				$access_id = ACCESS_DEFAULT;
 			else
 				$access_id = 0;

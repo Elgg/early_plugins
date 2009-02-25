@@ -23,7 +23,7 @@
 			$tags = "";
 			$title = "";
 			$description = "";
-			if (defined(ACCESS_DEFAULT))
+			if (defined('ACCESS_DEFAULT'))
 				$access_id = ACCESS_DEFAULT;
 			else
 				$access_id = 0;
