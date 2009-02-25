@@ -173,7 +173,9 @@ EOT;
 		
 		$.post(drafturl, postdata, function() {
 			var d = new Date();
-			$("span#draftSavedCounter").html(d.getHours() + ":" + d.getMinutes());
+			var mins = d.getMinutes() + '';
+			if (mins.length == 1) mins = '0' + mins;
+			$("span#draftSavedCounter").html(d.getHours() + ":" + mins);
 			if (temppreview == true) {
 				$("form#blogPostForm").attr("action","<?php echo $vars['url']; ?>mod/blog/preview.php");
 				$("form#blogPostForm").submit();
