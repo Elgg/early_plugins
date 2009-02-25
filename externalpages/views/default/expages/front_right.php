@@ -11,17 +11,26 @@
 	 * 
 	 */
 
+<?php
 	 
 	 //get frontpage right code
 		$contents = get_entities("object", "front", 0, "", 1);
-		
-		if($contents){
-			foreach($contents as $c){
-				echo $c->description;
+
+		foreach($contents as $cont){
+			$show = $cont->description;
+		}
+
+		if($show != ''){
+			echo "<div id=\"index_welcome\">";
+
+			if($contents){
+				foreach($contents as $c){
+					echo $c->description;
+				}
+			}else{
+				echo elgg_echo("expages:addcontent");
 			}
-		}else{
-			echo elgg_echo("expages:addcontent");
+			echo "</div>";
 		}
 
 ?>
-
