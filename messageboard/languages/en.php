@@ -15,6 +15,8 @@
 			'messageboard:num_display' => "Number of messages to display",
 			'messageboard:desc' => "This is a message board that you can put on your profile where other users can comment.",
 	
+			'messageboard:user' => "%s's message board",
+	
 			'messageboard:history' => "History",
 			
          /**
