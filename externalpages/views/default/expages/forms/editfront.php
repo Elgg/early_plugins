@@ -43,7 +43,7 @@
 		$form_body = <<<EOT
 
 		<h3 class='settings'>$lefthand</h3>
-		<p>$input_area_left</p>
+		<p>$input_area_left</p><br />
 		<h3 class='settings'>$righthand</h3>
 		<p>$input_area_right</p>
 		
