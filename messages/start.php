@@ -52,7 +52,7 @@
 				register_notification_handler("site", "messages_site_notify_handler");
 				register_plugin_hook('notify:entity:message','object','messages_notification_msg');
 				if (is_callable('register_notification_object'))
-					register_notification_object('object','messages','messages:new');
+					register_notification_object('object','messages',elgg_echo('messages:new'));
 				
 		    // Shares widget
 			  //  add_widget_type('messages',elgg_echo("messages:recent"),elgg_echo("messages:widget:description"));
@@ -105,6 +105,8 @@
 		 */
 		function messages_notification_msg($hook_name, $entity_type, $return_value, $parameters) {
 
+			global $CONFIG;
+			
 			if ($parameters['entity'] instanceof ElggEntity) {
 				
 				if ($parameters['entity']->getSubtype() == 'messages') {
@@ -112,7 +114,7 @@
 						return sprintf(
 									elgg_echo('messages:email:body'),
 									get_loggedin_user()->name,
-									$message_contents,
+									strip_tags($parameters['entity']->description),
 									$CONFIG->wwwroot . "pg/messages/" . $user->username,
 									get_loggedin_user()->name,
 									$CONFIG->wwwroot . "mod/messages/send.php?send_to=" . get_loggedin_user()->guid

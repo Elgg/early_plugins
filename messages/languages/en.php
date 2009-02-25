@@ -29,6 +29,8 @@
             'messages:yours' => "Your message",
             'messages:answer' => "Reply",
 			
+			'messages:new' => 'New message',
+	
 			'notification:method:site' => 'Site',
 	
 			'messages:error' => 'There was a problem saving your message. Please try again.',
