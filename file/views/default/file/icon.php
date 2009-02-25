@@ -29,6 +29,7 @@
 	{
 		case 'image/jpg' 	:
 		case 'image/jpeg' 	:
+		case 'image/pjpeg' 	:
 		case 'image/png' 	:
 		case 'image/gif' 	:
 		case 'image/bmp' 	: 
@@ -42,11 +43,13 @@
 				
 			} else 
 			{
-				if ($size == 'large') {
-					echo "<img src=\"{$CONFIG->wwwroot}mod/file/graphics/icons/general_lrg.gif\" border=\"0\" />";
+				if (!empty($mime) && elgg_view_exists("file/icon/{$mime}", $vars)) {
+					echo elgg_view("file/icon/{$mime}", $vars);
+				} else if (!empty($mime) && elgg_view_exists("file/icon/" . substr($mime,0,strpos($mime,'/')) . "/default", $vars)) {
+					echo elgg_view("file/icon/" . substr($mime,0,strpos($mime,'/')) . "/default", $vars);
 				} else {
 					echo "<img src=\"{$CONFIG->wwwroot}mod/file/graphics/icons/general.gif\" border=\"0\" />";
-				}
+				}	
 			}
 			
 		break;
@@ -57,7 +60,7 @@
 				echo elgg_view("file/icon/" . substr($mime,0,strpos($mime,'/')) . "/default", $vars);
 			} else {
 				echo "<img src=\"{$CONFIG->wwwroot}mod/file/graphics/icons/general.gif\" border=\"0\" />";
-			}	 
+			} 
 		break;
 	}
 
