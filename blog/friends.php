@@ -32,8 +32,12 @@
 	// Get a list of blog posts
 		$area2 .= list_user_friends_objects($page_owner->getGUID(),'blog',10,false);
 		
+	// Get categories, if they're installed
+		global $CONFIG;
+		$area3 = elgg_view('blog/categorylist',array('baseurl' => $CONFIG->wwwroot . 'search/?subtype=blog&owner_guid='.$page_owner->guid.'&friends='.$page_owner->guid.'&tagtype=universal_categories&tag='));
+		
 	// Display them in the page
-        $body = elgg_view_layout("two_column_left_sidebar", '', $area1 . $area2);
+        $body = elgg_view_layout("two_column_left_sidebar", '', $area1 . $area2, $area3);
 		
 	// Display page
 		page_draw(elgg_echo('blog:friends'),$body);

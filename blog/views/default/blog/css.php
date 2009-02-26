@@ -165,10 +165,9 @@
 	cursor: pointer;
 	float:right;
 }
-#blog_edit_page .preview_button a:hover {
-	background:#4690D6;
-	color:white;
-	text-decoration: none;
-	border: 1px solid #4690D6;
+.blog_categories #content_area_user_title h2 {
+	font-size: 1em;
 }
-
+.blog_categories li {
+	list-style: none;
+}
