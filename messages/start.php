@@ -151,9 +151,10 @@
 		 * @param int $from Optionally, the GUID of the user to send from
 		 * @param int $reply The GUID of the message to reply from (default: none)
 		 * @param true|false $notify Send a notification (default: true)
+		 * @param true|false $add_to_sent If true (default), will add a message to the sender's 'sent' tray
 		 * @return true|false Depending on success
 		 */
-		function messages_send($subject, $body, $send_to, $from = 0, $reply = 0, $notify = true) {
+		function messages_send($subject, $body, $send_to, $from = 0, $reply = 0, $notify = true, $add_to_sent = true) {
 			
 				global $messagesendflag;
 				$messagesendflag = 1;
@@ -201,12 +202,15 @@
 					$success = $message_to->save();
 					
 				// Save the copy of the message that goes to the sender
-					$success2 = $message_sent->save();
+					if ($add_to_sent) $success2 = $message_sent->save();
 					
 					$message_to->access_id = ACCESS_PRIVATE;
 					$message_to->save();
-					$message_sent->access_id = ACCESS_PRIVATE;
-					$message_sent->save();
+					
+					if ($add_to_sent) {
+						$message_sent->access_id = ACCESS_PRIVATE;
+						$message_sent->save();
+					}
 					
 			    // if the new message is a reply then create a relationship link between the new message
 			    // and the message it is in reply to
@@ -303,7 +307,7 @@
 			if (!$to)
 				throw new NotificationException(sprintf(elgg_echo('NotificationException:MissingParameter'), 'to'));
 				
-			return messages_send($subject,$message,$to->guid,$from->guid,0,false);
+			return messages_send($subject,$message,$to->guid,$from->guid,0,false,false);
 			
 		}
 	
