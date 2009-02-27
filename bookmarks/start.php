@@ -18,7 +18,7 @@
 			
 			// Set up menu for logged in users
 				if (isloggedin()){
-					add_menu(elgg_echo('bookmarks'), $CONFIG->wwwroot . "pg/bookmarks/" . $_SESSION['user']->username);	
+					add_menu(elgg_echo('bookmarks'), $CONFIG->wwwroot . "pg/bookmarks/" . $_SESSION['user']->username . '/items');	
 			// And for logged out users
 				} else {
 					add_menu(elgg_echo('bookmarks'), $CONFIG->wwwroot . "mod/bookmarks/everyone.php");
