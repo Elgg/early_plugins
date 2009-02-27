@@ -80,20 +80,19 @@
 		    	?>
 			</p>
 			<!-- display tags -->
-			<p class="tags">
 				<?php
 	
-					echo elgg_view('output/tags', array('tags' => $vars['entity']->tags));
+					$tags = elgg_view('output/tags', array('tags' => $vars['entity']->tags));
+					if (!empty($tags)) {
+						echo '<p class="tags">' . $tags . '</p>';
+					}
+				
+					$categories = elgg_view('categories/view', $vars);
+					if (!empty($categories)) {
+						echo '<p class="categories">' . $categories . '</p>';
+					}
 				
 				?>
-			</p>
-			<p class="categories">
-				<?php
-	
-					echo elgg_view('categories/view', $vars);
-				
-				?>
-			</p>
 			<div class="clearfloat"></div>
 			<div class="blog_post_body">
 
