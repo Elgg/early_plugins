@@ -21,6 +21,7 @@
 			$access_id = $vars['entity']->access_id;
 			$shares = $vars['entity']->shares;
 			$owner = $vars['entity']->getOwnerEntity();
+			$highlight = 'default';
 			
 		} else {
 			
@@ -28,9 +29,12 @@
 			$title = get_input('title',"");
 			$description = "";
 			$address = get_input('address',"");
+			$highlight = 'all';
+			
 			if ($address == "previous")
 				$address = $_SERVER['HTTP_REFERER'];
 			$tags = array();
+			
 			if (defined('ACCESS_DEFAULT'))
 				$access_id = ACCESS_DEFAULT;
 			else
@@ -102,7 +106,7 @@
 
 				//echo elgg_view('bookmarks/sharing',array('shares' => $shares, 'owner' => $owner));
 				if ($friends = get_entities_from_relationship('friend',$owner->getGUID(),false,'user','', 0, "", 9999)) {
-					echo elgg_view('friends/picker',array('entities' => $friends, 'internalname' => 'shares'));
+					echo elgg_view('friends/picker',array('entities' => $friends, 'internalname' => 'shares', 'highlight' => $highlight));
 				}
 			
 			?>
