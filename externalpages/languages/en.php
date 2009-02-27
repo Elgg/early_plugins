@@ -19,6 +19,7 @@
 			'expages:lefthand' => "The lefthand information pane",
 			'expages:righthand' => "The righthand information pane",
 			'expages:addcontent' => "You can add content here via your admin tools. Look for the external pages link under admin.",
+			'item:object:front' => 'Front page items',
 	
 		/**
 		 * Status messages
