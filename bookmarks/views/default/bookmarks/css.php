@@ -13,8 +13,7 @@
 ?>
 
 .sharing_item {
-	margin-bottom: 50px;
-	border-bottom:1px solid #AAAAAA;
+
 }
 
 .sharing_item_owner {
@@ -71,9 +70,11 @@
 
 /* SHARES WIDGET VIEW */
 .shares_widget_wrapper {
-	background-color: #eeeeee;
-	margin:0 0 10px 0;
+	background-color: white;
+	margin:0 10px 5px 10px;
 	padding:5px;
+	-webkit-border-radius: 8px; 
+	-moz-border-radius: 8px;
 }
 .shares_widget_icon {
 	float: left;

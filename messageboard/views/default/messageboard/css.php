@@ -1,7 +1,7 @@
 <?php
 
 	/**
-	 * Elgg Messageboard CSS extender
+	 * Elgg Messageboard CSS extender 
 	 * 
 	 * @package ElggMessageBoard
 	 * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License version 2
@@ -11,22 +11,24 @@
 	 */
 
 ?>
-/*-------------------------------
-MESSAGEBOARD PLUGIN
--------------------------------*/
+
 /* input msg area */
 #mb_input_wrapper {
-	border:1px dotted #cccccc;
-	background:#f5f5f5;
-	padding:4px;
+	margin:0 10px 5px 10px;
+	padding:5px;
+	background: white;
+	-webkit-border-radius: 8px; 
+	-moz-border-radius: 8px;
 }
 
 #mb_input_wrapper .input_textarea {
-	width:94%;
+	width:675px;
+}
+.collapsable_box_content #mb_input_wrapper .input_textarea {
+	width:259px;
 }
 .message_item_timestamp {
 	font-size:90%;
-	color:#666666;
 	padding:10px 0 0 0;
 }
 p.message_item_timestamp {
@@ -34,24 +36,32 @@ p.message_item_timestamp {
 }
 /* wraps each message */
 .messageboard {
-	margin:10px 0 10px 0;
-    background:#EEEEEE;
+	margin:0 10px 5px 10px;
+	padding:0;
+	background: white;
+	-webkit-border-radius: 8px; 
+	-moz-border-radius: 8px;
 }
 .messageboard .message_sender {
 	float:left;
 	margin: 5px 10px 0 5px;
 }
-* html .messageboard .message_sender { margin: 5px 10px 0 2px; } /* IE6 */
-*+html .messageboard .message_sender {  } /* IE7 */
+/* IE6 */
+* html .messageboard { width: 280px; } 
+* html #two_column_left_sidebar_maincontent .messageboard { width: 667px; }
+* html .messageboard .message_sender { margin: 5px 10px 0 2px; }
+* html #mb_input_wrapper .input_textarea { width:645px; }
 
 .messageboard .message p {
 	line-height: 1.2em;
-	background:#fffcd9;
-	margin:0 4px 4px 4px;
+	background:#dedede;
+	margin:0 6px 4px 6px;
 	padding:4px;
-	border-bottom:1px dotted #cccccc;
+	-webkit-border-radius: 4px; 
+	-moz-border-radius: 4px;
 	overflow-y:hidden;
 	overflow-x:auto;
+	color:#333333;
 }
 
 .message_buttons {
@@ -74,6 +84,7 @@ p.message_item_timestamp {
 .messageboard .delete_message a:hover {
 	background-position: 0 -16px;
 }
+
 
 
 

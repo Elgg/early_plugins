@@ -5,6 +5,6 @@
 	} else {
 		$ext = '';
 	}
-	echo "{$CONFIG->wwwroot}mod/theme_new_elgg_default/graphics/file_icons/general{$ext}.gif";
+	echo "{$CONFIG->wwwroot}mod/file/graphics/file_icons/general{$ext}.gif";
 
 ?>

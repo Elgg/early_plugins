@@ -15,6 +15,9 @@
 /*-------------------------------
 MESSAGING PLUGIN
 -------------------------------*/
+#messages {
+	margin:0 10px 0 10px;
+}
 .actiontitle {
 	font-weight: bold;
 	font-size: 110%;
@@ -24,16 +27,34 @@ MESSAGING PLUGIN
 #messages td {
 	text-align: left;
 	vertical-align:middle;
-	border-bottom: 1px solid #d6dbd2;
 	padding: 5px;
 }
+#messages .message_sent {
+	-webkit-border-radius: 5px; 
+	-moz-border-radius: 5px;
+	margin-bottom: 5px;
+	background: white;
+	border:1px solid #cccccc; 	
+}
+#messages .message_notread {
+	-webkit-border-radius: 5px; 
+	-moz-border-radius: 5px;
+	margin-bottom: 5px;
+	background: #F7DAD8;
+	border:1px solid #ff6c7c; 
+}
+#messages .message_read {
+	-webkit-border-radius: 5px; 
+	-moz-border-radius: 5px;
+	margin-bottom: 5px;
+	background: white;
+	border:1px solid #cccccc; 
+}
 #messages .message_notread td {
-	 background: #F7DAD8; 
-	 border-bottom: 1px solid #999999;
+
 }
 #messages .message_read td {
-	 background: #ffffff; 
-	 border-bottom: 1px solid #d6dbd2;
+
 }
 
 #messages .delete_msg a {
@@ -53,7 +74,8 @@ MESSAGING PLUGIN
 * html #messages .delete_msg a { background-position: right 4px; }
 * html #messages .delete_msg a:hover { background-position: right 4px; } 
 
-#messages .usericon {
+#messages .usericon,
+#messages .groupicon {
 	float: left;
 	margin: 0 15px 0 0;
 }
@@ -81,9 +103,12 @@ MESSAGING PLUGIN
 
 .messages_single_icon  {
 	float: left;
+	width:110px;
+	overflow:hidden;
 }
 
-.messages_single_icon .usericon {
+.messages_single_icon .usericon,
+.messages_single_icon .groupicon {
 	float: left;
 	margin: 0 10px 10px 0;
 }
@@ -100,22 +125,7 @@ MESSAGING PLUGIN
 }
 
 /* drop down message reply form */
-#message_reply_form {
-	display:none;
-
-}
-/* when displaying original msg in reply view */
-.previous_message {
-    background:#efefef;
-    border:1px solid #ccc;
-    padding:4px;
-    margin:0 0 20px 0;
-}
-.previous_message p {
-    padding:0;
-    margin:0;
-    font-size: 120%;
-}
+#message_reply_form { display:none; }
 
 .new_messages_count {
 	color:#666666;
@@ -124,6 +134,37 @@ MESSAGING PLUGIN
 #message_reply_editor #message_tbl {
 	width:680px !important;
 }
+/* IE6 */
+* html #message_reply_editor #message_tbl { width:676px !important;}
+
+#messages_return {
+	margin:4px 0 4px 10px;
+}
+#messages_return p {
+	margin:0;
+}
+.messages_single {
+	background: white;
+	-webkit-border-radius: 8px; 
+	-moz-border-radius: 8px;
+	margin:0 10px 10px 10px;
+	padding:10px;	
+}
+/* when displaying original msg in reply view */
+.previous_message {
+    background:#dedede;
+	-webkit-border-radius: 5px; 
+	-moz-border-radius: 5px;
+    padding:10px;
+    margin:0 0 20px 0;
+}
+.previous_message p {
+    padding:0;
+    margin:0 0 5px 0;
+    font-size: 100%;
+}
+
+
 
 
 #notificationstable td.sitetogglefield {
@@ -132,7 +173,7 @@ MESSAGING PLUGIN
 	vertical-align: middle;
 }
 #notificationstable td.sitetogglefield input {
-	margin-right:16px;
+	margin-right:36px;
 	margin-top:5px;
 }
 #notificationstable td.sitetogglefield a {
@@ -146,5 +187,11 @@ MESSAGING PLUGIN
 	background: url(<?php echo $vars['url']; ?>mod/messages/graphics/icon_notifications_site.gif) no-repeat right 2px;
 }
 #notificationstable td.sitetogglefield a.sitetoggleOn {
-	background: url(<?php echo $vars['url']; ?>mod/messages/graphics/icon_notifications_site.gif) no-repeat right -36px ;
+	background: url(<?php echo $vars['url']; ?>mod/messages/graphics/icon_notifications_site.gif) no-repeat right -36px;
 }
+
+
+
+
+
+

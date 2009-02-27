@@ -1,7 +1,7 @@
 <?php
 
 	/**
-	 * Elgg status CSS extender
+	 * Elgg status CSS extender 
 	 * 
 	 * @package ElggStatus
 	 * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License version 2
@@ -18,13 +18,14 @@
 
 	font: 11px/100% Arial, Helvetica, sans-serif;
 	font-weight: bold;
-	color: #999999;
-	background:#dddddd;
-	border: 1px solid #999999;
-	-webkit-border-radius: 3px; 
-	-moz-border-radius: 3px;
+	color: #cccccc;
+	background:#666666;
+	border: none;
+	-webkit-border-radius: 5px; 
+	-moz-border-radius: 5px;
 	width: auto;
-	padding:1px 3px 1px 3px;
+	height:20px;
+	padding:2px 3px 2px 3px;
 	margin:5px 0 5px 0;
 	cursor: pointer;
 
@@ -32,27 +33,29 @@
 
 #status_clear #status_clear_button:hover,
 #status_update_form #status_cancel_button:hover {
-	color: #ffffff;
-	background:#0054a7;
+	color: white;
+	background:black;
 }
 
 /* status save button */
 #status_update_form #status_save_button {
 	font: 11px/100% Arial, Helvetica, sans-serif;
 	font-weight: bold;
-	color: #ffffff;
-	background:#4690d6;
-	border: 1px solid #4690d6;
-	-webkit-border-radius: 3px; 
-	-moz-border-radius: 3px;
+	color: white;
+	background:#333333; 
+	border: none;
+	-webkit-border-radius: 5px; 
+	-moz-border-radius: 5px;
 	width: auto;
-	padding: 1px 3px 1px 3px;
+	height:20px;
+	padding: 2px 3px 2px 3px;
 	margin:5px 10px 5px 0;
 	cursor: pointer;
 }
 
 #status_update_form #status_save_button:hover {
-	background: #0054a7;
+	background: black;
+	color:white; 
 }
 
 /* current displayed status message */
@@ -61,21 +64,21 @@
 	font-size:1.2em;
 	line-height:1.2em;
 	font-weight:bold;
-	color:#666666;
 	padding:3px;
 	margin:0;	
 }
-
+#status_widget_container {
+	-webkit-border-radius: 8px; 
+	-moz-border-radius: 8px;
+	background:white;
+	margin:0 10px 5px 10px;
+	padding:5px;
+}
 /* widget status box - input */
 .widget_status_statusmessage {
-/*
-	font-size:1.2em;
-	line-height:1.2em;
-	font-weight:bold;
-*/
-	color:#666666;
-	background:#fdffc3;
-	padding:3px;
+	background:#bbdaf7;
+	-webkit-border-radius: 4px; 
+	-moz-border-radius: 4px;
 }
 /* widget status box - time */
 .widget_status_messagetimestamp {
@@ -106,7 +109,7 @@
 	font-size:1.2em;
 	line-height:1.2em;
 	font-weight:bold;
-	color:#666666;
+	color:#666666; 
 	padding:3px;
 	width:274px;
 	height:66px;
@@ -117,21 +120,27 @@
 
 /* wraps each status msg */
 .status_message {
-	border-bottom: 1px solid #aaaaaa;
-	margin:10px 0 10px 0;
+	-webkit-border-radius: 8px; 
+	-moz-border-radius: 8px;
+	background:white;
+	margin:0 10px 5px 10px;
+	padding:5px;
 }
 /* current status message */
 .status_statusmessage p {
 	margin:0;
-	color:#666666;
-	background:#fdffc3;
-	padding:10px;
+	background:#bbdaf7;
+	padding:5px;
 	font-size: 1.5em;
 	line-height: 1.1em;
+	-webkit-border-radius: 8px; 
+	-moz-border-radius: 8px;
 }
 /* previous status messages */
 .status_statusmessage_history p {
 	margin:0;
+	font-size: 1.1em;
+	line-height: 1.3em;
 }
 /* status message timestamp */
 .widget_status_messagetimestamp p {
@@ -153,8 +162,12 @@
 	line-height:1.1em;
 }
 .friends_status_message {
-	height:29px;
+	height:20px;
 	overflow:hidden;
+}
+.friends_status_message p {
+	margin:4px 0 0 0;
+	color:#999999;
 }
 .status_timestamp {
 	color:#666666;

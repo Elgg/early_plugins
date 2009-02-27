@@ -1,3 +1,17 @@
+<?php
+
+	/**
+	 * Elgg embed CSS
+	 * 
+	 * @package embed
+	 * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License version 2
+	 * @author Curverider <info@elgg.com>
+	 * @copyright Curverider Ltd 2008-2009
+	 * @link http://elgg.org/
+	 */
+
+?>
+
 #facebox {
 	position: absolute;
 	top: 0;
@@ -5,26 +19,20 @@
 	z-index: 100;
 	text-align: left;
 }
-
 #facebox .popup {
 	position: relative;
 }
-
 #facebox .body {
 	padding: 10px;
-	background: #ffffff;
+	background: white;
 	width: 730px;
-  
 	-webkit-border-radius: 12px; 
 	-moz-border-radius: 12px;
-	border:1px solid #ffffff;
 }
-
 #facebox .loading {
 	text-align: center;
 	padding: 100px 10px 100px 10px;
 }
-
 #facebox .image {
 	text-align: center;
 }
@@ -45,7 +53,6 @@
 	-moz-outline: none;
 	outline: none;
 }
-
 #facebox_overlay {
 	position: fixed;
 	top: 0px;
@@ -53,11 +60,9 @@
 	height:100%;
 	width:100%;
 }
-
 .facebox_hide {
 	z-index:-100;
 }
-
 .facebox_overlayBG {
 	background-color: #000000;
 	z-index: 99;
@@ -70,9 +75,8 @@
 
 
 /* EMBED MEDIA TABS */
-
 #embed_media_tabs {
-	margin:10px 0 20px 10px;
+	margin:10px 0 0 10px;
 	padding:0;
 }
 #embed_media_tabs ul {
@@ -89,48 +93,64 @@
 	font-size:1.35em;
 	text-align: center;
 	text-decoration: none;
-	color:#999999;
-	background: #efefef;
+	color:#b6b6b6;
+	background: white;
 	display: block;
 	padding: 0 10px 0 10px;
 	margin:0 10px 0 10px;
 	height:25px;
 	width:auto;
-	border-top:2px solid #efefef;
-	border-left:2px solid #efefef;
-	border-right:2px solid #efefef;
+	border-top:2px solid #dedede;
+	border-left:2px solid #dedede;
+	border-right:2px solid #dedede;
 	-moz-border-radius-topleft: 8px;
 	-moz-border-radius-topright: 8px;
 	-webkit-border-top-left-radius: 8px;
 	-webkit-border-top-right-radius: 8px;
 }
+/* IE6 fix */
+* html #embed_media_tabs ul li a { display: inline; }
+
+#embed_media_tabs ul li a:hover {
+	background:#b6b6b6;
+	color:white;
+	border-top:2px solid #b6b6b6;
+	border-left:2px solid #b6b6b6;
+	border-right:2px solid #b6b6b6;
+}
 #embed_media_tabs ul li a.embed_tab_selected {
-	border-top:2px solid #cccccc;
-	border-left:2px solid #cccccc;
-	border-right:2px solid #cccccc;
+	border-top:2px solid #dedede;
+	border-left:2px solid #dedede;
+	border-right:2px solid #dedede;
 	-webkit-border-top-left-radius: 8px;
 	-webkit-border-top-right-radius: 8px;
 	-moz-border-radius-topleft: 8px;
 	-moz-border-radius-topright: 8px;
-	background: white;
-	color:#4690d6;
+	background: #dedede;
+	color:#666666;
 	position: relative;
-	top: 2px;
+	/* top: 2px; - only needed if selected tab needs to sit over a border */
 }
 
 #mediaUpload,
 #mediaEmbed {
-	margin:0 10px 10px 10px;
-	padding:15px;
-	border:2px solid #ccc;
+	margin:0 5px 10px 5px;
+	padding:10px;
+	border:2px solid #dedede;
 	-webkit-border-radius: 8px;
 	-moz-border-radius: 8px;
+	background: #dedede;
+}
+#mediaEmbed .search_listing {
+	margin:0 0 5px 0;
 }
 
 h1.mediaModalTitle {
-	border-bottom:1px solid #666666;
-	font-size:1.6em;
-	padding-bottom:3px;
+	color:#0054A7;
+	font-size:1.35em;
+	line-height:1.2em;
+	margin:0 0 0 8px;
+	padding:5px;
 }
 
 #mediaEmbed .pagination,
@@ -142,17 +162,19 @@ h1.mediaModalTitle {
 	font-size:120%;
 }
 #mediaEmbed p.embedInstructions {
-	margin:10px 0 0 0;
+	margin:10px 0 5px 0;
 }
 a.embed_media {
 	margin:0;
 	float:right;
 	display:block;
 	text-align: right;
-	font-size:0.8em;
+	font-size:1.0em;
 	font-weight: normal;
 }
-
+label a.embed_media {
+	font-size:0.8em;
+}
 
 
 

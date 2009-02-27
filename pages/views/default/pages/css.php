@@ -81,14 +81,17 @@
 .pagesTreeContainer {
 		margin:0;
 		min-height: 200px;
-	}
-	
-/* delete, Dave's test addition */
+}
 
 #pages_page .strapline {
     text-align:right;
     border-top:1px solid #efefef;
     margin:10px 0 10px 0;
+    color:#666666;
+}
+#pages_page .categories {
+    border:none !important;
+    padding:0 !important;
 }
 
 #pages_page .tags {
@@ -105,4 +108,31 @@
 	margin: 10px 0 10px 10px;
 	float:right;
 }
+
+.pageswelcome p {
+	margin:0 0 5px 0;
+}
+
+#sidebar_page_tree {
+	background:white;
+	-webkit-border-radius: 8px; 
+	-moz-border-radius: 8px;
+    padding:10px;
+    margin:0 10px 10px 10px;
+}
+#sidebar_page_tree h3 {
+	background: none;
+	border-top: none;
+	border-bottom: 1px solid #cccccc;
+	font-size:1.25em;
+	line-height:1.2em;
+	margin:0 0 5px 0;
+	padding:0 0 5px 5px;
+	color:#0054A7;
+}
+
+/* IE6 */
+* html #pages_welcome_tbl { width:676px !important;}
+
+
 
