@@ -159,6 +159,13 @@
 				global $messagesendflag;
 				$messagesendflag = 1;
 				
+				global $messages_pm;
+				if ($notify) {
+					$messages_pm = 1;
+				} else {
+					$messages_pm = 0;
+				}
+				
 			// If $from == 0, set to current user
 					if ($from == 0)
 						$from = (int) get_loggedin_user()->guid;
@@ -218,9 +225,9 @@
 		    	        $create_relationship = add_entity_relationship($message_sent->guid, "reply", $reply);		    	        
 			        }
 			        
-			        /*
+			        
 			        global $CONFIG;
-					//$message_contents = strip_tags($body);
+					$message_contents = strip_tags($body);
 					if ($send_to != get_loggedin_user() && $notify)
 					notify_user($send_to, get_loggedin_user(), elgg_echo('messages:email:subject'), 
 						sprintf(
@@ -231,8 +238,7 @@
 									get_loggedin_user()->name,
 									$CONFIG->wwwroot . "mod/messages/send.php?send_to=" . get_loggedin_user()->guid
 								)
-			);
-					*/
+					);
 					
 			    	$messagesendflag = 0;    
 			        return $success;
@@ -307,7 +313,10 @@
 			if (!$to)
 				throw new NotificationException(sprintf(elgg_echo('NotificationException:MissingParameter'), 'to'));
 				
-			return messages_send($subject,$message,$to->guid,$from->guid,0,false,false);
+			global $messages_pm;
+			if (!$messages_pm)
+				return messages_send($subject,$message,$to->guid,$from->guid,0,false,false);
+			else return true;
 			
 		}
 	
