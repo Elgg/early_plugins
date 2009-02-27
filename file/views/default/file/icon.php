@@ -48,7 +48,7 @@
 				} else if (!empty($mime) && elgg_view_exists("file/icon/" . substr($mime,0,strpos($mime,'/')) . "/default", $vars)) {
 					echo elgg_view("file/icon/" . substr($mime,0,strpos($mime,'/')) . "/default", $vars);
 				} else {
-					echo "<img src=\"{$CONFIG->wwwroot}mod/file/graphics/icons/general.gif\" border=\"0\" />";
+					echo "<img src=\"". elgg_view('file/icon/default',$vars) ."\" border=\"0\" />";
 				}	
 			}
 			
@@ -59,7 +59,7 @@
 			} else if (!empty($mime) && elgg_view_exists("file/icon/" . substr($mime,0,strpos($mime,'/')) . "/default", $vars)) {
 				echo elgg_view("file/icon/" . substr($mime,0,strpos($mime,'/')) . "/default", $vars);
 			} else {
-				echo "<img src=\"{$CONFIG->wwwroot}mod/file/graphics/icons/general.gif\" border=\"0\" />";
+				echo "<img src=\"". elgg_view('file/icon/default',$vars) ."\" border=\"0\" />";
 			} 
 		break;
 	}
