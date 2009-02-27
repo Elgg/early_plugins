@@ -10,8 +10,6 @@
 	 * @link http://elgg.com/
 	 * 
 	 */
-
-<?php
 	 
 	 //get frontpage right code
 		$contents = get_entities("object", "front", 0, "", 1);
