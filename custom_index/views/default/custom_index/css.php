@@ -34,7 +34,7 @@
 	-webkit-border-radius: 8px; 
 }
 #index_welcome #login-box {
-	margin:0 0 10px 0;
+	margin:5px 0 10px 0;
 	padding:0 0 10px 0;
 	background: #dedede;
 	-webkit-border-radius: 8px; 

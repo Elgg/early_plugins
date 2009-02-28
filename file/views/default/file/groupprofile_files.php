@@ -62,7 +62,7 @@ $('a.show_file_desc').click(function () {
 	}
 
 ?>
-<br class="clearfloat" />
+<div class="clearfloat" /></div>
 </div>
 
 <?php
