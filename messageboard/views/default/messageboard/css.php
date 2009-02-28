@@ -51,6 +51,10 @@ p.message_item_timestamp {
 * html #two_column_left_sidebar_maincontent .messageboard { width: 667px; }
 * html .messageboard .message_sender { margin: 5px 10px 0 2px; }
 * html #mb_input_wrapper .input_textarea { width:645px; }
+/* IE7 */
+*:first-child+html .messageboard { width: 280px; } 
+*:first-child+html #two_column_left_sidebar_maincontent .messageboard { width: 698px; }
+*:first-child+html .messageboard .message_sender { margin: 5px 10px 0 2px; }
 
 .messageboard .message p {
 	line-height: 1.2em;
