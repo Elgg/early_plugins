@@ -20,8 +20,8 @@
 				echo $c->title; // title is the left hand content
 			}
 		}else{
-			echo elgg_echo("expages:addcontent");
+			echo "<p>" . elgg_echo("expages:addcontent") . "</p>";
 		}
-
+		
 ?>
 
