@@ -60,7 +60,7 @@
 		$form_body = <<<EOT
 
 		<h3 class='settings'>$external_page_title</h3>
-		<p>$input_area</p>
+		<p class='longtext_editarea'>$input_area</p>
 		<p>
 			$tag_label
 			$tag_input

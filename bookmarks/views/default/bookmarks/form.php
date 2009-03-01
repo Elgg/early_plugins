@@ -74,9 +74,10 @@
 				?>
 			</label>
 		</p>
-		<p>
+		<p class="longtext_editarea">
 			<label>
 				<?php 	echo elgg_echo('description'); ?>
+				<br />
 				<?php
 
 						echo elgg_view('input/longtext',array(

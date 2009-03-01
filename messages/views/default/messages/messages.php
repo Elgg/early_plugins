@@ -129,7 +129,7 @@
 			<form action="<?php echo $vars['url']; ?>action/messages/send" method="post" name="messageForm">
 				<!-- populate the title space with the orginal message title, inserting re: before it -->						        
 				<p><label><?php echo elgg_echo("messages:title"); ?>: <br /><input type='text' name='title' class="input-text" value='RE: <?php echo $vars['entity']->title; ?>' /></label></p>
-				<p><label><?php echo elgg_echo("messages:message"); ?>: <br />
+				<p class="longtext_editarea"><label><?php echo elgg_echo("messages:message"); ?>:</label></p>
 				<div id="message_reply_editor">
 				<?php
 
@@ -139,7 +139,7 @@
 													));
 			
 		        ?></div>
-				</label></p>
+				
 				<p>
 	        			<?php
                 

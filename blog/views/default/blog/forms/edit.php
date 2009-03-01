@@ -136,7 +136,7 @@ EOT;
 			<label>$title_label</label><br />
                         $title_textbox
 		</p>
-		<p>
+		<p class='longtext_editarea'>
 			<label>$text_label</label><br />
                         $text_textarea
 		</p>

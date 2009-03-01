@@ -28,7 +28,7 @@
 <div class="contentWrapper">
 <form action="<?php echo $vars['url']; ?>action/pages/editwelcome" method="post">
 
-    <p>
+    <p class="longtext_editarea">
 		<label>
 			<?php echo elgg_view("input/longtext",array(
 															'internalname' => "pages_welcome",

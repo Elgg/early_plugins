@@ -64,7 +64,7 @@
 	    ?>
 	    
 		<p><label><?php echo elgg_echo("messages:title"); ?>: <br /><input type='text' name='title' value='' class="input-text" /></label></p>
-		<p><label><?php echo elgg_echo("messages:message"); ?>: <br />
+		<p class="longtext_editarea"><label><?php echo elgg_echo("messages:message"); ?>: <br />
 		<?php
 
 				    echo elgg_view("input/longtext", array(

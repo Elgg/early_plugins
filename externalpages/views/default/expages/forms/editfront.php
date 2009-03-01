@@ -43,9 +43,9 @@
 		$form_body = <<<EOT
 
 		<h3 class='settings'>$lefthand</h3>
-		<p>$input_area_left</p><br />
+		<p class='longtext_editarea'>$input_area_left</p><br />
 		<h3 class='settings'>$righthand</h3>
-		<p>$input_area_right</p>
+		<p class='longtext_editarea'>$input_area_right</p>
 		
 			$hidden_guid
 			<br />
