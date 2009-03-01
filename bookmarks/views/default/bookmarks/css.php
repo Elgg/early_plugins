@@ -60,6 +60,7 @@
 }
 .sharing_item_address a:hover {
 	background: #0054a7;
+	border: 1px solid #0054a7;
 	text-decoration: none;
 }
 .sharing_item_controls p {
