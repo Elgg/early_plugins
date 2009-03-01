@@ -65,10 +65,6 @@
 
 <?php
 		
-	} else {
-		
-		echo "<p>" . elgg_echo("file:none") . "</p>";
-		
 	}
 
 ?>
