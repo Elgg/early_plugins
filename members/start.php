@@ -15,10 +15,7 @@
     		
     		// Load system configuration
 				global $CONFIG;
-				
-			// Load the language file
-				register_translations($CONFIG->pluginspath . "members/languages/");
-				
+								
 				extend_view('css','members/css');
 				
 				
