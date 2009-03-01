@@ -53,7 +53,7 @@
 	//get the correct view based on filter
 		switch($filter){
 			case "newest":
-			$area2 .= list_entities("user","",0,30,false);
+			$area2 .= list_entities("user","",0,10,false);
 			break;
 			case "pop":
 			$area2 .= list_entities_by_relationship_count('friend', true);
@@ -70,7 +70,7 @@
 			$area2 .= list_entities_from_metadata("", $tag, "user", "", "", 10, false, false);
 			break;
 			case 'default':
-			$area2 .= list_entities("user","",0,30,false);
+			$area2 .= list_entities("user","",0,10,false);
 			break;
 		}
 		
