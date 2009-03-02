@@ -15,7 +15,11 @@
 		if (isset($vars['entity'])) {
 			
 			//display comments link?
-			$comments_on = $vars['entity']->comments_on;
+			if ($vars['entity']->comments_on == 'Off') {
+				$comments_on = false;
+			} else {
+				$comments_on = true;
+			}
 			
 			if (get_context() == "search" && $vars['entity'] instanceof ElggObject) {
 				

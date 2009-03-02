@@ -19,7 +19,11 @@
 			$title = $vars['entity']->title;
 			$body = $vars['entity']->description;
 			$tags = $vars['entity']->tags;
-			$comments_on = $vars['entity']->comments_on;
+			if ($vars['entity']->comments_on == 'Off') {
+				$comments_on = false;
+			} else {
+				$comments_on = true;
+			}
 			$access_id = $vars['entity']->access_id;
 		} else  {
 			$title = elgg_echo("blog:addpost");

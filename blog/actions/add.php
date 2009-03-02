@@ -21,7 +21,7 @@
 		$body = get_input('blogbody');
 		$tags = get_input('blogtags');
 		$access = get_input('access_id');
-		$comments_on = get_input('comments_select');
+		$comments_on = get_input('comments_select','Off');
 
 	// Cache to the session
 		$_SESSION['user']->blogtitle = $title;

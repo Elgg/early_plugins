@@ -22,7 +22,7 @@
 		$body = get_input('blogbody');
 		$access = get_input('access_id');
 		$tags = get_input('blogtags');
-		$comments_on = get_input('comments_select');
+		$comments_on = get_input('comments_select','Off');
 		
 	// Make sure we actually have permission to edit
 		$blog = get_entity($guid);
