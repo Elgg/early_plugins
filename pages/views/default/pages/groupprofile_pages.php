@@ -3,7 +3,7 @@
     // pages on the group index page
 
     //check to make sure this group forum has been activated
-    if($vars['entity']->pages_enable == 'yes'){
+    if($vars['entity']->pages_enable != 'no'){
 
 ?>
 
