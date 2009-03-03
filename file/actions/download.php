@@ -27,7 +27,10 @@
 		else
 			header("Content-Disposition: attachment; filename=\"$filename\"");
 
-		echo $file->grabFile();
+		$contents = $file->grabFile();
+		$splitString = str_split($contents, 8192);
+		foreach($splitString as $chunk)
+			echo $chunk;
 		exit;
 	}
 	else
