@@ -2,8 +2,8 @@
 
 	$categories = $vars['config']->site->categories;
 	
-	
 	if ($categories) {
+		if (!is_array($categories)) $categories = array($categories);
 ?>
 
 	<h2><?php echo elgg_echo('categories'); ?></h2>

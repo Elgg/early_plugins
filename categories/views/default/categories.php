@@ -18,6 +18,7 @@
 		if (empty($selected_categories)) $selected_categories = array(); 
 
 		if (!empty($categories)) {
+			if (!is_array($categories)) $categories = array($categories);
 		
 ?>
 
