@@ -122,7 +122,7 @@
 				$urladdition = 'offset='.$newoffset;
 				if (substr_count($baseurl,'?')) $nexturl=$baseurl . '&' . $urladdition; else $nexturl=$baseurl . '?' . $urladdition;
 				
-				$nav .= '<a class="back" href="'.$nexturl.'">&laquo; ' . elgg_echo('previous') . '</a> ';
+				$nav .= '<a class="pagination_previous" href="'.$nexturl.'">&laquo; ' . elgg_echo('previous') . '</a> ';
 			}
 				
 			if ($offset > 0) {
@@ -131,12 +131,12 @@
 				$urladdition = 'offset='.$newoffset;
 				if (substr_count($baseurl,'?')) $prevurl=$baseurl . '&' . $urladdition; else $prevurl=$baseurl . '?' . $urladdition;
 				
-				$nav .= '<a class="forward" href="'.$prevurl.'">' . elgg_echo('next') . ' &raquo;</a> ';
+				$nav .= '<a class="pagination_next" href="'.$prevurl.'">' . elgg_echo('next') . ' &raquo;</a> ';
 			}
 		 
 			
 			if (!empty($nav)) {
-				echo '<div class="river_pagination"><p>'.$nav.'</p><div class="clearfloat"></div></div>';
+				echo '<div class="pagination"><p>'.$nav.'</p><div class="clearfloat"></div></div>';
 			}
 				
 			echo "</div>"; // close the main messages wrapper div
