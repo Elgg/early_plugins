@@ -50,6 +50,7 @@ p.visit_twitter a {
 	-webkit-border-radius: 8px; 
 	-moz-border-radius: 8px;
 	padding:2px;
+	margin:0 0 5px 0;
 }
 
 #twitter_widget li a {

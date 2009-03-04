@@ -58,6 +58,14 @@ p.filerepo_owner {
    	-webkit-border-radius: 8px; 
 	-moz-border-radius: 8px;
 }
+.filerepo_widget_singleitem_more {
+	margin:0;
+	padding:5px;
+	display:block;
+	background:white;
+   	-webkit-border-radius: 8px; 
+	-moz-border-radius: 8px;	
+}
 .filerepo_listview_icon {
 	float: left;
 	margin-right: 10px;
@@ -95,7 +103,7 @@ p.filerepo_owner {
 	-webkit-border-radius: 8px; 
 	-moz-border-radius: 8px;
 	background: white;
-	margin:0;	
+	margin:0 0 5px 0;	
 }
 .filerepo_widget_galleryview img {
 	padding:0;
