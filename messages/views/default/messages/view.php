@@ -14,6 +14,9 @@
 	 * 
 	 */
 	 
+	$limit = $vars['limit']; if (empty($limit)) $limit = 10;
+	$offset = $vars['offset']; if (!isset($offset)) $offset = 0;
+
 	// If there are any messages to view, view them
 	if (isloggedin())
     if (is_array($vars['entity']) && sizeof($vars['entity']) > 0) {
@@ -25,7 +28,9 @@
     		
     		// get the correct display for the inbox view
     		if($vars['page_view'] == "inbox") {
-        		
+
+    			$counter = 0;
+    			
     			foreach($vars['entity'] as $message) {
     				if ($message->owner_guid == $vars['user']->guid
     					|| $message->toID == $vars['user']->guid) {
@@ -62,6 +67,9 @@
     			    }//end of hiddenFrom if statement
     				} // end of user check 
     				
+    				$counter++;
+    				if ($counter == $limit) break;
+    				
     			}//end of for each loop
     			
 			}//end of inbox if statement
@@ -69,6 +77,8 @@
 			// get the correct display for the sentbox view
 			if($vars['page_view'] == "sent") {
     			
+				$counter = 0;
+				
     			foreach($vars['entity'] as $message) {
         			
         			//make sure to only display the messages that have not been 'deleted' (1 = deleted)
@@ -95,10 +105,40 @@
 						
     			    }//close hiddeTo if statement
     				
+    			    $counter++;
+    			    if ($counter == $limit) break;
+    			    
     			}//close foreach
     			
 			}//close page_view sent if statement
 			
+			$baseurl = $_SERVER['REQUEST_URI'];
+			$baseurl = $baseurl = preg_replace('/[\&\?]offset\=[0-9]*/',"",$baseurl); 
+			
+			$nav = '';
+			
+			if (sizeof($vars['entity']) > $limit) {
+				$newoffset = $offset + $limit;
+				$urladdition = 'offset='.$newoffset;
+				if (substr_count($baseurl,'?')) $nexturl=$baseurl . '&' . $urladdition; else $nexturl=$baseurl . '?' . $urladdition;
+				
+				$nav .= '<a class="back" href="'.$nexturl.'">&laquo; ' . elgg_echo('previous') . '</a> ';
+			}
+				
+			if ($offset > 0) {
+				$newoffset = $offset - $limit;
+				if ($newoffset < 0) $newoffset = 0;
+				$urladdition = 'offset='.$newoffset;
+				if (substr_count($baseurl,'?')) $prevurl=$baseurl . '&' . $urladdition; else $prevurl=$baseurl . '?' . $urladdition;
+				
+				$nav .= '<a class="forward" href="'.$prevurl.'">' . elgg_echo('next') . ' &raquo;</a> ';
+			}
+		 
+			
+			if (!empty($nav)) {
+				echo '<div class="river_pagination"><p>'.$nav.'</p><div class="clearfloat"></div></div>';
+			}
+				
 			echo "</div>"; // close the main messages wrapper div
 			
     } else {
