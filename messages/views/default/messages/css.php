@@ -23,6 +23,9 @@ MESSAGING PLUGIN
 	font-size: 110%;
 	margin: 0 0 10px 0;
 }
+#messages .pagination {
+	margin:5px 0 5px 0;
+}
 
 #messages td {
 	text-align: left;
