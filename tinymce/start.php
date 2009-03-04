@@ -20,6 +20,6 @@
      }
      
      // Make sure the status initialisation function is called on initialisation
-		register_elgg_event_handler('init','system','tinymce_init');
+		register_elgg_event_handler('init','system','tinymce_init',9999);
        
 ?>
