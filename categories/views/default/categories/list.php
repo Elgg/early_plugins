@@ -1,12 +1,15 @@
 <?php
 
+	$categories = $vars['config']->site->categories;
+	
+	
+	if ($categories) {
 ?>
 
 	<h2><?php echo elgg_echo('categories'); ?></h2>
 	<div class="categories">
 		<?php
 
-			$categories = $vars['config']->site->categories;
 			$catstring = '';
 			if (!empty($categories)) {
 				foreach($categories as $category) {
@@ -17,3 +20,4 @@
 		
 		?>
 	</div>
+<?php } ?>
