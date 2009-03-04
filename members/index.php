@@ -47,35 +47,32 @@
 	// title
 	    $area2 = elgg_view_title(elgg_echo("members:members"));
 	    
-	// get members submenu
-		$area2 .= elgg_view('page_elements/contentwrapper',array('body' => elgg_view("members/members_sort_menu", array("count" => $members, "filter" => $filter)), 'subtype' => 'members'));
-	    
 	//get the correct view based on filter
 		switch($filter){
 			case "newest":
-			$area2 .= list_entities("user","",0,10,false);
+			$content = list_entities("user","",0,10,false);
 			break;
 			case "pop":
-			$area2 .= list_entities_by_relationship_count('friend', true);
+			$content = list_entities_by_relationship_count('friend', true);
 			break;
 			case "active":
-			$area2 .= elgg_view("members/online");
+			$content = elgg_view("members/online");
 			break;
 			case "search":
 			set_context('search');
-			$area2 .= list_user_search($tag);
+			$content = list_user_search($tag);
 			break;
 			case "search_tags":
-			$area2 .= trigger_plugin_hook('search','',$tag,"");
-			$area2 .= list_entities_from_metadata("", $tag, "user", "", "", 10, false, false);
+			$content = trigger_plugin_hook('search','',$tag,"");
+			$content .= list_entities_from_metadata("", $tag, "user", "", "", 10, false, false);
 			break;
 			case 'default':
-			$area2 .= list_entities("user","",0,10,false);
+			$content = list_entities("user","",0,10,false);
 			break;
 		}
-		
-		$area2 .= "</div>";
     
+		$area2 .= elgg_view('page_elements/contentwrapper',array('body' => elgg_view("members/members_sort_menu", array("count" => $members, "filter" => $filter)) . $content, 'subtype' => 'members'));
+		
     //select the correct canvas area
 	    $body = elgg_view_layout("sidebar_boxes", $area1, $area2);
 		
