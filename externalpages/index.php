@@ -23,14 +23,14 @@
 	//display the title
 	$title = elgg_view_title(elgg_echo('expages'));
 	
-	// Display the menu
-	$body = elgg_view('page_elements/contentwrapper',array('body' => elgg_view('expages/menu', array('type' => $type))));
-	
 	// Display the correct form
 	if($type == "front")
-		$body .= elgg_view('expages/forms/editfront') . "</div>";
+		$edit = elgg_view('expages/forms/editfront');
 	else
-		$body .= elgg_view('expages/forms/edit', array('type' => $type)) . "</div>";
+		$edit = elgg_view('expages/forms/edit', array('type' => $type));
+		
+		// Display the menu
+	$body = elgg_view('page_elements/contentwrapper',array('body' => elgg_view('expages/menu', array('type' => $type)).$edit));
 		
 	// Display
 	page_draw(elgg_echo('expages'),elgg_view_layout("two_column_left_sidebar", '', $title . $body));
