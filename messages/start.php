@@ -105,11 +105,13 @@
 		 */
 		function messages_notification_msg($hook_name, $entity_type, $return_value, $parameters) {
 
-			global $CONFIG;
+			global $CONFIG, $messages_pm;
 			
 			if ($parameters['entity'] instanceof ElggEntity) {
 				
 				if ($parameters['entity']->getSubtype() == 'messages') {
+					
+					if (!$messages_pm) return false;
 					if ($parameters['method'] == 'email') {
 						return sprintf(
 									elgg_echo('messages:email:body'),
