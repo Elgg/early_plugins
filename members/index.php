@@ -71,7 +71,7 @@
 			break;
 		}
     
-		$area2 .= elgg_view('page_elements/contentwrapper',array('body' => elgg_view("members/members_sort_menu", array("count" => $members, "filter" => $filter)) . $content, 'subtype' => 'members'));
+		$area2 .= elgg_view('page_elements/contentwrapper',array('body' => elgg_view("members/members_sort_menu", array("count" => $members, "filter" => $filter)) . $content, 'subclass' => 'members'));
 		
     //select the correct canvas area
 	    $body = elgg_view_layout("sidebar_boxes", $area1, $area2);
