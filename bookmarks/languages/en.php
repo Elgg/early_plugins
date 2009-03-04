@@ -14,7 +14,7 @@
 			'bookmarks:this' => "Bookmark this",
 			'bookmarks:bookmarklet' => "Get bookmarklet",
 			'bookmarks:inbox' => "Bookmarks inbox",
-			'bookmarks:more' => "More bookmarks",
+			'bookmarks:more' => "More",
 			'bookmarks:shareditem' => "Bookmarked item",
 			'bookmarks:with' => "Share with",
 			'bookmarks:new' => "A new bookmarked item",
