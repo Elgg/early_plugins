@@ -89,7 +89,7 @@
 
     		<div id="blog_edit_sidebar">
 			<div id="content_area_user_title">
-				<div class="preview_button"><a href="#" onclick="javascript:saveDraft(true);return false;">{$preview}</a></div>
+				<div class="preview_button"><a  onclick="javascript:saveDraft(true);return true;">{$preview}</a></div>
 			<h2>{$publish}</h2></div>
 			<div class="publish_controls">
 				<p>
@@ -163,7 +163,7 @@ EOT;
 ?>
 
 <script type="text/javascript">
-	setInterval( "saveDraft()", 120000);
+	setInterval( "saveDraft(false)", 120000);
 	function saveDraft(preview) {
 		
 		temppreview = preview;
@@ -182,7 +182,9 @@ EOT;
 			$("span#draftSavedCounter").html(d.getHours() + ":" + mins);
 			if (temppreview == true) {
 				$("form#blogPostForm").attr("action","<?php echo $vars['url']; ?>mod/blog/preview.php");
-				$("form#blogPostForm").submit();
+				$("input[@name='submit']").click();
+				//$("form#blogPostForm").submit();
+				//document.blogPostForm.submit();
 			}
 		});
 				
