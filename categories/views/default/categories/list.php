@@ -7,8 +7,8 @@
 		
 	if (!empty($vars['subtype'])) {
 		$flag = array();
-		$owner_guid = 0;
-		if (isset($vars['owner_guid'])) $owner_guid = $vars['owner_guid'];
+		$owner_guid = '';
+		if (isset($vars['owner_guid'])) $owner_guid = (int) $vars['owner_guid'];
 		if ($cats = get_tags(0,999,'universal_categories','object',$vars['subtype'],$owner_guid))
 			foreach($cats as $cat)
 				$flag[] = $cat->tag;
