@@ -116,12 +116,18 @@
 		<div class="filerepo_maincontent">
 		
 				<div class="filerepo_description"><?php echo autop($desc); ?></div>
+<?php
+
+		if (!empty($tags)) {
+
+?>
 		<div class="filerepo_tags"><div class="object_tag_string"><?php
 
 					echo elgg_view('output/tags',array('value' => $tags));
 				
 				?></div>
 <?php
+		}
 
 		$categories = elgg_view('categories/view',$vars);
 		if (!empty($categories)) {

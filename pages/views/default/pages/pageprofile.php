@@ -33,17 +33,22 @@
 	{
 		echo elgg_view('output/longtext', array('value' => /*$entity->description*/ $latest->value));
 		
+		$tags = $vars['entity']->tags;
+		if (!empty($tags)) {
+		
 ?>
 		<!-- display tags -->
 		<p class="tags">
 			<?php
 
-				echo elgg_view('output/tags', array('tags' => $vars['entity']->tags));
+				echo elgg_view('output/tags', array('tags' => $tags));
 			
 			?>
 		</p>
 		
 <?php
+
+		}
 		$cats = elgg_view('categories/view',$vars);
 		if (!empty($cats)) {
 			

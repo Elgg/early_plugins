@@ -78,11 +78,22 @@
 		<div class="sharing_item_description">
 				<?php echo autop($vars['entity']->description); ?>
 		</div>
+<?php
+
+	$tags = $vars['entity']->tags;
+	if (!empty($tags)) {
+
+?>
 		<div class="sharing_item_tags">
 			<p>
 				<?php echo elgg_view('output/tags',array('value' => $vars['entity']->tags)); ?>
 			</p>
 		</div>
+<?php
+
+	}
+
+?>
 		<div class="sharing_item_address">
 			<p>
 				<?php 
