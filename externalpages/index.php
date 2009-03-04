@@ -24,7 +24,7 @@
 	$title = elgg_view_title(elgg_echo('expages'));
 	
 	// Display the menu
-	$body = "<div class='contentWrapper'>" . elgg_view('expages/menu', array('type' => $type));
+	$body = elgg_view('page_elements/contentwrapper',array('body' => elgg_view('expages/menu', array('type' => $type))));
 	
 	// Display the correct form
 	if($type == "front")

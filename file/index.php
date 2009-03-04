@@ -31,7 +31,7 @@
 		if($get_filter)
 			$area1 = $get_filter;
 		else
-			$area2 .= "<div class=\"contentWrapper\">" . elgg_echo("file:none") . "</div>";
+			$area2 .= elgg_view('page_elements/contentwrapper',array('body' => elgg_echo("file:none")));
 
 		$body = elgg_view_layout('two_column_left_sidebar', $area1, $area2);
 	

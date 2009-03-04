@@ -48,7 +48,7 @@
 	    $area2 = elgg_view_title(elgg_echo("members:members"));
 	    
 	// get members submenu
-		$area2 .= "<div class='contentWrapper members'>" . elgg_view("members/members_sort_menu", array("count" => $members, "filter" => $filter));
+		$area2 .= elgg_view('page_elements/contentwrapper',array('body' => elgg_view("members/members_sort_menu", array("count" => $members, "filter" => $filter)), 'subtype' => 'members'));
 	    
 	//get the correct view based on filter
 		switch($filter){

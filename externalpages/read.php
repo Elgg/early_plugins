@@ -25,10 +25,10 @@
 		
 		if($contents){
 			foreach($contents as $c){
-				$area1 .= "<div class=\"contentWrapper\">" . $c->description . "</div>";
+				$area1 .= elgg_view('page_elements/contentwrapper',array('body' => $c->description));
 			}
 		}else
-			$area1 .= "<div class=\"contentWrapper\">" . elgg_echo("expages:notset") . "</div>";
+			$area1 .= elgg_view('page_elements/contentwrapper',array('body' => elgg_echo("expages:notset")));
 
 	// Display through the correct canvas area
 		$body = elgg_view_layout("one_column", $area1);
