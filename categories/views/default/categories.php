@@ -17,6 +17,8 @@
 		if (empty($categories)) $categories = array();
 		if (empty($selected_categories)) $selected_categories = array(); 
 
+		if (!empty($categories)) {
+		
 ?>
 
 		<div id="content_area_user_title"><h2 class="categoriestitle"><?php echo elgg_echo('categories'); ?></h2></div>
@@ -35,3 +37,11 @@
 			<input type="hidden" name="universal_category_marker" value="on" />
 			</p>
 		</div>
+		
+<?php
+
+	} else {
+		echo '<input type="hidden" name="universal_category_marker" value="on" />';
+	}
+
+?>
