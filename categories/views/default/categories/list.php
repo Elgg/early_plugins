@@ -16,6 +16,8 @@
 	} else {
 		$flag = null;
 	}
+	
+	if (is_null($flag) || !empty($flag)) {
 		
 ?>
 
@@ -34,4 +36,6 @@
 		
 		?>
 	</div>
-<?php } ?>
+<?php } 
+
+}?>
