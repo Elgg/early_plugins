@@ -4,6 +4,19 @@
 	
 	if ($categories) {
 		if (!is_array($categories)) $categories = array($categories);
+		
+	if (!empty($vars['subtype'])) {
+		$flag = array();
+		$owner_guid = 0;
+		if (isset($vars['owner_guid'])) $owner_guid = $vars['owner_guid'];
+		if ($cats = get_tags(0,999,'universal_categories','object',$vars['subtype'],$owner_guid))
+			foreach($cats as $cat)
+				$flag[] = $cat->tag;
+				
+	} else {
+		$flag = null;
+	}
+		
 ?>
 
 	<h2><?php echo elgg_echo('categories'); ?></h2>
@@ -13,7 +26,8 @@
 			$catstring = '';
 			if (!empty($categories)) {
 				foreach($categories as $category) {
-					$catstring .= '<li><a href="'.$vars['baseurl'].urlencode($category).'">'. $category .'</a></li>';
+					if (is_null($flag) || (is_array($flag) && in_array($category,$flag)))
+						$catstring .= '<li><a href="'.$vars['baseurl'].urlencode($category).'">'. $category .'</a></li>';
 				}
 			}
 			if (!empty($catstring)) echo "<ul>{$catstring}</ul>";

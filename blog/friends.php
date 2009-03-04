@@ -34,7 +34,7 @@
 		
 	// Get categories, if they're installed
 		global $CONFIG;
-		$area3 = elgg_view('blog/categorylist',array('baseurl' => $CONFIG->wwwroot . 'search/?subtype=blog&owner_guid='.$page_owner->guid.'&friends='.$page_owner->guid.'&tagtype=universal_categories&tag='));
+		$area3 = elgg_view('blog/categorylist',array('baseurl' => $CONFIG->wwwroot . 'search/?subtype=blog&owner_guid='.$page_owner->guid.'&friends='.$page_owner->guid.'&tagtype=universal_categories&tag=','subtype' => 'blog'));
 		
 	// Display them in the page
         $body = elgg_view_layout("two_column_left_sidebar", '', $area1 . $area2, $area3);

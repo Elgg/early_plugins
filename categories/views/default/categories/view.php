@@ -7,7 +7,7 @@
 		if (!empty($categories)) {
 			if (!is_array($categories)) $categories = array($categories);
 			foreach($categories as $category) {
-				$link = $vars['url'] . '/search?tagtype=universal_categories&tag=' . urlencode($category);
+				$link = $vars['url'] . 'search?tagtype=universal_categories&tag=' . urlencode($category);
 				if (!empty($linkstr)) $linkstr .= ', ';
 				$linkstr .= '<a href="'.$link.'">' . $category . '</a>';
 			}
