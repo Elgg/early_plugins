@@ -292,7 +292,7 @@
 		    							'toId' => $_SESSION['user']->guid,
 		    							'readYet' => 0,
 		    							'msg' => 1
-		    									   ),"object", "messages", $_SESSION['user']->guid, 10, 0, "", 0, false);
+		    									   ),"object", "messages", $_SESSION['user']->guid, 9999, 0, "", 0, false);
 		
 			if (is_array($num_messages))
 				$counter = sizeof($num_messages);
