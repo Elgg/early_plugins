@@ -50,7 +50,7 @@
 	width:200px;
 }
 #index_welcome #login-box h2,
-#index_box h2 {
+.index_box h2 {
 	color:#0054A7;
 	font-size:1.35em;
 	line-height:1.2em;
@@ -61,7 +61,7 @@
 	padding-bottom:5px;
 }
 
-#index_box {
+.index_box {
 	margin:0 0 20px 0;
 	background: #dedede;
 	padding:0 0 5px 0;
@@ -69,10 +69,10 @@
 	-moz-border-radius: 8px;
 }
 
-#index_box .search_listing {
+.index_box .search_listing {
 
 }
-#index_box .index_members {
+.index_box .index_members {
 	float:left;
 	margin:2pt 5px 3px 0pt;
 }

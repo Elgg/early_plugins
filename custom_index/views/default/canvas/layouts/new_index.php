@@ -41,7 +41,7 @@
 	        ?>
         </div>
         <!-- display latest files -->
-        <div id="index_box">
+        <div class="index_box">
             <h2><?php echo elgg_echo("custom:files"); ?></h2>
             <?php 
                 if (!empty($vars['area2'])) {
@@ -52,7 +52,7 @@
             ?>
         </div>
         <!-- display latest groups -->
-	    <div id="index_box">
+	    <div class="index_box">
             <h2><?php echo elgg_echo("custom:groups"); ?></h2>
         <?php 
                 if (!empty($vars['area5'])) {
@@ -72,7 +72,7 @@
             echo elgg_view("index/righthandside");
         ?>
         <!-- latest members -->
-        <div id="index_box">
+        <div class="index_box">
             <h2><?php echo elgg_echo("custom:members"); ?></h2>
             <div class="contentWrapper">
             <?php 
@@ -89,7 +89,7 @@
 	        </div>
         </div>
         <!-- latest blogs -->
-        <div id="index_box">
+        <div class="index_box">
             <h2><?php echo elgg_echo("custom:blogs"); ?></h2>
             <?php 
                 if (isset($vars['area4'])) 
@@ -97,7 +97,7 @@
             ?>
         </div>
         <!-- display latest bookmarks -->
-    	<div id="index_box">
+    	<div class="index_box">
             <h2><?php echo elgg_echo("custom:bookmarks"); ?></h2>
             <?php 
                 if (isset($vars['area6'])) 
