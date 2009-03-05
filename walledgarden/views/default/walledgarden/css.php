@@ -1,11 +1,11 @@
 #custom_index {
-   margin:20px;
+   margin:10px;
 }
 #index_left {
     width:442px;
     float:left;
     margin:0 0 30px 0;
-    padding:0 0 20px 20px;
+    padding:0 0 20px 0;
 }
 #index_right {
     width:442px;
