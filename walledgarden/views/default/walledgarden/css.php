@@ -25,12 +25,10 @@
 	padding:0;
 }
 #index_box h2 {
-	background:#F5F5F5;
-	border-top:2px solid #4690D6;
 	color:#0054A7;
 	font-size:1.35em;
 	line-height:1.2em;
-	margin:20px 0 5px;
+	margin:0 0 0 8px;
 	padding:5px;
 }
 #index_box .search_listing {
