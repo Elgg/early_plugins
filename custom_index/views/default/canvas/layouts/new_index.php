@@ -40,6 +40,9 @@
 		        }
 	        ?>
         </div>
+<?php
+    if(is_plugin_enabled('file')){
+?> 	
         <!-- display latest files -->
         <div class="index_box">
             <h2><?php echo elgg_echo("custom:files"); ?></h2>
@@ -51,6 +54,11 @@
                 }
             ?>
         </div>
+<?php
+	}
+	
+    if(is_plugin_enabled('groups')){
+?> 
         <!-- display latest groups -->
 	    <div class="index_box">
             <h2><?php echo elgg_echo("custom:groups"); ?></h2>
@@ -62,6 +70,9 @@
                 }
             ?>
     	</div>
+<?php
+	}
+?>
     </div>
     
     <!-- right hand column -->
@@ -88,6 +99,9 @@
 	        <div class="clearfloat"></div>
 	        </div>
         </div>
+<?php
+    if(is_plugin_enabled('blog')){
+?> 
         <!-- latest blogs -->
         <div class="index_box">
             <h2><?php echo elgg_echo("custom:blogs"); ?></h2>
@@ -96,6 +110,11 @@
                     echo $vars['area4']; //display blog posts
             ?>
         </div>
+<?php
+	}
+
+    if(is_plugin_enabled('bookmarks')){
+?>
         <!-- display latest bookmarks -->
     	<div class="index_box">
             <h2><?php echo elgg_echo("custom:bookmarks"); ?></h2>
@@ -104,6 +123,9 @@
                     echo $vars['area6']; //display bookmarks
             ?>
         </div>
+<?php
+	}
+?>
     </div>
     <div class="clearfloat"></div>
 </div>
