@@ -165,6 +165,10 @@ p.filerepo_owner {
 	-moz-border-radius: 8px;
 	background: black; 
 }
+/* zaudio player */
+.filerepo_maincontent .filerepo_specialcontent {
+	margin:0 0 20px 0;
+}
 .filerepo_tags {
 	padding:0 0 10px 10px;
 	margin:0;
