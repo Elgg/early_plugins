@@ -23,7 +23,7 @@
         	<?php
         		if (isloggedin()){
 	        		echo "<h2>" . elgg_echo("welcome") . " ";
-        			echo $_SESSION['username'];
+        			echo $vars['user']->name;
         			echo "</h2>";
     			}
         	?>
