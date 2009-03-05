@@ -31,10 +31,6 @@
 	margin:0 0 0 8px;
 	padding:5px;
 }
-#index_box .search_listing {
-	padding:0;
-	margin-bottom:3px;
-}
 #index_box .index_members {
 	float:left;
 	margin:0pt 5px 5px 0pt;
