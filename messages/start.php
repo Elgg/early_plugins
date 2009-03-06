@@ -227,7 +227,7 @@
 		    	        $create_relationship = add_entity_relationship($message_sent->guid, "reply", $reply);		    	        
 			        }
 			        
-			        /*
+			        
 			        global $CONFIG;
 					$message_contents = strip_tags($body);
 					if ($send_to != get_loggedin_user() && $notify)
@@ -241,7 +241,7 @@
 									$CONFIG->wwwroot . "mod/messages/send.php?send_to=" . get_loggedin_user()->guid
 								)
 					);
-					*/
+					
 			    	$messagesendflag = 0;    
 			        return $success;
 			
