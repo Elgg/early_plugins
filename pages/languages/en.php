@@ -46,7 +46,7 @@
 	        'pages:river:posted' => "%s posted",
 			'pages:river:create' => "a new page titled",
 	        'pages:river:update' => "a page titled",
-	        'pages:river:annotate' => "a comment on this page",
+	        'page:river:annotate' => "a comment on this page",
 	        'page_top:river:annotate' => "a comment on this page",
 	
 		/**
