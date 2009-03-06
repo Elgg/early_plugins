@@ -40,7 +40,7 @@
 				
 				$content = str_replace("\n","", $content);
 				$content = str_replace("\r","", $content);
-				$content = htmlentities($content);
+				$content = htmlentities($content,null,'utf-8');
 				
 				$link = "javascript:elggUpdateContent('{$content}','{$vars['internalname']}');";
 				if ($entity instanceof ElggObject) { $title = $entity->title; $mime = $entity->mimetype; } else { $title = $entity->name; $mime = ''; }
