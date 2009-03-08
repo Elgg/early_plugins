@@ -107,7 +107,6 @@ MESSAGING PLUGIN
 .messages_single_icon  {
 	float: left;
 	width:110px;
-	overflow:hidden;
 }
 
 .messages_single_icon .usericon,
