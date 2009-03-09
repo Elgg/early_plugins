@@ -57,6 +57,9 @@
 
 		// Listen to notification events and supply a more useful message
 			register_plugin_hook('notify:entity:message', 'object', 'page_notify_message');
+			
+		// add the group pages tool option     
+            add_group_tool_option('pages',elgg_echo('groups:enablepages'),true);
 
 		
 		//add a widget
