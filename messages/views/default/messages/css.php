@@ -26,15 +26,40 @@ MESSAGING PLUGIN
 #messages .pagination {
 	margin:5px 0 5px 0;
 }
+#messages input[type="checkbox"] {
+	margin:0;
+	padding:0;
+	border:none;
+}
 .messages_buttonbank {
-	margin-top: 5px;
-	margin-right: 10px;
-	margin-bottom: 5px;
-	margin-left: 10px;
-	padding-top: 5px;
-	padding-right: 5px;
-	padding-bottom: 5px;
-	padding-left: 5px;
+	-webkit-border-radius: 8px; 
+	-moz-border-radius: 8px;
+	background:white;
+	margin:5px 10px;
+	padding:5px;
+	text-align: right;
+}
+.messages_buttonbank input {
+	margin:0 0 0 10px;
+}
+.messages_buttonbank input[type="button"] {
+	font: 12px/100% Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	color: #4690D6;
+	background:#dddddd;
+	border: 1px solid #999999;
+	-webkit-border-radius: 4px; 
+	-moz-border-radius: 4px;
+	width: auto;
+	height: 25px;
+	padding: 2px 6px 2px 6px;
+	margin:0 0 0 10px;
+	cursor: pointer;
+}
+.messages_buttonbank input[type="button"]:hover {
+	background: #0054a7;
+	border: 1px solid #0054a7;
+	color:white;
 }
 
 #messages td {
