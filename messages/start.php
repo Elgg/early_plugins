@@ -111,7 +111,8 @@
 				
 				if ($parameters['entity']->getSubtype() == 'messages') {
 					
-					if (!$messages_pm) return false;
+					return false;
+					/*if (!$messages_pm) return false;
 					if ($parameters['method'] == 'email') {
 						return sprintf(
 									elgg_echo('messages:email:body'),
@@ -121,7 +122,7 @@
 									get_loggedin_user()->name,
 									$CONFIG->wwwroot . "mod/messages/send.php?send_to=" . get_loggedin_user()->guid
 								);
-					} else if ($parameters['method'] == 'site') return false;
+					} else if ($parameters['method'] == 'site') return false;*/
 				}
 			}
 			return null;
