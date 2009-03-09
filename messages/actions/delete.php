@@ -21,6 +21,7 @@
         $type = get_input('type'); // sent message or inbox
         $success = true;
         $submit = get_input('submit');
+        $offset = get_input('offset');
         
         foreach($message_id_array as $message_id) {
         
@@ -59,13 +60,13 @@
         	}
 			// check to see if it is a sent message to be deleted
 		    if($type == 'sent'){
-			    forward("mod/messages/sent.php");
+			    forward("mod/messages/sent.php?offset={$offset}");
 		    }else{
-    		    forward("mod/messages/?username=" . $_SESSION['user']->username);
+    		    forward("mod/messages/?username=" . $_SESSION['user']->username . "&offset={$offset}");
 		    }
         } else {
         	register_error(elgg_echo("messages:nopermission"));
-        	forward("mod/messages/?username=" . $_SESSION['user']->username);
+        	forward("mod/messages/?offset={$offset}&username=" . $_SESSION['user']->username);
         }
                  
     
