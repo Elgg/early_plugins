@@ -20,7 +20,7 @@
         if (!array($message_id_array)) $message_id_array = array($message_id_array);
         $type = get_input('type'); // sent message or inbox
         $success = true;
-        $button = get_input('submit');
+        $submit = get_input('submit');
         
         foreach($message_id_array as $message_id) {
         
