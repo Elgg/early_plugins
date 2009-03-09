@@ -51,7 +51,9 @@
                         $from = get_entity($message->fromId);
         				echo "<td width='200px'>" . elgg_view("profile/icon",array('entity' => $from, 'size' => 'tiny')) . "<div class='msgsender'><b>" . $from->name . "</b><br /><small>" . friendly_time($message->time_created) . "</small></div></td>";
         				//display the message title
-    				    echo "<td><div class='msgsubject'><a href=\"{$message->getURL()}\">" . $message->title . "</a></div></td>";
+    				    echo "<td><div class='msgsubject'>";
+    				    echo "<input type=\"checkbox\" name=\"message_id[]\" value=\"{$message->guid}\" /> ";
+    				    echo "<a href=\"{$message->getURL()}\">" . $message->title . "</a></div></td>";
     				    //display the link to 'delete'
     				    
     				    echo "<td width='70px'>";
@@ -92,7 +94,9 @@
         				//get the icon for the user the message was sent to
         				echo "<tr><td width='200px'>" . elgg_view("profile/icon",array('entity' => $user, 'size' => 'tiny')) . "<div class='msgsender'><b>" . $user->name . "</b><br /><small>" . friendly_time($message->time_created) . "</small></div></td>";
         				//display the message title
-    				    echo "<td><div class='msgsubject'><a href=\"{$message->getURL()}?type=sent\">" . $message->title . "</a></div></td>";
+    				    echo "<td><div class='msgsubject'>";
+    				    echo "<input type=\"checkbox\" name=\"message_id[]\" value=\"{$message->guid}\" /> ";
+    				    echo "<a href=\"{$message->getURL()}?type=sent\">" . $message->title . "</a></div></td>";
         				//display the link to 'delete'
         				
         				echo "<td width='70px'>";

@@ -26,6 +26,16 @@ MESSAGING PLUGIN
 #messages .pagination {
 	margin:5px 0 5px 0;
 }
+.messages_buttonbank {
+	margin-top: 5px;
+	margin-right: 10px;
+	margin-bottom: 5px;
+	margin-left: 10px;
+	padding-top: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	padding-left: 5px;
+}
 
 #messages td {
 	text-align: left;

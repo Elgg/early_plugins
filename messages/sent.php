@@ -34,7 +34,8 @@
 	    $area2 = elgg_view_title(elgg_echo("messages:sentmessages"));
 		
 	// Set content
-		$area2 .= elgg_view("messages/view",array('entity' => $messages, 'page_view' => "sent", 'limit' => $limit, 'offset' => $offset));
+		// $area2 .= elgg_view("messages/view",array('entity' => $messages, 'page_view' => "sent", 'limit' => $limit, 'offset' => $offset));
+		$area2 .= elgg_view("messages/forms/view",array('entity' => $messages, 'page_view' => "sent", 'limit' => $limit, 'offset' => $offset));
 
 	// Format
 		$body = elgg_view_layout("two_column_left_sidebar", '', $area2);

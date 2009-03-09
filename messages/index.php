@@ -34,7 +34,8 @@
 	    
 	// Display them. The last variable 'page_view' is to allow the view page to know where this data is coming from,
 	// in this case it is the inbox, this is necessary to ensure the correct display
-	    $area2 .= elgg_view("messages/view",array('entity' => $messages, 'page_view' => "inbox", 'limit' => $limit, 'offset' => $offset));
+	    // $area2 .= elgg_view("messages/view",array('entity' => $messages, 'page_view' => "inbox", 'limit' => $limit, 'offset' => $offset));
+	    $area2 .= elgg_view("messages/forms/view",array('entity' => $messages, 'page_view' => "inbox", 'limit' => $limit, 'offset' => $offset));
 		
 	// format
 	    $body = elgg_view_layout("two_column_left_sidebar", '', $area2);

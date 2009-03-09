@@ -28,6 +28,8 @@
             'messages:original' => "Original message",
             'messages:yours' => "Your message",
             'messages:answer' => "Reply",
+			'messages:toggle' => 'Toggle all',
+			'messages:markread' => 'Mark read',
 			
 			'messages:new' => 'New message',
 	
@@ -42,7 +44,8 @@
 		 */
 	
 			'messages:posted' => "Your message was successfully sent.",
-			'messages:deleted' => "Your message was successfully deleted.",
+			'messages:deleted' => "Your messages were successfully deleted.",
+			'messages:markedread' => "Your messages were successfully marked as read.",
 	
 		/**
 		 * Email messages
@@ -72,7 +75,7 @@ You cannot reply to this email.",
 			'messages:blank' => "Sorry; you need to actually put something in the message body before we can save it.",
 			'messages:notfound' => "Sorry; we could not find the specified message.",
 			'messages:notdeleted' => "Sorry; we could not delete this message.",
-			'messages:nopermission' => "You do not have permission to delete that message.",
+			'messages:nopermission' => "You do not have permission to alter that message.",
 			'messages:nomessages' => "There are no messages to display.",
 			'messages:user:nonexist' => "We could not find the recipient in the user database.",
 	

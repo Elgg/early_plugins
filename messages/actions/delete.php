@@ -16,34 +16,57 @@
 	    gatekeeper();
  
     // grab details sent from the form
-        $message_id = get_input('message_id');
+        $message_id_array = get_input('message_id');
+        if (!array($message_id_array)) $message_id_array = array($message_id_array);
         $type = get_input('type'); // sent message or inbox
+        $success = true;
+        $button = get_input('submit');
         
-    // get the message object
-        $message = get_entity($message_id);
+        foreach($message_id_array as $message_id) {
         
-    // Make sure we actually have permission to edit and that the object is of sub-type messages
-		if ($message->getSubtype() == "messages") {
-    		
-			if ($message->delete()) {
-				system_message(elgg_echo("messages:deleted"));
-			} else {
-				register_error(elgg_echo("messages:nopremission"));
+	    // get the message object
+	        $message = get_entity($message_id);
+	        
+	    // Make sure we actually have permission to edit and that the object is of sub-type messages
+			if ($message->getSubtype() == "messages") {
+	    		
+				if ($submit == elgg_echo('delete')) {
+					if ($message->delete()) {
+					} else {
+						$success = false;
+					}
+				} else {
+					if ($message->readYet = 1) {
+					} else {
+						$success = false;
+					}
+				}
+	            
+	        }else{
+	            
+	            // display the error message
+	            $success = false;
+				
 			}
-    	    //check to see if it is a sent message to be deleted
+		
+        }
+        
+        if ($success) {
+        	if ($submit == elgg_echo('delete')) {
+        		system_message(elgg_echo("messages:deleted"));
+        	} else {
+        		system_message(elgg_echo("messages:markedread"));
+        	}
+			// check to see if it is a sent message to be deleted
 		    if($type == 'sent'){
 			    forward("mod/messages/sent.php");
 		    }else{
     		    forward("mod/messages/?username=" . $_SESSION['user']->username);
 		    }
-            
-        }else{
-            
-            // display the error message
-            register_error(elgg_echo("messages:nopremission"));
-			forward("mod/messages/?username=" . $_SESSION['user']->username);
-			
-		}
+        } else {
+        	register_error(elgg_echo("messages:nopermission"));
+        	forward("mod/messages/?username=" . $_SESSION['user']->username);
+        }
                  
     
 ?>
