@@ -58,7 +58,7 @@
     				    
     				    echo "<td width='70px'>";
     				    echo "<div class='delete_msg'>" . elgg_view("output/confirmlink", array(
-																'href' => $vars['url'] . "action/messages/delete?message_id=" . $message->getGUID() . "&type=inbox",
+																'href' => $vars['url'] . "action/messages/delete?message_id=" . $message->getGUID() . "&type=inbox&submit=" . urlencode(elgg_echo('delete')),
 																'text' => elgg_echo('delete'),
 																'confirm' => elgg_echo('deleteconfirm'),
 															)) . "</div>";								
