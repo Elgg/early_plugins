@@ -22,7 +22,7 @@
 			'file:friends' => "%s's friends' files",
 			'file:all' => "All site files",
 			'file:edit' => "Edit file",
-			'file:more' => "more files",
+			'file:more' => "More files",
 			'file:list' => "list view",
 			'file:group' => "Group files",
 			'file:gallery' => "gallery view",

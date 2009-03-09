@@ -35,6 +35,7 @@
 			'item:object:page' => 'Pages',
 			'item:object:pages_welcome' => 'Pages welcome blocks',
 			'pages:nogroup' => 'This group does not have any pages yet',
+			'pages:more' => 'More pages',
 			
 		/**
 		* River
