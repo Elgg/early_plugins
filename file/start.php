@@ -63,6 +63,9 @@
 
 		// Listen to notification events and supply a more useful message
 		register_plugin_hook('notify:entity:message', 'object', 'file_notify_message');
+		
+		// add the group files tool option     
+        add_group_tool_option('files',elgg_echo('groups:enablefiles'),true);
 
 
 		// Register entity type
