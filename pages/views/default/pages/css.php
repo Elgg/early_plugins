@@ -134,5 +134,13 @@
 /* IE6 */
 * html #pages_welcome_tbl { width:676px !important;}
 
+.pages_widget_singleitem_more {
+	margin:0 10px 0 10px;
+	padding:5px;
+	display:block;
+	background:white;
+   	-webkit-border-radius: 8px; 
+	-moz-border-radius: 8px;	
+}
 
 
