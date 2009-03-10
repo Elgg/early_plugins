@@ -113,7 +113,7 @@
 }
 #blog_edit_page #blog_edit_sidebar {
 	margin:0px 0 22px 0;
-	background: #e9e9e9;
+	background: #dedede;
 	padding:5px;
 	-webkit-border-radius: 8px; 
 	-moz-border-radius: 8px;
