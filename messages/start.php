@@ -232,7 +232,7 @@
 			        global $CONFIG;
 					$message_contents = strip_tags($body);
 					if ($send_to != get_loggedin_user() && $notify)
-					notify_user($send_to, get_loggedin_user(), elgg_echo('messages:email:subject'), 
+					notify_user($send_to, get_loggedin_user()->guid, elgg_echo('messages:email:subject'), 
 						sprintf(
 									elgg_echo('messages:email:body'),
 									get_loggedin_user()->name,
