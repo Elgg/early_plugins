@@ -37,7 +37,7 @@
 	function twitterservice_wire_listener($event, $object_type, $object)
 	{
 
-		if (($object) && ($object->subtype == get_subtype_id('object', 'thewire')) && ($object->access_id == 2))
+		if (($object) && ($object->subtype == get_subtype_id('object', 'thewire')) )
 		{
 			if (get_plugin_usersetting('sendtowire', $object->owner_guid, 'twitterservice')=='yes')
 			{
