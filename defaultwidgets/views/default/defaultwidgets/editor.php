@@ -98,7 +98,7 @@ $(document).ready(function () {
 
 <div class="customise_editpanel_instructions">
 <h2><?php echo elgg_echo('defaultwidgets:'.$context.':title'); ?></h2>
-<?php echo autop(elgg_echo('widgets:add:description')); ?>
+<?php echo elgg_view('output/longtext', array('value' => elgg_echo('widgets:add:description'))); ?>
 </div>
 
 

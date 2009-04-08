@@ -76,7 +76,7 @@
 			</p>
 		</div>
 		<div class="sharing_item_description">
-				<?php echo autop($vars['entity']->description); ?>
+				<?php echo elgg_view('output/longtext', array('value' => $vars['entity']->description)); ?>
 		</div>
 <?php
 

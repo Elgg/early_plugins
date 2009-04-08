@@ -115,7 +115,7 @@
 		
 		<div class="filerepo_maincontent">
 		
-				<div class="filerepo_description"><?php echo autop($desc); ?></div>
+				<div class="filerepo_description"><?php echo elgg_view('output/longtext', array('value' => $desc)); ?></div>
 				<div class="filerepo_tags">
 <?php
 
