@@ -16,7 +16,7 @@
 		    
          // Add our CSS
 				extend_view('css','tinymce/css');
-				
+				set_view_location('embed/addcontentjs',$CONFIG->pluginspath . 'tinymce/views/');
      }
      
      // Make sure the status initialisation function is called on initialisation
