@@ -17,7 +17,8 @@
 	set_context('search');
 	$area2 .= list_user_friends_objects(page_owner(),'file');
 	set_context('file');
-	$area1 = get_filetype_cloud(page_owner(), true);
+	//$area1 = get_filetype_cloud(page_owner(), true);
+	$area1 = '';
 
 	$body = elgg_view_layout('two_column_left_sidebar',$area1, $area2);
 	

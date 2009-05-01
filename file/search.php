@@ -58,13 +58,13 @@
 				$area2 = elgg_view_title(elgg_echo("file:type:" . $tag));
 			}
 		}
-		if ($friends) {
+		/*if ($friends) {
 			$area1 = get_filetype_cloud($friends,true);
 		} else if ($owner_guid) {
 			$area1 = get_filetype_cloud($owner_guid);
 		} else {
 			$area1 = get_filetype_cloud();
-		}
+		}*/
 		
 		// Set context
 		set_context('search');
@@ -72,7 +72,7 @@
 		$limit = 10;
 		if ($search_viewtype == "gallery") $limit = 12;
 		if (!empty($tag)) {
-			$area2 .= list_entities_from_metadata($md_type, $tag, 'object', 'file', $owner_guid, $limit);
+			$area2 .= list_entities_from_metadata($md_type, $tag, 'object', 'file', $owner_guid, $limit, false, false);
 		} else {
 			$area2 .= list_entities("object", "file", $owner_guid, $limit);
 		}

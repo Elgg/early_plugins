@@ -27,11 +27,6 @@
 		set_context('search');
 		$area2 .= list_entities("object","file",page_owner(),10);
 		set_context('file');
-		$get_filter = get_filetype_cloud(page_owner());
-		if($get_filter)
-			$area1 = $get_filter;
-		else
-			$area2 .= "<div class=\"contentWrapper\">" . elgg_echo("file:none") . "</div>";
 
 		$body = elgg_view_layout('two_column_left_sidebar', $area1, $area2);
 	

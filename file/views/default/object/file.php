@@ -95,11 +95,6 @@
 		</div>
 		
 		<div class="filerepo_title_owner_wrapper">
-		<?php
-			//get the user and a link to their gallery
-			$user_gallery = $vars['url'] . "mod/file/search.php?md_type=simpletype&subtype=file&tag=image&owner_guid=" . $owner->guid . "&search_viewtype=gallery";
-		?>
-		<div class="filerepo_user_gallery_link"><a href="<?php echo $user_gallery; ?>"><?php echo sprintf(elgg_echo("file:user:gallery"),''); ?></a></div>
 		<div class="filerepo_title"><h2><a href="<?php echo $file->getURL(); ?>"><?php echo $title; ?></a></h2></div>
 		<div class="filerepo_owner">
 				<?php
