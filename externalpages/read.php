@@ -18,7 +18,7 @@
 		$type = get_input('expages');
 											
 	// Set the title appropriately
-		$area1 = elgg_view_title(elgg_echo($type));
+		$area1 = elgg_view_title(elgg_echo("expages:". strtolower($type)));
 		
 		//get contents
 		$contents = get_entities("object", $type, 0, "", 1);
