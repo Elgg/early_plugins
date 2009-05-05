@@ -12,6 +12,9 @@
 	    'members:searchtag' => "Member search via tag",
 	    'members:searchname' => "Member search via name",
 	   
+		'members:label:newest' => 'Newest',
+		'members:label:popular' => 'Popular',
+		'members:label:active' => 'Active',
 		
 	);
 					
