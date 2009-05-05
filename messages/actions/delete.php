@@ -17,7 +17,7 @@
  
     // grab details sent from the form
         $message_id_array = get_input('message_id');
-        if (!array($message_id_array)) $message_id_array = array($message_id_array);
+        if (!is_array($message_id_array)) $message_id_array = array($message_id_array);
         $type = get_input('type'); // sent message or inbox
         $success = true;
         $submit = get_input('submit');
