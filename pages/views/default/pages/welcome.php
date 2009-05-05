@@ -22,7 +22,7 @@
 
 ?>
 
-<div class="contentWrapper pageswelcome"><p>Welcome to this Elgg pages plugin. This feature allows you to create pages on any topic and select who can view them and edit them.</p></div>
+<div class="contentWrapper pageswelcome"><p><?php elgg_echo('pages:welcomemessage'); ?></p></div>
     
 <?php
     }
