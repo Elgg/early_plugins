@@ -35,7 +35,7 @@
 											));
 											
 	// Set the title appropriately
-		//$title = sprintf(elgg_echo("blog:posttitle"),$page_owner->name,$blogpost->title);
+		$title = sprintf(elgg_echo("blog:posttitle"),$page_owner->name,$blogpost->title);
 
 	// Display through the correct canvas area
 		$body = elgg_view_layout("two_column_left_sidebar", '', $area1 . $area2);
