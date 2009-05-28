@@ -9,7 +9,11 @@
 	 * @link http://elgg.org/
 	 */
 ?>
-
+div.ajax_loader_file {
+	background: white url(<?php echo $vars['url']; ?>_graphics/ajax_loader.gif) no-repeat left top;
+	width:auto;
+	height:100px;
+}
 
 p.filerepo_owner {
 	margin:0;

@@ -16,7 +16,9 @@
 	}
 	$submit_message = '<b>'.elgg_echo('file:uploading_files_title').'</b><br /><br />';
 	$submit_message .= elgg_echo('file:uploading_files_description').'<br /><br />';
-	$submit_message .= '<img src="'.$vars['url'].'mod/file/graphics/wait.gif">';
+	//$submit_message .= '<img src="'.$vars['url'].'mod/file/graphics/wait.gif">';
+	$submit_message .= '<div class="ajax_loader_file"></div>';
+
 	
 	$vars['plugin'] = "file";
 ?>
