@@ -91,6 +91,9 @@
 			'file:folders:none' => "None",
 			'file:add_to_form' => "Add another file to form",
 			'file:quota:settings:title' => "Default file quota (megabytes/user)",
+			'file:settings:enable_folders:title' => "Enable folders",
+			'file:settings:yes' => "Yes",
+			'file:settings:no' => "No",
 			
 	    /**
 		 * Embed media
