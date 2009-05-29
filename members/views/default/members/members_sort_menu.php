@@ -16,9 +16,9 @@
 ?>
 <div id="elgg_horizontal_tabbed_nav">
 <ul>
-	<li <?php if($filter == "newest") echo "class='selected'"; ?>><a href="<?php echo $url; ?>?filter=newest"><?php elgg_echo('members:label:newest'); ?></a></li>
-	<li <?php if($filter == "pop") echo "class='selected'"; ?>><a href="<?php echo $url; ?>?filter=pop"><?php elgg_echo('members:label:popular'); ?></a></li>
-	<li <?php if($filter == "active") echo "class='selected'"; ?>><a href="<?php echo $url; ?>?filter=active"><?php elgg_echo('members:label:active'); ?></a></li>
+	<li <?php if($filter == "newest") echo "class='selected'"; ?>><a href="<?php echo $url; ?>?filter=newest"><?php echo elgg_echo('members:label:newest'); ?></a></li>
+	<li <?php if($filter == "pop") echo "class='selected'"; ?>><a href="<?php echo $url; ?>?filter=pop"><?php echo elgg_echo('members:label:popular'); ?></a></li>
+	<li <?php if($filter == "active") echo "class='selected'"; ?>><a href="<?php echo $url; ?>?filter=active"><?php echo elgg_echo('members:label:active'); ?></a></li>
 </ul>
 </div>
 
