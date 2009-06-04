@@ -18,6 +18,7 @@
 			'messageboard:user' => "%s's message board",
 	
 			'messageboard:history' => "History",
+			'messageboard:replyon' => 'reply on',
 			
          /**
 	     * Message board widget river
