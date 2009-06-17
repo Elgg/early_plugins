@@ -20,20 +20,21 @@
 		if ($blogpost = get_entity($post)) {
 			
 	// Get any comments
-			$comments = $blogpost->getAnnotations('comments');
+			//$comments = $blogpost->getAnnotations('comments');
 		
 	// Set the page owner
 			set_page_owner($blogpost->getOwner());
 			$page_owner = get_entity($blogpost->getOwner());
 			
 	// Display it
-			$area2 = elgg_view("object/blog",array(
+			$area2 = elgg_view_entity($blogpost, true);
+			/*$area2 = elgg_view("object/blog",array(
 											'entity' => $blogpost,
 											'entity_owner' => $page_owner,
 											'comments' => $comments,
 											'full' => true
 											));
-											
+			*/								
 	// Set the title appropriately
 		$title = sprintf(elgg_echo("blog:posttitle"),$page_owner->name,$blogpost->title);
 
