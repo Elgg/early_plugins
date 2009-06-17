@@ -64,6 +64,10 @@
 				
 			// Register entity type
 				register_entity_type('object','blog');
+				
+			// Register an annotation handler for comments etc
+				register_plugin_hook('entity:annotate', 'object', 'blog_annotate_comments');
+				
 		}
 		
 		function blog_pagesetup() {
@@ -146,6 +150,33 @@
 			}
 			
 			return false;
+			
+		}
+		
+		/**
+		 * Hook into the framework and provide comments on blog entities.
+		 *
+		 * @param unknown_type $hook
+		 * @param unknown_type $entity_type
+		 * @param unknown_type $returnvalue
+		 * @param unknown_type $params
+		 * @return unknown
+		 */
+		function blog_annotate_comments($hook, $entity_type, $returnvalue, $params)
+		{
+			$entity = $params['entity'];
+			$full = $params['full'];
+			
+			if (
+				($entity instanceof ElggEntity) &&	// Is the right type 
+				($entity->getSubtype() == 'blog') &&  // Is the right subtype
+				($entity->comments_on!='Off') && // Comments are enabled
+				($full) // This is the full view
+			)
+			{
+				// Display comments
+				return elgg_view_comments($entity);
+			}
 			
 		}
 
