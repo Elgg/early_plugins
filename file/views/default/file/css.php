@@ -91,6 +91,7 @@ p.filerepo_owner {
 
 .collapsable_box #filerepo_widget_layout {
 	margin:0 10px 0 10px;
+	padding:0;
 	background: none;
 }
 
