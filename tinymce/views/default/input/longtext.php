@@ -63,6 +63,6 @@ else
 <script type="text/javascript">
 	setInterval( "tinymce<?php echo $rand; ?>export()", 5000);
 	function tinymce<?php echo $rand; ?>export() {
-		$("textarea[@name='<?php echo $vars['internalname']; ?>']").val(tinyMCE.activeEditor.getContent());
+		$("textarea[name='<?php echo $vars['internalname']; ?>']").val(tinyMCE.activeEditor.getContent());
 	}
 </script>

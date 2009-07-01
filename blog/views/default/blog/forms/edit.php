@@ -169,9 +169,9 @@ EOT;
 		temppreview = preview;
 		
 		var drafturl = "<?php echo $vars['url']; ?>mod/blog/savedraft.php";
-		var temptitle = $("input[@name='blogtitle']").val();
-		var tempbody = $("textarea[@name='blogbody']").val();
-		var temptags = $("input[@name='blogtags']").val();
+		var temptitle = $("input[name='blogtitle']").val();
+		var tempbody = $("textarea[name='blogbody']").val();
+		var temptags = $("input[name='blogtags']").val();
 		
 		var postdata = { blogtitle: temptitle, blogbody: tempbody, blogtags: temptags };
 		
@@ -182,7 +182,7 @@ EOT;
 			$("span#draftSavedCounter").html(d.getHours() + ":" + mins);
 			if (temppreview == true) {
 				$("form#blogPostForm").attr("action","<?php echo $vars['url']; ?>mod/blog/preview.php");
-				$("input[@name='submit']").click();
+				$("input[name='submit']").click();
 				//$("form#blogPostForm").submit();
 				//document.blogPostForm.submit();
 			}
