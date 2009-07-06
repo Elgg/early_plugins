@@ -98,7 +98,7 @@
 					add_submenu_item(sprintf(elgg_echo('file:yours:friends'),$_SESSION['user']->name), $CONFIG->wwwroot . "pg/file/". $_SESSION['user']->username . "/friends/");
 					add_submenu_item(elgg_echo('file:all'), $CONFIG->wwwroot . "mod/file/world.php");
 						
-					if (can_write_to_container($_SESSION['guid'], $_SESSION['guid']))
+					if ((can_write_to_container($_SESSION['guid'], $_SESSION['guid'])) && (isloggedin()))
 						add_submenu_item(elgg_echo('file:upload'), $CONFIG->wwwroot . "pg/file/". $_SESSION['user']->username . "/new/");
 	
 				} else if (page_owner()) {
@@ -106,7 +106,7 @@
 					if ($page_owner instanceof ElggUser) // This one's for users, not groups
 						add_submenu_item(sprintf(elgg_echo('file:friends'),$page_owner->name), $CONFIG->wwwroot . "pg/file/". $page_owner->username . "/friends/");
 						
-					if (can_write_to_container($_SESSION['guid'], page_owner()))
+					if ((can_write_to_container($_SESSION['guid'], page_owner()) && (isloggedin())))
 						add_submenu_item(elgg_echo('file:upload'), $CONFIG->wwwroot . "pg/file/". $page_owner->username . "/new/");
 	
 					add_submenu_item(elgg_echo('file:all'), $CONFIG->wwwroot . "mod/file/world.php");
