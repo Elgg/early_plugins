@@ -165,8 +165,9 @@ EOT;
 <script type="text/javascript">
 	setInterval( "saveDraft(false)", 120000);
 	function saveDraft(preview) {
-		
 		temppreview = preview;
+		
+		tinyMCE.triggerSave();
 		
 		var drafturl = "<?php echo $vars['url']; ?>mod/blog/savedraft.php";
 		var temptitle = $("input[name='blogtitle']").val();

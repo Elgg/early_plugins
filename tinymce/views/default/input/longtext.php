@@ -61,8 +61,9 @@ else
 <div class="toggle_editor_container"><a class="toggle_editor" href="javascript:toggleEditor('<?php echo $vars['internalname']; ?>');"><?php echo elgg_echo('tinymce:remove'); ?></a></div>
 
 <script type="text/javascript">
-	setInterval( "tinymce<?php echo $rand; ?>export()", 5000);
-	function tinymce<?php echo $rand; ?>export() {
-		$("textarea[name='<?php echo $vars['internalname']; ?>']").val(tinyMCE.activeEditor.getContent());
-	}
+	$(document).ready(function() {
+		$('textarea').parents('form').submit(function() {
+			tinyMCE.triggerSave();
+		});
+	});
 </script>
