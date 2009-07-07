@@ -68,6 +68,8 @@
 			// Register an annotation handler for comments etc
 				register_plugin_hook('entity:annotate', 'object', 'blog_annotate_comments');
 				
+			// Add group menu option
+				add_group_tool_option('blog',elgg_echo('blog:enableblog'),false);
 		}
 		
 		function blog_pagesetup() {
@@ -76,13 +78,14 @@
 
 			//add submenu options
 				if (get_context() == "blog") {
+					$page_owner = page_owner_entity();
+						
 					if ((page_owner() == $_SESSION['guid'] || !page_owner()) && isloggedin()) {
 						add_submenu_item(elgg_echo('blog:your'),$CONFIG->wwwroot."pg/blog/" . $_SESSION['user']->username);
 						add_submenu_item(elgg_echo('blog:friends'),$CONFIG->wwwroot."pg/blog/" . $_SESSION['user']->username . "/friends/");
 						add_submenu_item(elgg_echo('blog:everyone'),$CONFIG->wwwroot."mod/blog/everyone.php");
-						add_submenu_item(elgg_echo('blog:addpost'),$CONFIG->wwwroot."mod/blog/add.php");
+						
 					} else if (page_owner()) {
-						$page_owner = page_owner_entity();
 						add_submenu_item(sprintf(elgg_echo('blog:user'),$page_owner->name),$CONFIG->wwwroot."pg/blog/" . $page_owner->username);
 						if ($page_owner instanceof ElggUser) { // Sorry groups, this isn't for you.
 							add_submenu_item(sprintf(elgg_echo('blog:user:friends'),$page_owner->name),$CONFIG->wwwroot."pg/blog/" . $page_owner->username . "/friends/");
@@ -92,6 +95,9 @@
 						add_submenu_item(elgg_echo('blog:everyone'),$CONFIG->wwwroot."mod/blog/everyone.php");
 					}
 					
+					if (can_write_to_container(0, page_owner()))
+						add_submenu_item(elgg_echo('blog:addpost'),$CONFIG->wwwroot."pg/blog/{$page_owner->username}/new/");
+						
 					if (!defined('everyoneblog') && page_owner()) {
 						
 						if ($dates = get_entity_dates('object','blog',page_owner())) {
@@ -107,7 +113,15 @@
 					}
 					
 				}
-			
+				
+			// Group submenu
+				$page_owner = page_owner_entity();
+				
+				if ($page_owner instanceof ElggGroup && get_context() == 'groups') {
+	    			if($page_owner->blog_enable != "no"){
+					    add_submenu_item(sprintf(elgg_echo("blog:group"),$page_owner->name), $CONFIG->wwwroot . "pg/blog/" . $page_owner->username );
+				    }
+				}
 		}
 		
 		/**
@@ -142,6 +156,9 @@
 										break;
 					case "friends":		include(dirname(__FILE__) . "/friends.php"); return true;
 										break;
+					case "new":			include(dirname(__FILE__) . "/add.php"); return true;
+										break;
+					
 				}
 			// If the URL is just 'blog/username', or just 'blog/', load the standard blog index
 			} else {

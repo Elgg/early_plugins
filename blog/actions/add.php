@@ -34,7 +34,7 @@
 	// Make sure the title / description aren't blank
 		if (empty($title) || empty($body)) {
 			register_error(elgg_echo("blog:blank"));
-			forward("mod/blog/add.php");
+			forward($_SERVER['HTTP_REFERER']);
 			
 	// Otherwise, save the blog post 
 		} else {
@@ -45,6 +45,8 @@
 			$blog->subtype = "blog";
 	// Set its owner to the current user
 			$blog->owner_guid = $_SESSION['user']->getGUID();
+	// Set it's container		
+			$blog->container_guid = (int)get_input('container_guid', $_SESSION['user']->getGUID());
 	// For now, set its access to public (we'll add an access dropdown shortly)
 			$blog->access_id = $access;
 	// Set its title and description appropriately
@@ -53,7 +55,7 @@
 	// Before we can set metadata, we need to save the blog post
 			if (!$blog->save()) {
 				register_error(elgg_echo("blog:error"));
-				forward("mod/blog/add.php");
+				forward($_SERVER['HTTP_REFERER']);
 			}
 	// Now let's add tags. We can pass an array directly to the object property! Easy.
 			if (is_array($tagarray)) {
@@ -70,8 +72,14 @@
 			remove_metadata($_SESSION['user']->guid,'blogtitle');
 			remove_metadata($_SESSION['user']->guid,'blogbody');
 			remove_metadata($_SESSION['user']->guid,'blogtags');
+			
 	// Forward to the main blog page
-			forward("mod/blog/?username=" . $_SESSION['user']->username);
+			$page_owner = get_entity($blog->container_guid);
+			if ($page_owner instanceof ElggUser)
+				$username = $page_owner->username;
+			else if ($page_owner instanceof ElggGroup)
+				$username = "group:" . $page_owner->guid;
+			forward("pg/blog/$username");
 				
 		}
 		

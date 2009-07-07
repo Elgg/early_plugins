@@ -36,6 +36,8 @@
 				$access_id = ACCESS_DEFAULT;
 			else
 				$access_id = 0;
+				
+			$container = $vars['container_guid'] ? elgg_view('input/hidden', array('internalname' => 'container_guid', 'value' => $vars['container_guid'])) : "";
 		}
 
 	// Just in case we have some cached details
@@ -118,6 +120,8 @@
 		</div>
 
 		{$extras}
+		
+		$container
 
 	</div><!-- /two_column_left_sidebar_210 -->
 
