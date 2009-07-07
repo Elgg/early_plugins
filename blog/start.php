@@ -69,7 +69,7 @@
 				register_plugin_hook('entity:annotate', 'object', 'blog_annotate_comments');
 				
 			// Add group menu option
-				add_group_tool_option('blog',elgg_echo('blog:enableblog'),false);
+				add_group_tool_option('blog',elgg_echo('blog:enableblog'),true);
 		}
 		
 		function blog_pagesetup() {
