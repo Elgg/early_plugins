@@ -16,23 +16,6 @@
 			// Grab the config file
 				global $CONFIG;
 			
-			// Set up menu for logged in users
-				if (isloggedin()){
-					add_menu(elgg_echo('bookmarks'), $CONFIG->wwwroot . "pg/bookmarks/" . $_SESSION['user']->username . '/items');	
-			// And for logged out users
-				} else {
-					add_menu(elgg_echo('bookmarks'), $CONFIG->wwwroot . "mod/bookmarks/everyone.php");
-				}
-
-			//add submenu options
-				if (get_context() == "bookmarks") {
-					add_submenu_item(elgg_echo('bookmarks:inbox'),$CONFIG->wwwroot."pg/bookmarks/" . $_SESSION['user']->username . "/inbox");
-					add_submenu_item(elgg_echo('bookmarks:read'),$CONFIG->wwwroot."pg/bookmarks/" . $_SESSION['user']->username . "/items");
-					add_submenu_item(elgg_echo('bookmarks:bookmarklet'), $CONFIG->wwwroot . "mod/bookmarks/bookmarklet.php");
-					add_submenu_item(elgg_echo('bookmarks:friends'),$CONFIG->wwwroot."pg/bookmarks/" . $_SESSION['user']->username . "/friends");
-					add_submenu_item(elgg_echo('bookmarks:everyone'),$CONFIG->wwwroot."mod/bookmarks/everyone.php");
-				}
-				
 			// Register a page handler, so we can have nice URLs
 				register_page_handler('bookmarks','bookmarks_page_handler');
 				
@@ -54,7 +37,51 @@
 				
 			// Register entity type
 				register_entity_type('object','bookmarks');
+				
+			// Add group menu option
+				add_group_tool_option('bookmarks',elgg_echo('bookmarks:enablebookmarks'),true);
 			    
+		}
+		
+		function bookmarks_pagesetup() {
+			global $CONFIG;
+			
+		// Set up menu for logged in users
+			
+			//add submenu options
+				if (get_context() == "bookmarks") {
+					if (isloggedin()) {
+						add_submenu_item(elgg_echo('bookmarks:inbox'),$CONFIG->wwwroot."pg/bookmarks/" . $_SESSION['user']->username . "/inbox");
+						if (page_owner()) {
+							$page_owner = page_owner_entity();
+						
+							add_submenu_item(sprintf(elgg_echo('bookmarks:read'), $page_owner->name),$CONFIG->wwwroot."pg/bookmarks/" . $page_owner->username . "/items");
+						}
+						add_submenu_item(elgg_echo('bookmarks:friends'),$CONFIG->wwwroot."pg/bookmarks/" . $_SESSION['user']->username . "/friends");
+						
+					}
+					add_submenu_item(elgg_echo('bookmarks:everyone'),$CONFIG->wwwroot."mod/bookmarks/everyone.php");
+					
+					// Bookmarklet
+					if ((isloggedin()) && (page_owner()) && (can_write_to_container(0, page_owner()))) {
+						$page_owner = page_owner_entity();
+						
+						$bmtext = elgg_echo('bookmarks:bookmarklet');
+						if ($page_owner instanceof ElggGroup)
+							$bmtext = elgg_echo('bookmarks:bookmarklet:group');
+						add_submenu_item($bmtext, $CONFIG->wwwroot . "pg/bookmarks/{$page_owner->username}/bookmarklet");
+					}
+						
+				}
+				
+				$page_owner = page_owner_entity();
+				
+				if ($page_owner instanceof ElggGroup && get_context() == 'groups') {
+	    			if($page_owner->bookmarks_enable != "no"){
+					    add_submenu_item(sprintf(elgg_echo("bookmarks:group"),$page_owner->name), $CONFIG->wwwroot . "pg/bookmarks/" . $page_owner->username . '/items');
+				    }
+				}
+				
 		}
 		
 		/**
@@ -81,6 +108,10 @@
 					case "inbox":		@include(dirname(__FILE__) . "/inbox.php"); return true;
 										break;
 					case "items":		@include(dirname(__FILE__) . "/index.php"); return true;
+										break;
+					case "add": 		@include(dirname(__FILE__) . "/add.php"); return true;
+										break;
+					case "bookmarklet": @include(dirname(__FILE__) . "/bookmarklet.php"); return true;
 										break;
 				}
 			// If the URL is just 'bookmarks/username', or just 'bookmarks/', load the standard bookmarks index
@@ -147,6 +178,7 @@
 		
 	// Make sure the initialisation function is called on initialisation
 		register_elgg_event_handler('init','system','bookmarks_init');
+		register_elgg_event_handler('pagesetup','system','bookmarks_pagesetup');
 
 	// Register actions
 		global $CONFIG;

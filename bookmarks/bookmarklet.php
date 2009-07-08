@@ -24,7 +24,7 @@
 		
 	// List bookmarks
 		$area2 = elgg_view_title(elgg_echo('bookmarks:bookmarklet'));
-		$area2 .= elgg_view('bookmarks/bookmarklet');
+		$area2 .= elgg_view('bookmarks/bookmarklet', array('pg_owner' => $page_owner));
 		
 	// Format page
 		$body = elgg_view_layout('two_column_left_sidebar', $area1, $area2);

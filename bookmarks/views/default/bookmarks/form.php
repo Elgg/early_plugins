@@ -47,7 +47,7 @@
 ?>
 <div class="contentWrapper">
 	<form action="<?php echo $vars['url']; ?>action/bookmarks/add" method="post">
-	
+		<?php echo elgg_view('input/securitytoken'); ?>
 		<p>
 			<label>
 				<?php 	echo elgg_echo('title'); ?>
@@ -126,6 +126,7 @@
 			</label>
 		</p>
 		<p>
+			<?php echo $vars['container_guid'] ? elgg_view('input/hidden', array('internalname' => 'container_guid', 'value' => $vars['container_guid'])) : ""; ?>
 			<input type="hidden" name="bookmark_guid" value="<?php echo $guid; ?>" />
 			<input type="submit" value="<?php echo elgg_echo('save'); ?>" />
 		</p>

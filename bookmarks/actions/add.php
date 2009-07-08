@@ -9,6 +9,9 @@
 	 * @copyright Curverider Ltd 2008-2009
 	 * @link http://elgg.org/
 	 */
+	
+	gatekeeper();
+	action_gatekeeper();
 
 		$title = get_input('title');
 		$guid = get_input('bookmark_guid',0);
@@ -25,6 +28,7 @@
 			$entity = new ElggObject;
 			$entity->subtype = "bookmarks";
 			$entity->owner_guid = $_SESSION['user']->getGUID();
+			$entity->container_guid = (int)get_input('container_guid', $_SESSION['user']->getGUID());
 			
 		} else {
 			

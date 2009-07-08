@@ -22,6 +22,8 @@
 			$page_owner = $_SESSION['user'];
 			set_page_owner($page_owner->getGUID());
 		}
+		if ($page_owner instanceof ElggGroup)
+			$container = $page_owner->guid;
 			
 		$area2 .= elgg_view_title(elgg_echo('bookmarks:this'), false);
 		
@@ -29,10 +31,10 @@
 		if ($this_guid = get_input('bookmark',0)) {
 			$entity = get_entity($this_guid);
 			if ($entity->canEdit()) {
-				$area2 .= elgg_view('bookmarks/form',array('entity' => $entity));
+				$area2 .= elgg_view('bookmarks/form',array('entity' => $entity, 'container_guid' => $container));
 			}
 		} else {
-			$area2 .= elgg_view('bookmarks/form');
+			$area2 .= elgg_view('bookmarks/form', array('container_guid' => $container));
 		}
 		
 	// Format page
