@@ -16,7 +16,7 @@
 	position: absolute;
 	top: 0;
 	left: 0;
-	z-index: 10000;
+	z-index: 100;
 	text-align: left;
 }
 #facebox .popup {
@@ -65,7 +65,7 @@
 }
 .facebox_overlayBG {
 	background-color: #000000;
-	z-index: 9999;
+	z-index: 99;
 }
 
 * html #facebox_overlay { /* ie6 hack */
