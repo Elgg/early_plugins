@@ -430,7 +430,7 @@
 	 */
 	function groups_delete_event_listener($event, $object_type, $object)
 	{
-		delete_access_collection($object->access_id);
+		delete_access_collection($object->group_acl);
 		
 		return true;
 	}
