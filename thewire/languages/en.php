@@ -33,10 +33,10 @@
 	     **/
 	        
 	        //generic terms to use
-	        'thewire:river:created' => "%s posted",
+	        'thewire:river:created' => "posted",
 	        
 	        //these get inserted into the river links to take the user to the entity
-	        'thewire:river:create' => "on the wire.",
+	        'thewire:river:create' => "a message on the wire.",
 	        
 	    /**
 	     * Wire widget
