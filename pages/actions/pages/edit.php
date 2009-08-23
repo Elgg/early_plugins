@@ -14,6 +14,9 @@
 	
 	gatekeeper();
 	set_context('pages');
+	
+	//boolean to select correct add to river. It will be new or edit
+	$which_river = 'new';
 
 	// Get group fields
 	$input = array();
@@ -34,6 +37,9 @@
 		$page = get_entity($pages_guid);
 		if (!$page->canEdit())
 			$page = NULL; // if we can't edit it, go no further.
+			
+		//select river boolean to edit
+		$which_river = 'edit';
 	}
 	else
 	{
@@ -95,7 +101,10 @@
 			system_message(elgg_echo("pages:saved"));
 			
 			//add to river
-			add_to_river('river/object/page/create','create',$_SESSION['user']->guid,$page->guid);
+			if($which_river == 'new')
+				add_to_river('river/object/page/create','create',$_SESSION['user']->guid,$page->guid);
+			else
+				add_to_river('river/object/page/update','update',$_SESSION['user']->guid,$page->guid);
 		
 			// Forward to the user's profile
 			forward($page->getUrl());
