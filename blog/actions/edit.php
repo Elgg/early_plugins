@@ -75,7 +75,12 @@
 				remove_metadata($_SESSION['user']->guid,'blogbody');
 				remove_metadata($_SESSION['user']->guid,'blogtags');
 		// Forward to the main blog page
-				forward("pg/blog/" . $owner->username);
+			$page_owner = get_entity($blog->container_guid);
+			if ($page_owner instanceof ElggUser)
+				$username = $page_owner->username;
+			else if ($page_owner instanceof ElggGroup)
+				$username = "group:" . $page_owner->guid;
+			forward("pg/blog/$username");
 					
 			}
 		
