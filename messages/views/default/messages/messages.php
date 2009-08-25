@@ -33,6 +33,12 @@
         $type = "inbox";
         
     }
+	
+	// fix for RE: RE: RE: that builds on replies
+	$reply_title = $vars['entity']->title;
+	if (strncmp($reply_title, "RE:", 3) != 0) {
+		$reply_title = "RE: " . $reply_title;
+	}
 	 
     if (isloggedin())
     if (isset($vars['entity'])) {
@@ -128,7 +134,7 @@
 		<div id="message_reply_form">
 			<form action="<?php echo $vars['url']; ?>action/messages/send" method="post" name="messageForm">
 				<!-- populate the title space with the orginal message title, inserting re: before it -->						        
-				<p><label><?php echo elgg_echo("messages:title"); ?>: <br /><input type='text' name='title' class="input-text" value='RE: <?php echo $vars['entity']->title; ?>' /></label></p>
+				<p><label><?php echo elgg_echo("messages:title"); ?>: <br /><input type='text' name='title' class="input-text" value='<?php echo $reply_title; ?>' /></label></p>
 				<p class="longtext_editarea"><label><?php echo elgg_echo("messages:message"); ?>:</label></p>
 				<div id="message_reply_editor">
 				<?php
@@ -149,7 +155,7 @@
     	        				echo "<input type='hidden' name='send_to' value='" . $vars['entity']->fromId . "' />";
 	
 	        			?>
-	        			<input type="submit" class="submit_button" value="<?php echo elgg_echo("messages:fly"); ?>!" />
+	        			<input type="submit" class="submit_button" value="<?php echo elgg_echo("messages:fly"); ?>" />
 				</p>
 			</form>
 		</div><!-- end of div reply_form -->

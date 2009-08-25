@@ -15,9 +15,21 @@
 	 *
 	 */
 	 
-	 //grab the user id to send a message to. This will only happen if a user clicks on the 'send a message'
-	 //link on a user's profile or hover-over menu
-	 $send_to = get_input('send_to');
+	//grab the user id to send a message to. This will only happen if a user clicks on the 'send a message'
+	//link on a user's profile or hover-over menu
+	$send_to = get_input('send_to');
+	if ($send_to === "")
+		$send_to = $_SESSION['msg_to'];
+
+	$msg_title = $_SESSION['msg_title'];
+	$msg_content = $_SESSION['msg_contents'];
+	
+	// clear sticky form cache in case user browses away from page and comes back 
+	unset($_SESSION['msg_to']);
+	unset($_SESSION['msg_title']);
+	unset($_SESSION['msg_contents']);
+		
+	
 	 
 ?>
 	<div class="contentWrapper">
@@ -63,18 +75,18 @@
 		        
 	    ?>
 	    
-		<p><label><?php echo elgg_echo("messages:title"); ?>: <br /><input type='text' name='title' value='' class="input-text" /></label></p>
+		<p><label><?php echo elgg_echo("messages:title"); ?>: <br /><input type='text' name='title' value='<?php echo $msg_title; ?>' class="input-text" /></label></p>
 		<p class="longtext_editarea"><label><?php echo elgg_echo("messages:message"); ?>: <br />
 		<?php
 
 				    echo elgg_view("input/longtext", array(
 									"internalname" => "message",
-									"value" => '',
+									"value" => $msg_content,
 													));
 			
 		?>
 		</label></p>
-		<p><input type="submit" class="submit_button" value="<?php echo elgg_echo("messages:fly"); ?>!" /></p>
+		<p><input type="submit" class="submit_button" value="<?php echo elgg_echo("messages:fly"); ?>" /></p>
 	
 	</form>
 	</div>

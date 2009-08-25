@@ -28,8 +28,8 @@
 				
 			//add submenu options
 				if (get_context() == "messages") {
-					add_submenu_item(elgg_echo('messages:inbox'), $CONFIG->wwwroot . "pg/messages/" . $_SESSION['user']->username);
 					add_submenu_item(elgg_echo('messages:compose'), $CONFIG->wwwroot . "mod/messages/send.php");
+					add_submenu_item(elgg_echo('messages:inbox'), $CONFIG->wwwroot . "pg/messages/" . $_SESSION['user']->username);
 					add_submenu_item(elgg_echo('messages:sentmessages'), $CONFIG->wwwroot . "mod/messages/sent.php");
 				}
 				
@@ -265,13 +265,13 @@
 			if (isset($page[1])) {
 				switch($page[1]) {
 					case "read":		set_input('message',$page[2]);
-										@include(dirname(__FILE__) . "/read.php");
+										include(dirname(__FILE__) . "/read.php");
 										return true;
 										break;
 				}
 			// If the URL is just 'messages/username', or just 'messages/', load the standard messages index
 			} else {
-				@include(dirname(__FILE__) . "/index.php");
+				include(dirname(__FILE__) . "/index.php");
 				return true;
 			}
 			
