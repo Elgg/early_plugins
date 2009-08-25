@@ -57,10 +57,12 @@
 						
 							add_submenu_item(sprintf(elgg_echo('bookmarks:read'), $page_owner->name),$CONFIG->wwwroot."pg/bookmarks/" . $page_owner->username . "/items");
 						}
-						add_submenu_item(elgg_echo('bookmarks:friends'),$CONFIG->wwwroot."pg/bookmarks/" . $_SESSION['user']->username . "/friends");
+						if(!$page_owner instanceof ElggGroup)
+							add_submenu_item(elgg_echo('bookmarks:friends'),$CONFIG->wwwroot."pg/bookmarks/" . $_SESSION['user']->username . "/friends");
 						
 					}
-					add_submenu_item(elgg_echo('bookmarks:everyone'),$CONFIG->wwwroot."mod/bookmarks/everyone.php");
+					if(!$page_owner instanceof ElggGroup)
+						add_submenu_item(elgg_echo('bookmarks:everyone'),$CONFIG->wwwroot."mod/bookmarks/everyone.php");
 					
 					// Bookmarklet
 					if ((isloggedin()) && (page_owner()) && (can_write_to_container(0, page_owner()))) {
