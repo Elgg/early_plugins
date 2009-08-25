@@ -40,7 +40,7 @@
 		$info .= "<p><a href=\"{$url}\">{$wording}</a></p>";
 	$info .= "</div>";
 	$info .= "<p><b><a href=\"" . $vars['entity']->getUrl() . "\">" . $vars['entity']->name . "</a></b></p>";
-    $info .= "<p class=\"owner_timestamp\">" . $vars['entity']->description . "</p>";
+    $info .= "<p class=\"owner_timestamp\">" . $vars['entity']->briefdescription . "</p>";
 
 	// num users, last activity, owner etc
 
