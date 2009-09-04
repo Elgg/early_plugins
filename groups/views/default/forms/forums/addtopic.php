@@ -20,6 +20,7 @@
 			$message = "";
 			$message_id = "";
 			$status = "";
+			$access_id = ACCESS_DEFAULT;
 	    
     // get the group guid
         $group_guid = (int) get_input('group_guid');
