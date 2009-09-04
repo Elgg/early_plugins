@@ -166,7 +166,7 @@
 .topic_post p.topic-post-menu a.collapsibleboxlink {
 	padding-left:10px;
 }
-.topic_post table, td {
+.topic_post table, .topic_post td {
     border:none;
 }
 
