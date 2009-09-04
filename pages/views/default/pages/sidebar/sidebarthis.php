@@ -26,7 +26,7 @@
 	function pages_draw_child($childentity, $path) {
 		
 				$child = "\n\t\t{\n";
-				$child .= "\t\t\t\"text\": \"<a href=\\\"{$childentity->getURL()}\\\">{$childentity->title}</a>\"\n";
+				$child .= "\t\t\t\"text\": \"<a href=\\\"{$childentity->getURL()}\\\">" . addslashes($childentity->title) . "</a>\"\n";
 				
 				$extras = "";
 				$haschild = get_entities_from_metadata('parent_guid',$childentity->guid,'','',0,9999);
@@ -56,7 +56,7 @@
 	
 	if (!$parent) {
 		echo "{\n";
-		echo "\t\"text\": \"<a href=\\\"{$vars['entity']->getURL()}\\\">{$vars['entity']->title}</a>\"\n";
+		echo "\t\"text\": \"<a href=\\\"{$vars['entity']->getURL()}\\\">" . addslashes($vars['entity']->title) . "</a>\"\n";
 	}
 	
 		$children = "";
