@@ -12,9 +12,9 @@
 	 * @uses $vars['entity'] The user entity
 	 */
 
-		header("Content-type: text/javascript");
-		header("Pragma: public");
-		header("Cache-Control: public");
+//		header("Content-type: text/javascript");
+//		header("Pragma: public");
+//		header("Cache-Control: public");
 
 ?>
 
