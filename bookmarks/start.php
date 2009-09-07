@@ -15,7 +15,11 @@
 			
 			// Grab the config file
 				global $CONFIG;
-			
+				
+			//add a tools menu option
+			if (isloggedin())
+	 	        add_menu(elgg_echo('bookmarks'), $CONFIG->wwwroot . "pg/bookmarks/" . $_SESSION['user']->username . '/items');
+				
 			// Register a page handler, so we can have nice URLs
 				register_page_handler('bookmarks','bookmarks_page_handler');
 				
