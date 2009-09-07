@@ -53,7 +53,7 @@
 			$content = list_entities("user","",0,10,false);
 			break;
 			case "pop":
-			$content = list_entities_by_relationship_count('friend', true);
+			$content = list_entities_by_relationship_count('friend', true, '', '', 0, 10, false);
 			break;
 			case "active":
 			$content = elgg_view("members/online");
