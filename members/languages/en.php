@@ -6,15 +6,17 @@
 		 * Site info details
 		 */
 		
-		'members:members' => "Site members",
-	    'members:online' => "Members active now",
-	    'members:active' => "site members",
-	    'members:searchtag' => "Member search via tag",
-	    'members:searchname' => "Member search via name",
+		'members:members' => "Site users",
+	    'members:online' => "Users active now",
+	    'members:active' => "site users",
+	    'members:searchtag' => "User search via tag",
+	    'members:searchname' => "User search via name",
 	   
 		'members:label:newest' => 'Newest',
 		'members:label:popular' => 'Popular',
 		'members:label:active' => 'Active',
+		'members:search:name' => 'Users name',
+		'members:search:tags' => 'Tags',
 		
 	);
 					
