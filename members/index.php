@@ -17,7 +17,8 @@
 		$page_owner = page_owner_entity();
 		if ($page_owner === false || is_null($page_owner)) {
 			$page_owner = $_SESSION['user'];
-			set_page_owner($page_owner->getGUID());
+			if ($page_owner)
+				set_page_owner($page_owner->getGUID());
 		}
 		
 	//get filter
