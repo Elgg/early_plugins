@@ -34,5 +34,5 @@
 	$body = elgg_view_layout('two_column_left_sidebar',$area1, $area2);
 
 	// Finally draw the page
-	page_draw(sprintf(elgg_echo("file:yours"),$_SESSION['user']->name), $body);
+	page_draw(sprintf(elgg_echo("file:all")), $body);
 ?>
