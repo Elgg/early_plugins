@@ -16,7 +16,8 @@
 		$area2 = elgg_view_title(elgg_echo("thewire:everyone"));
 		
 		//add form
-		$area2 .= elgg_view("thewire/forms/add");
+		if(isloggedin())
+			$area2 .= elgg_view("thewire/forms/add");
 
 		$area2 .= list_entities('object','thewire'); // elgg_view("thewire/view",array('entity' => $thewireposts));
 	    $body = elgg_view_layout("two_column_left_sidebar", '', $area2);
