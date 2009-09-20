@@ -95,7 +95,7 @@
 						add_submenu_item(elgg_echo('blog:everyone'),$CONFIG->wwwroot."mod/blog/everyone.php");
 					}
 					
-					if (can_write_to_container(0, page_owner()))
+					if (can_write_to_container(0, page_owner()) && isloggedin())
 						add_submenu_item(elgg_echo('blog:addpost'),$CONFIG->wwwroot."pg/blog/{$page_owner->username}/new/");
 						
 					if (!defined('everyoneblog') && page_owner()) {
