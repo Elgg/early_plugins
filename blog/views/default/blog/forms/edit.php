@@ -171,7 +171,7 @@ EOT;
 	function saveDraft(preview) {
 		temppreview = preview;
 
-		if (tinyMCE) {
+		if (typeof(tinyMCE) != 'undefined') {
 			tinyMCE.triggerSave();
 		}
 		
