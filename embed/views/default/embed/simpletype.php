@@ -33,7 +33,7 @@
 	<script type="text/javascript">
 		$('#embed_simpletype_select').change(function(){
 			var simpletype = $('#embed_simpletype_select').val();
-			var url = '<?php echo $vars['url']; ?>pg/embed/media?simpletype=' + simpletype + '&amp;internalname=<?php echo $vars['internalname']; ?>';
+			var url = '<?php echo $vars['url']; ?>pg/embed/media?simpletype=' + simpletype + '&internalname=<?php echo $vars['internalname']; ?>';
 			$('.popup .content').load(url);
 		});
 	</script>
