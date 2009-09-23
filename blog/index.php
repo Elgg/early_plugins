@@ -28,7 +28,7 @@
 		}
 		
 	// Get a list of blog posts
-		$area2 .= list_user_objects($page_owner->getGUID(),'blog',10,false);
+		$area2 .= "<div id=\"blogs\">" . list_user_objects($page_owner->getGUID(),'blog',10,false) . "</div>";
 
 	// Get blog tags
 
