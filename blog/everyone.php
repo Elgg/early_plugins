@@ -20,7 +20,7 @@
 		
 		$area2 = elgg_view_title(elgg_echo('blog:everyone'));
 
-		$area2 .= list_entities('object','blog',0,10,false);
+		$area2 .= "<div id='blogs'>" . list_entities('object','blog',0,10,false) . "<div class='clearfloat'></div></div>";
 
 		// get tagcloud
 		// $area3 = "This will be a tagcloud for all blog posts";
@@ -29,7 +29,7 @@
 		global $CONFIG;
 		$area3 = elgg_view('blog/categorylist',array('baseurl' => $CONFIG->wwwroot . 'search/?subtype=blog&tagtype=universal_categories&tag=','subtype' => 'blog'));
 
-		$body = "<div id='blogs'>" . elgg_view_layout("two_column_left_sidebar", '', $area2, $area3) . "<div class='clearfloat'></div></div>";
+		$body = elgg_view_layout("two_column_left_sidebar", '', $area2, $area3);
 		
 	// Display page
 		page_draw(elgg_echo('blog:everyone'),$body);
