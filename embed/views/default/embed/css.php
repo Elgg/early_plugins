@@ -1,7 +1,7 @@
 <?php
 
 	/**
-	 * Elgg embed CSS
+	 * Elgg embed CSS - standard across all themes
 	 * 
 	 * @package embed
 	 * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License version 2
@@ -16,7 +16,7 @@
 	position: absolute;
 	top: 0;
 	left: 0;
-	z-index: 100;
+	z-index: 10000;
 	text-align: left;
 }
 #facebox .popup {
@@ -65,7 +65,7 @@
 }
 .facebox_overlayBG {
 	background-color: #000000;
-	z-index: 99;
+	z-index: 9999;
 }
 
 * html #facebox_overlay { /* ie6 hack */
@@ -143,10 +143,11 @@
 }
 #mediaEmbed .search_listing {
 	margin:0 0 5px 0;
+	background: white;
 }
 
 h1.mediaModalTitle {
-	color:#0054A7;
+	/* color:#0054A7; */
 	font-size:1.35em;
 	line-height:1.2em;
 	margin:0 0 0 8px;
@@ -156,7 +157,10 @@ h1.mediaModalTitle {
 #mediaEmbed .pagination,
 #mediaUpload .pagination {
 	float:right;
-	margin:0;
+	padding:5px;
+	background:white;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;	
 }
 #mediaUpload label {
 	font-size:120%;
@@ -179,6 +183,33 @@ label a.embed_media {
 
 
 
+/* ***************************************
+	PAGINATION
+*************************************** */
+#mediaEmbed .pagination .pagination_number {
+	border:1px solid #999999; 
+	color:#666666;
+}
+#mediaEmbed .pagination .pagination_number:hover {
+	background:#aaaaaa; 
+	color:black;
+}
+
+#mediaEmbed .pagination .pagination_previous,
+#mediaEmbed .pagination .pagination_next {
+	border:1px solid #999999; 
+	color:#666666;
+}
+#mediaEmbed .pagination .pagination_previous:hover,
+#mediaEmbed .pagination .pagination_next:hover {
+	background:#aaaaaa; 
+	color:black;
+}
+#mediaEmbed .pagination .pagination_currentpage {
+	background:#666666; 
+	border:1px solid #666666; 
+	color:white;
+}
 
 
 
