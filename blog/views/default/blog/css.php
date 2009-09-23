@@ -11,7 +11,14 @@
 	 */
 
 ?>
-
+#blogs .pagination {
+	margin:5px 10px 0 10px;
+	padding:5px;
+	display:block;
+}
+#blogs #two_column_left_sidebar_maincontent {
+	padding-bottom:10px;
+}
 
 .singleview {
 	margin-top:10px;
