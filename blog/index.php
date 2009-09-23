@@ -28,7 +28,7 @@
 		}
 		
 	// Get a list of blog posts
-		$area2 .= "<div id=\"blogs\">" . list_user_objects($page_owner->getGUID(),'blog',10,false) . "</div>";
+		$area2 .= list_user_objects($page_owner->getGUID(),'blog',10,false);
 
 	// Get blog tags
 
@@ -37,7 +37,7 @@
 		$area3 = elgg_view('blog/categorylist',array('baseurl' => $CONFIG->wwwroot . 'search/?subtype=blog&owner_guid='.$page_owner->guid.'&tagtype=universal_categories&tag=','subtype' => 'blog', 'owner_guid' => $page_owner->guid));
 		
 	// Display them in the page
-        $body = elgg_view_layout("two_column_left_sidebar", '', $area1 . $area2, $area3);
+        $body = "<div id='blogs'>" . elgg_view_layout("two_column_left_sidebar", '', $area1 . $area2, $area3) ."<div class='clearfloat'></div></div>";
 		
 	// Display page
 		page_draw(sprintf(elgg_echo('blog:user'),$page_owner->name),$body);
