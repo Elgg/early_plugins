@@ -101,7 +101,10 @@
 				}
 			}
 		}
-		if ($simplecache_enabled) {
+		//@todo forcing through the framework to ensure the matrix
+		// is created the same way.
+		//if ($simplecache_enabled) {
+		if (false) {
 			$filename = $dataroot . $matrix . "{$username}/profile/" . $username . $size . ".jpg";
 			$contents = @file_get_contents($filename);
 			if (empty($contents)) {			
