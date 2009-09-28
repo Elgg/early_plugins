@@ -23,8 +23,11 @@
 			//$comments = $blogpost->getAnnotations('comments');
 		
 	// Set the page owner
-			set_page_owner($blogpost->getOwner());
-			$page_owner = get_entity($blogpost->getOwner());
+			if ($blogpost->container_guid) {
+				set_page_owner($blogpost->container_guid);
+			} else {
+				set_page_owner($blogpost->owner_guid);
+			}
 			
 	// Display it
 			$area2 = elgg_view_entity($blogpost, true);
