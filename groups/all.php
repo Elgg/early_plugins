@@ -16,7 +16,7 @@
 	$tag = get_input("tag");
 	$filter = get_input("filter");
 	if(!$filter)
-		$filter = "newest";
+		$filter = "active";
 	
 	
 	// Get objects
