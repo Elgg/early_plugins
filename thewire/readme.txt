@@ -8,6 +8,11 @@
 	 * @link http://elgg.com/
 */
 
-This is a twitter style, short message service that allows users to post notes to the wire.
+This is Curverider's commercial wire.
 
-Install: Just drop it into the mod directory and that should be it.
+Notes;
+
+In order to pull out wire messages based on latest reply, we had to use annotations. This works fine
+in most case unless there are no replies (annotations). Therefore, when you create a parent
+message, it creates a blank annotation which is never displayed but lets us use the function
+get_entities_from_annotations to pull out the latest and cluster all messages.

@@ -1,7 +1,13 @@
 <?php
 
 	/**
-	 * New wire post view for the activity stream
+	 * Elgg thewire display latest on the users profile
+	 * 
+	 * @package Elggthewire
+	 * @license Private
+	 * @author Curverider <info@elgg.com>
+	 * @copyright Curverider Ltd 2008-2009
+	 * @link http://elgg.com/
 	 */
 	 
 	$owner = $vars['entity']->guid;

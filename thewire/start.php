@@ -5,32 +5,22 @@
 	 * The wire is simple twitter like plugin that allows users to post notes to the wire
 	 * 
 	 * @package ElggTheWire
-	 * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License version 2
+	 * @license Private
 	 * @author Curverider <info@elgg.com>
 	 * @copyright Curverider Ltd 2008-2009
 	 * @link http://elgg.com/
 	 */
 
-	/**
-	 * thewire initialisation
-	 *
-	 * These parameters are required for the event API, but we won't use them:
-	 * 
-	 * @param unknown_type $event
-	 * @param unknown_type $object_type
-	 * @param unknown_type $object
-	 */
-
-		function thewire_init() {
+	require_once(dirname(__FILE__) . '/thewire_functions.php');
+	 
+	function thewire_init() {
 			
 			// Load system configuration
 				global $CONFIG;
 				
 			// Set up menu for logged in users
 				if (isloggedin()) {
-		
-					add_menu(elgg_echo('thewire'), $CONFIG->wwwroot . "mod/thewire/everyone.php");
-			
+					add_menu(elgg_echo('thewire'), $CONFIG->wwwroot . "mod/thewire/everyone.php");		
 				} 
 				
 			// Extend system CSS with our own styles, which are defined in the thewire/css view
@@ -47,7 +37,7 @@
 				register_entity_url_handler('thewire_url','object','thewire');
 				
 			// Your thewire widget
-			    add_widget_type('thewire',elgg_echo("thewire:read"),elgg_echo("thewire:yourdesc"));
+			    add_widget_type('thewire',elgg_echo("thewire:readuser"),elgg_echo("thewire:yourdesc"));
 			    
 			// Register entity type
 				register_entity_type('object','thewire');
@@ -61,6 +51,10 @@
 			
 			// Listen to notification events and supply a more useful message for SMS'
 			register_plugin_hook('notify:entity:message', 'object', 'thewire_notify_message');
+
+			// Register create wire object handler for any event
+			//register_elgg_event_handler('create','all','thewire_create_object', 1000); // We want this to appear after command processing
+
 		}
 		
 		function thewire_pagesetup() {
@@ -151,7 +145,7 @@
 		 * @param string $method The method (default: 'site')
 		 * @return bool
 		 */
-		function thewire_save_post($post, $access_id, $parent=0, $method = "site")
+		function thewire_save_post($post, $access_id, $method = "site")
 		{
 			
 			global $SESSION; 
@@ -169,23 +163,76 @@
 			$thewire->access_id = $access_id;
 			
 			// Set its description appropriately
-			$thewire->description = elgg_substr(strip_tags($post), 0, 160);
-			/*if (is_callable('mb_substr'))
-				$thewire->description = mb_substr(strip_tags($post), 0, 160);
-			else
-				$thewire->description = substr(strip_tags($post), 0, 160);*/
+			$thewire->description = $post;
 			
 		    // add some metadata
 	        $thewire->method = $method; //method, e.g. via site, sms etc
-	        $thewire->parent = $parent; //used if the note is a reply
 	        
 	        //save
 			$save = $thewire->save();
-
-			if($save)
+	        
+			if($save){
 				add_to_river('river/object/thewire/create','create',$SESSION['user']->guid,$thewire->guid);
+				//create an empty annotation so we can pull out all wire messages using the annotation
+				//functions
+				$thewire->annotate('wire_reply',"",$thewire->access_id, $_SESSION['guid']);
+			}
+	        
 	        
 	        return $save;
+
+		}
+		
+		/**
+		 * Create a reply wire post.
+		 *
+		 * @param string $post The post
+		 * @param int $access_id Public/private etc
+		 * @param int $parent Parent post (if any)
+		 * @param string $method The method (default: 'site')
+		 * @param array $relationship The relationships for the parent object
+		 * @return bool
+		 */
+		function thewire_reply_post($post, $access_id, $method = "site", $relationship)
+		{
+			
+			global $SESSION; 
+			
+			//check the array exists
+			if(isset($relationship)){
+				foreach($relationship as $mess){
+					//we only want the relationship "on_the_wire"
+					if($mess->relationship == "on_the_wire"){
+						$parent = (int)$mess->guid_one;//this is the parent object the comment is one
+						$wire_message = (int)$mess->guid_two;//this is that parent's wire message
+						break;
+					}
+				}
+			}
+			
+			//grab the entities
+			$parent_object = get_entity($parent);
+			$thewire_object = get_entity($wire_message);
+			
+			//Set some data
+			$reply = $post;
+			$access_id = $parent_object->access_id;
+			$method = $method;
+			$owner_guid = $_SESSION['user']->guid; //you need to be logged in to post a reply
+			
+			// Make sure the message isn't blank and the entities exist
+			if(empty($reply) || !($thewire_object) || !($parent_object)) {
+				
+				return false;
+			
+			}else{
+				
+				if($thewire_object->annotate('wire_reply',$reply,$access_id, $owner_guid))
+					return true;
+				else
+					return false;
+				
+			}
 
 		}
 		
@@ -200,7 +247,7 @@
 				if ((is_plugin_enabled('smsclient')) && (is_plugin_enabled('smslogin')))
 				{
 					// By this stage the owner should be logged in (requires SMS Login)
-					if (thewire_save_post($object->description, get_default_access(), 0, 'sms'))
+					if (thewire_save_post($object->description, get_default_access(), 'sms'))
 						return false;
 					
 				}
@@ -208,6 +255,142 @@
 					
 			return true; // always create the shout even if it can't be sent
 		}
+
+	/**
+	 * Creates a new message when a new object is created
+	 */
+		function thewire_create_object($event, $object_type, $object) {
+
+			if ($object instanceof ElggObject) {
+				//perhaps we need an array of objects not to include?
+				if ($object->getSubtype() != 'thewire' && $object->getSubtype() != 'messages' && $object->getSubtype() != 'todo' &&
+					(!empty($object->title) || !empty($object->description))) {
+						
+					if (empty($object->title)) {
+						$title = $object->description;
+					} else {
+						$title = $object->title;
+					}
+					
+					//$url = thewire_shrink_url($object->getURL());
+					$url = $object->getURL();
+					
+					$subtype = thewire_get_subtype($object->getSubtype());
+					
+					if (strlen($title . ' ' . $url) > 140) {
+						$lengthtocut = strlen($title . ' ' . $url) - 136;
+						$title = substr($title,0,strlen($title) - $lengthtocut);
+						$title = $lengthtocut;
+					}
+					
+					$text = "<a href=\"{$url}\">" . $title . "</a>"; // . $url;
+					
+					$save_post = thewire_save_post($text, $object->access_id,$subtype);
+					
+					//if post saved create a link between the object and wire post
+					//guid one is the object and guid two is the wire post
+					if($save_post)
+						add_entity_relationship($object->guid, "on_the_wire", $save_post);
+					
+				}
+				
+			}
+			
+			if ($object instanceof ElggGroup) {
+				if ($object->getType() == 'group' && $object->getSubtype() != 'messages' &&
+					(!empty($object->name))) {
+						
+					$title = $object->name;
+					
+					//$url = thewire_shrink_url($object->getURL());
+					$url = $object->getURL();
+					
+					if (strlen($title . ' ' . $url) > 140) {
+						$lengthtocut = strlen($title . ' ' . $url) - 136;
+						$title = substr($title,0,strlen($title) - $lengthtocut);
+						$title = $lengthtocut;
+					}
+					
+					$via_group = elgg_echo("thewire:agroup");		
+					$text = elgg_echo("thewire:createdgroup") . ": " . $title . ' ' . $url;				
+					thewire_save_post($text, $object->access_id,$via_group);
+					
+				}
+				
+			}
+			
+			if ($object instanceof ElggAnnotation) {
+				if (($object->getSubtype() == 'generic_comment' || $object->getSubtype() == 'group_topic_post') && $object->getSubtype() != 'messages') {
+					if ($real_obj = get_entity($object->entity_guid)) {
+
+						if ($real_obj instanceof ElggEntity) {
+						
+							$title = '';
+							if (empty($real_obj->title)) {
+								$title = $real_obj->description;
+							} else {
+								$title = $real_obj->title;
+							}
+							
+							$via_comment = elgg_echo("thewire:acomment");
+							$obect_url = "<a href=\"{$real_obj->getURL()}\">" . $title . "</a>";
+							
+							$text = sprintf(elgg_echo('thewire:comment'),$title) . ' ' . $obect_url;
+							
+							//get relationships, this is to attach a reply to the main object wire post
+							$get_message_guid = get_entity_relationships($real_obj->guid);
+							
+							//post this comment as a reply to the main objects wire message
+							thewire_reply_post($text, $real_obj->access_id, $via_comment, $get_message_guid);
+							
+							//thewire_save_post($text, $real_obj->access_id,$via_comment);
+						
+						}
+						
+					}
+				}
+			}
+			
+			return true;
+			
+		}
+		
+	/**
+	 * Returns a nice string for an object's subtype
+	 *
+	 * @param string $subtype the object's registered subtype
+	 * @return string a friendly version for the wire.
+	 */
+	 
+	function thewire_get_subtype($subtype){
+	
+		switch($subtype){
+			case 'blog':
+			$new_subtype = "blogs";
+			break;
+			case 'file':
+			$new_subtype = "files";
+			break;
+			case 'groupforumtopic':
+			$new_subtype = "group discussion";
+			break;
+			case 'Comments':
+			$new_subtype = "comments";
+			break;
+			case 'page':
+			$new_subtype = "pages";
+			break;
+			case 'page_top':
+			$new_subtype = "pages";
+			break;
+			default:
+			$new_subtype = $subtype; //if no match just return the object's subtype
+			break;
+		}
+			
+		return $new_subtype;
+		
+	}
 	
 	// Make sure the thewire initialisation function is called on initialisation
 		register_elgg_event_handler('init','system','thewire_init');
@@ -216,6 +399,9 @@
 	// Register actions
 		global $CONFIG;
 		register_action("thewire/add",false,$CONFIG->pluginspath . "thewire/actions/add.php");
+		register_action("thewire/reply",false,$CONFIG->pluginspath . "thewire/actions/reply.php");
+		register_action("thewire/track",false,$CONFIG->pluginspath . "thewire/actions/track.php");
 		register_action("thewire/delete",false,$CONFIG->pluginspath . "thewire/actions/delete.php");
+		register_action("thewire/delete_reply",false,$CONFIG->pluginspath . "thewire/actions/delete_reply.php");
 		
 ?>

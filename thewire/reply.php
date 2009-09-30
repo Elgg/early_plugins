@@ -1,7 +1,7 @@
 <?php
 
 	/**
-	 * Elgg thewire add entry page
+	 * Elgg thewire reply page
 	 * 
 	 * @package ElggTheWire
 	 * @license Private
@@ -17,11 +17,13 @@
 	// If we're not logged in, forward to the front page
 		if (!isloggedin()) forward(); 
 		
+		
+	// choose the required canvas layout and items to display
 	    $area1 = elgg_view("thewire/sidebar_links");
 	    $area2 = elgg_view_title(elgg_echo('thewire:reply'));
-	    $area2 .= elgg_view("thewire/forms/add");
+	    $area2 .= elgg_view("thewire/forms/reply");
 	    $body = elgg_view_layout("sidebar_boxes", $area1,$area2);
-
+		
 	// Display page
 		page_draw(elgg_echo('thewire:addpost'),$body);
 		

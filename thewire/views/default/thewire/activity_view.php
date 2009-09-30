@@ -5,8 +5,13 @@
 	 */
 
 	//grab the users latest from the wire
-	$latest_wire = list_entities("object", "thewire", $_SESSION['user']->getGUID(), 1, true, false, false);
-
+	$wire = get_user_objects($_SESSION['user']->getGUID(),'thewire', 1, 0);
+	if($wire){
+		foreach($wire as $latest){
+			$latest_wire = $latest->description;
+			$latest_date = friendly_time($latest->time_created);
+		}
+	}
 ?>
 
 <script>
@@ -33,16 +38,15 @@ function textCounter(field,cntfield,maxlimit) {
 		?>
 			<input type="hidden" name="method" value="site" />
 			<input type="hidden" name="location" value="activity" />
-			<input type="hidden" name="access_id" value="2" />
 			<input type="submit" value="<?php echo elgg_echo('save'); ?>" id="thewire_submit_button" />
 	</form>
 
-	<div class="last_wirepost">
+	<div class="thewire-singlepage">
+		<div class="thewire-post">
 		<?php
-			echo $latest_wire;
+			echo "<div class=\"note_body\">" . elgg_echo("thewire:latest") . ": " . $latest_wire . "</div>";
 		?>
+			<div class="note_date"><?php echo $latest_date; ?></div>
+		</div>
 	</div>
-	
-	<img src="<?php echo $vars['url']; ?>mod/thewire/graphics/river_icon_thewire.gif" alt="the wire" align="left" style="margin-right:5px;"/><a href="<?php echo $vars['url']; ?>mod/thewire/everyone.php" />Read the wire</a>
-
 </div>

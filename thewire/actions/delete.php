@@ -4,7 +4,7 @@
 	 * Elgg thewire: delete note action
 	 * 
 	 * @package ElggTheWire
-	 * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License version 2
+	 * @license Private
 	 * @author Curverider <info@elgg.com>
 	 * @copyright Curverider Ltd 2008-2009
 	 * @link http://elgg.org/
@@ -31,7 +31,7 @@
 					register_error(elgg_echo("thewire:notdeleted"));
 				}
 		// Forward to the main wire page
-				forward("mod/thewire/?username=" . $owner->username);
+				forward("mod/thewire/everyone.php");
 		
 		}
 		
