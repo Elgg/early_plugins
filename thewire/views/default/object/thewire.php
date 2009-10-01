@@ -202,4 +202,5 @@ if (isset($vars['entity'])) {
 	}
 ?>
 </div><!-- /thewire-conversation -->
+<div class="clearfloat"></div>
 </div><!-- /thewire-posts-wrapper div -->

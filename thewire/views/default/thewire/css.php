@@ -134,7 +134,16 @@ div.ajax_loader_wire {
 /* threaded conversation on replies page */
 .the_wire_conversation.replypage {
 	background: url(<?php echo $vars['url']; ?>mod/thewire/graphics/thread_back.png) no-repeat 10px -8px;
-	padding-top:6px;	
+	padding-top:6px;		
+}
+
+.the_wire_conversation {
+
+
+
+
+	position: relative;
+	display: block;
 }
 
 
@@ -152,6 +161,9 @@ div.ajax_loader_wire {
 
 .thewire-posts-wrapper {
 	margin:0 10px 15px 10px;
+	
+	
+	position: relative;
 }
 
 .thewire-post {
@@ -167,6 +179,9 @@ div.ajax_loader_wire {
 	background:white;	
 	-webkit-border-radius: 8px; 
 	-moz-border-radius: 8px;
+	
+	
+	position: relative;
 
 }
 .threaded_replies_wrapper {
@@ -180,11 +195,21 @@ div.ajax_loader_wire {
 	-moz-border-radius-topright:8px;
 	-webkit-border-top-right-radius:8px;
 	
+	
+	position: relative;
+	
 }
 .the_wire_conversation .discussion {
 	background: url(<?php echo $vars['url']; ?>mod/thewire/graphics/thread_back.png) repeat-y 10px top;
 	margin-top:-4px;	
+	
+	position: inherit;
 }
+
+/* IE7 */
+/*
+*:first-child+html .the_wire_conversation .discussion { background:none;margin-top:none;position: relative; }
+*/
 
 .thewire-post.reply {
 	padding-left:15px;	

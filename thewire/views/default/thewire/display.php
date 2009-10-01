@@ -138,6 +138,7 @@ function thewireUpdateChecker(interval) {
 	}
 }
 
+
 /**
  * Toggles a conversation in the wire
  */
@@ -155,7 +156,9 @@ function thewireToggleConversation(id) {
 					// switch the links, show the conversation.
 					$(link).find('.view-conversation').hide();
 					$(link).find('.hide-conversation').show();
-					$(e).slideDown();
+					//$(e).slideDown();
+					$(e).slideDown().show(function(){$(this).show();}); // extra show function to force display in ie7
+					//$(e).slideDown().show(function(){e.find('.discussion').show();})
 				}
 			}
 		);
@@ -163,9 +166,17 @@ function thewireToggleConversation(id) {
 	// if the conversation is shown hide it.
 	else {
 		// switch show the conversations
-		e.slideToggle();
+		//e.slideToggle();
+		//e.slideToggle().hide(function(){$(this).hide();});
+		//e.slideUp().hide(function(){e.hide();});
+		//e.hide();
+		
+				
 		$(link).find('.view-conversation').show();
 		$(link).find('.hide-conversation').hide();
+		
+		//$(e).slideUp().hide(function(){$(e).hide();});
+		$(e).hide().slideUp();
 	}
 
 	return false;
