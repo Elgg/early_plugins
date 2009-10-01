@@ -241,13 +241,15 @@
 		 */
 		function thewire_incoming_sms($event, $object_type, $object)
 		{
+			global $CONFIG;
 			if (($object) && ($object->subtype == get_subtype_id('object', 'sms')))
 			{
 				// Get user from phone number
 				if ((is_plugin_enabled('smsclient')) && (is_plugin_enabled('smslogin')))
 				{
+					$access_id = $CONFIG->default_access; 
 					// By this stage the owner should be logged in (requires SMS Login)
-					if (thewire_save_post($object->description, get_default_access(), 'sms'))
+					if (thewire_save_post($object->description, $access_id, 'sms'))
 						return false;
 					
 				}
