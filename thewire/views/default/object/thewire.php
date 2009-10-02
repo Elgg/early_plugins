@@ -195,7 +195,7 @@ if (isset($vars['entity'])) {
 							echo elgg_echo("thewire:wired") . " " . sprintf(elgg_echo("thewire:strapline"),
 												friendly_time($vars['entity']->time_created)
 							);
-							echo " " . elgg_echo('thewire:via') . " " . elgg_echo($vars['entity']->method);
+							echo " " . elgg_echo('thewire:via') . " " . elgg_echo($vars['entity']->method) . " " . $readable_access;
 						}
 					?>
 				</div><!-- close note_body div -->
