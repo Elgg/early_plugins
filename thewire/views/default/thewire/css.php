@@ -246,6 +246,8 @@ div.ajax_loader_wire {
 	margin-top:-4px;
 	margin-right:70px;
 	padding:0;
+	
+	overflow:hidden;
 }
 .wire-post-message p {
 	margin-bottom:0;
