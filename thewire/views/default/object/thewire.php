@@ -28,9 +28,7 @@ if (isset($vars['entity'])) {
 	$readable_access = get_readable_access_level($vars['entity']->access_id);
 	if($readable_access == "Public" || $readable_access == "Logged in users") {
 		$readable_access = '';
-	} else {
-		$readable_access = "<span class='readable_access'>".$readable_access."</span>";
-	}
+	} 
 ?>
 
 <!-- start the wrapper div -->
