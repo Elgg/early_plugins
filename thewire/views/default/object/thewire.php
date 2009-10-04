@@ -25,10 +25,6 @@ if (isset($vars['entity'])) {
   	$reply = $last_reply[0];//as we are only getting one item
 	$user_name_reply = get_user($reply->owner_guid)->name;
 	$user_name_reply_url = get_user($reply->owner_guid)->username;
-	$readable_access = get_readable_access_level($vars['entity']->access_id);
-	if($readable_access == "Public" || $readable_access == "Logged in users") {
-		$readable_access = '';
-	} 
 ?>
 
 <!-- start the wrapper div -->
@@ -184,18 +180,18 @@ if (isset($vars['entity'])) {
 							);
 							echo "</b> " . elgg_echo('thewire:via') . " " . elgg_echo($vars['entity']->method);
 							//echo " <a class=\"a_reply_{$post_guid} conversationlink\" style='display:inline;'>View conversation ({$count_replies} replies)</a>";	
-							echo " ({$count_replies} ".elgg_echo('thewire:replies').") " . $readable_access;
+							echo " ({$count_replies} ".elgg_echo('thewire:replies').")";
 						}elseif ($count_replies == 1) {
 							echo elgg_echo("thewire:wired") . " " . sprintf(elgg_echo("thewire:strapline"),
 												friendly_time($vars['entity']->time_created)
 							);
 							echo " " . elgg_echo('thewire:via') . " " . elgg_echo($vars['entity']->method);
-							echo " ({$count_replies} ".elgg_echo('thewire:reply').") " . $readable_access;
+							echo " ({$count_replies} ".elgg_echo('thewire:reply').")";
 						}else{
 							echo elgg_echo("thewire:wired") . " " . sprintf(elgg_echo("thewire:strapline"),
 												friendly_time($vars['entity']->time_created)
 							);
-							echo " " . elgg_echo('thewire:via') . " " . elgg_echo($vars['entity']->method) . " " . $readable_access;
+							echo " " . elgg_echo('thewire:via') . " " . elgg_echo($vars['entity']->method);
 						}
 					?>
 				</div><!-- close note_body div -->
