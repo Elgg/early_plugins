@@ -102,7 +102,7 @@
 						add_submenu_item(sprintf(elgg_echo('file:friends'),$page_owner->name), $CONFIG->wwwroot . "pg/file/". $page_owner->username . "/friends/");
 				}
 				add_submenu_item(elgg_echo('file:all'), $CONFIG->wwwroot . "mod/file/world.php");
-				if (can_write_to_container($_SESSION['guid'], page_owner()))
+				if (can_write_to_container($_SESSION['guid'], page_owner()) && isloggedin())
 					add_submenu_item(elgg_echo('file:upload'), $CONFIG->wwwroot . "pg/file/". $page_owner->username . "/new/");
 			}
 		
