@@ -21,7 +21,7 @@
 
 		$friends = (int) get_input('friends_guid',0);
 		if ($friends) {
-			if ($owner_guid = get_user_friends($user_guid, $subtype, 999999, 0)) {
+			if ($owner_guid = get_user_friends($user_guid, "", 999999, 0)) {
 				foreach($owner_guid as $key => $friend)
 					$owner_guid[$key] = (int) $friend->getGUID();
 			} else {

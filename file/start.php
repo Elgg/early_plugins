@@ -233,7 +233,7 @@
 	function get_filetype_cloud($owner_guid = "", $friends = false) {
 		
 		if ($friends) {
-			if ($friendslist = get_user_friends($user_guid, $subtype, 999999, 0)) {
+			if ($friendslist = get_user_friends($user_guid, "", 999999, 0)) {
 				$friendguids = array();
 				foreach($friendslist as $friend) {
 					$friendguids[] = $friend->getGUID();
