@@ -13,8 +13,8 @@
 	// Make sure we're logged in (send us to the front page if not)
 		gatekeeper();
 
-        // Make sure action is secure
-        action_gatekeeper();
+	// Make sure action is secure
+		action_gatekeeper();
 
 	// Get input data
 		$title = get_input('blogtitle');
@@ -35,52 +35,53 @@
 		if (empty($title) || empty($body)) {
 			register_error(elgg_echo("blog:blank"));
 			forward($_SERVER['HTTP_REFERER']);
-			
-	// Otherwise, save the blog post 
-		} else {
-			
+		}
+
+	
 	// Initialise a new ElggObject
-			$blog = new ElggObject();
+		$blog = new ElggObject();
 	// Tell the system it's a blog post
-			$blog->subtype = "blog";
+		$blog->subtype = "blog";
 	// Set its owner to the current user
-			$blog->owner_guid = $_SESSION['user']->getGUID();
-	// Set it's container		
-			$blog->container_guid = (int)get_input('container_guid', $_SESSION['user']->getGUID());
-	// For now, set its access to public (we'll add an access dropdown shortly)
-			$blog->access_id = $access;
+		$blog->owner_guid = get_loggedin_userid();
+	// Set it's container
+		$blog->container_guid = (int)get_input('container_guid', get_loggedin_userid());
+	// For now, set its access
+		$blog->access_id = $access;
 	// Set its title and description appropriately
-			$blog->title = $title;
-			$blog->description = $body;
-	// Before we can set metadata, we need to save the blog post
-			if (!$blog->save()) {
-				register_error(elgg_echo("blog:error"));
-				forward($_SERVER['HTTP_REFERER']);
-			}
+		$blog->title = $title;
+		$blog->description = $body;
 	// Now let's add tags. We can pass an array directly to the object property! Easy.
-			if (is_array($tagarray)) {
-				$blog->tags = $tagarray;
-			}
-			$blog->comments_on = $comments_on; //whether the users wants to allow comments or not on the blog post
+		if (is_array($tagarray)) {
+			$blog->tags = $tagarray;
+		}
+	//whether the user wants to allow comments or not on the blog post
+		$blog->comments_on = $comments_on;
+		
+	// Now save the object
+		if (!$blog->save()) {
+			register_error(elgg_echo("blog:error"));
+			forward($_SERVER['HTTP_REFERER']);
+		}
 
 	// Success message
-			system_message(elgg_echo("blog:posted"));
+		system_message(elgg_echo("blog:posted"));
 	// add to river
-	        add_to_river('river/object/blog/create','create',$_SESSION['user']->guid,$blog->guid);
+		add_to_river('river/object/blog/create', 'create', get_loggedin_userid(), $blog->guid);
 	// Remove the blog post cache
-			//unset($_SESSION['blogtitle']); unset($_SESSION['blogbody']); unset($_SESSION['blogtags']);
-			remove_metadata($_SESSION['user']->guid,'blogtitle');
-			remove_metadata($_SESSION['user']->guid,'blogbody');
-			remove_metadata($_SESSION['user']->guid,'blogtags');
+		//unset($_SESSION['blogtitle']); unset($_SESSION['blogbody']); unset($_SESSION['blogtags']);
+		remove_metadata($_SESSION['user']->guid,'blogtitle');
+		remove_metadata($_SESSION['user']->guid,'blogbody');
+		remove_metadata($_SESSION['user']->guid,'blogtags');
 			
 	// Forward to the main blog page
-			$page_owner = get_entity($blog->container_guid);
-			if ($page_owner instanceof ElggUser)
-				$username = $page_owner->username;
-			else if ($page_owner instanceof ElggGroup)
-				$username = "group:" . $page_owner->guid;
-			forward("pg/blog/$username");
-				
+		$page_owner = get_entity($blog->container_guid);
+		if ($page_owner instanceof ElggUser) {
+			$username = $page_owner->username;
+		} else if ($page_owner instanceof ElggGroup) {
+			$username = "group:" . $page_owner->guid;
 		}
+		
+		forward("pg/blog/$username");
 		
 ?>
