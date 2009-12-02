@@ -56,6 +56,7 @@
 													));
 			
 			?>
+			</label>
 		</p>
 		
 		<!-- topic message input -->
