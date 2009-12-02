@@ -141,7 +141,8 @@
 			$thumb->open("write");
 			$thumb->write($thumblarge);
 			$thumb->close();
-				
+			
+			$group->icontime = time();
 		}
 	}
 	
