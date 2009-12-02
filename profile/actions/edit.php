@@ -78,7 +78,7 @@
 		} else {
 	// If we can't, display an error
 			
-			system_message(elgg_echo("profile:cantedit"));
+			system_message(elgg_echo("profile:noaccess"));
 		}
 
 ?>

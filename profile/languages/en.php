@@ -83,9 +83,8 @@
 	 */
 	
 		'profile:noaccess' => "You do not have permission to edit this profile.",
-		'profile:notfound' => "Sorry; we could not find the specified profile.",
-		'profile:cantedit' => "You do not have permission to edit this profile.",
-		'profile:icon:notfound' => "Sorry; there was a problem uploading your profile picture.",
+		'profile:notfound' => "Sorry, we could not find the specified profile.",
+		'profile:icon:notfound' => "Sorry, there was a problem uploading your profile picture.",
 		'profile:icon:noaccess' => 'You cannot change this profile icon',
 		
 	
