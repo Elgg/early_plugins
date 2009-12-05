@@ -29,6 +29,10 @@
 		    <!-- pass across the topic guid -->
 			<input type="hidden" name="topic_guid" value="<?php echo $vars['entity']->guid; ?>" />
 			<input type="hidden" name="group_guid" value="<?php echo $vars['entity']->container_guid; ?>" />
+			
+<?php 
+		echo elgg_view('input/securitytoken');
+?>
 			<!-- display the save button -->
 			<input type="submit" class="submit_button" value="<?php echo elgg_echo('save'); ?>" />
 		</p>

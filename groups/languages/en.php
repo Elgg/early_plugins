@@ -137,6 +137,7 @@
 			'groups:joined' => 'Successfully joined group!',
 			'groups:left' => 'Successfully left group',
 			'groups:notowner' => 'Sorry, you are not the owner of this group.',
+			'groups:notmember' => 'Sorry, you are not a member of this group.',
 			'groups:alreadymember' => 'You are already a member of this group!',
 			'groups:userinvited' => 'User has been invited.',
 			'groups:usernotinvited' => 'User could not be invited.',
@@ -211,6 +212,8 @@ or click below to confirm request:
 			'groupstopic:deleted' => 'Topic deleted',
 			'groupstopic:notdeleted' => 'Topic not deleted',
 			'grouptopic:blank' => 'No topic',
+			'grouptopic:notfound' => 'Could not find the topic',
+			'grouppost:nopost' => 'Empty post',
 			'groups:deletewarning' => "Are you sure you want to delete this group? There is no undo!",
 	
 			'groups:joinrequestkilled' => 'The join request has been deleted.',
