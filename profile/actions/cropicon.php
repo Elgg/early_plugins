@@ -17,7 +17,8 @@
 	$y1 = (int) get_input('y_1',0);
 	$x2 = (int) get_input('x_2',0);
 	$y2 = (int) get_input('y_2',0);
-		
+	
+	// username is set in form which ensures the page owner is set
 	$user = page_owner_entity();
 	
 	if (!$user || !$user->canEdit()) {

@@ -33,7 +33,7 @@
 	
 	// set title
 	$area2 = elgg_view_title(elgg_echo('profile:createicon:header'));
-	$area2 .= elgg_view("profile/editicon", array('user' => $page_owner));
+	$area2 .= elgg_view("profile/editicon", array('user' => $user));
 	
 	// Get the form and correct canvas area
 	$body = elgg_view_layout("two_column_left_sidebar", '', $area2);

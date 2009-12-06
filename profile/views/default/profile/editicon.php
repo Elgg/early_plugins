@@ -13,9 +13,9 @@
 	 * @uses $vars['profile'] Profile items from $CONFIG->profile, defined in profile/start.php for now 
 	 */
 
-	$currentuser = page_owner_entity();
-    if (!$currentuser)
-    	$currentuser=$_SESSION['user'];
+	// user is passed to view and set by caller (normally the page editicon)
+	$currentuser = $vars['user'];
+
 ?>
 <!-- grab the required js for icon cropping -->
 <div class="contentWrapper">
@@ -59,7 +59,7 @@
     
     //display the current user photo
      
-    $user_master_image = $currentuser->getIcon('master');//$vars['url'] . "pg/icon/" . $currentuser->username . "/master/" . $currentuser->icontime . ".jpg";
+    $user_master_image = $currentuser->getIcon('master');
     
 ?>
 </p>
@@ -85,34 +85,35 @@
     } 
         
     //variables for the newly cropped avatar
-    var $x1, $y1, $x2, $y2, $w, $h;
+    //var $x1, $y1, $x2, $y2, $w, $h;
         
         function selectChange(img, selection){
            
            //populate the form with the correct coordinates once a user has cropped their image
-           document.getElementById('x_1').value = selection.x1;
-           document.getElementById('x_2').value = selection.x2;
-           document.getElementById('y_1').value = selection.y1;
-           document.getElementById('y_2').value = selection.y2;
+           $('#x_1').val(selection.x1);
+           $('#x_2').val(selection.x2);
+           $('#y_1').val(selection.y1);
+           $('#y_2').val(selection.y2);
            
          }     
          
         $(document).ready(function () {
             
-            //get and set the coordinates
-            $x1 = $('#x1');
-            $y1 = $('#y1');
-            $x2 = $('#x2');
-            $y2 = $('#y2');
-            $w = $('#w');
-            $h = $('#h');
-            
+            //get the coordinates from the form
+            /*
+            var x_1 = $('#x_1').val();
+            var x_2 = $('#x_2').val();
+            var y_1 = $('#y_1').val();
+            var y_2 = $('#y_2').val();
+            var w = x_2 - x_1;
+            var h = y_2 - y_1;
+            selection = { x1: x_1, y1: y_1, x2: x_2, y2: y_2, width: w, height: h };
+            */
             
             $('<div id="user_avatar_preview"><img src="<?php echo $user_master_image; ?>" /></div>') 
             .insertAfter($('#user_avatar'));
             
             $('<div id="user_avatar_preview_title"><label><?php echo elgg_echo('profile:preview'); ?></label></div>').insertBefore($('#user_avatar_preview'));
-            
         }); 
         
         $(window).load(function () { 
