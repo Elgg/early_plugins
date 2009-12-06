@@ -63,10 +63,15 @@
     
 ?>
 </p>
-<script>
+<script type="text/javascript">
 
     //function to display a preview of the users cropped section
     function preview(img, selection) {
+		// catch for the first click on the image
+		if (selection.width == 0 || selection.height == 0) {
+			return;
+		}
+		
         var origWidth = $("#user_avatar").width(); //get the width of the users master photo
         var origHeight = $("#user_avatar").height(); //get the height of the users master photo
         var scaleX = 100 / selection.width; 
