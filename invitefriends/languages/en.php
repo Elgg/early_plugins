@@ -31,7 +31,7 @@ You have been invited to join %s by %s. They included the following message:
 
 To join, click the following link:
 
-	%s
+%s
 
 You will automatically add them as a friend when you create your account.',
 	
