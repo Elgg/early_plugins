@@ -24,7 +24,7 @@
 	// Make sure the message isn't blank
 		if (empty($reply)) {
 			register_error(elgg_echo("thewire:blank"));
-			forward("mod/thewire/reply.php");
+			forward($_SERVER['HTTP_REFERER']);
 			
 	// Otherwise, save the thewire post 
 		} else {
