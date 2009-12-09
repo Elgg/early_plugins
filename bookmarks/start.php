@@ -17,15 +17,18 @@
 				global $CONFIG;
 				
 			//add a tools menu option
-			if (isloggedin())
+			if (isloggedin()) {
 	 	        add_menu(elgg_echo('bookmarks'), $CONFIG->wwwroot . "pg/bookmarks/" . $_SESSION['user']->username . '/items');
-				
+			
+				extend_view('owner_block/extend', 'bookmarks/owner_block');
+			}
+			
 			// Register a page handler, so we can have nice URLs
 				register_page_handler('bookmarks','bookmarks_page_handler');
 				
 			// Add our CSS
 				extend_view('css','bookmarks/css');
-				
+			
 			// Register granular notification for this type
 			if (is_callable('register_notification_object'))
 				register_notification_object('object', 'bookmarks', elgg_echo('bookmarks:new'));

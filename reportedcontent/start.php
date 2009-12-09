@@ -22,11 +22,12 @@
 		
 		// Extend CSS
 		extend_view('css','reportedcontent/css');
-		
-		// Extend context menu with reported content link
-		if(isloggedin())
+				
+		// Extend context menu and owner_block with report content link
+		if (isloggedin()) {
 		    extend_view('profile/menu/links','reportedcontent/user_report');
-		
+			extend_view('owner_block/extend', 'reportedcontent/owner_block');
+		}
 	}
 	
 	/**
