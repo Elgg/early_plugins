@@ -19,8 +19,11 @@
 	$desc = $file->description;
 	$owner = $vars['entity']->getOwnerEntity();
 	$friendlytime = friendly_time($vars['entity']->time_created);
-	
 	$mime = $file->mimetype;
+	
+	if (!$title) {
+		$title = elgg_echo('untitled');
+	}
 	
 	if (get_context() == "search") { 	// Start search listing version 
 		
