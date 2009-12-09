@@ -12,15 +12,19 @@
 	
 	if (is_callable('group_gatekeeper')) group_gatekeeper();
 	
-	$area2 = elgg_view_title($title = elgg_echo('file:yours:friends'));
+	$owner = page_owner_entity();
+	
+	$title = sprintf(elgg_echo("file:friends"),$owner->name);
+	
+	$area2 = elgg_view_title($title);
 	
 	set_context('search');
-	$area2 .= list_user_friends_objects(page_owner(),'file');
+	$area2 .= list_user_friends_objects($owner->guid,'file');
 	set_context('file');
-	$area1 = get_filetype_cloud(page_owner(), true);
+	$area1 = get_filetype_cloud($owner->guid, true);
 
 	$body = elgg_view_layout('two_column_left_sidebar',$area1, $area2);
 	
 	// Finally draw the page
-	page_draw(sprintf(elgg_echo("file:friends"),$_SESSION['user']->name), $body);
+	page_draw($title, $body);
 ?>
