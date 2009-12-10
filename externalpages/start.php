@@ -55,7 +55,7 @@
 			switch ($page[0])
 			{
 				case "read":		set_input('expages',$page[1]);
-										@include(dirname(__FILE__) . "/read.php");
+										include(dirname(__FILE__) . "/read.php");
 										break;
 				default : include($CONFIG->pluginspath . "externalpages/index.php"); 
 			}

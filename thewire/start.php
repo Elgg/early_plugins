@@ -93,7 +93,7 @@
 				}
 			// If the URL is just 'thewire/username', or just 'thewire/', load the standard thewire index
 			} else {
-				@include(dirname(__FILE__) . "/index.php");
+				include(dirname(__FILE__) . "/index.php");
 				return true;
 			}
 			

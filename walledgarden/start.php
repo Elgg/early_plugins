@@ -46,7 +46,9 @@
 	
 	 function walledgarden_index() {
 			
-			if (!@include_once(dirname(dirname(__FILE__))) . "/walledgarden/index.php") return false;
+			if (!include_once(dirname(dirname(__FILE__))) . "/walledgarden/index.php") {
+				return false;
+			}
 			return true;
 			
 		}

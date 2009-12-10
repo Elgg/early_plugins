@@ -128,7 +128,7 @@
     		{
     			case "read":
     				set_input('guid',$page[2]);
-					@include(dirname(dirname(dirname(__FILE__))) . "/entities/index.php");
+					include(dirname(dirname(dirname(__FILE__))) . "/entities/index.php");
 				break;
     			case "friends":  
     				include($CONFIG->pluginspath . "file/friends.php");

@@ -162,7 +162,7 @@
 				}
 			// If the URL is just 'blog/username', or just 'blog/', load the standard blog index
 			} else {
-				@include(dirname(__FILE__) . "/index.php");
+				include(dirname(__FILE__) . "/index.php");
 				return true;
 			}
 			

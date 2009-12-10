@@ -214,10 +214,10 @@ function defaultwidgets_page_handler($page) {
 		
 		switch ($page [0]) {
 			case "profile" :
-				@include (dirname ( __FILE__ ) . "/profile.php");
+				include (dirname ( __FILE__ ) . "/profile.php");
 				break;
 			case "dashboard" :
-				@include (dirname ( __FILE__ ) . "/dashboard.php");
+				include (dirname ( __FILE__ ) . "/dashboard.php");
 				break;
 		}
 	} else {

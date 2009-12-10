@@ -110,22 +110,22 @@
 			if (isset($page[1])) {
 				switch($page[1]) {
 					case "read":		set_input('guid',$page[2]);
-										@include(dirname(dirname(dirname(__FILE__))) . "/entities/index.php"); return true;
+										include(dirname(dirname(dirname(__FILE__))) . "/entities/index.php"); return true;
 										break;
-					case "friends":		@include(dirname(__FILE__) . "/friends.php"); return true;
+					case "friends":		include(dirname(__FILE__) . "/friends.php"); return true;
 										break;
-					case "inbox":		@include(dirname(__FILE__) . "/inbox.php"); return true;
+					case "inbox":		include(dirname(__FILE__) . "/inbox.php"); return true;
 										break;
-					case "items":		@include(dirname(__FILE__) . "/index.php"); return true;
+					case "items":		include(dirname(__FILE__) . "/index.php"); return true;
 										break;
-					case "add": 		@include(dirname(__FILE__) . "/add.php"); return true;
+					case "add": 		include(dirname(__FILE__) . "/add.php"); return true;
 										break;
-					case "bookmarklet": @include(dirname(__FILE__) . "/bookmarklet.php"); return true;
+					case "bookmarklet": include(dirname(__FILE__) . "/bookmarklet.php"); return true;
 										break;
 				}
 			// If the URL is just 'bookmarks/username', or just 'bookmarks/', load the standard bookmarks index
 			} else {
-				@include(dirname(__FILE__) . "/index.php");
+				include(dirname(__FILE__) . "/index.php");
 				return true;
 			}
 			

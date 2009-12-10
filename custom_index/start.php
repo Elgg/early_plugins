@@ -24,7 +24,7 @@
     
     function custom_index() {
 			
-			if (!@include_once(dirname(__FILE__) . "/index.php")) return false;
+			if (!include_once(dirname(__FILE__) . "/index.php")) return false;
 			return true;
 			
 		}
