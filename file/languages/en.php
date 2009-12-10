@@ -31,6 +31,7 @@
 			'file:user:gallery'=>'View %s gallery', 
 	        'file:via' => 'via files',
 			'file:upload' => "Upload a file",
+			'file:replace' => 'Replace file content (leave blank to not change file)',
 	
 			'file:newupload' => 'New file upload',
 			
@@ -95,11 +96,13 @@
 		 * Error messages
 		 */
 	
-			'file:none' => "We couldn't find any files at the moment.",
+			'file:none' => "No files uploaded.",
 			'file:uploadfailed' => "Sorry; we could not save your file.",
 			'file:downloadfailed' => "Sorry; this file is not available at this time.",
 			'file:deletefailed' => "Your file could not be deleted at this time.",
-	
+			'file:noaccess' => "You do not have permissions to change this file",
+			'file:cannotload' => "There was an error loading the file",
+			'file:nofile' => "You must select a file",
 	);
 					
 	add_translation("en",$english);
