@@ -14,6 +14,7 @@
 	 //get frontpage right code
 		$contents = get_entities("object", "front", 0, "", 1);
 
+		$show = '';
 		foreach($contents as $cont){
 			$show = $cont->description;
 		}
