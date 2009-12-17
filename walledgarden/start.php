@@ -17,9 +17,9 @@
 		$CONFIG->disable_registration = true;
 		
 		// elgg_set_viewtype('default');
-			extend_view('pageshells/pageshell', 'walledgarden/walledgarden');
+		elgg_extend_view('pageshells/pageshell', 'walledgarden/walledgarden');
 		
-		extend_view('css','walledgarden/css');
+		elgg_extend_view('css','walledgarden/css');
 		
 		// Replace the default index page if the custom index plugin does not exist
 		if(!is_plugin_enabled("custom_index"))

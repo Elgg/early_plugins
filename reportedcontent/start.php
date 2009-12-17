@@ -21,12 +21,12 @@
 		register_page_handler('reportedcontent','reportedcontent_page_handler');
 		
 		// Extend CSS
-		extend_view('css','reportedcontent/css');
+		elgg_extend_view('css','reportedcontent/css');
 				
 		// Extend context menu and owner_block with report content link
 		if (isloggedin()) {
-		    extend_view('profile/menu/links','reportedcontent/user_report');
-			extend_view('owner_block/extend', 'reportedcontent/owner_block');
+		    elgg_extend_view('profile/menu/links','reportedcontent/user_report');
+			elgg_extend_view('owner_block/extend', 'reportedcontent/owner_block');
 		}
 	}
 	

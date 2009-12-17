@@ -17,7 +17,7 @@
 		register_page_handler('captcha','captcha_page_handler');
 		
 		// Extend CSS
-		extend_view('css','captcha/css');
+		elgg_extend_view('css','captcha/css');
 		
 		// Number of background images
 		$CONFIG->captcha_num_bg = 5;
