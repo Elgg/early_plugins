@@ -4,8 +4,10 @@
 	foreach($NOTIFICATION_HANDLERS as $method => $foo) {
 		$subsbig[$method] = get_entities_from_relationship('notify' . $method,$vars['user']->guid,false,'group','',0,'',99999);
 		$tmparray = array();
-		foreach($subsbig[$method] as $tmpent) {
-			$tmparray[] = $tmpent->guid;
+		if ($subsbig[$method]) {
+			foreach($subsbig[$method] as $tmpent) {
+				$tmparray[] = $tmpent->guid;
+			}
 		}
 		$subsbig[$method] = $tmparray;
 	}
