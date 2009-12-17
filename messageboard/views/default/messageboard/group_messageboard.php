@@ -50,7 +50,7 @@ $(document).ready(function(){
 ?>
 
     <!-- message textarea -->
-    <textarea name="message_content" id="testing" value="" class="input_textarea" /></textarea>
+    <textarea name="message_content" id="testing" value="" class="input_textarea"></textarea>
    
     <!-- the person posting an item on the message board -->
     <input type="hidden" name="guid" value="<?php echo $_SESSION['guid']; ?>" class="guid"  />
