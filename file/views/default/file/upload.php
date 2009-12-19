@@ -9,25 +9,34 @@
 	 */
 
 	global $CONFIG;
-	
-		if (isset($vars['entity'])) {
-			$action_type = "update";
-			$action = "file/upload";
-			$title = $vars['entity']->title;
-			$description = $vars['entity']->description;
-			$tags = $vars['entity']->tags;
-			$access_id = $vars['entity']->access_id;
-		} else  {
-			$action_type = "new";
-			$action = "file/upload";
-			$tags = "";
-			$title = "";
-			$description = "";
-			if (defined('ACCESS_DEFAULT'))
-				$access_id = ACCESS_DEFAULT;
-			else
-				$access_id = 0;
+
+	if (isset($vars['entity'])) {
+		$action_type = "update";
+		$action = "file/upload";
+		$title = $vars['entity']->title;
+		$description = $vars['entity']->description;
+		$tags = $vars['entity']->tags;
+		$access_id = $vars['entity']->access_id;
+	} else  {
+		$action_type = "new";
+		$action = "file/upload";
+		$title = isset($_SESSION['uploadtitle']) ? $_SESSION['uploadtitle'] : '';
+		$description = isset($_SESSION['uploaddesc']) ? $_SESSION['uploaddesc'] : '';
+		$tags = isset($_SESSION['uploadtags']) ? $_SESSION['uploadtags'] : '';
+		if (defined('ACCESS_DEFAULT')) {
+			$access_id = ACCESS_DEFAULT;
+		} else {
+			$access_id = 0;
 		}
+		$access_id = isset($_SESSION['uploadaccessid']) ? $_SESSION['uploadaccessid'] : $access_id;
+	}
+		
+	// make sure session cache is cleared
+	unset($_SESSION['uploadtitle']);
+	unset($_SESSION['uploaddesc']);
+	unset($_SESSION['uploadtags']);
+	unset($_SESSION['uploadaccessid']);
+	
 	
 ?>
 <div class="contentWrapper">

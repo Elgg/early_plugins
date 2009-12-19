@@ -21,18 +21,20 @@
 			set_page_owner($_SESSION['guid']);
 		}
 	
+	$title = elgg_echo('file:all');
+	
 	// Get objects
-	$area2 = elgg_view_title($title = elgg_echo('file:type:all'));
+	$area2 = elgg_view_title($title);
 	$area1 = get_filetype_cloud(); // the filter
 	set_context('search');
 	if ($tag != "")
-		$area2 .= list_entities_from_metadata('tags',$tag,'object','file');
+		$area2 .= list_entities_from_metadata('tags',$tag,'object','file',0,10,false);
 	else
-		$area2 .= list_entities('object','file');
+		$area2 .= list_entities('object','file', 0, 10, false);
 	set_context('file');
 		
 	$body = elgg_view_layout('two_column_left_sidebar',$area1, $area2);
 
 	// Finally draw the page
-	page_draw(sprintf(elgg_echo("file:all")), $body);
+	page_draw($title, $body);
 ?>

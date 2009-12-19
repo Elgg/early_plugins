@@ -22,7 +22,6 @@
 	}
 	$guid = (int) get_input('file_guid');
 	$tags = get_input("tags");
-	$tags = explode(",", $tags);
 	
 	// check whether this is a new file or an edit
 	$new_file = true;
@@ -33,12 +32,23 @@
 	if ($new_file) {
 		// must have a file if a new file upload
 		if (empty($_FILES['upload']['name'])) {
+			// cache information in session
+			$_SESSION['uploadtitle'] = $title;
+			$_SESSION['uploaddesc'] = $desc;
+			$_SESSION['uploadtags'] = $tags;
+			$_SESSION['uploadaccessid'] = $access_id;
+			
 			register_error(elgg_echo('file:nofile'));
 			forward($_SERVER['HTTP_REFERER']);
 		}
 		
 		$file = new FilePluginFile();
 		$file->subtype = "file";
+		
+		// if no title on new upload, grab filename
+		if (empty($title)) {
+			$title = $_FILES['upload']['name'];
+		}
 	
 	} else {
 		// load original file object
@@ -59,6 +69,8 @@
 	$file->description = $desc;
 	$file->access_id = $access_id;
 	$file->container_guid = $container_guid;
+	
+	$tags = explode(",", $tags);
 	$file->tags = $tags;
 	
 	// we have a file upload, so process it
@@ -125,15 +137,22 @@
 		}
 	}
 	
+	// make sure session cache is cleared
+	unset($_SESSION['uploadtitle']);
+	unset($_SESSION['uploaddesc']);
+	unset($_SESSION['uploadtags']);
+	unset($_SESSION['uploadaccessid']);
+	
 	// handle results differently for new files and file updates
 	if ($new_file) {
 		if ($guid) {
 			system_message(elgg_echo("file:saved"));
 			add_to_river('river/object/file/create', 'create', get_loggedin_userid(), $file->guid);
 		} else {
+			// failed to save file object - nothing we can do about this
 			register_error(elgg_echo("file:uploadfailed"));
 		}
-error_log('container ' . $container_guid);	
+	
 		$container_user = get_entity($container_guid);
 		forward($CONFIG->wwwroot . "pg/file/" . $container_user->username);
 	

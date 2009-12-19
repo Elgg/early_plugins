@@ -48,8 +48,10 @@
 		if (is_callable('group_gatekeeper')) group_gatekeeper();
 
 		if (empty($tag)) {
+			$title = elgg_echo('file:type:all');
 			$area2 = elgg_view_title(elgg_echo('file:type:all'));
 		} else {
+			$title = sprintf(elgg_echo('searchtitle'),$tag);
 			if (is_array($owner_guid)) {
 				$area2 = elgg_view_title(elgg_echo("file:friends:type:" . $tag));
 			} else if (page_owner() && page_owner() != $_SESSION['guid']) {
@@ -81,6 +83,6 @@
 		
 		$body = elgg_view_layout('two_column_left_sidebar',$area1, $area2);
 		
-		page_draw(sprintf(elgg_echo('searchtitle'),$tag),$body);
+		page_draw($title, $body);
 
 ?>
