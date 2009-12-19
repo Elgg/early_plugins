@@ -47,8 +47,14 @@ if ($file = get_entity($file_guid)) {
 				$readfile->setFilename($thumbfile);
 				$mime = $file->getMimeType();
 				$contents = $readfile->grabFile();
-					
+				
+				// caching images for 10 days
 				header("Content-type: $mime");
+				header('Expires: ' . date('r',time() + 864000));
+				header("Pragma: public", true);
+				header("Cache-Control: public", true);
+				header("Content-Length: " . strlen($contents));
+				
 				echo $contents;
 				exit;
 					
