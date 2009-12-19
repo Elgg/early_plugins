@@ -183,6 +183,7 @@ or click below to confirm request:
 			'groupforum:river:annotate:create' => 'on this discussion topic',
 			'groupforum:river:postedtopic' => '%s has started a new discussion topic titled',
 			'groups:river:member' => '%s is now a member of',
+			'groups:river:togroup' => 'to the group',
 	
 			'groups:nowidgets' => 'No widgets have been defined for this group.',
 	

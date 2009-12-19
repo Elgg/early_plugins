@@ -17,6 +17,7 @@
 		$description = $vars['entity']->description;
 		$tags = $vars['entity']->tags;
 		$access_id = $vars['entity']->access_id;
+		$container_guid = $vars['entity']->container_guid;
 	} else  {
 		$action_type = "new";
 		$action = "file/upload";
@@ -29,6 +30,7 @@
 			$access_id = 0;
 		}
 		$access_id = isset($_SESSION['uploadaccessid']) ? $_SESSION['uploadaccessid'] : $access_id;
+		$container_guid = page_owner_entity()->guid;
 	}
 		
 	// make sure session cache is cleared
@@ -118,8 +120,9 @@
 <p>
 <?php
 
+	echo "<input type=\"hidden\" name=\"container_guid\" value=\"{$container_guid}\" />";
+	
 	if (isset($vars['entity'])) {
-		echo "<input type=\"hidden\" name=\"container_guid\" value=\"{$vars['entity']->container_guid}\" />";
 		echo "<input type=\"hidden\" name=\"file_guid\" value=\"{$vars['entity']->getGUID()}\" />";
 	}	
 ?>
