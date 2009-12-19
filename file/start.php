@@ -32,20 +32,22 @@
 	 */
 	function file_init() 
 	{
-		// Get config
 		global $CONFIG;
 				
-		// Set up menu for logged in users
-		if (isloggedin()) 
-		{
-			add_menu(elgg_echo('file'), $CONFIG->wwwroot . "pg/file/" . $_SESSION['user']->username);
+		// Set up menu (tools dropdown or other uses as defined by theme)
+		if (isloggedin()) {
+			add_menu(elgg_echo('file'), $CONFIG->wwwroot . "pg/file/" . get_loggedin_user()->username);
+		} else {
+			add_menu(elgg_echo('file'), $CONFIG->wwwroot . "pg/file/world/world/" );
 		}
 				
 		// Extend CSS
 		elgg_extend_view('css', 'file/css');
 		
 		// Extend hover-over and profile menu	
-	    elgg_extend_view('profile/menu/links','file/menu');
+		elgg_extend_view('profile/menu/links','file/menu');
+		
+	    // extend group main page
 		elgg_extend_view('groups/left_column','file/groupprofile_files');
 		
 		// Register a page handler, so we can have nice URLs
@@ -57,20 +59,19 @@
 		// Register a URL handler for files
 		register_entity_url_handler('file_url','object','file');
 		
-		// Register granular notification for this type
-		if (is_callable('register_notification_object'))
+		// Register granular notification for this object type
+		if (is_callable('register_notification_object')) {
 			register_notification_object('object', 'file', elgg_echo('file:newupload'));
+		}
 
 		// Listen to notification events and supply a more useful message
 		register_plugin_hook('notify:entity:message', 'object', 'file_notify_message');
 		
 		// add the group files tool option     
-        add_group_tool_option('files',elgg_echo('groups:enablefiles'),true);
-
+		add_group_tool_option('files',elgg_echo('groups:enablefiles'),true);
 
 		// Register entity type
 		register_entity_type('object','file');
-		
 	}
 	
 	/**
@@ -101,7 +102,7 @@
 					if ($page_owner instanceof ElggUser) // This one's for users, not groups
 						add_submenu_item(sprintf(elgg_echo('file:friends'),$page_owner->name), $CONFIG->wwwroot . "pg/file/". $page_owner->username . "/friends/");
 				}
-				add_submenu_item(elgg_echo('file:all'), $CONFIG->wwwroot . "mod/file/world.php");
+				add_submenu_item(elgg_echo('file:all'), $CONFIG->wwwroot . "pg/file/world/world/");
 				if (can_write_to_container($_SESSION['guid'], page_owner()) && isloggedin())
 					add_submenu_item(elgg_echo('file:upload'), $CONFIG->wwwroot . "pg/file/". $page_owner->username . "/new/");
 			}
@@ -184,7 +185,6 @@
 			return null;
 		}
 
-	
 	/**
 	 * Returns an overall file type from the mimetype
 	 *
@@ -194,14 +194,12 @@
 	function get_general_file_type($mimetype) {
 		
 		switch($mimetype) {
-			
 			case "application/msword":
-										return "document";
-										break;
+				return "document";
+				break;
 			case "application/pdf":
-										return "document";
-										break;
-			
+				return "document";
+				break;
 		}
 		
 		if (substr_count($mimetype,'text/'))
@@ -219,8 +217,7 @@
 		if (substr_count($mimetype,'opendocument'))
 			return "document";	
 			
-		return "general";
-		
+		return "general";	
 	}
 	
 	/**
@@ -271,7 +268,6 @@
 	register_action("file/upload", false, $CONFIG->pluginspath . "file/actions/upload.php");
 	register_action("file/save", false, $CONFIG->pluginspath . "file/actions/save.php");
 	register_action("file/download", true, $CONFIG->pluginspath. "file/actions/download.php");
-	register_action("file/icon", true, $CONFIG->pluginspath. "file/actions/icon.php");
 	register_action("file/delete", false, $CONFIG->pluginspath. "file/actions/delete.php");
 	
 ?>

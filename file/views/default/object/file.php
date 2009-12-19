@@ -31,7 +31,7 @@
 			echo "<div class=\"filerepo_gallery_item\">";
 			if ($vars['entity']->smallthumb) {
 				echo "<p class=\"filerepo_title\">" . $file->title . "</p>";
-				echo "<p><a href=\"{$file->getURL()}\"><img src=\"{$vars['url']}mod/file/thumbnail.php?size=small&file_guid={$vars['entity']->getGUID()}\" border=\"0\" /></a></p>";
+				echo "<p><a href=\"{$file->getURL()}\"><img src=\"{$vars['url']}mod/file/thumbnail.php?size=medium&file_guid={$vars['entity']->getGUID()}\" border=\"0\" /></a></p>";
 				echo "<p class=\"filerepo_timestamp\"><small><a href=\"{$vars['url']}pg/file/{$owner->username}\">{$owner->username}</a> {$friendlytime}</small></p>";
 
 				//get the number of comments
