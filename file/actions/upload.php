@@ -74,7 +74,9 @@
 	$file->tags = $tags;
 	
 	// we have a file upload, so process it
-	if (isset($_FILES['upload']['name'])) {
+	if (isset($_FILES['upload']['name']) && !empty($_FILES['upload']['name'])) {
+		
+		$prefix = "file/";
 		
 		// if previous file, delete it
 		if ($new_file == false) {
@@ -82,12 +84,14 @@
 			if (file_exists($filename)) {
 				unlink($filename);
 			}
-			
-			// this does not delete thumbnails yet - should be pushed into functions
+
+			// use same filename on the disk - ensures thumbnails are overwritten
+			$filestorename = $file->getFilename();
+			$filestorename = substr($filestorename, strlen($prefix));
+		} else {
+			$filestorename = strtolower(time().$_FILES['upload']['name']);
 		}
 		
-		$prefix = "file/";
-		$filestorename = strtolower(time().$_FILES['upload']['name']);
 		$file->setFilename($prefix.$filestorename);
 		$file->setMimeType($_FILES['upload']['type']);
 		$file->originalfilename = $_FILES['upload']['name'];
