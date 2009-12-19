@@ -27,7 +27,7 @@
 ?></textarea></p>
 <?php
 
-	echo elgg_view('input/submit', array('value' => elgg_echo('save')));
+	echo elgg_view('input/submit', array('value' => elgg_echo('send')));
 
 ?>
 </div>
