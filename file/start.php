@@ -267,7 +267,6 @@
 	// Register actions
 	register_action("file/upload", false, $CONFIG->pluginspath . "file/actions/upload.php");
 	register_action("file/save", false, $CONFIG->pluginspath . "file/actions/save.php");
-	register_action("file/download", true, $CONFIG->pluginspath. "file/actions/download.php");
 	register_action("file/delete", false, $CONFIG->pluginspath. "file/actions/delete.php");
 	
 ?>

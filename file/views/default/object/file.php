@@ -49,6 +49,7 @@
 							'href' => $vars['url'] . "action/file/delete?file=" . $file->getGUID(),
 							'text' => elgg_echo("delete"),
 							'confirm' => elgg_echo("file:delete:confirm"),
+							'is_action' => true,
 						
 						));
 					echo "</p></div>";
@@ -90,7 +91,7 @@
 ?>
 	<div class="filerepo_file">
 		<div class="filerepo_icon">
-					<a href="<?php echo $vars['url']; ?>action/file/download?file_guid=<?php echo $file_guid; ?>"><?php 
+					<a href="<?php echo $vars['url']; ?>mod/file/download.php?file_guid=<?php echo $file_guid; ?>"><?php 
 						
 						echo elgg_view("file/icon", array("mimetype" => $mime, 'thumbnail' => $file->thumbnail, 'file_guid' => $file_guid)); 
 						
@@ -103,7 +104,7 @@
 			$user_gallery = $vars['url'] . "mod/file/search.php?md_type=simpletype&subtype=file&tag=image&owner_guid=" . $owner->guid . "&search_viewtype=gallery";
 		?>
 		<div class="filerepo_user_gallery_link"><a href="<?php echo $user_gallery; ?>"><?php echo sprintf(elgg_echo("file:user:gallery"),''); ?></a></div>
-		<div class="filerepo_title"><h2><a href="<?php echo $vars['url']; ?>action/file/download?file_guid=<?php echo $file_guid; ?>"><?php echo $title; ?></a></h2></div>
+		<div class="filerepo_title"><h2><a href="<?php echo $vars['url']; ?>mod/file/download.php?file_guid=<?php echo $file_guid; ?>"><?php echo $title; ?></a></h2></div>
 		<div class="filerepo_owner">
 				<?php
 
@@ -157,7 +158,7 @@
 		
 		?>
 		
-		<div class="filerepo_download"><p><a href="<?php echo $vars['url']; ?>action/file/download?file_guid=<?php echo $file_guid; ?>"><?php echo elgg_echo("file:download"); ?></a></p></div>
+		<div class="filerepo_download"><p><a href="<?php echo $vars['url']; ?>mod/file/download.php?file_guid=<?php echo $file_guid; ?>"><?php echo elgg_echo("file:download"); ?></a></p></div>
 		
 <?php
 
@@ -173,6 +174,7 @@
 							'href' => $vars['url'] . "action/file/delete?file=" . $file->getGUID(),
 							'text' => elgg_echo("delete"),
 							'confirm' => elgg_echo("file:delete:confirm"),
+							'is_action' => true,
 						
 						));  
 					?>

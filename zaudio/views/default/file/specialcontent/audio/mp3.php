@@ -25,7 +25,7 @@
 <div style="margin:10px 0 10px 10px;">
 <p id="audioplayer_1">Alternative content</p>  
          <script type="text/javascript">  
-         AudioPlayer.embed("audioplayer_1", {soundFile: "<?php echo $vars['url']; ?>action/file/download?file_guid=<?php echo $vars['entity']->getGUID(); ?>"});  
+         AudioPlayer.embed("audioplayer_1", {soundFile: "<?php echo $vars['url']; ?>mod/file/download.php?file_guid=<?php echo $vars['entity']->getGUID(); ?>"});  
          </script> 
 </div> 
  
