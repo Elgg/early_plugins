@@ -216,11 +216,11 @@
 				$title = $entity->title;
 				if ($method == 'sms') {
 					$owner = $entity->getOwnerEntity();
-					return $owner->username . ' via blog: ' . $title;
+					return $owner->name . ' via blog: ' . $title;
 				}
 				if ($method == 'email') {
 					$owner = $entity->getOwnerEntity();
-					return $owner->username . ' via blog: ' . $title . "\n\n" . $descr . "\n\n" . $entity->getURL();
+					return $owner->name . ' via blog: ' . $title . "\n\n" . $descr . "\n\n" . $entity->getURL();
 				}
 			}
 			return null;

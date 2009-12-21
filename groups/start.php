@@ -155,7 +155,7 @@
 				if ($method == 'sms') {
 					return elgg_echo("groupforumtopic:new") . ': ' . $url . " ({$owner->name}: {$title})";
 				} else {
-					return $_SESSION['user']->username . ' ' . elgg_echo("groups:viagroups") . ': ' . $title . "\n\n" . $msg . "\n\n" . $entity->getURL();
+					return $_SESSION['user']->name . ' ' . elgg_echo("groups:viagroups") . ': ' . $title . "\n\n" . $msg . "\n\n" . $entity->getURL();
 				}
 
 			}

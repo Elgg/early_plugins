@@ -126,11 +126,11 @@
 				$descr = $entity->description;
 				if ($method == 'sms') {
 					$owner = $entity->getOwnerEntity();
-					return $owner->username . ': ' . $descr;
+					return $owner->name . ': ' . $descr;
 				}
 				if ($method == 'email') {
 					$owner = $entity->getOwnerEntity();
-					return $owner->username . ': ' . $descr . "\n\n" . $entity->getURL();
+					return $owner->name . ': ' . $descr . "\n\n" . $entity->getURL();
 				}
 			}
 			return null;

@@ -206,15 +206,15 @@
 				$url = $CONFIG->wwwroot . "pg/view/" . $entity->guid;
 				if ($method == 'sms') {
 					$owner = $entity->getOwnerEntity();
-					return $owner->username . ' ' . elgg_echo("pages:via") . ': ' . $url . ' (' . $title . ')';
+					return $owner->name . ' ' . elgg_echo("pages:via") . ': ' . $url . ' (' . $title . ')';
 				}
 				if ($method == 'email') {
 					$owner = $entity->getOwnerEntity();
-					return $owner->username . ' ' . elgg_echo("pages:via") . ': ' . $title . "\n\n" . $descr . "\n\n" . $entity->getURL();
+					return $owner->name . ' ' . elgg_echo("pages:via") . ': ' . $title . "\n\n" . $descr . "\n\n" . $entity->getURL();
 				}
 				if ($method == 'web') {
 					$owner = $entity->getOwnerEntity();
-					return $owner->username . ' ' . elgg_echo("pages:via") . ': ' . $title . "\n\n" . $descr . "\n\n" . $entity->getURL();
+					return $owner->name . ' ' . elgg_echo("pages:via") . ': ' . $title . "\n\n" . $descr . "\n\n" . $entity->getURL();
 				}
 			}
 			return null;
