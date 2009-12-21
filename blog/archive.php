@@ -42,7 +42,7 @@
 	// Get blog categories
 		
 	// Display them in the page
-        $body = elgg_view_layout("blog_layout", '', $area1 . $area2);
+        $body = elgg_view_layout("two_column_left_sidebar", '', $area1 . $area2);
 		
 	// Display page
 		page_draw(sprintf(elgg_echo('blog:user'),$page_owner->name),$body);
