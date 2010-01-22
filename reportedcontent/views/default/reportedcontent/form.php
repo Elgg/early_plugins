@@ -24,6 +24,7 @@
 ?>
 <div class="contentWrapper">
 	<form action="<?php echo $vars['url']; ?>action/reportedcontent/add" method="post">
+	<?php echo elgg_view('input/securitytoken'); ?>
 	
 		<p>
 			<label>
