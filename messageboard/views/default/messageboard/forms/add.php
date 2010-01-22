@@ -22,6 +22,8 @@
    
     <!-- the page owner, this will be the profile owner -->
     <input type="hidden" name="pageOwner" value="<?php echo page_owner(); ?>"  />
+
+    <?php echo elgg_view('input/securitytoken'); ?>
    
     <!-- submit messages input -->
     <input type="submit" id="postit" value="<?php echo elgg_echo('messageboard:postit'); ?>">

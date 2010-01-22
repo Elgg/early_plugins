@@ -37,10 +37,10 @@
     			    
   
 			       echo "<div class='delete_message'>" . elgg_view("output/confirmlink",array(
-														'href' => $vars['url'] . "action/messageboard/delete?annotation_id=" . $vars['annotation']->id,
-														'text' => elgg_echo('delete'),
-														'confirm' => elgg_echo('deleteconfirm'),
-													)) . "</div>";
+							'href' => $vars['url'] . "action/messageboard/delete?annotation_id=" . $vars['annotation']->id,
+								'text' => elgg_echo('delete'),
+								'confirm' => elgg_echo('deleteconfirm'),
+							)) . "</div>";
 		
 	    } //end of can edit if statement
 	?>
