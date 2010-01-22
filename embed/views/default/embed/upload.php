@@ -13,8 +13,8 @@
 		<p>
 			<label for="upload"><?php echo elgg_echo("file:file"); ?><br />
 		<?php
-
-				echo elgg_view("input/file",array('internalname' => 'upload', 'js' => 'id="upload"'));
+			echo elgg_view('input/securitytoken');
+			echo elgg_view("input/file",array('internalname' => 'upload', 'js' => 'id="upload"'));
 			
 		?>
 		</label></p>
