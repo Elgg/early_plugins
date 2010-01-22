@@ -58,6 +58,7 @@ $(document).ready(function(){
 			
 		echo "<div class='note_date' style='margin-left:-16px;'><div class='thewire_characters_remaining'><input readonly type=\"text\" name=\"inlineReplyFormremLen1\" size=\"3\" maxlength=\"3\" value=\"140\" class=\"thewire_characters_remaining_field\">";
 		echo "characters. Just now via site</div><div class='clearfloat'></div></div>";	
+		echo elgg_view('input/securitytoken');
 	?>
 		<input type='hidden' name='parent' value='<?php echo get_input('wirepost'); ?>' />
 		<input type="hidden" name="method" value="site" />

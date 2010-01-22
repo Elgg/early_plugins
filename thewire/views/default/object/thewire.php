@@ -59,10 +59,10 @@ if (isset($vars['entity'])) {
 						// if the user looking at thewire post can edit, show the delete link
 						if ($reply->owner_guid == $_SESSION['user']->guid || isadminloggedin()) {
 							   echo "<div class='delete_note'>" . elgg_view("output/confirmlink",array(
-																	'href' => $vars['url'] . "action/thewire/delete_reply?id=" . $reply->id,
-																	'text' => elgg_echo('delete'),
-																	'confirm' => elgg_echo('deleteconfirm'),
-																)) . "</div>";
+									'href' => $vars['url'] . "action/thewire/delete_reply?id=" . $reply->id,
+									'text' => elgg_echo('delete'),
+									'confirm' => elgg_echo('deleteconfirm'),
+								)) . "</div>";
 						} //end of can edit if statement
 						//echo elgg_view('thewire/options', array('entity' => $reply));
 					?>
@@ -151,10 +151,10 @@ if (isset($vars['entity'])) {
 					// if the user looking at thewire post can edit, show the delete link
 					if ($vars['entity']->canEdit()) {
 					   echo "<div class='delete_note'>" . elgg_view("output/confirmlink",array(
-															'href' => $vars['url'] . "action/thewire/delete?thewirepost=" . $vars['entity']->getGUID(),
-															'text' => elgg_echo('delete'),
-															'confirm' => elgg_echo('deleteconfirm'),
-														)) . "</div>";
+							'href' => $vars['url'] . "action/thewire/delete?thewirepost=" . $vars['entity']->getGUID(),
+							'text' => elgg_echo('delete'),
+							'confirm' => elgg_echo('deleteconfirm'),
+						)) . "</div>";
 					} //end of can edit if statement
 					
 					//insert a view for plugins to extend

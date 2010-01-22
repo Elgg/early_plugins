@@ -44,6 +44,7 @@ function textCounter(field,cntfield,maxlimit) {
 		echo "<textarea name='note' value='' onKeyDown=\"textCounter(document.noteForm.note,document.noteForm.remLen1,140)\" onKeyUp=\"textCounter(document.noteForm.note,document.noteForm.remLen1,140)\" id=\"thewire_large-textarea\">{$msg}</textarea>";
 		echo "<input type=\"submit\" class=\"wire_post_button\" value=\"";
 		echo elgg_echo("thewire:post") . "\" /><div class='clearfloat'></div>";
+		echo elgg_view('input/securitytoken');
 	?>
 		<input type='hidden' name='parent' value='<?php echo $reply; ?>' />
 		<input type="hidden" name="method" value="site" />

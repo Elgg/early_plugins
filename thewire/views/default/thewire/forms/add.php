@@ -70,10 +70,11 @@ function textCounter(field,cntfield,maxlimit) {
                 echo elgg_echo("thewire:post") . "\" />";
                 echo $access_input;
                 echo $location_input;
+		echo elgg_view('input/securitytoken');
 			?>
-			<input type="hidden" name="method" value="site" />
-			
-	</form>
+	<input type="hidden" name="method" value="site" />
+	
+</form>
 	<?php echo "<div class='thewire_latest'><b>" . elgg_echo('thewire:latest') .":</b> " . $content . " " . $time . "</div><div class='clearfloat'></div>"; ?>
 </div>
 <?php echo elgg_view('input/urlshortener'); ?>

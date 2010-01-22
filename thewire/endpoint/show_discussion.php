@@ -49,10 +49,10 @@
 						// if the user looking at thewire post can edit, show the delete link
 						if ($disc->owner_guid == $_SESSION['user']->guid || isadminloggedin()) {
 							   echo "<div class='delete_note'>" . elgg_view("output/confirmlink",array(
-																	'href' => $CONFIG->wwwroot . "action/thewire/delete_reply?id=" . $disc->id,
-																	'text' => elgg_echo('delete'),
-																	'confirm' => elgg_echo('deleteconfirm'),
-																)) . "</div>";
+								'href' => $CONFIG->wwwroot . "action/thewire/delete_reply?id=" . $disc->id,
+								'text' => elgg_echo('delete'),
+								'confirm' => elgg_echo('deleteconfirm'),
+							)) . "</div>";
 						} //end of can edit if statement
 
 							//include a view for to-dos or other plugins
