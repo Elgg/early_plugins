@@ -31,10 +31,10 @@
     <p class="longtext_editarea">
 		<label>
 			<?php echo elgg_view("input/longtext",array(
-															'internalname' => "pages_welcome",
-															'value' => $current_message,
-															'disabled' => $disabled
-															)); ?>
+				'internalname' => "pages_welcome",
+				'value' => $current_message,
+				'disabled' => $disabled
+			)); ?>
 		</label>
 	</p>
 	<p>
@@ -46,6 +46,8 @@
 	<input type="hidden" name="owner_guid" value="<?php echo $page_owner; ?>" />
 	
 	<?php
+		echo elgg_view('input/securitytoken');
+
 	    //if it is editing, include the object guid
 	    if($object_guid != ''){
     ?>

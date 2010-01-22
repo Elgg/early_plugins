@@ -32,7 +32,8 @@
 	
 	if ($pages->canEdit()) {
 		add_submenu_item(elgg_echo('pages:newchild'),"{$CONFIG->wwwroot}pg/pages/new/?parent_guid={$pages->getGUID()}&container_guid=" . page_owner(), 'pagesactions');
-		add_submenu_item(elgg_echo('pages:delete'),"{$CONFIG->wwwroot}action/pages/delete?page={$pages->getGUID()}", 'pagesactions', true);
+		$delete_url = elgg_validate_action_url("{$CONFIG->wwwroot}action/pages/delete?page={$pages->getGUID()}");
+		add_submenu_item(elgg_echo('pages:delete'), $delete_url, 'pagesactions', true);
 	}
 	
 	//if the page has a parent, get it

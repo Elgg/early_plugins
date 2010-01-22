@@ -29,10 +29,8 @@
 ?>
 <div class="contentWrapper">
 <form action="<?php echo $vars['url']; ?>action/pages/edit" method="post">
-
 <?php
-
-	//var_export($vars['profile']);
+	echo elgg_view('input/securitytoken'); 
 	if (is_array($vars['config']->pages) && sizeof($vars['config']->pages) > 0)
 		foreach($vars['config']->pages as $shortname => $valtype) {
 			
@@ -48,10 +46,10 @@
 		<label>
 			<?php echo elgg_echo("pages:{$shortname}") ?><br />
 			<?php echo elgg_view("input/{$valtype}",array(
-															'internalname' => $shortname,
-															'value' => $vars['entity']->$shortname,
-															'disabled' => $disabled
-															)); ?>
+				'internalname' => $shortname,
+				'value' => $vars['entity']->$shortname,
+				'disabled' => $disabled
+			)); ?>
 		</label>
 	</p>
 
