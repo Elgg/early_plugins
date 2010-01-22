@@ -46,7 +46,7 @@
 <p>
 	<label>
 <?php
-
+	echo elgg_view('input/securitytoken');
 	if ($action_type == "new") {
 		echo elgg_echo("file:file");
 	} else {
