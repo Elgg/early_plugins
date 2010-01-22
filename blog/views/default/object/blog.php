@@ -118,10 +118,10 @@
 					<?php
 					
 						echo elgg_view("output/confirmlink", array(
-																	'href' => $vars['url'] . "action/blog/delete?blogpost=" . $vars['entity']->getGUID(),
-																	'text' => elgg_echo('delete'),
-																	'confirm' => elgg_echo('deleteconfirm'),
-																));
+							'href' => $vars['url'] . "action/blog/delete?blogpost=" . $vars['entity']->getGUID(),
+							'text' => elgg_echo('delete'),
+							'confirm' => elgg_echo('deleteconfirm'),
+						));
 	
 						// Allow the menu to be extended
 						echo elgg_view("editmenu",array('entity' => $vars['entity']));
