@@ -9,10 +9,10 @@
 	 * @link http://elgg.org/
 	 */
 	echo elgg_view('input/form', array(
-									'action' => $vars['url'] . 'action/invitefriends/invite',
-									'body' => elgg_view('invitefriends/formitems'),
-									'method' => 'post'
-								)
-							);
+			'action' => $vars['url'] . 'action/invitefriends/invite',
+			'body' => elgg_view('invitefriends/formitems'),
+			'method' => 'post'
+		)
+	);
 
 ?>
