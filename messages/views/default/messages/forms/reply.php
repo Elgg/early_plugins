@@ -28,7 +28,7 @@
 		
 	<p>
 	    <?php
-                
+               echo elgg_view('input/securitytoken'); 
 	        //pass across the guid of the message being replied to
     	    echo "<input type='hidden' name='reply' value='" . $vars['entity']->getGUID() . "' />";
     	    //pass along the owner of the message being replied to

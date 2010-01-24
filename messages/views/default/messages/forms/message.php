@@ -36,6 +36,8 @@
 	<form action="<?php echo $vars['url']; ?>action/messages/send" method="post" name="messageForm">
 			
 	    <?php
+		// security tokens.
+		echo elgg_view('input/securitytoken');
 			    
 	        //check to see if the message recipient has already been selected
 			if($send_to){
