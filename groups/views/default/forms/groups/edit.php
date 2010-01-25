@@ -138,6 +138,7 @@
 <div id="delete_group_option">
 	<form action="<?php echo $vars['url'] . "action/groups/delete"; ?>">
 		<?php
+			echo elgg_view('input/securitytoken');
 			if ($vars['entity'])
 			{ 
 				$warning = elgg_echo("groups:deletewarning");

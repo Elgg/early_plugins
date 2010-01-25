@@ -37,6 +37,7 @@
 
 <!-- display the input form -->
 	<form action="<?php echo $vars['url']; ?>action/groups/edittopic" method="post">
+	<?php echo elgg_view('input/securitytoken'); ?>
 	
 		<p>
 			<label><?php echo elgg_echo("title"); ?><br />

@@ -19,6 +19,7 @@
 <form action="<?php echo $vars['url']; ?>action/groups/invite" method="post">
 
 	<?php
+	echo elgg_view('input/securitytoken');
 
 	if ($friends = get_entities_from_relationship('friend',$_SESSION['guid'],false,'user','',0,'',9999)) {
 		echo elgg_view('friends/picker',array('entities' => $friends, 'internalname' => 'user_guid', 'highlight' => 'all'));	

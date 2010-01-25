@@ -45,7 +45,7 @@
 		{
 			// Closed group, request membership
 			system_message(elgg_echo('groups:privategroup'));
-			forward($CONFIG->url . "action/groups/joinrequest?user_guid=$user_guid&group_guid=$group_guid");
+			forward(elgg_validate_action_url($CONFIG->url . "action/groups/joinrequest?user_guid=$user_guid&group_guid=$group_guid"));
 			exit;
 		}
 	}
