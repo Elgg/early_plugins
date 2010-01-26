@@ -28,7 +28,6 @@
 }
 
 #groups_info_column_left {
-	float:left;
 	width:435px;
 	margin-left:230px;
 	margin-right:10px;
