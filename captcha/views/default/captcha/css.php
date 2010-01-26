@@ -1,6 +1,6 @@
 
 .captcha-input-image {
-	align: center;
+	text-align: center;
 	margin: auto;
 }
 

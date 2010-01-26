@@ -322,7 +322,7 @@ the wire reply inline form
 	border-bottom:1px solid #dddddd;
 }
 .thewire-post.replyform {
-	margin-bottom:none;
+	margin-bottom:0;
 	padding-bottom:4px;
 	padding-left:15px;
 	border-bottom:1px solid white;
