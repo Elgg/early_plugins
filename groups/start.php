@@ -283,8 +283,6 @@
 						'guid' => $user_guid
 					));
 
-					var_dump($invitations);
-
 					break;
 
 				case "new" :
