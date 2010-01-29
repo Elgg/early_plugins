@@ -14,9 +14,6 @@
 	admin_gatekeeper();
 	set_context('admin');
 	
-	// Set admin user for user block
-	set_page_owner($_SESSION['guid']);
-	
 	$title = elgg_view_title(elgg_echo('profile:edit:default'));
 	$form = elgg_view('profile/editdefaultprofile');
 	
