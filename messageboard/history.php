@@ -27,7 +27,7 @@
 		$contents = get_annotations($users_array, "user", "", "messageboard", $value = "", $users_array, $limit = 10, $offset = 0, $order_by = "desc");
 	
     // Get the content to display	
-		$area2 = elgg_view_title(elgg_echo('messageboard:history'));
+		$area2 = elgg_view_title(elgg_echo('messageboard:history:title'));
 		$area2 .= elgg_view("messageboard/messageboard", array('annotation' => $contents));
 	
 	//$area1 = "<h2>Profile owner: " . $current_user . "</h2>";
@@ -38,6 +38,6 @@
 	    $body = elgg_view_layout("two_column_left_sidebar", '', $area2);
 		
 	// Display page
-		page_draw(elgg_echo('messageboard:history'),$body);
+		page_draw(elgg_echo('messageboard:history:title'),$body);
 	 
 ?>

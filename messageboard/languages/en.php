@@ -10,16 +10,16 @@
 			'messageboard:messageboard' => "message board",
 			'messageboard:viewall' => "View all",
 			'messageboard:postit' => "Post it",
-			'messageboard:history' => "history",
+			'messageboard:history:title' => "History",
 			'messageboard:none' => "There is nothing on this message board yet",
 			'messageboard:num_display' => "Number of messages to display",
 			'messageboard:desc' => "This is a message board that you can put on your profile where other users can comment.",
 	
 			'messageboard:user' => "%s's message board",
 	
-			'messageboard:history' => "History",
 			'messageboard:replyon' => 'reply on',
-			
+			'messageboard:history' => "history",
+	
          /**
 	     * Message board widget river
 	     **/

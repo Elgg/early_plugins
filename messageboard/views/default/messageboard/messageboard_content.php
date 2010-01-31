@@ -44,22 +44,21 @@
 		
 	    } //end of can edit if statement
 	?>
-		        <?php
-		            //if the message being looked at is owned by the current user, don't show the reply
-		            if($vars['annotation']->owner_guid != $_SESSION['guid']){
+<?php
+		            // If the message being looked at is owned by the current user, don't show the reply
+		            // Also do not show if the user is not logged in  
+		            if (isloggedin() && $vars['annotation']->owner_guid != get_loggedin_userid()){
     		            
     		            //get the message owner
-    		            $get_entity = get_entity($vars['annotation']->owner_guid);
+    		            $msg_owner = get_entity($vars['annotation']->owner_guid);
     		            //create the url to their messageboard
-    		            $user_mb = "pg/messageboard/" . $get_entity->username;
+    		            $user_mb = "pg/messageboard/" . $msg_owner->username;
     		            
-    		            echo "<a href=\"" . $vars['url'] . $user_mb . "\">".elgg_echo('messageboard:replyon')." " . $get_entity->name . "'s " . elgg_echo('messageboard:messageboard') . "</a> | ";
+    		            echo "<a href=\"" . $vars['url'] . $user_mb . "\">".elgg_echo('messageboard:replyon')." " . $msg_owner->name . "'s " . elgg_echo('messageboard:messageboard') . "</a> | ";
     		            
-    		            echo "<a href=\"" . $vars['url'] . "mod/messageboard/history.php?user=" . $get_entity->guid ."\">" . elgg_echo('messageboard:history') . "</a>"; 
-    		            
-    		                		            
+    		            echo "<a href=\"" . $vars['url'] . "mod/messageboard/history.php?user=" . $msg_owner->guid ."\">" . elgg_echo('messageboard:history') . "</a>"; 
 		            }
-		        ?>
+?>
 		        
 		  </div>
 	<div class="clearfloat"></div>
