@@ -20,7 +20,7 @@
 
 	$emails = trim($emails);
 	if (strlen($emails) > 0) {
-		$emails = explode("\n", $emails);
+		$emails = preg_split('/\\s+/', $emails, -1, PREG_SPLIT_NO_EMPTY);
 	}
 	
 	if (!is_array($emails) || count($emails) == 0) {
@@ -28,15 +28,21 @@
 		forward($_SERVER['HTTP_REFERER']);
 	}
 	
+	$error = FALSE;
+	$bad_emails = array();
 	foreach($emails as $email) {
 				
 		$email = trim($email);
 		if (empty($email)) {
 			continue;
 		}
-		
-		// @todo validate email address here
-		
+	
+		// send out other email addresses	
+		if (!is_email_address($email)) {
+			$error = TRUE;
+			$bad_emails[] = $email;
+			continue;
+		}
 		
 		$link = $CONFIG->wwwroot . 'account/register.php?friend_guid=' . $_SESSION['guid'] . '&invitecode=' . generate_invite_code($_SESSION['user']->username);
 		$message = sprintf(elgg_echo('invitefriends:email'),
@@ -100,8 +106,12 @@
 
 		mail($email, $subject, wordwrap($message), $headers);							
 	}
-	
-	system_message(elgg_echo('invitefriends:success'));
+
+	if ($error) {
+		register_error(sprintf(elgg_echo('invitefriends:email_error'), implode(', ', $bad_emails)));
+	} else {	
+		system_message(elgg_echo('invitefriends:success'));
+	}
 
 	forward($_SERVER['HTTP_REFERER']);
 

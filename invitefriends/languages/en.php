@@ -18,6 +18,7 @@
 		'invitefriends:subject' => 'Invitation to join %s',
 	
 		'invitefriends:success' => 'Your friends were invited.',
+		'invitefriends:email_error' => 'Invitations were sent, but the following addresses are not valid: %s',
 		'invitefriends:failure' => 'Your friends could not be invited.',
 	
 		'invitefriends:message:default' => '
