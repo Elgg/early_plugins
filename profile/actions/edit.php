@@ -28,12 +28,13 @@
 				$input[$shortname] = string_to_tag_array($input[$shortname]);
 		}
 		
-	// Save stuff if we can, and forward to the user's profile
+	// Get the page owner to see if the currently logged in user canEdit() the page owner.
 		
-		if ($user = page_owner()) {
-			$user = page_owner_entity();			
-		} else {
+		$user = page_owner_entity();
+		if (!$user) {
 			$user = $_SESSION['user'];
+
+			// @todo this doesn't make sense...???
 			set_page_owner($user->getGUID());
 		}
 		if ($user->canEdit()) {
