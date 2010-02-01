@@ -22,8 +22,9 @@
 		if (!is_array($accesslevel)) $accesslevel = array();
 		
 		foreach($CONFIG->profile as $shortname => $valuetype) {
-			$input[$shortname] = get_input($shortname);
-			
+			// stop gag to prevent &amp;&amp; showing up in profile fields
+			// until #561 is completed.
+			$input[$shortname] = html_entity_decode(get_input($shortname));
 			if ($valuetype == 'tags')
 				$input[$shortname] = string_to_tag_array($input[$shortname]);
 		}
@@ -42,6 +43,7 @@
 			// Save stuff
 			if (sizeof($input) > 0)
 				foreach($input as $shortname => $value) {
+
 					
 					//$user->$shortname = $value;
 					remove_metadata($user->guid, $shortname);
