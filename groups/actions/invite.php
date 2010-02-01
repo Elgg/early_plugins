@@ -15,6 +15,8 @@ global $CONFIG;
 
 gatekeeper();
 
+$logged_in_user = get_loggedin_user();
+
 $user_guid = get_input('user_guid');
 if (!is_array($user_guid))
 	$user_guid = array($user_guid);
@@ -43,7 +45,7 @@ if (sizeof($user_guid))
 						$url = "{$CONFIG->url}pg/groups/invitations/{$user->username}";
 						if (notify_user($user->getGUID(), $group->owner_guid,
 								sprintf(elgg_echo('groups:invite:subject'), $user->name, $group->name),
-								sprintf(elgg_echo('groups:invite:body'), $user->name, $group->name, $url),
+								sprintf(elgg_echo('groups:invite:body'), $user->name, $logged_in_user->name, $group->name, $url),
 								NULL))
 							system_message(elgg_echo("groups:userinvited"));
 						else

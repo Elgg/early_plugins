@@ -151,7 +151,7 @@
 			'groups:joinrequest:remove:check' => 'Are you sure you want to remove this join request?',
 			'groups:invite:body' => "Hi %s,
 
-You have been invited to join the '%s' group, click below to confirm:
+%s invited you to join the '%s' group, click below to confirm:
 
 %s",
 

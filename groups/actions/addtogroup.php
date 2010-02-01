@@ -15,6 +15,8 @@
 
 	gatekeeper();
 
+	$logged_in_user = get_loggedin_user();
+
 	$user_guid = get_input('user_guid');
 	if (!is_array($user_guid))
 		$user_guid = array($user_guid);
@@ -52,7 +54,7 @@
 							// send welcome email
 							notify_user($user->getGUID(), $group->owner_guid,
 								sprintf(elgg_echo('groups:welcome:subject'), $group->name),
-								sprintf(elgg_echo('groups:welcome:body'), $user->name, $group->name, $group->getURL()),
+								sprintf(elgg_echo('groups:welcome:body'), $user->name, $logged_in_user->name, $group->name, $group->getURL()),
 								NULL);
 
 							system_message(elgg_echo('groups:addedtogroup'));
@@ -72,7 +74,7 @@
 							$url = "{$CONFIG->url}pg/groups/invited?user_guid={$user->guid}&group_guid={$group->guid}";
 							if (notify_user($user->getGUID(), $group->owner_guid,
 									sprintf(elgg_echo('groups:invite:subject'), $user->name, $group->name),
-									sprintf(elgg_echo('groups:invite:body'), $user->name, $group->name, $url),
+									sprintf(elgg_echo('groups:invite:body'), $user->name, $logged_in_user->name, $group->name, $url),
 									NULL))
 								system_message(elgg_echo("groups:userinvited"));
 							else
