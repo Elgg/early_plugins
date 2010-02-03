@@ -23,6 +23,6 @@
 		$body = elgg_view_layout('two_column_left_sidebar', $area1, $area2);
 		
 	// Draw it
-		echo page_draw(elgg_echo('bookmarks:friends'),$body);
+		page_draw(elgg_echo('bookmarks:friends'),$body);
 
 ?>

@@ -38,6 +38,6 @@
 		$body = elgg_view_layout('two_column_left_sidebar','', $body);
 						
 	// View page
-		echo page_draw(elgg_echo('categories:settings'),$body);
+		page_draw(elgg_echo('categories:settings'),$body);
 		
 ?>

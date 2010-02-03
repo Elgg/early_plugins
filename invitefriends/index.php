@@ -20,6 +20,6 @@
 	$body = elgg_view('invitefriends/form');
 	$body = elgg_view_layout('two_column_left_sidebar','',$body);
 
-	echo page_draw(elgg_echo('friends:invite'),$body);
+	page_draw(elgg_echo('friends:invite'),$body);
 	
 ?>
