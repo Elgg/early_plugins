@@ -9,6 +9,13 @@
 	 * @link http://elgg.com/
 	 */
 
+	// new groups default to open membership
+	if (isset($vars['entity'])) {
+		$membership = $vars['entity']->membership;
+	} else {
+		$membership = ACCESS_PUBLIC;
+	}
+	
 ?>
 <div class="contentWrapper">
 <form action="<?php echo $vars['url']; ?>action/groups/edit" enctype="multipart/form-data" method="post">
@@ -51,7 +58,7 @@
 	<p>
 		<label>
 			<?php echo elgg_echo('groups:membership'); ?><br />
-			<?php echo elgg_view('input/access', array('internalname' => 'membership','value' => $vars['entity']->membership, 'options' => array( ACCESS_PRIVATE => elgg_echo('groups:access:private'), ACCESS_PUBLIC => elgg_echo('groups:access:public')))); ?>
+			<?php echo elgg_view('input/access', array('internalname' => 'membership','value' => $membership, 'options' => array( ACCESS_PRIVATE => elgg_echo('groups:access:private'), ACCESS_PUBLIC => elgg_echo('groups:access:public')))); ?>
 		</label>
 	</p>
 	
