@@ -15,9 +15,21 @@
 		
 	// If we're not logged in, forward to the front page
 		gatekeeper();
+
+		$mbox_type = get_input('type', 'inbox');
 		
 	// Get the full message object to read
 	    $message = get_entity(get_input("message"));
+	    
+	// If no message, must have been deleted, send user to inbox/sent mail
+	if (!$message) {
+		$owner = get_loggedin_user();
+		if ($mbox_type == 'sent') {
+			forward("mod/messages/sent.php");
+		} else {
+			forward("pg/messages/{$owner->username}");
+		}
+	}
 	    
 	// If the message is being read from the inbox, mark it as read, otherwise don't.
 	// This stops a user who checks out a message they have sent having it being marked 
