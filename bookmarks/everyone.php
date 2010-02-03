@@ -23,7 +23,7 @@
 	// List bookmarks
 		$area2 = elgg_view_title(elgg_echo('bookmarks:everyone'));
 		set_context('search');
-		$area2 .= list_entities('object','bookmarks');
+		$area2 .= list_entities('object', 'bookmarks', 0, 10, FALSE, FALSE);
 		set_context('bookmarks');
 		
 	// Format page

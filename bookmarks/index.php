@@ -22,7 +22,7 @@
 	// List bookmarks
 		$area2 = elgg_view_title(sprintf(elgg_echo('bookmarks:read'), $page_owner->name));
 		set_context('search');
-		$area2 .= list_entities('object','bookmarks',page_owner());
+		$area2 .= list_entities('object', 'bookmarks', page_owner(), 10, FALSE, FALSE);
 		set_context('bookmarks');
 		
 	// Format page
