@@ -24,12 +24,14 @@
 
 	//set the title
         if($page_owner == $_SESSION['user']){
-			$area2 = elgg_view_title(elgg_echo('blog:yourfriends'));
+			$title = elgg_echo('blog:yourfriends');
 		}else{
-			$area2 = elgg_view_title($page_owner->username . "'s " . elgg_echo('blog:friends'));
+			$title = $page_owner->name . "'s " . elgg_echo('blog:friends');
 		}
 		
-	// Get a list of blog posts
+		$area2 = elgg_view_title($title);
+		
+		// Get a list of blog posts
 		$area2 .= "<div id='blogs'>" . list_user_friends_objects($page_owner->getGUID(),'blog',10,false) . "<div class='clearfloat'></div></div>";
 		
 	// Get categories, if they're installed
@@ -40,6 +42,6 @@
         $body = elgg_view_layout("two_column_left_sidebar", '', $area1 . $area2, $area3);
 		
 	// Display page
-		page_draw(elgg_echo('blog:friends'),$body);
+		page_draw($title, $body);
 		
 ?>
