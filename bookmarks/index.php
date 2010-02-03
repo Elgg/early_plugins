@@ -18,9 +18,11 @@
 			$page_owner = $_SESSION['user'];
 			set_page_owner($page_owner->getGUID());
 		}
-			
+		
+		$title = sprintf(elgg_echo('bookmarks:read'), $page_owner->name);
+		
 	// List bookmarks
-		$area2 = elgg_view_title(sprintf(elgg_echo('bookmarks:read'), $page_owner->name));
+		$area2 = elgg_view_title($title);
 		set_context('search');
 		$area2 .= list_entities('object', 'bookmarks', page_owner(), 10, FALSE, FALSE);
 		set_context('bookmarks');
@@ -29,6 +31,6 @@
 		$body = elgg_view_layout('two_column_left_sidebar', $area1, $area2);
 		
 	// Draw it
-		echo page_draw(elgg_echo('bookmarks:read'),$body);
+		page_draw($title, $body);
 
 ?>
