@@ -16,6 +16,12 @@
 	// Get the current page's owner
 		$page_owner = page_owner_entity();
 		if ($page_owner === false || is_null($page_owner)) {
+			
+			// guess that logged in user is the owner - if no logged in send to all blogs page
+			if (!isloggedin()) {
+				forward('mod/blog/everyone.php');
+			}
+			
 			$page_owner = $_SESSION['user'];
 			set_page_owner($_SESSION['guid']);
 		}
