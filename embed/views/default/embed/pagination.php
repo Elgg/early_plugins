@@ -2,14 +2,14 @@
 
 	/**
 	 * Elgg pagination
-	 * 
+	 *
 	 * @package Elgg
 	 * @subpackage Core
 	 * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License version 2
 	 * @author Curverider Ltd
 	 * @copyright Curverider Ltd 2008-2009
 	 * @link http://elgg.org/
-	 * 
+	 *
 	 */
 
 	if (!isset($vars['offset'])) {
@@ -37,12 +37,10 @@
 	} else {
 		$nonefound = true;
 	}
-	
+
 	$totalpages = ceil($count / $limit);
 	$currentpage = ceil($offset / $limit) + 1;
 
-	$baseurl = elgg_http_remove_url_query_element($vars['baseurl'], $word);
-	
 	//only display if there is content to paginate through or if we already have an offset
 	if (($count > $limit || $offset > 0) && get_context() != 'widget') {
 
@@ -52,26 +50,22 @@
 <?php
 
 	if ($offset > 0) {
-		
 		$prevoffset = $offset - $limit;
-		if ($prevoffset < 0) $prevoffset = 0;
-		
-		$prevurl = $baseurl;
-		if (substr_count($baseurl,'?')) {
-			$prevurl .= "&{$word}=" . $prevoffset;
-		} else {
-			$prevurl .= "?{$word}=" . $prevoffset;
+		if ($prevoffset < 0) {
+			$prevoffset = 0;
 		}
-		
+
+		$prevurl = elgg_http_add_url_query_elements($baseurl, array($word => $prevoffset));
+
 		echo "<a onclick=\"javascript:$('.popup .content').load('{$prevurl}'); return false\" href=\"#\" class=\"pagination_previous\">&laquo; ". elgg_echo("previous") ."</a> ";
-		
+
 	}
 
 	if ($offset > 0 || $offset < ($count - $limit)) {
-		
+
 		$currentpage = round($offset / $limit) + 1;
 		$allpages = ceil($count / $limit);
-		
+
 		$i = 1;
 		$pagesarray = array();
 		while ($i <= $allpages && $i <= 4) {
@@ -90,55 +84,48 @@
 				$pagesarray[] = $i;
 			$i++;
 		}
-		
+
 		sort($pagesarray);
-		
+
 		$prev = 0;
 		foreach($pagesarray as $i) {
-		
+
 			if (($i - $prev) > 1) {
-				
+
 				echo "<span class=\"pagination_more\">...</span>";
-				
+
 			}
-			
-			$counturl = $baseurl;
+
 			$curoffset = (($i - 1) * $limit);
-			if (substr_count($baseurl,'?')) {
-				$counturl .= "&{$word}=" . $curoffset;
-			} else {
-				$counturl .= "?{$word}=" . $curoffset;
-			}
+			$counturl = elgg_http_add_url_query_elements($base_url, array($word => $curoffset));
+
 			if ($curoffset != $offset) {
 				echo " <a onclick=\"javascript:$('.popup .content').load('{$counturl}'); return false\" href=\"#\" class=\"pagination_number\">{$i}</a> ";
 			} else {
 				echo "<span class=\"pagination_currentpage\"> {$i} </span>";
 			}
 			$prev = $i;
-		
+
 		}
 
 	}
-	
+
 	if ($offset < ($count - $limit)) {
-		
+
 		$nextoffset = $offset + $limit;
-		if ($nextoffset >= $count) $nextoffset--;
-		
-		$nexturl = $baseurl;
-		if (substr_count($baseurl,'?')) {
-			$nexturl .= "&{$word}=" . $nextoffset;
-		} else {
-			$nexturl .= "?{$word}=" . $nextoffset;
+		if ($nextoffset >= $count) {
+			$nextoffset--;
 		}
-		
+
+		$nexturl = elgg_http_add_url_query_elements($baseurl, array($word => $nextoffset));
+
 		echo " <a onclick=\"javascript:$('.popup .content').load('{$nexturl}'); return false\" href=\"#\" class=\"pagination_next\">" . elgg_echo("next") . " &raquo;</a>";
-		
+
 	}
 
 ?>
 <br class="clearfloat" />
 </div>
 <?php
-    } // end of pagination check if statement
+	} // end of pagination check if statement
 ?>
