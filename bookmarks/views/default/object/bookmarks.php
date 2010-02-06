@@ -66,7 +66,7 @@
 	
 		<div class="sharing_item_title">
 			<h3>
-				<a href="<?php echo $vars['entity']->getURL(); ?>"><?php echo $vars['entity']->title; ?></a>
+				<a href="<?php echo $vars['entity']->address; ?>"><?php echo $vars['entity']->title; ?></a>
 			</h3>
 		</div>
 		<div class="sharing_item_owner">
