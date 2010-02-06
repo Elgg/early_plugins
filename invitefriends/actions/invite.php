@@ -44,7 +44,7 @@
 			continue;
 		}
 		
-		$link = $CONFIG->wwwroot . 'pg/register.php?friend_guid=' . $_SESSION['guid'] . '&invitecode=' . generate_invite_code($_SESSION['user']->username);
+		$link = $CONFIG->wwwroot . 'pg/register?friend_guid=' . $_SESSION['guid'] . '&invitecode=' . generate_invite_code($_SESSION['user']->username);
 		$message = sprintf(elgg_echo('invitefriends:email'),
 							$CONFIG->site->name,
 							$_SESSION['user']->name,
