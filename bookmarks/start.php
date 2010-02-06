@@ -58,6 +58,12 @@
 			//add submenu options
 				if (get_context() == "bookmarks") {
 					if (isloggedin()) {
+						// link to add bookmark form
+						if($page_owner instanceof ElggGroup) { 
+							add_submenu_item(elgg_echo('bookmarks:add'), $CONFIG->wwwroot."pg/bookmarks/" . $page_owner->username . "/add"); 
+						} else { 
+						    add_submenu_item(elgg_echo('bookmarks:add'), $CONFIG->wwwroot."pg/bookmarks/" . $_SESSION['user']->username . "/add"); 
+						} 
 						add_submenu_item(elgg_echo('bookmarks:inbox'),$CONFIG->wwwroot."pg/bookmarks/" . $_SESSION['user']->username . "/inbox");
 						if (page_owner()) {
 							$page_owner = page_owner_entity();

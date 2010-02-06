@@ -7,7 +7,7 @@
 		 */
 	
 			'bookmarks' => "Bookmarks",
-			'bookmarks:add' => "Bookmark something",
+			'bookmarks:add' => "Add bookmark",
 			'bookmarks:read' => "%s's bookmarked items",
 			'bookmarks:friends' => "Friends' bookmarks",
 			'bookmarks:everyone' => "All site bookmarks",
