@@ -51,7 +51,7 @@
 <div class="avatar_menu_button"><img src="<?php echo $vars['url']; ?>_graphics/spacer.gif" border="0" width="15px" height="15px" /></div>
 
 	<div class="sub_menu">
-		<a href="<?php echo $vars['entity']->getURL(); ?>"><h3><?php echo $vars['entity']->name; ?></h3></a>
+		<h3><a href="<?php echo $vars['entity']->getURL(); ?>"><?php echo $vars['entity']->name; ?></a></h3>
 		<?php
 			if (isloggedin()) {
 				$actions = elgg_view('profile/menu/actions',$vars);
