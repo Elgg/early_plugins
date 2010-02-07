@@ -17,6 +17,16 @@ gatekeeper();
 $user_guid = get_input('user_guid', get_loggedin_userid());
 $group_guid = get_input('group_guid');
 
+
+// @todo fix for #287
+// disable access to get entity.
+$invitations = groups_get_invited_groups($user_guid, TRUE);
+
+if (in_array($group_guid, $invitations)) {
+	$ia = elgg_set_ignore_access(TRUE);
+}
+
+
 $user = get_entity($user_guid);
 $group = get_entity($group_guid);
 
@@ -29,6 +39,7 @@ if (($group) && ($user) && (!$group->isMember($user)))
 		(check_entity_relationship($group->guid, 'invited', $user->guid))
 	)
 	{
+		//$ia = elgg_set_ignore_access(TRUE);
 		if ($group->join($user))
 		{
 			// Remove relationships
@@ -37,12 +48,15 @@ if (($group) && ($user) && (!$group->isMember($user)))
 
 			// Group joined
 			system_message(elgg_echo('groups:joined'));
+			elgg_set_ignore_access($ia);
 
 			forward($group->getURL());
 			exit;
 		}
-		else
+		else {
+			elgg_set_ignore_access($ia);
 			system_message(elgg_echo('groups:cantjoin'));
+		}
 	}
 	else
 	{

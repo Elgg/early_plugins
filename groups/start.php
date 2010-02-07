@@ -550,6 +550,30 @@
 		}
 	}
 
+	/**
+	 * Grabs groups by invitations
+	 * Have to override all access until there's a way override access to getter functions.
+	 *
+	 * @param $user_guid
+	 * @return unknown_type
+	 */
+	function groups_get_invited_groups($user_guid, $return_guids = FALSE) {
+		$ia = elgg_set_ignore_access(TRUE);
+		$invitations = get_entities_from_relationship('invited', $user_guid, true, '', '', 0, '', 9999);
+		elgg_set_ignore_access($ia);
+
+		if ($return_guids) {
+			$guids = array();
+			foreach ($invitations as $invitation) {
+				$guids[] = $invitation->getGUID();
+			}
+
+			return $guids;
+		}
+
+		return $invitations;
+	}
+
 	register_extender_url_handler('group_topicpost_url','annotation', 'group_topic_post');
 
 	// Register a handler for create groups

@@ -19,8 +19,11 @@ $title = elgg_echo('groups:invitations');
 $area2 = elgg_view_title($title);
 
 if ($user) {
-	$invitations = get_entities_from_relationship('invited', $user->getGUID(), true, '', '', 0, '', 9999);
-	$area2 .= elgg_view('groups/invitationrequests',array('invitations' => $invitations, 'entity' => $group));
+	// @todo temporary workaround for exts #287.
+	$invitations = groups_get_invited_groups($user->getGUID());
+
+	$area2 .= elgg_view('groups/invitationrequests',array('invitations' => $invitations));
+	elgg_set_ignore_access($ia);
 } else {
 	$area2 .= elgg_echo("groups:noaccess");
 }
