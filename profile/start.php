@@ -283,7 +283,7 @@
 				
 				if ($filehandler->exists()) {
 					//$url = $CONFIG->url . "pg/icon/$username/$size/$icontime.jpg";
-					return $CONFIG->wwwroot . 'mod/profile/icondirect.php?lastcache='.$icontime.'&username='.$entity->username.'&size='.$size;
+					return $CONFIG->wwwroot . 'mod/profile/icondirect.php?lastcache='.$icontime.'&amp;username='.$entity->username.'&amp;size='.$size;
 				}
 			}
 		}
