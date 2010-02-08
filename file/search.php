@@ -5,7 +5,7 @@
 	 * 
 	 * @package ElggFile
 	 * @author Curverider Ltd
-	 * @copyright Curverider Ltd 2008-2009
+	 * @copyright Curverider Ltd 2008-2010
 	 * @link http://elgg.com/
 
 	 */
