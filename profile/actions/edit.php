@@ -2,17 +2,17 @@
 
 	/**
 	 * Elgg profile plugin edit action
-	 * 
+	 *
 	 * @package ElggProfile
 	 * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License version 2
 	 * @author Curverider Ltd <info@elgg.com>
 	 * @copyright Curverider Ltd 2008-2010
 	 * @link http://elgg.com/
 	 */
-		
+
 	// Load configuration
 		global $CONFIG;
-		
+
 		gatekeeper();
 		action_gatekeeper();
 
@@ -20,17 +20,28 @@
 		$input = array();
 		$accesslevel = get_input('accesslevel');
 		if (!is_array($accesslevel)) $accesslevel = array();
-		
+
 		foreach($CONFIG->profile as $shortname => $valuetype) {
 			// stop gag to prevent &amp;&amp; showing up in profile fields
 			// until #561 is completed.
-			$input[$shortname] = html_entity_decode(get_input($shortname));
-			if ($valuetype == 'tags')
-				$input[$shortname] = string_to_tag_array($input[$shortname]);
+			$value = html_entity_decode(get_input($shortname));
+
+			// limit to reasonable sizes.
+			if ($valuetype != 'longtext' && elgg_strlen($value) > 250) {
+				$error = sprintf(elgg_echo('profile:field_too_long'), elgg_echo("profile:{$shortname}"));
+				register_error($error);
+				forward($_SERVER['HTTP_REFERER']);
+			}
+
+			if ($valuetype == 'tags') {
+				$value = string_to_tag_array($value);
+			}
+
+			$input[$shortname] = $value;
 		}
-		
+
 	// Get the page owner to see if the currently logged in user canEdit() the page owner.
-		
+
 		$user = page_owner_entity();
 		if (!$user) {
 			$user = $_SESSION['user'];
@@ -39,12 +50,10 @@
 			set_page_owner($user->getGUID());
 		}
 		if ($user->canEdit()) {
-			
+
 			// Save stuff
 			if (sizeof($input) > 0)
 				foreach($input as $shortname => $value) {
-
-					
 					//$user->$shortname = $value;
 					remove_metadata($user->guid, $shortname);
 					if (isset($accesslevel[$shortname])) {
@@ -63,24 +72,23 @@
 					} else {
 						create_metadata($user->guid, $shortname, $value, 'text', $user->guid, $access_id);
 					}
-					
 				}
 			$user->save();
 
 			// Notify of profile update
 			trigger_elgg_event('profileupdate',$user->type,$user);
-			
+
 			//add to river
 			add_to_river('river/user/default/profileupdate','update',$_SESSION['user']->guid,$_SESSION['user']->guid,get_default_access($_SESSION['user']));
-			
+
 			system_message(elgg_echo("profile:saved"));
-			
+
 			// Forward to the user's profile
 			forward($user->getUrl());
 
 		} else {
 	// If we can't, display an error
-			
+
 			system_message(elgg_echo("profile:noaccess"));
 		}
 
