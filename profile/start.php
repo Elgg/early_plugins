@@ -79,7 +79,6 @@
 			// Now override icons
 			register_plugin_hook('entity:icon:url', 'user', 'profile_usericon_hook');
 
-
 		}
 
 	/**
@@ -129,6 +128,13 @@
 			}
 
 			$CONFIG->profile = trigger_plugin_hook('profile:fields', 'profile', NULL, $profile_defaults);
+
+			// register any tag metadata names
+			foreach ($CONFIG->profile as $name => $type) {
+				if ($type == 'tags') {
+					elgg_register_tag_metadata_name($name);
+				}
+			}
 		}
 
 	/**
@@ -308,5 +314,4 @@
 
 	// Define widgets for use in this context
 		use_widgets('profile');
-
 ?>
