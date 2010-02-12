@@ -149,18 +149,24 @@ function defaultwidgets_newusers($event, $object_type, $object) {
 							$area3widgets = false;
 							
 						// generate left column widgets for a new user 
-						foreach ( $area1widgets as $i => $widget ) {
-							add_widget ( $guid, $widget, $context, ($i + 1), 1, $widget_access );
+						if ($area1widgets) {
+							foreach ( $area1widgets as $i => $widget ) {
+								add_widget ( $guid, $widget, $context, ($i + 1), 1, $widget_access );
+							}
 						}
 						
 						// generate middle column widgets for a new user
-						foreach ( $area2widgets as $i => $widget ) {
-							add_widget ( $guid, $widget, $context, ($i + 1), 2, $widget_access );
+						if ($area2widgets) {
+							foreach ( $area2widgets as $i => $widget ) {
+								add_widget ( $guid, $widget, $context, ($i + 1), 2, $widget_access );
+							}
 						}
 						
 						// generate right column widgets for a new user
-						foreach ( $area3widgets as $i => $widget ) {
-							add_widget ( $guid, $widget, $context, ($i + 1), 3, $widget_access );
+						if ($area3widgets) {
+							foreach ( $area3widgets as $i => $widget ) {
+								add_widget ( $guid, $widget, $context, ($i + 1), 3, $widget_access );
+							}
 						}
 					}
 				}
