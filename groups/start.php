@@ -185,6 +185,13 @@
 		);
 
 		$CONFIG->group = trigger_plugin_hook('profile:fields', 'group', NULL, $profile_defaults);
+
+		// register any tag metadata names
+		foreach ($CONFIG->group as $name => $type) {
+			if ($type == 'tags') {
+				elgg_register_tag_metadata_name($name);
+			}
+		}
 	}
 
 	/**
