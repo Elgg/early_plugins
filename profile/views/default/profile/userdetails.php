@@ -100,30 +100,35 @@
 					$value = $vars['entity']->$shortname;
 					if (!empty($value)) {
 
-				//This function controls the alternating class
-				$even_odd = ( 'odd' != $even_odd ) ? 'odd' : 'even';
+						//This function controls the alternating class
+						$even_odd = ( 'odd' != $even_odd ) ? 'odd' : 'even';
 
+						?>
+						<p class="<?php echo $even_odd; ?>">
+							<b><?php
 
-	?>
-	<p class="<?php echo $even_odd; ?>">
-		<b><?php
+							echo elgg_echo("profile:{$shortname}");
 
-			echo elgg_echo("profile:{$shortname}");
+							?>: </b>
+							<?php
+							$options = array(
+								'value' => $vars['entity']->$shortname
+							);
 
-		?>: </b>
-		<?php
+							if ($valtype == 'tags') {
+								$options['tag_names'] = $shortname;
+							}
 
-			echo elgg_view("output/{$valtype}",array('value' => $vars['entity']->$shortname));
+							echo elgg_view("output/{$valtype}", $options);
 
-		?>
+							?>
 
-	</p>
+						</p>
 
-	<?php
+						<?php
 					}
 				}
 			}
-
 		}
 
 	?>

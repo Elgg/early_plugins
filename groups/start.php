@@ -190,6 +190,9 @@
 		foreach ($CONFIG->group as $name => $type) {
 			if ($type == 'tags') {
 				elgg_register_tag_metadata_name($name);
+
+				// register a tag name translation
+				add_translation(get_current_language(), array("tag_names:$name" => elgg_echo("groups:$name")));
 			}
 		}
 	}
