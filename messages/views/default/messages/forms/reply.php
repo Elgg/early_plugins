@@ -18,6 +18,8 @@
 	if (strncmp($reply_title, "RE:", 3) != 0) {
 		$reply_title = "RE: " . $reply_title;
 	}
+exit;
+	$reply_title = str_replace("'", "\\'", $reply_title);
 ?>
 
 <form action="<?php echo $vars['url']; ?>action/messages/send" method="post" name="messageForm">
