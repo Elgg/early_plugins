@@ -18,7 +18,7 @@
 			
 			// Extend useful views with stuff we need for our embed modal
 				elgg_extend_view('css','embed/css');
-				// elgg_extend_view('js/initialise_elgg','embed/js');
+				elgg_extend_view('js/initialise_elgg','embed/js');
 				elgg_extend_view('metatags','embed/metatags');
 				elgg_extend_view('input/longtext','embed/link',10);
 				
