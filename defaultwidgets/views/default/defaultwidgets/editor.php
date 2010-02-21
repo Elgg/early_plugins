@@ -29,7 +29,7 @@
 		set_context ( 'admin' );		
 		
 		// get the entities for the module
-		$entities = get_entities("object", "moddefaultwidgets", 0, "", 9999);
+		$entities = elgg_get_entities(array('type' => 'object', 'subtype' => 'moddefaultwidgets', 'limit' => 9999));
 		
 		// check if the entity exists
 		if(isset($entities[0])) {

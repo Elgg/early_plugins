@@ -19,7 +19,7 @@
 		
 	$title = elgg_view_title(elgg_echo('reportedcontent'));
 	
-	$reported = get_entities("object", "reported_content", 0, "", 9999);
+	$reported = elgg_get_entities(array('types' => 'object', 'subtypes' => 'reported_content', 'limit' => 9999));
 	
 	$area2 = elgg_view("reportedcontent/listing", array('entity' => $reported));
 	

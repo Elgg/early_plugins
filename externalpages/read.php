@@ -21,7 +21,7 @@
 		$area1 = elgg_view_title(elgg_echo("expages:". strtolower($type)));
 		
 		//get contents
-		$contents = get_entities("object", $type, 0, "", 1);
+		$contents = elgg_get_entities(array('type' => 'object', 'subtype' => $type, 'limit' => 1));
 		
 		if($contents){
 			foreach($contents as $c){

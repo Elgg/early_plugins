@@ -27,7 +27,7 @@
 		$limit = 10;
 		
     // Display all the messages a user owns, these will make up the sentbox
-		$messages = get_entities_from_metadata('fromId',$_SESSION['user']->guid,'object','messages', $page_owner->guid, $limit, $offset); 
+		$messages = elgg_get_entities_from_metadata(array('metadata_name' => 'fromId', 'metadata_value' => $_SESSION['user']->guid, 'types' => 'object', 'subtypes' => 'messages', 'owner_guid' => $page_owner->guid, 'limit' => $limit, 'offset' => $offset)); 
 		//$page_owner->getObjects('messages');
 		
     // Set the page title

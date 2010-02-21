@@ -23,7 +23,7 @@
 	if (($group) && ($group->canEdit()))
 	{	
 		
-		$requests = get_entities_from_relationship('membership_request',$group_guid,true,'','',0,'',9999);
+		$requests = elgg_get_entities_from_relationship(array('relationship' => 'membership_request', 'relationship_guid' => $group_guid, 'inverse_relationship' => TRUE, 'limit' => 9999));
 		$area2 .= elgg_view('groups/membershiprequests',array('requests' => $requests, 'entity' => $group));
 			 
 	} else {

@@ -23,7 +23,7 @@
 		global $SESSION, $CONFIG;
 		$people = array();
 		
-		$groupmemberships = get_entities_from_relationship('member',$_SESSION['user']->guid,false,'group','',0,'',9999);
+		$groupmemberships = elgg_get_entities_from_relationship(array('relationship' => 'member', 'relationship_guid' => $_SESSION['user']->guid, 'types' => 'group', 'limit' => 9999));
 		
 		$body = elgg_view('input/form',array(
 			'body' => elgg_view('notifications/subscriptions/groupsform',array(

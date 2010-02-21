@@ -28,7 +28,7 @@
 		
 	// Get objects
 	set_context('search');
-	$area2 .= list_entities('object', 'file', page_owner(), 10, false);
+	$area2 .= elgg_list_entities(array('types' => 'object', 'subtypes' => 'file', 'owner_guid' => page_owner(), 'limit' => 10, 'full_view' => FALSE));
 	set_context('file');
 	$get_filter = get_filetype_cloud(page_owner());
 	if ($get_filter) {

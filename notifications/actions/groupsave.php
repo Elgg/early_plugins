@@ -19,7 +19,7 @@
 
 	// Get group memberships and condense them down to an array of guids
 		$groups = array();
-		if ($groupmemberships = get_entities_from_relationship('member',$_SESSION['user']->guid,false,'group','',0,'',9999)) {
+		if ($groupmemberships = elgg_get_entities_from_relationship(array('relationship' => 'member', 'relationship_guid' => $_SESSION['user']->guid, 'types' => 'group', 'limit' => 9999))) {
 			foreach($groupmemberships as $groupmembership)
 				$groups[] = $groupmembership->guid;
 		}		

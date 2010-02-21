@@ -11,7 +11,7 @@
 <h2><?php echo elgg_echo('groups:latestdiscussion'); ?></h2>
 <?php
 	
-    $forum = get_entities_from_annotations("object", "groupforumtopic", "group_topic_post", "", 0, $vars['entity']->guid, 4, 0, "desc", false);
+    $forum = elgg_get_entities_from_annotations(array('types' => 'object', 'subtypes' => 'groupforumtopic', 'annotation_names' => 'group_topic_post', 'container_guid' => $vars['entity']->guid, 'limit' => 4, 'order_by' => 'maxtime desc'));
 	
     if($forum){
         foreach($forum as $f){

@@ -291,11 +291,11 @@
             
             //get the users inbox messages
 		    //$num_messages = get_entities_from_metadata("toId", $_SESSION['user']->getGUID(), "object", "messages", 0, 10, 0, "", 0, false);
-		    $num_messages = get_entities_from_metadata_multi(array(
+		    $num_messages = elgg_get_entities_from_metadata(array('metadata_name_value_pairs' => array(
 		    							'toId' => $_SESSION['user']->guid,
 		    							'readYet' => 0,
 		    							'msg' => 1
-		    									   ),"object", "messages", $_SESSION['user']->guid, 9999, 0, "", 0, false);
+		    									   ), 'types' => 'object', 'subtypes' => 'messages', 'owner_guid' => $_SESSION['user']->guid, 'limit' => 9999));
 		
 			if (is_array($num_messages))
 				$counter = sizeof($num_messages);

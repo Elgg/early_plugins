@@ -265,7 +265,7 @@
 	{
 		$body = "";
 		
-		$children = get_entities_from_metadata('parent_guid',$entity->guid,'','',0,9999);
+		$children = elgg_get_entities_from_metadata(array('metadata_names' => 'parent_guid', 'metadata_values' => $entity->guid, 'limit' => 9999));
 		$body .= elgg_view('pages/sidebar/sidebarthis', array('entity' => $entity, 
 															  'children' => $children,
 															  'fulltree' => $fulltree));

@@ -8,7 +8,7 @@
 			
 			// Bring all child elements forward
 				$parent = $page->parent_guid;
-				if ($children = get_entities_from_metadata('parent_guid',$page->getGUID())) {
+				if ($children = elgg_get_entities_from_metadata(array('metadata_name' => 'parent_guid', 'metadata_value' => $page->getGUID()))) {
 					foreach($children as $child) {
 						$child->parent_guid = $parent;
 					}

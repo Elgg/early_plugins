@@ -15,7 +15,7 @@
 	 $action = "expages/addfront";
 	 
 	 //grab the required entity
-	 $page_contents = get_entities("object", "front", 0, "", 1);
+	 $page_contents = elgg_get_entities(array('type' => 'object', 'subtype' => 'front', 'limit' => 1));
 	 
 	if($page_contents){
 		 foreach($page_contents as $pc){

@@ -41,12 +41,12 @@
 	
 	set_context('search');
 	
-	$objects = list_entities("object", "page_top", page_owner(), $limit, false);
+	$objects = elgg_list_entities(array('types' => 'object', 'subtypes' => 'page_top', 'owner_guid' => page_owner(), 'limit' => $limit, 'full_view' => FALSE));
 	
 	set_context($context);
 	
 	//get the owners latest welcome message
-	$welcome_message = get_entities("object", "pages_welcome", $owner->guid, '', 1);
+	$welcome_message = elgg_get_entities(array('types' => 'object', 'subtypes' => 'pages_welcome', 'owner_guid' => $owner->guid, 'limit' => 1));
 	
 	$body = elgg_view_title($title);
 	$body .= elgg_view("pages/welcome", array('entity' => $welcome_message));

@@ -44,7 +44,7 @@ switch ($filter) {
 	break;
 	case "newest":
 	case 'default':
-		$filter_content = list_entities("user", "", 0, 10, false);
+		$filter_content = elgg_list_entities(array('type' => 'user', 'full_view' => FALSE));
 	break;
 }
 

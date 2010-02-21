@@ -22,7 +22,7 @@
 	// Get the form
 		global $SESSION;
 		$people = array();
-		if ($people_ents = get_entities_from_relationship('notify',$SESSION['user']->guid,false,'user','',0,'',99999)) {
+		if ($people_ents = elgg_get_entities_from_relationship(array('relationship' => 'notify', 'relationship_guid' => $SESSION['user']->guid, 'types' => 'user', 'limit' => 99999))) {
 			foreach($people_ents as $ent)
 				$people[] = $ent->guid;
 		}

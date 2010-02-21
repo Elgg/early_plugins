@@ -123,7 +123,7 @@ function defaultwidgets_newusers($event, $object_type, $object) {
 				$contexts = array ('profile', 'dashboard' );
 				
 				// get the entities for the module
-				$entities = get_entities ( "object", "moddefaultwidgets", 0, "", 9999 );
+				$entities = elgg_get_entities (array('type' => 'object', 'subtype' => 'moddefaultwidgets', 'limit' => 9999));
 				
 				// check if the entity exists
 				if (isset ( $entities [0] )) {
@@ -190,7 +190,7 @@ function defaultwidgets_reset_access($event, $object_type, $object) {
 	$access_status = access_get_show_hidden_status();
 	access_show_hidden_entities(true);
 	
-	$widgets = get_entities('object', 'widget', $object->getGUID());
+	$widgets = elgg_get_entities(array('type' => 'object', 'subtype' => 'widget', 'owner_guid' => $object->getGUID()));
 	
 	if ($widgets) {
 		foreach($widgets as $widget) {

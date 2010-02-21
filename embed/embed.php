@@ -15,11 +15,11 @@
 		$entity_types = array('object' => array('file'));
 
 		if (empty($simpletype)) {
-			$count = get_entities('object','file',$SESSION['user']->guid,'',null,null,true);
-			$entities = get_entities('object','file',$SESSION['user']->guid,'',6,$offset);
+			$count = elgg_get_entities(array('type' => 'object', 'subtype' => 'file', 'owner_guid' => $SESSION['user']->guid, 'count' => TRUE));
+			$entities = elgg_get_entities(array('type' => 'object', 'subtype' => 'file', 'owner_guid' => $SESSION['user']->guid, 'limit' => 6, 'offset' => $offset));
 		} else {
-			$count = get_entities_from_metadata('simpletype',$simpletype,'object','file',$SESSION['user']->guid,6,$offset,'',0,true);
-			$entities = get_entities_from_metadata('simpletype',$simpletype,'object','file',$SESSION['user']->guid,6,$offset,'',0,false);
+			$count = elgg_get_entities_from_metadata(array('metadata_name' => 'simpletype', 'metadata_value' => $simpletype, 'types' => 'object', 'subtypes' => 'file', 'owner_guid' => $SESSION['user']->guid, 'limit' => 6, 'offset' => $offset, 'count' => TRUE));
+			$entities = elgg_get_entities_from_metadata(array('metadata_name' => 'simpletype', 'metadata_value' => $simpletype, 'types' => 'object', 'subtypes' => 'file', 'owner_guid' => $SESSION['user']->guid, 'limit' => 6, 'offset' => $offset));
 		}
 		
 		$types = get_tags(0,10,'simpletype','object','file',$SESSION['user']->guid);

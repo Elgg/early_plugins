@@ -41,7 +41,7 @@
 	
 	set_context('search');
 	
-	$objects = list_entities("object", "page_top", 0, $limit, false);
+	$objects = elgg_list_entities(array('types' => 'object', 'subtypes' => 'page_top', 'limit' => $limit, 'full_view' => FALSE));
 	
 	set_context($context);
 	

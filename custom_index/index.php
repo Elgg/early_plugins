@@ -16,15 +16,15 @@
     //get required data		
 	set_context('search');//display results in search mode, which is list view
 	//grab the latest 4 blog posts. to display more, change 4 to something else
-	$blogs = list_entities('object','blog',0,4,false, false, false);
+	$blogs = elgg_list_entities(array('type' => 'object', 'subtype' => 'blog', 'limit' => 4, 'full_view' => FALSE, 'view_type_toggle' => FALSE, 'pagination' => FALSE));
 	//grab the latest bookmarks
-	$bookmarks = list_entities('object','bookmarks',0,4,false, false, false);
+	$bookmarks = elgg_list_entities(array('type' => 'object', 'subtype' => 'bookmarks', 'limit' => 4, 'full_view' => FALSE, 'view_type_toggle' => FALSE, 'pagination' => FALSE));
 	//grab the latest files
-	$files = list_entities('object','file',0,4,false, false, false);
+	$files = elgg_list_entities(array('type' => 'object', 'subtype' => 'file', 'limit' => 4, 'full_view' => FALSE, 'view_type_toggle' => FALSE, 'pagination' => FALSE));
 	//get the newest members who have an avatar
-	$newest_members = get_entities_from_metadata('icontime', '', 'user', '', 0, 10);
+	$newest_members = elgg_get_entities_from_metadata(array('metadata_names' => 'icontime', 'types' => 'user', 'limit' => 10));
 	//newest groups
-	$groups = list_entities('group','',0,4,false, false, false);
+	$groups = elgg_list_entities(array(type => 'group', 'limit' => 4, 'full_view' => FALSE, 'view_type_toggle' => FALSE, 'pagination' => FALSE));
 	//grab the login form
 	$login = elgg_view("account/forms/login");
 	

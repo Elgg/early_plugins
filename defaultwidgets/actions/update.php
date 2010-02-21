@@ -25,7 +25,7 @@ if ($context && isset ( $leftbar ) && isset ( $middlebar ) && isset ( $rightbar 
 	$widgets = $leftbar . '%%' . $middlebar . '%%' . $rightbar;
 	
 	// get the elgg object that contains our settings
-	$entities = get_entities ( "object", "moddefaultwidgets", 0, "", 9999 );
+	$entities = elgg_get_entities (array('type' => 'object', 'subtype' => 'moddefaultwidgets', 'limit' => 9999));
 	
 	// create new object unless one already exists
 	if (! isset ( $entities [0] )) {

@@ -29,7 +29,7 @@
 				$child .= "\t\t\t\"text\": \"<a href=\\\"{$childentity->getURL()}\\\">" . addslashes($childentity->title) . "</a>\"\n";
 				
 				$extras = "";
-				$haschild = get_entities_from_metadata('parent_guid',$childentity->guid,'','',0,9999);
+				$haschild = elgg_get_entities_from_metadata(array('metadata_name' => 'parent_guid', 'metadata_value' => $childentity->guid, 'limit' => 9999));
 				if ($haschild) {
 					if (in_array($childentity->guid,$path)) {
 						$extras .= "\t\t\t,\"expanded\": true";

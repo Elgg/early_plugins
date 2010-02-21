@@ -27,7 +27,15 @@
 		set_page_owner($page_owner->getGUID());
 
 	// Get the user's inbox, this will be all messages where the 'toId' field matches their guid
-		$messages = get_entities_from_metadata("toId", $page_owner->getGUID(), "object", "messages", $page_owner->guid, $limit + 1, $offset);
+		$messages = elgg_get_entities_from_metadata(array(
+			'type' => 'object',
+			'subtype' => 'messages',
+			'metadata_name' => 'toId',
+			'metadata_value' => $page_owner->getGUID(),
+			'owner_guid' => $page_owner->guid,
+			'limit' => $limit + 1,
+			'offset' => $offset
+		));
 
 	// Set the page title
 		$area2 = elgg_view_title(elgg_echo("messages:inbox"));

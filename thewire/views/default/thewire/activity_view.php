@@ -5,7 +5,7 @@
 	 */
 
 	//grab the users latest from the wire
-	$latest_wire = list_entities("object", "thewire", $_SESSION['user']->getGUID(), 1, true, false, false);
+	$latest_wire = elgg_list_entities(array('types' => 'object', 'subtypes' => 'thewire', 'owner_guid' => $_SESSION['user']->getGUID(), 'limit' => 1, 'full_view' => TRUE, 'view_type_toggle' => FALSE, 'pagination' => FALSE));
 
 ?>
 

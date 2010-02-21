@@ -13,7 +13,7 @@
 
 	 
 	 //get frontpage right code
-		$contents = get_entities("object", "front", 0, "", 1);
+		$contents = elgg_get_entities(array('type' => 'object', 'subtype' => 'front', 'limit' => 1));
 		
 		if($contents){
 			foreach($contents as $c){

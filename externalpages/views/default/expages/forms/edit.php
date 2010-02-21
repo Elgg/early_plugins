@@ -18,7 +18,7 @@
 	 $action = "expages/add";
 	 
 	 //grab the required entity
-	 $page_contents = get_entities("object", $type, 0, "", 1);
+	 $page_contents = elgg_get_entities(array('type' => 'object', 'subtype' => $type, 'limit' => 1));
 	 
 	if($page_contents){
 		 foreach($page_contents as $pc){

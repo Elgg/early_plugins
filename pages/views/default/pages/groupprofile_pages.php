@@ -11,7 +11,7 @@
 <h2><?php echo elgg_echo("pages:groupprofile"); ?></h2>
 <?php
 
-    $objects = list_entities("object", "page_top", page_owner(), 5, false);
+    $objects = elgg_list_entities(array('types' => 'object', 'subtypes' => 'page_top', 'owner_guid' => page_owner(), 'limit' => 5, 'full_view' => FALSE));
 	
     if($objects)
 		echo $objects;

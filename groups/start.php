@@ -428,7 +428,7 @@
 		$page_owner = page_owner_entity();
 		// get all groups if logged in
 		if ($loggedin = get_loggedin_user()) {
-			$groups = get_entities_from_relationship('member', $loggedin->getGUID(), false, '', '', 0, '', 999);
+			$groups = elgg_get_entities_from_relationship(array('relationship' => 'member', 'relationship_guid' => $loggedin->getGUID(), 'inverse_relationship' => FALSE, 'limit' => 999));
 			if (is_array($groups)) {
 				foreach ($groups as $group) {
 					$returnvalue[$group->group_acl] = elgg_echo('groups:group') . ': ' . $group->name;
@@ -569,7 +569,7 @@
 	 */
 	function groups_get_invited_groups($user_guid, $return_guids = FALSE) {
 		$ia = elgg_set_ignore_access(TRUE);
-		$invitations = get_entities_from_relationship('invited', $user_guid, true, '', '', 0, '', 9999);
+		$invitations = elgg_get_entities_from_relationship(array('relationship' => 'invited', 'relationship_guid' => $user_guid, 'inverse_relationship' => TRUE, 'limit' => 9999));
 		elgg_set_ignore_access($ia);
 
 		if ($return_guids) {
