@@ -12,8 +12,6 @@
 	// Load configuration
 	global $CONFIG;
 	
-	action_gatekeeper();
-
 	// Get group fields
 	$input = array();
 	foreach($CONFIG->group as $shortname => $valuetype) {

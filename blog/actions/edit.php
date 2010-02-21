@@ -13,9 +13,6 @@
 	// Make sure we're logged in (send us to the front page if not)
 		gatekeeper();
 
-        // make sure action is secure
-        action_gatekeeper();
-
 	// Get input data
 		$guid = (int) get_input('blogpost');
 		$title = get_input('blogtitle');

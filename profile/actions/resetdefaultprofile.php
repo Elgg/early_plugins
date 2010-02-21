@@ -12,7 +12,6 @@
 	// Load configuration
 	global $CONFIG;
 
-	action_gatekeeper();
 	admin_gatekeeper();
 
 	$n = 0;

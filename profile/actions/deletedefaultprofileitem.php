@@ -11,7 +11,6 @@
 		
 	global $CONFIG;
 	
-	action_gatekeeper();
 	admin_gatekeeper();
 	
 	$id = (int)get_input('id');

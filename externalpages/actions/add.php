@@ -13,9 +13,6 @@
 	// Make sure we're logged as admin
 		admin_gatekeeper();
 
-   // Make sure action is secure
-        action_gatekeeper();
-
 	// Get input data
 		$contents = get_input('expagescontent', '', false);
 		$type = get_input('content_type');

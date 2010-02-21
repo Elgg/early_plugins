@@ -14,7 +14,6 @@
 		global $CONFIG;
 
 		gatekeeper();
-		action_gatekeeper();
 
 	// Get profile fields
 		$input = array();

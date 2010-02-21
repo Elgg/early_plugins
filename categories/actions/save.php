@@ -10,8 +10,6 @@
 	 * @link http://elgg.com/
 	 */
 
-		action_gatekeeper();
-		
 		$categories = get_input('categories');
 		$categories = string_to_tag_array($categories);
 		

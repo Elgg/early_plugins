@@ -11,7 +11,6 @@
 	 */
 
 	gatekeeper();
-	action_gatekeeper();
 	
 	$user = page_owner_entity();
 	if (!$user)

@@ -14,9 +14,6 @@
 	// Make sure we're logged as admin
 		admin_gatekeeper();
 
-   // Make sure action is secure
-        action_gatekeeper();
-
 	// Get input data
 		$contents_left = get_input('front_left', '', false);
 		$contents_right = get_input('front_right', '', false);

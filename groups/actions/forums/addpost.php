@@ -12,8 +12,6 @@
 
 // Make sure we're logged in and have a CSRF token
 gatekeeper();
-action_gatekeeper();
-
 
 // Get input
 $topic_guid = (int) get_input('topic_guid');

@@ -11,7 +11,6 @@
 	 */
 	
 	gatekeeper();
-	action_gatekeeper();
 
 		$title = get_input('title');
 		$guid = get_input('bookmark_guid',0);

@@ -13,7 +13,6 @@
 	global $CONFIG;
 	
 	gatekeeper();
-	action_gatekeeper();
 	
 	$emails = get_input('emails');
 	$emailmessage = get_input('emailmessage');

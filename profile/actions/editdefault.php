@@ -13,7 +13,6 @@
 	// Load configuration
 	global $CONFIG;
 
-	action_gatekeeper();
 	admin_gatekeeper();
 
 	$label = sanitise_string(get_input('label'));
