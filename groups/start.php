@@ -219,15 +219,15 @@
 					}
 					if ($page_owner->isMember($_SESSION['user'])) {
 						if ($page_owner->getOwner() != $_SESSION['guid']) {
-							$url = elgg_validate_action_url($CONFIG->wwwroot . "action/groups/leave?group_guid=" . $page_owner->getGUID());
+							$url = elgg_add_action_tokens_to_url($CONFIG->wwwroot . "action/groups/leave?group_guid=" . $page_owner->getGUID());
 							add_submenu_item(elgg_echo('groups:leave'), $url, '1groupsactions');
 						}
 					} else {
 						if ($page_owner->isPublicMembership()) {
-							$url = elgg_validate_action_url($CONFIG->wwwroot . "action/groups/join?group_guid={$page_owner->getGUID()}");
+							$url = elgg_add_action_tokens_to_url($CONFIG->wwwroot . "action/groups/join?group_guid={$page_owner->getGUID()}");
 							add_submenu_item(elgg_echo('groups:join'), $url, '1groupsactions');
 						} else {
-							$url = elgg_validate_action_url($CONFIG->wwwroot . "action/groups/joinrequest?group_guid={$page_owner->getGUID()}");
+							$url = elgg_add_action_tokens_to_url($CONFIG->wwwroot . "action/groups/joinrequest?group_guid={$page_owner->getGUID()}");
 							add_submenu_item(elgg_echo('groups:joinrequest'), $url, '1groupsactions');
 						}
 					}

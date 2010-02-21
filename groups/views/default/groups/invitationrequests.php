@@ -24,7 +24,7 @@
 					'confirm' => elgg_echo('groups:joinrequest:remove:check'),
 					'text' => elgg_echo('delete'),
 				)));
-			$url = elgg_validate_action_url("{$vars['url']}action/groups/join?user_guid={$user->guid}&group_guid={$group->guid}");
+			$url = elgg_add_action_tokens_to_url("{$vars['url']}action/groups/join?user_guid={$user->guid}&group_guid={$group->guid}");
 			?>
 			<a href="<?php echo $url; ?>" class="archive_report_button"><?php echo elgg_echo('accept'); ?></a>
 			<br /><br />
