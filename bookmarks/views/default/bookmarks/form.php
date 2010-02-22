@@ -101,17 +101,21 @@
 				?>
 			</label>
 		</p>
-		<p>
-			<label><?php echo elgg_echo("bookmarks:with"); ?></label><br />
 			<?php
 
 				//echo elgg_view('bookmarks/sharing',array('shares' => $shares, 'owner' => $owner));
 				if ($friends = elgg_get_entities_from_relationship(array('relationship' => 'friend', 'relationship_guid' => $owner->getGUID(), 'inverse_relationship' => FALSE, 'type' => 'user', 'limit' => 9999))) {
+?>
+		<p>
+					<label><?php echo elgg_echo("bookmarks:with"); ?></label><br />
+<?php
 					echo elgg_view('friends/picker',array('entities' => $friends, 'internalname' => 'shares', 'highlight' => $highlight));
+?>
+		</p>
+<?php
 				}
 			
 			?>
-		</p>
 		<p>
 			<label>
 				<?php 	echo elgg_echo('access'); ?>
