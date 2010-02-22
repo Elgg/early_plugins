@@ -28,8 +28,12 @@ $('a.show_file_desc').click(function () {
 	if (!$number)
 		$number = 10;
 	
-	//get the user's files
-	$files = get_user_objects($vars['entity']->guid, "file", $number, 0);
+	//get the group's files
+	$files = elgg_get_entities(array('type' => 'object',
+									'subtype' => 'file',
+									'container_guid' => $vars['entity']->guid,
+									'limit' => $number,
+	));
 	
 	//if there are some files, go get them
 	if ($files) {
