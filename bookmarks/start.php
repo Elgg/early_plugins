@@ -123,7 +123,7 @@ function bookmarks_page_handler($page) {
 	if (isset($page[1])) {
 		switch($page[1]) {
 			case "read":		set_input('guid',$page[2]);
-				include(dirname(dirname(dirname(__FILE__))) . "/entities/index.php");
+				require(dirname(dirname(dirname(__FILE__))) . "/entities/index.php");
 				return true;
 				break;
 			case "friends":		include(dirname(__FILE__) . "/friends.php");

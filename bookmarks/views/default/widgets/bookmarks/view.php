@@ -18,7 +18,7 @@ $(document).ready(function () {
 			$num = 4;
 			
         //grab the users bookmarked items
-		$shares = elgg_get_entities(array('types' => 'object', 'subtypes' => 'bookmarks', 'owner_guid' => $vars['entity']->owner_guid, 'limit' => $num, 'offset' =>  0));
+		$shares = elgg_get_entities(array('types' => 'object', 'subtypes' => 'bookmarks', 'container_guid' => $vars['entity']->owner_guid, 'limit' => $num, 'offset' =>  0));
 		
 		if($shares){
 
