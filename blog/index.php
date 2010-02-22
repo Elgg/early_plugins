@@ -34,7 +34,9 @@
 		}
 		
 	// Get a list of blog posts
-		$area2 .= "<div id=\"blogs\">" . list_user_objects($page_owner->getGUID(),'blog',10,false) . "<div class='clearfloat'></div></div>";
+		$area2 .= "<div id=\"blogs\">";
+		$area2 .= elgg_list_entities(array('type' => 'object', 'subtype' => 'blog', 'container_guid' => page_owner(), 'limit' => 10, 'full_view' => FALSE, 'view_type_toggle' => FALSE));
+		$area2 .= "<div class='clearfloat'></div></div>";
 
 	// Get blog tags
 
