@@ -1,12 +1,8 @@
 <?php
 
 	$english = array(
-	
-		/**
-		 * Site info details
-		 */
-		
-		'members:members' => "Site users",
+			
+		'members:members' => "Members",
 	    'members:online' => "Users active now",
 	    'members:active' => "site users",
 	    'members:searchtag' => "User search via tag",
