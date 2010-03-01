@@ -32,8 +32,7 @@
 					
 			// And for logged out users
 				} else {
-					add_menu(elgg_echo('blog'), $CONFIG->wwwroot . "mod/blog/everyone.php",array(
-					));
+					add_menu(elgg_echo('blogs'), $CONFIG->wwwroot . "mod/blog/everyone.php");
 				}
 				
 			// Extend system CSS with our own styles, which are defined in the blog/css view
