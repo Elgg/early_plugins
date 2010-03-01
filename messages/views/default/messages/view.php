@@ -130,7 +130,7 @@
 				$newoffset = $offset - $limit;
 				if ($newoffset < 0) $newoffset = 0;
 
-				$nexturl = elgg_http_add_url_query_elements($baseurl, array('offset' => $newoffset));
+				$prevurl = elgg_http_add_url_query_elements($baseurl, array('offset' => $newoffset));
 
 				$nav .= '<a class="pagination_next" href="'.$prevurl.'">' . elgg_echo('next') . ' &raquo;</a> ';
 			}
