@@ -33,7 +33,7 @@
 
 				foreach($vars['entity'] as $message) {
 					if ($message->owner_guid == $vars['user']->guid
-						|| $message->toID == $vars['user']->guid) {
+						|| $message->toId == $vars['user']->guid) {
 
 					//make sure to only display the messages that have not been 'deleted' (1 = deleted)
 					if($message->hiddenFrom != 1){
@@ -87,7 +87,7 @@
 					if($message->hiddenTo != 1){
 
 						//get the correct user entity
-						$user = get_entity($message->toID);
+						$user = get_entity($message->toId);
 						echo "<div class=\"message_sent\" />";
 						echo "<table width=\"100%\" cellspacing='0'><tr>";
 
