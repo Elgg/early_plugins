@@ -21,9 +21,10 @@
 		if (!is_array($accesslevel)) $accesslevel = array();
 
 		foreach($CONFIG->profile as $shortname => $valuetype) {
-			// stop gag to prevent &amp;&amp; showing up in profile fields
-			// until #561 is completed.
-			$value = html_entity_decode(get_input($shortname));
+			// the decoding is a stop gag to prevent &amp;&amp; showing up in profile fields
+			// because it is escaped on both input (get_input()) and output (view:output/text). see #561 and #1405.
+			// must decode in utf8 or string corruption occurs. see #1567.
+			$value = html_entity_decode(get_input($shortname), ENT_COMPAT, 'UTF-8');
 
 			// limit to reasonable sizes.
 			if ($valuetype != 'longtext' && elgg_strlen($value) > 250) {
