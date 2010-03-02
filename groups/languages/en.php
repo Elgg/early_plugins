@@ -56,6 +56,7 @@
 			'groups:nofriends' => "You have no friends left who have not been invited to this group.",
 			'groups:viagroups' => "via groups",
 			'groups:group' => "Group",
+			'groups:search:tags' => "tag",
 
 			'groups:notfound' => "Group not found",
 			'groups:notfound:details' => "The requested group either does not exist or you do not have access to it",

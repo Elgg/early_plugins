@@ -1,14 +1,16 @@
 <?php
 
 	/**
-	 * A simlpe group search by tag view
+	 * A simple group search by tag view
 	 **/
+
+$tag_string = elgg_echo('groups:search:tags');
 	 
 ?>
 <div class="sidebarBox">
 <h3><?php echo elgg_echo('groups:searchtag'); ?></h3>
 <form id="groupsearchform" action="<?php echo $vars['url']; ?>search/" method="get">
-	<input type="text" name="tag" value="tag" onclick="if (this.value=='tag') { this.value='' }" class="search_input" />
+	<input type="text" name="tag" value="<?php echo $tag_string; ?>" onclick="if (this.value=='<?php echo $tag_string; ?>') { this.value='' }" class="search_input" />
 	<input type="hidden" name="subtype" value="" />
 	<input type="hidden" name="object" value="group" />
 	<input type="hidden" name="tagtype" value="" />
