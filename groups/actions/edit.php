@@ -71,8 +71,6 @@
 		$visibility = (int)get_input('vis','',false);
 		
 		$group->access_id = $visibility;
-		
-		$group->access_id;
 	}
 	else
 		$group->access_id = ACCESS_PUBLIC;
