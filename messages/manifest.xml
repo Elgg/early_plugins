@@ -4,5 +4,5 @@
         <field key="description" value="Elgg internal messages plugin. This plugin lets user send each other messages." />
         <field key="website" value="http://www.elgg.org/" />
         <field key="licence" value="GNU Public License version 2" />
-        <field key="elgg_version" value="2009072201" />
+        <field key="elgg_version" value="2010030101" />
 </plugin_manifest>
